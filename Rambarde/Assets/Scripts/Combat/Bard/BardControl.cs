@@ -10,20 +10,21 @@ using UniRx;
 using UnityEngine;
 
 namespace Bard {
-    public class Bard : MonoBehaviour {
-        [SerializeField] private int baseActionPoints;
-        [SerializeField] private NoteSpawner spawner;
-
+    public class BardControl : MonoBehaviour {
+        
         public Hud hud;
         public Inspiration inspiration;
         public List<Instrument> instruments;
         public ReactiveProperty<int> actionPoints;
         public ReactiveProperty<int> maxActionPoints;
         public ReactiveCollection<Melody> selectedMelodies = new  ReactiveCollection<Melody>(new List<Melody>());
+        public ReactiveCommand onDone = new ReactiveCommand();
 
+        [SerializeField] private int baseActionPoints;
+        [SerializeField] private NoteSpawner spawner;
         private int _selectedInstrumentIndex;
 
-        void Start() {
+        private void Start() {
             inspiration = GetComponent<Inspiration>();
             actionPoints = new ReactiveProperty<int>(baseActionPoints);
             maxActionPoints = new ReactiveProperty<int>(baseActionPoints);
@@ -74,26 +75,24 @@ namespace Bard {
          * Make melodies playable or not based on the action points
          */
         private void SetActionPlayableMelodies() {
-            foreach (Instrument instrument in instruments) {
-                foreach (Melody melody in instrument.melodies) {
-                    melody.isPlayable.Value &= actionPoints.Value - melody.Size >= 0;
-                }
+            foreach (var melody in instruments.SelectMany(instrument => instrument.melodies)) {
+                melody.isPlayable.Value &= actionPoints.Value - melody.Size >= 0;
             }
         }
 
         private void SetInspirationPlayableMelodies() {
-            foreach (Instrument instrument in instruments) {
-                foreach (Melody melody in instrument.melodies) {
-                    if (melody.isPlayable.Value) {
-                        switch (melody.tier) { 
-                            case 2:
-                                melody.isPlayable.Value = inspiration.current.Value >= inspiration.tier2MinValue;
-                                break;
-                            case 3:
-                                melody.isPlayable.Value = inspiration.current.Value >= inspiration.tier3MinValue;
-                                break;
-                        }
-                    }
+            foreach (var melody
+                in instruments.SelectMany(instrument => instrument.melodies).Where(m => m.isPlayable.Value)) {
+                switch (melody.tier) {
+                    case 2:
+                        melody.isPlayable.Value = (inspiration.current.Value >= inspiration.tier2MinValue);
+                        break;
+                    case 3:
+                        melody.isPlayable.Value = (inspiration.current.Value >= inspiration.tier3MinValue);
+                        break;
+                    default:
+                        melody.isPlayable.Value = melody.isPlayable.Value;
+                        break;
                 }
             }
         }
@@ -107,7 +106,7 @@ namespace Bard {
             Reset();
         }
 
-        private void Reset() {
+        public void Reset() {
             _selectedInstrumentIndex = 0;
             actionPoints.Value = maxActionPoints.Value;
             
@@ -124,21 +123,15 @@ namespace Bard {
         }
 
         public async void Done() {
-            await StartRhythmGame();
-            await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1600/200))); // wait actual rhythm end
-            CombatManager.Instance.combatPhase.Value = "execMelodies";
-            /*await*/ ExecMelodies();
-            Reset();
-            CombatManager.Instance.combatPhase.Value = "combatTurn";
             await CombatManager.Instance.ExecTurn();
-            CombatManager.Instance.combatPhase.Value = "selectMelody";
-        }
+            }
 
-        private void ExecMelodies() {
+        public async Task ExecMelodies() {
+            CombatManager.Instance.combatPhase.Value = CombatPhase.ExecMelodies;
             foreach (var melody in selectedMelodies) {
                 //apply melodies based on their score (and reset their score)
                 if (melody.score.Value == melody.Data.Length) {
-                    melody.Execute();
+                    await melody.Execute();
                     inspiration.current.Value += melody.inspirationValue;
                     inspiration.ResetTurnValues();
                 } else {
@@ -168,9 +161,9 @@ namespace Bard {
         //                         bpm\      /beat division(croche)
         private float _beat = 60f / (110f * 3f);
 
-        private async Task StartRhythmGame() {
-            CombatManager.Instance.combatPhase.Value = "rhythmGame";
-            selectedMelodies.Select(m => m.score.Value = 0);
+        public async Task StartRhythmGame() {
+            CombatManager.Instance.combatPhase.Value = CombatPhase.RhythmGame;
+            selectedMelodies.ToList().ForEach(m => m.score.Value = 0);
             var melodyIndex = 0;
             var charIndex = 0;
             var melody = selectedMelodies

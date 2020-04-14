@@ -1,32 +1,49 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Characters;
 using Combat.Characters;
+using Bard;
+using Status;
 using TMPro;
 using UI;
 using UniRx;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+public enum CombatPhase {
+    SelectMelodies,
+    RhythmGame,
+    ExecMelodies,
+    TurnFight,
+}
+
 public class CombatManager : MonoBehaviour {
+    public BardControl bard; //TODO init bard in GameManager
     public List<List<CharacterControl>> teams = new List<List<CharacterControl>>(2);
     public GameObject playerTeamGo, enemyTeamGo;
     public RectTransform playerTeamUiContainer;
     public RectTransform enemyTeamUiContainer;
-    public ReactiveProperty<string> combatPhase = new ReactiveProperty<string>("selectMelody");
+    public ReactiveProperty<CombatPhase> combatPhase = new ReactiveProperty<CombatPhase>(CombatPhase.SelectMelodies);
     
     private List<CharacterBase> clientsMenu;
     private List<CharacterBase> currentMonsters;
-    //private Canvas _canvas;
-    
-    public CharacterControl GetTarget(int srcTeam, bool ally) {
-        var team = ally ? srcTeam : (srcTeam + 1) % teams.Count;
-        return teams[team][(int) (Random.Range(0f, 100f) / 50f) % teams[team].Count];
-    }
 
     public async Task ExecTurn() {
+        combatPhase.Value = CombatPhase.RhythmGame;
+        await bard.StartRhythmGame();
+        await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1600f / 200f))); // wait actual rhythm end
+        combatPhase.Value = CombatPhase.ExecMelodies;
+        await bard.ExecMelodies();
+        bard.Reset();
+        combatPhase.Value = CombatPhase.TurnFight;
+        await ResolveTurnFight();
+        combatPhase.Value = CombatPhase.SelectMelodies;
+    }
+
+    private async Task ResolveTurnFight() {
         // Apply status effects to all characters
         foreach (var team in teams) {
             for (var index = team.Count - 1; index >= 0; --index) {
@@ -95,8 +112,7 @@ public class CombatManager : MonoBehaviour {
         currentMonsters = new List<CharacterBase>();
         foreach (var monster in GameManager.quest.fightManager.fights[GameManager.CurrentFight].monsters)
             clientsMenu.Add(monster);
-            ;
-     
+
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
 
         var i = 0;
