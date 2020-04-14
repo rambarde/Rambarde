@@ -8476,6 +8476,7 @@ MonoBehaviour:
   inspiJauge: {fileID: 266972429}
   melodyMenu: {fileID: 793956401}
   musicMenu: {fileID: 505759181}
+  pauseMenu: {fileID: 0}
 --- !u!1001 &819030488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22024,9 +22025,9 @@ MonoBehaviour:
   hud: {fileID: 811600889}
   inspiration: {fileID: 8296172668646349647}
   instruments:
-  - {fileID: 11400000, guid: 92ced9a3ed6d03941ac5ee42f90b2028, type: 2}
-  - {fileID: 11400000, guid: bb59be6d934de13419f2f8e3edc9edea, type: 2}
-  - {fileID: 11400000, guid: 18159a614a925474e83f62d123deefba, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &8345394285019801763
 Transform:
   m_ObjectHideFlags: 0
