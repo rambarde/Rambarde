@@ -3,12 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bard;
 using Characters;
-using JetBrains.Annotations;
 using Status;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 namespace Melodies {
     public abstract class Melody : ScriptableObject {
@@ -36,27 +33,33 @@ namespace Melodies {
                     if (target.HasEffect(EffectType.Deaf)) {
                         break;
                     }
+                    target.influenced = true;
                     await ExecuteOnTarget(target);
                     break;
                 case MelodyTargetMode.Everyone :
-                    foreach (CharacterControl character in CombatManager.Instance.teams
+                    foreach (var character in CombatManager.Instance.teams
                             .SelectMany(_=>_)
                             .Where(c => !c.HasEffect(EffectType.Deaf))) {
+                        target.influenced = true;
                         await ExecuteOnTarget(character);
                     }
                     break;
                 case MelodyTargetMode.EveryAlly :
-                    foreach (CharacterControl character in CombatManager.Instance.teams[0]
+                    foreach (var character in CombatManager.Instance.teams[0]
                             .Where(c => !c.HasEffect(EffectType.Deaf))) {
+                        target.influenced = true;
                         await ExecuteOnTarget(character);
                     }
                     break;
                 case MelodyTargetMode.EveryEnemy :
                     foreach (CharacterControl character in CombatManager.Instance.teams[1]
                             .Where(c => !c.HasEffect(EffectType.Deaf))) {
+                        target.influenced = true;
                         await ExecuteOnTarget(character);
                     }
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
         }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Skills;
 using Status;
@@ -30,7 +29,8 @@ namespace Characters {
         
         public List<Skill> skillSlot;
         public Subject<SlotAction> slotAction;
-        
+        public bool influenced;
+            
         private static Random rng = new Random();
         private int _skillIndex;
         private bool _skillIndexChanged;
