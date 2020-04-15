@@ -13,4 +13,34 @@ MonoBehaviour:
   m_Name: ColdSkeleton
   m_EditorClassIdentifier: 
   commonDialog: {fileID: 0}
-  dialogPhrases: []
+  dialogPhrases:
+  - filter: 1
+    phrase: Bous allez soubbrir!
+  - filter: 2
+    phrase: Aaaaa-KRAC !
+  - filter: 2
+    phrase: "Prenez \xE7aaAAAtchoum !!!"
+  - filter: 2097154
+    phrase: '*snif*'
+  - filter: 2097154
+    phrase: "J'aurais d\xFB rester au lit..."
+  - filter: 4
+    phrase: Toujours la forme on dirait !
+  - filter: 2097156
+    phrase: Et maintenant j'ai une migraine...
+  - filter: 8
+    phrase: Plus malade au moins...
+  - filter: 2097160
+    phrase: Aaa-Krouk.
+  - filter: 2097160
+    phrase: Ca va ... mieux ?
+  - filter: 2097168
+    phrase: Z'a bait du bien...
+  - filter: 2097184
+    phrase: Berci !
+  - filter: 2097184
+    phrase: "Za va d\xE9j\xE0 mieux."
+  - filter: 2097216
+    phrase: Je zuis malade bon sang !
+  - filter: 2097280
+    phrase: "M\xEAme malade je reste bal\xE8ze !"

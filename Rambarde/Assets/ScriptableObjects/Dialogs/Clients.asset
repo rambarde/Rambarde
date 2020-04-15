@@ -13,4 +13,156 @@ MonoBehaviour:
   m_Name: Clients
   m_EditorClassIdentifier: 
   commonDialog: {fileID: 0}
-  dialogPhrases: []
+  dialogPhrases:
+  - filter: 1
+    phrase: "Ta\xEFaut ta\xEFaut !"
+  - filter: 1
+    phrase: Ah bah enfin !
+  - filter: 1
+    phrase: "\xC0 l'assaut !"
+  - filter: 1
+    phrase: "Sus \xE0 l'ennemi !"
+  - filter: 1
+    phrase: Butin en vue !
+  - filter: 1
+    phrase: "Pas trop t\xF4t !"
+  - filter: 2
+    phrase: "Prends \xE7a !"
+  - filter: 2
+    phrase: Pan ! Dans les dents !
+  - filter: 2
+    phrase: "\xC7a t\u2019apprendra le respect !"
+  - filter: 2
+    phrase: "Je pensais pas que \xE7a passerait\u2026"
+  - filter: 2
+    phrase: Ahah !
+  - filter: 524290
+    phrase: Ouille !
+  - filter: 524290
+    phrase: "J\u2019ai mal !"
+  - filter: 524290
+    phrase: 'Je pensais pas que ce serait aussi violent. '
+  - filter: 524290
+    phrase: Pourquoi moi ?
+  - filter: 524290
+    phrase: "M\xEAme pas mal\u2026"
+  - filter: 524290
+    phrase: "\xC7a fait beaucoup l\xE0 non ?"
+  - filter: 4
+    phrase: "Et reste \xE0 terre !"
+  - filter: 4
+    phrase: Tremblez !
+  - filter: 4
+    phrase: En plein dans le mille !
+  - filter: 524292
+    phrase: "\xC7a c\u2019est pas juste\u2026"
+  - filter: 524292
+    phrase: "J\u2019ai pas pay\xE9 pour \xE7a !"
+  - filter: 8
+    phrase: "C\u2019est ce qu\u2019on appelle une r\xE9ussite !"
+  - filter: 8
+    phrase: Il ne faisait pas le poids.
+  - filter: 8
+    phrase: "C\u2019est qui le patron ?"
+  - filter: 8
+    phrase: "C\u2019est moi qui ai fait \xE7a ?"
+  - filter: 8
+    phrase: Le butin est pour moi.
+  - filter: 524296
+    phrase: "\xD4 rage ! \xD4 d\xE9sespoir !"
+  - filter: 524296
+    phrase: "Je veux parler \xE0 mon avocat !"
+  - filter: 524296
+    phrase: "Continuez... sans... moi\u2026"
+  - filter: 524296
+    phrase: "Souvenez-vous de moi\u2026"
+  - filter: 524296
+    phrase: "Pas comme \xE7a !"
+  - filter: 524296
+    phrase: "C'est l\xE0 que je dois tomber?"
+  - filter: 16
+    phrase: "Nous l\xE2che pas !"
+  - filter: 16
+    phrase: Un petit remontant ?
+  - filter: 524304
+    phrase: "C\u2019est possible d\u2019en avoir encore ?"
+  - filter: 524304
+    phrase: "Haa\u2026 \xE7a va mieux\u2026"
+  - filter: 524304
+    phrase: "Un soin et \xE7a repart."
+  - filter: 524304
+    phrase: Merci !
+  - filter: 524304
+    phrase: "C\u2019est pas trop t\xF4t !"
+  - filter: 32
+    phrase: "Un peu de bonne volont\xE9 !"
+  - filter: 32
+    phrase: "Par le pouvoir de l'amiti\xE9 !"
+  - filter: 32
+    phrase: Un petit coup de main ?
+  - filter: 32
+    phrase: Ne me remercie pas.
+  - filter: 2097216
+    phrase: "\xC7a marche comme \xE7a ?"
+  - filter: 2097216
+    phrase: Calmez-vous !
+  - filter: 2097216
+    phrase: On fait moins le malin hein ?
+  - filter: 2113600
+    phrase: "On a la t\xEAte qui tourne ?"
+  - filter: 2162752
+    phrase: 'C''est mon charisme qui t''impressione ? '
+  - filter: 2129984
+    phrase: T'en as trop entendu.
+  - filter: 524832
+    phrase: "Je d\xE9tiens la force toute puissante !"
+  - filter: 524832
+    phrase: "\xC7a va faire mal !"
+  - filter: 525344
+    phrase: Je suis invincible !
+  - filter: 525344
+    phrase: INDESTRUCTIBLE !
+  - filter: 6176
+    phrase: "Ma vis\xE9e s\u2019affine."
+  - filter: 6176
+    phrase: "L\u2019oeil du tigre."
+  - filter: 528416
+    phrase: Chargez !
+  - filter: 528416
+    phrase: Preum's !
+  - filter: 532512
+    phrase: "Venez bande de l\xE2ches !"
+  - filter: 532512
+    phrase: "Tout le monde derri\xE8re moi !"
+  - filter: 524352
+    phrase: Zut !
+  - filter: 524352
+    phrase: Fichtre !
+  - filter: 524352
+    phrase: "Je me sens\u2026 faible\u2026"
+  - filter: 524352
+    phrase: "Ce n\u2019est pas tr\xE8s rassurant."
+  - filter: 540736
+    phrase: "C\u2019est normal toutes ces \xE9toiles ?"
+  - filter: 655424
+    phrase: "\xC7a picote un peu."
+  - filter: 589888
+    phrase: Je ne vois plus rien !
+  - filter: 557120
+    phrase: HEIN ?
+  - filter: 786496
+    phrase: Quoi quoi quoi ?
+  - filter: 128
+    phrase: On est trop trop fort !
+  - filter: 128
+    phrase: Victoire !
+  - filter: 128
+    phrase: Tous sur le butin !
+  - filter: 256
+    phrase: "On arrive bient\xF4t ?"
+  - filter: 256
+    phrase: On peut faire une pause ?
+  - filter: 256
+    phrase: J'ai un caillou dans ma botte !
+  - filter: 256
+    phrase: Si j'avais su j'aurais pris de meilleures bottes...

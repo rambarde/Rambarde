@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec25009ee25244341ac457045f381988, type: 3}
+  m_Name: FakeMonstersGeneric
+  m_EditorClassIdentifier: 
+  commonDialog: {fileID: 0}
+  dialogPhrases:
+  - filter: 1
+    phrase: En piste !
+  - filter: 1
+    phrase: Ah... Heu... Grrrr !
+  - filter: 1
+    phrase: "Pas trop t\xF4t !"
+  - filter: 2
+    phrase: Pas trop mal ?
+  - filter: 2
+    phrase: Yaaaah !
+  - filter: 1048578
+    phrase: "A\xEFe mon orteil !"
+  - filter: 1048578
+    phrase: Ouch !
+  - filter: 1048578
+    phrase: "O\xF9 est la trousse de soin?"
+  - filter: 4
+    phrase: "Pouvoir de m\xE9chant !"
+  - filter: 4
+    phrase: Et BIM !
+  - filter: 1048580
+    phrase: "C\u2019\xE9tait pas dans le contrat !"
+  - filter: 1048580
+    phrase: "\xC7a compte comme un accident du travail ?"
+  - filter: 1048580
+    phrase: Quelle est cette puissance ?
+  - filter: 1048580
+    phrase: "H\xE9 ! Faites attention !"
+  - filter: 1048580
+    phrase: "Pas dans l\u2019oeil !"
+  - filter: 8
+    phrase: "J\u2019y suis peut-\xEAtre all\xE9 un peu fort\u2026"
+  - filter: 8
+    phrase: "D\xE9sol\xE9 !"
+  - filter: 8
+    phrase: "Ah zut ! Euh\u2026 je veux dire\u2026 Ouais !"
+  - filter: 8
+    phrase: "Pour une fois, c\u2019est moi qui gagne"
+  - filter: 8
+    phrase: "\xC7a c\u2019est pour tous les coups que j\u2019ai pris !"
+  - filter: 8
+    phrase: Chouette ! Oh pardon...
+  - filter: 1048584
+    phrase: "Et \xE7a recommence..."
+  - filter: 1048584
+    phrase: Enfin l'heure de la pause !
+  - filter: 1048584
+    phrase: Je meeeeurs !
+  - filter: 1048584
+    phrase: "\xC7a allait comme \xE7a ?"
+  - filter: 1048584
+    phrase: C'est bon ? C'est fini ?
+  - filter: 16
+    phrase: "L\xE8ve-toi et cogne !"
+  - filter: 1048592
+    phrase: "\xC7a marche pour les maux de t\xEAte ?"
+  - filter: 1048592
+    phrase: "\xC7a va mieux..."
+  - filter: 1048592
+    phrase: Merci !
+  - filter: 32
+    phrase: "On se r\xE9veille !"
+  - filter: 544
+    phrase: "Un peu de bonne volont\xE9 !"
+  - filter: 1056
+    phrase: Baisse pas ta garde !
+  - filter: 2080
+    phrase: Droit au but !
+  - filter: 524352
+    phrase: "D\xE9sol\xE9, c'est dans le script."
+  - filter: 524352
+    phrase: Par le pouvoir du maaaal !
+  - filter: 524352
+    phrase: On fait moins le malin hein ?
+  - filter: 1048608
+    phrase: JE SUIS TROP FORT !
+  - filter: 1048608
+    phrase: VENGEANCE !
+  - filter: 1052704
+    phrase: On fonce !
+  - filter: 1048640
+    phrase: "C'\xE9tait pr\xE9vu \xE7a?"
+  - filter: 1048640
+    phrase: Pourquoi moi ?
+  - filter: 1048640
+    phrase: Tu rigoles, je te gifle !
+  - filter: 1065024
+    phrase: "\xC7a tourne..."
+  - filter: 1114176
+    phrase: J'ai perdu le fil ! Souffleur !
+  - filter: 1081408
+    phrase: C'EST NORMAL QUE J'ENTENDE RIEN ?!
+  - filter: 1048704
+    phrase: "On y est peut-\xEAtre all\xE9 un peu fort..."

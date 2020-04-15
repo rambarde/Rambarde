@@ -13,4 +13,30 @@ MonoBehaviour:
   m_Name: Skeleton
   m_EditorClassIdentifier: 
   commonDialog: {fileID: 0}
-  dialogPhrases: []
+  dialogPhrases:
+  - filter: 1
+    phrase: Debout les morts !
+  - filter: 2
+    phrase: Et une fracture. Une.
+  - filter: 2097154
+    phrase: Vous allez passer un sale moment...
+  - filter: 4
+    phrase: "Le doux son des os bris\xE9s..."
+  - filter: 2097156
+    phrase: "J'ai plus mal mais quand m\xEAme !"
+  - filter: 8
+    phrase: "Tu l'as dans l'os l\xE0 !"
+  - filter: 2097160
+    phrase: Je n'ai pas fait de vieux os...
+  - filter: 2097168
+    phrase: C'est du p'tit lait.
+  - filter: 2097168
+    phrase: Merci pour la vitamine D.
+  - filter: 64
+    phrase: Vous ne ferez pas de vieux os !
+  - filter: 2097184
+    phrase: Je suis bien plus qu'un sac d'os.
+  - filter: 2097216
+    phrase: "Je suis tomb\xE9 sur un os je crois."
+  - filter: 2097280
+    phrase: On va danser sur vos tombes !
