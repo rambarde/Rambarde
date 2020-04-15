@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6a5f461ae64d2f9e2e7c7a92e7e82c, type: 3}
   m_Name: Cacophonie
   m_EditorClassIdentifier: 
-  data: 
+  data: 2-2-
   targetMode: 4
   tier: 1
   effect: "R\xE9arrange les comp\xE9tences de la roue dans un ordre al\xE9atoire"
   inspirationValue: 10
   tranceValue: 0
   sprite: {fileID: 21300000, guid: a3dc1e73547deee45b87ea447bddccc4, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}
