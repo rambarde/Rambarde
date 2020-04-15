@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Duelliste
   m_EditorClassIdentifier: 
   modelName: Warrior
-  animatorController: Warrior
+  animatorController: Animations/Warrior
   baseStats:
     maxHp: 70
     atq: 22

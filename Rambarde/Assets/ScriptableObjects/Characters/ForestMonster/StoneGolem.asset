@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StoneGolem
   m_EditorClassIdentifier: 
   modelName: Goblin
-  animatorController: Goblin
+  animatorController: Animations/Goblin
   baseStats:
     maxHp: 15
     atq: 20
