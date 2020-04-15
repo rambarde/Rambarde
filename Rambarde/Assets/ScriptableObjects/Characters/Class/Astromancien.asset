@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Astromancien
   m_EditorClassIdentifier: 
   modelName: Mage
-  animatorController: Mage
+  animatorController: Animations/Mage
   baseStats:
     maxHp: 60
     atq: 20
