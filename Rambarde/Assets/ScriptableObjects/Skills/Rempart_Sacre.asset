@@ -20,5 +20,5 @@ MonoBehaviour:
     buffType: 3
     value: 2
   animationName: Atq
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 982c3295c1e77c24c8cfe38292fe1ebe, type: 3}
   description: "Applique Protection ++ sur un client autre que soi-m\xEAme"

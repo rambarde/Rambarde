@@ -20,15 +20,15 @@ MonoBehaviour:
     prot: 20
     prec: 90
     crit: 5
-  baseWeapons: []
-  baseArmors: []
+  charType: 0
+  baseEquipment: []
   skills:
   - {fileID: 11400000, guid: 5331a681df04c19e1af9166fe2bf197d, type: 2}
-  - {fileID: 11400000, guid: 489b6daaa7913824fa0f47365ce335ac, type: 2}
-  - {fileID: 11400000, guid: 67c50f7ee09dc864987433dd85d702d6, type: 2}
+  - {fileID: 11400000, guid: 0aade56fbbb57da429361d8bfb480ab7, type: 2}
+  - {fileID: 11400000, guid: ae6654e2ee0ec854994f85b49d082fe3, type: 2}
   - {fileID: 11400000, guid: 152a7a2d449389148bea03d84684e515, type: 2}
   - {fileID: 11400000, guid: 25c35311c2ac9764e84fd789603a6562, type: 2}
   - {fileID: 11400000, guid: 02bbb1fa84bc339428e1bfce675075db, type: 2}
-  - {fileID: 11400000, guid: 21aec4b85ddc55b4abfe615ec411c415, type: 2}
+  - {fileID: 11400000, guid: afbd0219f6ab932468d0203cbb282e11, type: 2}
   - {fileID: 11400000, guid: e6a8b6fe3e7c7a94ca5c3000dab66500, type: 2}
-  clientImage: {fileID: 21300000, guid: f53f88203f6c3eb469f9440c7fe04d0d, type: 3}
+  clientImage: {fileID: 21300000, guid: 97e82fae8dfb1d346abe381dd0b592ed, type: 3}

@@ -18,5 +18,5 @@ MonoBehaviour:
   effect: Protection ---
   inspirationValue: -25
   tranceValue: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 62d6e2517a21d024a988701547c414e9, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}

@@ -25,5 +25,5 @@ MonoBehaviour:
     buffType: 0
     value: 1
   animationName: Atq
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 6f4343a69b3b5f44eabffd201204f76a, type: 3}
   description: "Invisible 1\r\nD\xE9stabilis\xE9 1"

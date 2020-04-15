@@ -29,7 +29,6 @@ public class MelodyBehaviour:
     {
         if (IsClickable)
         {
-            GetComponent<Image>().color = melody.color;
             GetComponent<Image>().sprite = melody.sprite;
             currentSelected = 0;
         }

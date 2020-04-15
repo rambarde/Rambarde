@@ -18,5 +18,5 @@ MonoBehaviour:
   effect: "Soin 20, Disciplin\xE9 1, Exalt\xE9 1"
   inspirationValue: 0
   tranceValue: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 7f35eea6475a8e64c84ad4ced4640fb3, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}

@@ -39,11 +39,9 @@ public class PauseMenuBehaviour : MonoBehaviour
         {
             innate.transform.GetChild(0).GetComponent<MelodyBehaviour>().melody = instruments[0].melodies[i];
             innate.transform.GetChild(0).GetComponent<Image>().sprite = instruments[0].melodies[i].sprite;
-            innate.transform.GetChild(0).GetComponent<Image>().color = instruments[0].melodies[i].color;
 
             innate.transform.GetChild(1).GetComponent<MelodyBehaviour>().melody = instruments[0].melodies[i + 1];
             innate.transform.GetChild(1).GetComponent<Image>().sprite = instruments[0].melodies[i + 1].sprite;
-            innate.transform.GetChild(1).GetComponent<Image>().color = instruments[0].melodies[i + 1].color;
 
             i += 2;
         }
@@ -54,7 +52,6 @@ public class PauseMenuBehaviour : MonoBehaviour
         {
             inst.transform.GetChild(0).GetComponent<InstrumentBehaviour>().instrument = instruments[i + 1];
             inst.transform.GetChild(0).GetComponent<Image>().sprite = instruments[i + 1].sprite;
-            inst.transform.GetChild(0).GetComponent<Image>().color = instruments[i + 1].color;
 
             inst.transform.GetChild(1).GetComponent<MelodyBehaviour>().melody = instruments[i + 1].melodies[0];
             inst.transform.GetChild(1).GetComponent<Image>().sprite = instruments[i + 1].melodies[0].sprite;

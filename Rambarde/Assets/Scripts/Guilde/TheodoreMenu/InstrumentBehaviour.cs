@@ -29,7 +29,7 @@ public class InstrumentBehaviour :
     void Awake()
     {
         // do not display instruments the Bard doesnt own
-        Debug.Log(instrument.name);
+        //Debug.Log(instrument.name);
         if (!instrument.owned)
         {
             IsClickable = false;
@@ -41,36 +41,33 @@ public class InstrumentBehaviour :
 
         if (IsClickable)
         {
+            GetComponent<Image>().sprite = instrument.sprite;
 
-        GetComponent<Image>().color = instrument.color;
-        GetComponent<Image>().sprite = instrument.sprite;
+            GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
+            instrumentSlots = new GameObject[2];
+            instrumentSkillSlots = new GameObject[8];
+            int j = 0;
+            int k = 0;
 
-
-        GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
-        instrumentSlots = new GameObject[2];
-        instrumentSkillSlots = new GameObject[8];
-        int j = 0;
-        int k = 0;
-
-        for (int i = 0; i < slots.Length; i++)
-        {
-            GameObject slot = slots[i];
-            if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().InstrumentSlot)
+            for (int i = 0; i < slots.Length; i++)
             {
-                instrumentSlots[j] = slot;
-                j += 1;
+                GameObject slot = slots[i];
+                if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().InstrumentSlot)
+                {
+                    instrumentSlots[j] = slot;
+                    j += 1;
+                }
+                if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().InstrumentSkillSlot)
+                {
+                    instrumentSkillSlots[k] = slot;
+                    k += 1;
+                }
             }
-            if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().InstrumentSkillSlot)
-            {
-                instrumentSkillSlots[k] = slot;
-                k += 1;
-            }
+            melodiesInstrument = new GameObject[4];
+
+            for (int i = 0; i < transform.parent.GetChild(1).childCount; i++)
+                melodiesInstrument[i] = transform.parent.GetChild(1).GetChild(i).gameObject;
         }
-        melodiesInstrument = new GameObject[4];
-
-        for (int i = 0; i < transform.parent.GetChild(1).childCount; i++)
-            melodiesInstrument[i] = transform.parent.GetChild(1).GetChild(i).gameObject;
-         }
     }
 
     void Start()
@@ -87,14 +84,8 @@ public class InstrumentBehaviour :
             {
                 Melodies.Melody melody = instrument.melodies[i];
                 melodiesInstrument[i].GetComponent<MelodyBehaviour>().melody = melody;
-                Color melodyColor = melody.color;
-                melodyColor.r = 1;
-                melodyColor.g = 1;
-                melodyColor.b = 1;
-                melodyColor.a = 1;
 
                 melodiesInstrument[i].GetComponent<Image>().sprite = melody.sprite;
-                melodiesInstrument[i].GetComponent<Image>().color = melodyColor;
                 melodiesInstrument[i].GetComponent<Image>().enabled = true;
             }
 
@@ -181,17 +172,11 @@ public class InstrumentBehaviour :
     private void displayMelody(GameObject[] slotList, Melodies.Melody melody) 
     {
         slot = slotList[findSlot(slotList)];
-        Color melodyColor = melody.color;
-        melodyColor.r = 1;
-        melodyColor.g = 1;
-        melodyColor.b = 1;
-        melodyColor.a = 1;
 
         GameObject slottedSkill = slot.transform.GetChild(0).gameObject;
         slottedSkill.GetComponent<MelodyBehaviour>().melody = melody;
         slottedSkill.GetComponent<MelodyBehaviour>().IsClickable = false;
         slottedSkill.GetComponent<Image>().sprite = melody.sprite;
-        slottedSkill.GetComponent<Image>().color = melodyColor;
         slottedSkill.GetComponent<Image>().enabled = true;
 
         slot.GetComponent<SlotBehaviour>().Slotted = true;

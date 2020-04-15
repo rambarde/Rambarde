@@ -18,5 +18,5 @@ MonoBehaviour:
   effect: "R\xE9arrange les comp\xE9tence de la roue dans un ordre al\xE9atoire"
   inspirationValue: -15
   tranceValue: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: e79dff01b463d3a428612dff6dad4f45, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}

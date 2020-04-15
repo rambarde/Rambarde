@@ -25,5 +25,5 @@ MonoBehaviour:
     buffType: 0
     value: 10
   animationName: Atq
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 0afc44dfa159e3947aa4bcacc14757fe, type: 3}
   description: Attaque un monstre en infligeant 120% de dommage et se soigne de 10

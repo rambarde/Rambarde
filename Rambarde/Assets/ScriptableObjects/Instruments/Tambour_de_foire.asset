@@ -20,5 +20,6 @@ MonoBehaviour:
   passif: "Tant que le Tambour de Foire est l'instrument actif, un affect\xE9 par
     un de vos morceaux re\xE7oit en plus Soin 3"
   type: Attaque
-  sprite: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
+  sprite: {fileID: 21300000, guid: 298d2ca0be320d74192e46879cb1505d, type: 3}
+  price: 0
+  owned: 1

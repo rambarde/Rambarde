@@ -13,8 +13,8 @@ public class ExpeditionPitchList
         //string forestPath = Application.dataPath + "/Resources/Guilde/ExpeditionMenu/pitchForest";//.txt";
         //string cryptPath = Application.dataPath + "/Resources/Guilde/ExpeditionMenu/pitchCrypt";//.txt";        
         
-        string forestPath = "Guilde/ExpeditionMenu/pitchForest";
-        string cryptPath = "Guilde/ExpeditionMenu/pitchCrypt";
+        string forestPath = "TextAssets/pitchForest";
+        string cryptPath = "TextAssets/pitchCrypt";
 
         StringReader reader = new StringReader(Resources.Load<TextAsset>(forestPath).text);
         //Resources.Load<TextAsset>(cryptPath);

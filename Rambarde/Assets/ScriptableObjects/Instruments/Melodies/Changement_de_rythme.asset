@@ -18,5 +18,5 @@ MonoBehaviour:
   effect: "Attaque --\u2B9F\u2B9F, Protection +++"
   inspirationValue: 10
   tranceValue: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 4d1e9329be2a06746a3a0ae450d9040c, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}

@@ -16,7 +16,6 @@ public class InstrumentShop : MonoBehaviour
             Bard.Instrument instrument = instruments[i];
             string instruName = instrumentsButtons[i].name;
             GameObject.Find(instruName + "_Image").GetComponent<Image>().sprite = instrument.sprite;
-            GameObject.Find(instruName + "_Image").GetComponent<Image>().color = instrument.color;
             GameObject.Find(instruName + "_Name").GetComponent<Text>().text = Utils.SplitPascalCase(instrument.name);
             GameObject.Find(instruName + "_Description").GetComponent<Text>().text = instrument.passif;
             GameObject.Find(instruName + "_Price").GetComponent<Text>().text = instrument.price + "G";

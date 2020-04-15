@@ -20,5 +20,5 @@ MonoBehaviour:
     buffType: 0
     value: 30
   animationName: Atq
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 9448a2c0f79cacd4bbe47ab9e1e49e6d, type: 3}
   description: 

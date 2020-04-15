@@ -25,6 +25,6 @@ MonoBehaviour:
     buffType: 2
     value: 1
   animationName: Atq
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 4fcab4e20edf83f4ca3dc4f1debbcd2d, type: 3}
   description: Attaque un monstre en infligeant 50% de dommage et applique CRIT +
     sur tous les clients

@@ -30,5 +30,5 @@ MonoBehaviour:
     buffType: 2
     value: 1
   animationName: Atq
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 93059a1072d7a2e4fa4c7f0ce4bfeaf9, type: 3}
   description: "ATQ +\u2B9D + PROT + + CRIT \u2B9D+"

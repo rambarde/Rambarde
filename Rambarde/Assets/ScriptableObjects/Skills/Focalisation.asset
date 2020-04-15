@@ -20,5 +20,5 @@ MonoBehaviour:
     buffType: 0
     value: 1
   animationName: Atq
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 74765fe4d3c465d4cb011da73e355bd0, type: 3}
   description: Implacable 1

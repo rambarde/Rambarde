@@ -8,6 +8,7 @@ using UI;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Random = System.Random;
 
 namespace Characters {
@@ -129,12 +130,24 @@ namespace Characters {
         }
 
         //private void UpdateStats(int accessory) {
-        public void UpdateStats() {
-            currentStats.atq = characterData.baseStats.atq + equipment[0].atqMod + equipment[1].atqMod;
-            currentStats.prec = characterData.baseStats.prec * (equipment[0].precMod + equipment[1].precMod + 1);
-            currentStats.crit = characterData.baseStats.crit * (equipment[0].critMod + equipment[1].critMod + 1);
-            currentStats.maxHp = characterData.baseStats.maxHp + equipment[0].endMod + equipment[1].endMod;
-            currentStats.prot = characterData.baseStats.prot * (equipment[0].protMod + equipment[1].protMod + 1);
+        public void UpdateStats() 
+        {
+            if (equipment.Length != 0)
+            {
+                currentStats.atq = characterData.baseStats.atq + equipment[0].atqMod + equipment[1].atqMod;
+                currentStats.prec = characterData.baseStats.prec * (equipment[0].precMod + equipment[1].precMod + 1);
+                currentStats.crit = characterData.baseStats.crit * (equipment[0].critMod + equipment[1].critMod + 1);
+                currentStats.maxHp = characterData.baseStats.maxHp + equipment[0].endMod + equipment[1].endMod;
+                currentStats.prot = characterData.baseStats.prot * (equipment[0].protMod + equipment[1].protMod + 1);
+            }
+            else
+            {
+                currentStats.atq = characterData.baseStats.atq;
+                currentStats.prec = characterData.baseStats.prec;
+                currentStats.crit = characterData.baseStats.crit;
+                currentStats.maxHp = characterData.baseStats.maxHp;
+                currentStats.prot = characterData.baseStats.prot;
+            }
         }
 
         public async Task Heal(float pts) {
@@ -230,11 +243,11 @@ namespace Characters {
             effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
         }
 
-        protected void Start() {
+        protected async void Start() {
             _combatManager = CombatManager.Instance;
 
             _animator = GetComponentInChildren<Animator>();
-            AnimatorOverrideController myOverrideController = Resources.Load<AnimatorOverrideController>(characterData.animatorController);
+            AnimatorOverrideController myOverrideController = await Utils.LoadResource<AnimatorOverrideController>(characterData.animatorController);
             _animator.runtimeAnimatorController = myOverrideController;
         }
 

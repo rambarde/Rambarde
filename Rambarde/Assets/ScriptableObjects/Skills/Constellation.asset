@@ -20,5 +20,5 @@ MonoBehaviour:
     buffType: 0
     value: 15
   animationName: Atq
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: e93d0fb835b2fb047b7976544b38eb02, type: 3}
   description: Soin 15

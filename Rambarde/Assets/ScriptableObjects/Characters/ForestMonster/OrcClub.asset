@@ -20,11 +20,11 @@ MonoBehaviour:
     prot: 10
     prec: 85
     crit: 10
-  baseWeapons: []
-  baseArmors: []
+  charType: 0
+  baseEquipment: []
   skills:
-  - {fileID: 11400000, guid: 758955344989405499776a8fc319a8a3, type: 2}
-  - {fileID: 11400000, guid: cb4737704b6c19d4d9e138e8f3275ecc, type: 2}
-  - {fileID: 11400000, guid: ddc0df55901c9b44aaab7dbd026dd87a, type: 2}
-  - {fileID: 11400000, guid: 45a65186f1af9454885b4a661e5dd768, type: 2}
+  - {fileID: 11400000, guid: f88aaedcb6015334db0272fb6d2215db, type: 2}
+  - {fileID: 11400000, guid: 3b53a4eb64a7cc946a31d36e4852bfef, type: 2}
+  - {fileID: 11400000, guid: e23721c203aa02849b2b66a6bafcf9f2, type: 2}
+  - {fileID: 11400000, guid: 89cfd019422d6c34fb71199e4dbc118e, type: 2}
   clientImage: {fileID: 0}

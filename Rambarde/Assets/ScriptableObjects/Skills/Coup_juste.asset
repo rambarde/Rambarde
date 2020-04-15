@@ -20,5 +20,5 @@ MonoBehaviour:
     buffType: 0
     value: 100
   animationName: Atq
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f077b7e72a6e89440b8f2017e0f84baf, type: 3}
   description: Attaque de 100% un monstre
