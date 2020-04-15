@@ -30,6 +30,8 @@ namespace Bard {
             maxActionPoints = new ReactiveProperty<int>(baseActionPoints);
             if (!CombatManager.Instance.ignoreGameManager) {
                 instruments = GameManager.instruments;
+            } else {
+                CombatManager.Instance.bard = this;
             }
             
             SetActionPlayableMelodies();

@@ -47,29 +47,28 @@ public class CombatManager : MonoBehaviour {
 
     private async Task ResolveTurnFight() {
         //sort characters
-        List<CharacterControl> characters = new List<List<CharacterControl>>(4) {
-            [0] = teams
-                .SelectMany(t =>
-                    t.Where(c => c.HasEffect(EffectType.Rushing)))
-                .ToList(),
-            [1] = teams
-                .SelectMany(t =>
-                    t.Where(c => c.influenced))
-                .ToList(),
-            [2] = teams
-                .SelectMany(t =>
-                    t.Where(c =>
-                        !c.HasEffect(EffectType.Rushing) && !c.influenced && !c.HasEffect(EffectType.Lagging)))
-                .ToList(),
-            [3] = teams
-                .SelectMany(t =>
-                    t.Where(c => c.HasEffect(EffectType.Lagging)))
-                .ToList()
-        }.SelectMany(t => t).ToList();
+        List<CharacterControl>[] charactersGroups = {
+            new List<CharacterControl>(),
+            new List<CharacterControl>(),
+            new List<CharacterControl>(),
+            new List<CharacterControl>()
+        };
+        foreach (var c in teams.SelectMany(t => t)) {
+            if (c.HasEffect(EffectType.Rushing)) {
+                charactersGroups[0].Add(c);
+            } else if (c.influenced) {
+                charactersGroups[1].Add(c);
+            } else if (c.HasEffect(EffectType.Lagging)) {
+                charactersGroups[3].Add(c);
+            } else {
+                charactersGroups[2].Add(c);
+            }
+        }
+        List<CharacterControl> characters = charactersGroups.SelectMany(t => t).ToList();
         
         // Apply status effects to all characters
         foreach (var character in characters) {
-            var l = character.transform.Find("HighLight").gameObject;
+            GameObject l = character.transform.Find("HighLight").gameObject;
             l.SetActive(true);
 
             await character.EffectsTurnStart();
@@ -78,8 +77,10 @@ public class CombatManager : MonoBehaviour {
         }
 
         // Execute all character skills
-        foreach (var character in characters) {
-            var l = character.transform.Find("HighLight").gameObject;
+        foreach (CharacterControl character in characters) {
+            if (character == null) continue;
+            
+            GameObject l = character.transform.Find("HighLight").gameObject;
             l.SetActive(true);
 
             await character.ExecTurn();
@@ -95,6 +96,10 @@ public class CombatManager : MonoBehaviour {
 
         Destroy(characterControl.gameObject);
         teams[charTeam].Remove(characterControl);
+        Debug.Log("a character died in team " + charTeam + ". Remaining characters :");
+        foreach (CharacterControl c in teams[charTeam]) {
+            Debug.Log(c);
+        }
 
         if (teams[charTeam].Count == 0) {
             GetComponent<GameManager>().ChangeCombat();
@@ -115,7 +120,7 @@ public class CombatManager : MonoBehaviour {
         Instance = this;
     }
 
-    private void Start() {
+    private async void Start() {
 
         clientsMenu = new List<CharacterBase>();
         currentMonsters = new List<CharacterBase>();
@@ -138,20 +143,19 @@ public class CombatManager : MonoBehaviour {
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
 
         int i = 0;
-        foreach (Transform t in playerTeamGo.transform)
-        {
-            SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
+        foreach (Transform t in playerTeamGo.transform) {
+            await SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
             ++i;
         }
 
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
-            SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
+            await SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
             ++i;
         }
     }
 
-    private async void SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {
+    private async Task SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {
         string charPrefabName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterPrefab" : "EnemyCharacterPrefab";
         string charPrefabUiName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterUI" : "EnemyCharacterUI";
 
@@ -164,7 +168,7 @@ public class CombatManager : MonoBehaviour {
 
         // Init the character control
         CharacterControl character = characterGameObject.GetComponent<CharacterControl>();
-        character.Init(team[i].Character, team[i].SkillWheel);
+        await character.Init(team[i].Character, team[i].SkillWheel);
         character.team = charTeam;
         teams[(int) charTeam].Add(character);
 

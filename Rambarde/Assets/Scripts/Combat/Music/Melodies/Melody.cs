@@ -40,21 +40,21 @@ namespace Melodies {
                     foreach (var character in CombatManager.Instance.teams
                             .SelectMany(_=>_)
                             .Where(c => !c.HasEffect(EffectType.Deaf))) {
-                        target.influenced = true;
+                        character.influenced = true;
                         await ExecuteOnTarget(character);
                     }
                     break;
                 case MelodyTargetMode.EveryAlly :
                     foreach (var character in CombatManager.Instance.teams[0]
                             .Where(c => !c.HasEffect(EffectType.Deaf))) {
-                        target.influenced = true;
+                        character.influenced = true;
                         await ExecuteOnTarget(character);
                     }
                     break;
                 case MelodyTargetMode.EveryEnemy :
                     foreach (CharacterControl character in CombatManager.Instance.teams[1]
                             .Where(c => !c.HasEffect(EffectType.Deaf))) {
-                        target.influenced = true;
+                        character.influenced = true;
                         await ExecuteOnTarget(character);
                     }
                     break;

@@ -1719,7 +1719,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 257272335}
-  - component: {fileID: 257272334}
   m_Layer: 0
   m_Name: TerrainGroup_0
   m_TagString: Untagged
@@ -1727,18 +1726,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &257272334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 257272333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ca34a6148db2d54493f84f379293f33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &257272335
 Transform:
   m_ObjectHideFlags: 0
@@ -2509,7 +2496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -24.999878, y: 172.19995}
+  m_AnchoredPosition: {x: -25, y: 172.19995}
   m_SizeDelta: {x: -350.00006, y: 340}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &505759183
@@ -2584,24 +2571,24 @@ MonoBehaviour:
   enemyTeamUiContainer: {fileID: 166028383}
   ignoreGameManager: 1
   forcedClients:
-  - _character: {fileID: 11400000, guid: 6afff1bb5688bb94c92e6f10b6596f55, type: 2}
-    _skillWheel: 
+  - _character: {fileID: 11400000, guid: da04110cc29d1424fa0ba9db47b3177c, type: 2}
+    _skillWheel: 00000000010000000200000003000000
     _name: Bertrand
-  - _character: {fileID: 11400000, guid: a6a05efaa0e9ecf47881938963f06bba, type: 2}
-    _skillWheel: 
-    _name: lemage
+  - _character: {fileID: 11400000, guid: 219f6d9762df3e54d9573eb84121a519, type: 2}
+    _skillWheel: 00000000010000000200000003000000
+    _name: clheuredudududuel
   - _character: {fileID: 11400000, guid: 327e5790f2c31a04089ad6d0bff25b14, type: 2}
-    _skillWheel: 
+    _skillWheel: 00000000010000000200000003000000
     _name: astro
   forcedMonsters:
   - _character: {fileID: 11400000, guid: 28cd9fa3e50328645aa73122bb6d6ea1, type: 2}
-    _skillWheel: 
+    _skillWheel: 00000000010000000200000003000000
     _name: elgoblino
   - _character: {fileID: 11400000, guid: 0dedada56c039c04ca689502a5d9223d, type: 2}
-    _skillWheel: 
+    _skillWheel: 00000000010000000200000003000000
     _name: sylvain
   - _character: {fileID: 11400000, guid: 45997c4a3e4ffed4f977a0bac0d8096b, type: 2}
-    _skillWheel: 
+    _skillWheel: 00000000010000000200000003000000
     _name: caillou
 --- !u!4 &543202384
 Transform:
@@ -3659,7 +3646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -24.999878, y: 172.20001}
+  m_AnchoredPosition: {x: -25, y: 172.20001}
   m_SizeDelta: {x: -350, y: 340}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &793956403
@@ -4265,7 +4252,7 @@ Canvas:
   m_GameObject: {fileID: 1099428498}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 963194227}
   m_PlaneDistance: 5
   m_PixelPerfect: 0
