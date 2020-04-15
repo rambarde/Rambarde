@@ -29,6 +29,11 @@ public class CombatManager : MonoBehaviour {
     private List<CharacterBase> clientsMenu;
     private List<CharacterBase> currentMonsters;
 
+    [Header("Combat Testing Only")]
+    [SerializeField] public bool ignoreGameManager = false;
+    [SerializeField] private CharacterBase[] forcedClients = new CharacterBase[3];
+    [SerializeField] private CharacterBase[] forcedMonsters = new CharacterBase[3];
+    
     public async Task ExecTurn() {
         combatPhase.Value = CombatPhase.RhythmGame;
         await bard.StartRhythmGame();
@@ -112,13 +117,24 @@ public class CombatManager : MonoBehaviour {
     }
 
     private void Start() {
-        clientsMenu = new List<CharacterBase>();
-        foreach (var client in GameManager.clients)
-            clientsMenu.Add(client);
 
+        clientsMenu = new List<CharacterBase>();
         currentMonsters = new List<CharacterBase>();
-        foreach (var monster in GameManager.quest.fightManager.fights[GameManager.CurrentFight].monsters)
-            currentMonsters.Add(monster);
+        if (ignoreGameManager) {
+            //init characters based on editor (without gameManager)
+            foreach (var client in  forcedClients)
+                clientsMenu.Add(client);
+        
+            foreach (var monster in forcedMonsters)
+                currentMonsters.Add(monster);
+        } else {
+            //init characters based on gameManager (loaded from the Expedition)
+            foreach (var client in  GameManager.clients)
+                clientsMenu.Add(client);
+        
+            foreach (var monster in GameManager.quest.fightManager.fights[GameManager.CurrentFight].monsters)
+                currentMonsters.Add(monster);
+        }
 
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
 
@@ -148,7 +164,7 @@ public class CombatManager : MonoBehaviour {
         model.AddComponent<Animator>().runtimeAnimatorController = await Utils.LoadResource<RuntimeAnimatorController>("Animations/Character");
 
         // Init the character control
-        var character = characterGameObject.GetComponent<CharacterControl>();
+        CharacterControl character = characterGameObject.GetComponent<CharacterControl>();
         character.Init(team[i].Character, team[i].SkillWheel);
         character.team = charTeam;
         teams[(int) charTeam].Add(character);

@@ -28,8 +28,10 @@ namespace Bard {
             inspiration = GetComponent<Inspiration>();
             actionPoints = new ReactiveProperty<int>(baseActionPoints);
             maxActionPoints = new ReactiveProperty<int>(baseActionPoints);
-            instruments = GameManager.instruments;
-
+            if (!CombatManager.Instance.ignoreGameManager) {
+                instruments = GameManager.instruments;
+            }
+            
             SetActionPlayableMelodies();
             SetInspirationPlayableMelodies();
             hud.Init(this);
