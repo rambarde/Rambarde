@@ -94,8 +94,7 @@ public class CombatManager : MonoBehaviour {
 
         currentMonsters = new List<CharacterBase>();
         foreach (var monster in GameManager.quest.fightManager.fights[GameManager.CurrentFight].monsters)
-            clientsMenu.Add(monster);
-            ;
+            currentMonsters.Add(monster);
      
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
 
