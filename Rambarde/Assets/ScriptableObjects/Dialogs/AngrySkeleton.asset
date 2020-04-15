@@ -13,4 +13,28 @@ MonoBehaviour:
   m_Name: AngrySkeleton
   m_EditorClassIdentifier: 
   commonDialog: {fileID: 0}
-  dialogPhrases: []
+  dialogPhrases:
+  - filter: 1
+    phrase: JE VAIS VOUS TUER!
+  - filter: 2
+    phrase: AAAARGH !
+  - filter: 2097154
+    phrase: COMMENT OSEZ-VOUS ?!
+  - filter: 4
+    phrase: HAHAHAHAHAHA !
+  - filter: 2097156
+    phrase: INACCEPTABLE !
+  - filter: 8
+    phrase: A VOUS D'ALLER DANS LA TOMBE !
+  - filter: 2097160
+    phrase: NOOOOOOooooooon...
+  - filter: 2097168
+    phrase: EN RETARD !
+  - filter: 64
+    phrase: AAAAAAAAAAAA
+  - filter: 2097184
+    phrase: PLUS DE SANG !
+  - filter: 2097216
+    phrase: QUOI ?!
+  - filter: 2097280
+    phrase: YAAAAAAAAA!

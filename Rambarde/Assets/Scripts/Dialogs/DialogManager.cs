@@ -1,28 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using DG.Tweening;
 using Skills;
 using Status;
+using TMPro;
 using UI;
+using UniRx;
 using UnityEngine;
-
-public enum CharacterType
-{
-    None,
-    Bard,
-    Client,
-    Goblins,
-    Orcs,
-    OrcsLeader,
-    Treant,
-    Golem,
-    Ghost,
-    Wight,//Âme en peine
-    Wisp,
-    Brasier,
-    Skeleton,
-    AngrySkeleton,
-    ColdSkeleton
-}
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public struct Quote
 {
@@ -33,10 +21,14 @@ public struct Quote
 public class DialogManager : MonoBehaviour
 {
     public float dialogAppearRate = .4f;
+    public int textSpeed = 200;
+    public CanvasGroup dialogCanvas;
+    public TextMeshProUGUI dialogText;
+    public Image dialogImage;
 
     private Dictionary<CharacterType, List<DialogPhrase>> dialogs;
     private List<string> closedList;
-    
+
     public async void Init(List<CharacterType> characters)
     {
         foreach (var character in characters)
@@ -51,74 +43,168 @@ public class DialogManager : MonoBehaviour
         return Random.Range(0, 1) <= dialogAppearRate;
     }
     
-    public Quote GetDialogQuote(DialogFilter filter, CharacterType actionCharacter1, CharacterType actionCharacter2)
+    private Quote GetDialogQuote(DialogFilter filter, CharacterType actionExecutor, CharacterType actionReceiver)
     {
-        Quote quote = new Quote() {character = CharacterType.None, phrase = ""};
-        if (!IsDialogAvailable()) return quote;
-
         List<Quote> quotes = new List<Quote>();
-        
-        foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,CharacterType.Bard))
-            quotes.Add(filteredQuote);
 
-        if(actionCharacter1 != CharacterType.None)
-            foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,actionCharacter1))
+        // get executors dialog
+        switch (actionExecutor)
+        {
+            //bard///////////////////////////////////////////////
+            case CharacterType.Bard:
+                //unbuff filter
+                if (filter.HasFlag(DialogFilter.Unbuff))
+                {
+                    switch (actionReceiver)
+                    {
+                        //fake monsters
+                        case CharacterType.Goblins:
+                        case CharacterType.Orcs:
+                        case CharacterType.OrcsLeader:
+                        case CharacterType.Treant:
+                        case CharacterType.Golem:
+                            filter |= DialogFilter.FakeMonsters;
+                            break;
+                        //real monsters
+                        case CharacterType.Ghost:
+                        case CharacterType.Wight:
+                        case CharacterType.Wisp:
+                        case CharacterType.Brasier:
+                        case CharacterType.Skeleton:
+                        case CharacterType.AngrySkeleton:
+                        case CharacterType.ColdSkeleton:
+                            filter |= DialogFilter.RealMonsters;
+                            break;
+                    }
+                }
+                break;
+            //clients/////////////////////////////////////////////
+            case CharacterType.Client:
+                //unbuff filter
+                if (filter.HasFlag(DialogFilter.Unbuff))
+                {
+                    switch (actionReceiver)
+                    {
+                        //real monsters
+                        case CharacterType.Ghost:
+                        case CharacterType.Wight:
+                        case CharacterType.Wisp:
+                        case CharacterType.Brasier:
+                        case CharacterType.Skeleton:
+                        case CharacterType.AngrySkeleton:
+                        case CharacterType.ColdSkeleton:
+                            filter |= DialogFilter.RealMonsters;
+                            break;
+                    }
+                }
+                break;
+            //fake monsters /////////////////////////////////
+            case CharacterType.Goblins:
+            case CharacterType.Orcs:
+            case CharacterType.OrcsLeader:
+            case CharacterType.Treant:
+                //unbuff filter
+                if (filter.HasFlag(DialogFilter.Unbuff))
+                {
+                    //get fake monsters dialog
+                    foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,actionExecutor))
+                        quotes.Add(filteredQuote);
+                    // and then add client target condition
+                    if (actionReceiver == CharacterType.Client)
+                        filter |= DialogFilter.Clients;
+                }
+                //enemy vectory
+                if(filter.HasFlag(DialogFilter.Victory))
+                    filter |= DialogFilter.FakeMonsters;
+                break;
+            //monsters ////////////////////////////////////////
+            case CharacterType.Ghost:
+            case CharacterType.Wight:
+            case CharacterType.Wisp:
+            case CharacterType.Brasier:
+            case CharacterType.Skeleton:
+            case CharacterType.AngrySkeleton:
+            case CharacterType.ColdSkeleton:
+                //enemy vectory
+                if(filter.HasFlag(DialogFilter.Victory))
+                    filter |= DialogFilter.RealMonsters;
+                break;
+        }
+        // get filtered dialogs
+        if(actionExecutor != CharacterType.None)
+            foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,actionExecutor))
                 quotes.Add(filteredQuote);
         
-        if(actionCharacter2 != CharacterType.None)
-            foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,actionCharacter2))
+        // get receivers dialog
+        switch (actionReceiver)
+        {
+            case CharacterType.Client:
+                if (filter.HasFlag(DialogFilter.Damage) || filter.HasFlag(DialogFilter.CriticalDamage) ||
+                    filter.HasFlag(DialogFilter.Kill) || filter.HasFlag(DialogFilter.Heal) ||
+                    filter.HasFlag(DialogFilter.Buff) || filter.HasFlag(DialogFilter.Unbuff))
+                    filter |= DialogFilter.Clients;
+                break;
+            //fake monsters
+            case CharacterType.Goblins:
+            case CharacterType.Orcs:
+            case CharacterType.OrcsLeader:
+            case CharacterType.Treant:
+            case CharacterType.Golem:
+                if (filter.HasFlag(DialogFilter.Damage) || filter.HasFlag(DialogFilter.CriticalDamage) ||
+                    filter.HasFlag(DialogFilter.Kill) || filter.HasFlag(DialogFilter.Heal) ||
+                    filter.HasFlag(DialogFilter.Buff) || filter.HasFlag(DialogFilter.Unbuff))
+                    filter |= DialogFilter.FakeMonsters;
+                break;
+            //real monsters
+            case CharacterType.Ghost:
+            case CharacterType.Wight:
+            case CharacterType.Wisp:
+            case CharacterType.Brasier:
+            case CharacterType.Skeleton:
+            case CharacterType.AngrySkeleton:
+            case CharacterType.ColdSkeleton:
+                if (filter.HasFlag(DialogFilter.Damage) || filter.HasFlag(DialogFilter.CriticalDamage) ||
+                    filter.HasFlag(DialogFilter.Kill) || filter.HasFlag(DialogFilter.Heal) ||
+                    filter.HasFlag(DialogFilter.Buff) || filter.HasFlag(DialogFilter.Unbuff))
+                    filter |= DialogFilter.RealMonsters;
+                break;
+        }
+        if(actionReceiver != CharacterType.None)
+            foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,actionReceiver))
                 quotes.Add(filteredQuote);
 
         if (quotes.Count != 0)
         {
             int rand = Random.Range(0, quotes.Count);
             closedList.Add(quotes[rand].phrase);
-            quote.character = quotes[rand].character;
-            quote.phrase = quotes[rand].phrase;
+            return quotes[rand];
         }
 
-        return quote;
+        return new Quote();
     }
 
     private IEnumerable<Quote> GetFilteredCharacterQuotes(DialogFilter filter, CharacterType character)
     {
         foreach (var dialogPhrase in dialogs[character])
-        {
-            if ((filter & DialogFilter.Buff) == DialogFilter.Buff) // if filter contains a buff
-            {
-                if ((dialogPhrase.filter | DialogFilter.Buff) == DialogFilter.Buff) // only buff
-                {
-                    if (!closedList.Contains(dialogPhrase.phrase))
-                        yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
-                }
-                else if ((dialogPhrase.filter & filter) == filter) // buff with type
-                {
-                    if (!closedList.Contains(dialogPhrase.phrase))
-                        yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
-                }
-            }
-            else if ((filter & DialogFilter.Unbuff) == DialogFilter.Unbuff) // if filter contains a unbuff
-            {
-                if ((dialogPhrase.filter | DialogFilter.Unbuff) == DialogFilter.Unbuff) // only unbuff
-                {
-                    if (!closedList.Contains(dialogPhrase.phrase))
-                        yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
-                }
-                else if ((dialogPhrase.filter & filter) == filter) // unbuff with type
-                {
-                    if (!closedList.Contains(dialogPhrase.phrase))
-                        yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
-                }
-                
-                //to do handle client -> monster unbuff and fakemonster -> client cases
-            }
-            else if ((dialogPhrase.filter & filter) == filter)
-            {
-                if (!closedList.Contains(dialogPhrase.phrase))
-                    yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
-            }
-        }
-            
-                
+            if (dialogPhrase.filter == filter)
+                yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
+    }
+
+    public async Task ShowDialog(DialogFilter filter, CharacterType actionExecutor, CharacterType actionReceiver)
+    {
+        if (!IsDialogAvailable()) return;
+        
+        Quote quote = GetDialogQuote(filter, actionExecutor, actionReceiver);
+        dialogText.text = quote.phrase;
+        dialogText.maxVisibleCharacters = 0;
+        dialogImage = await Utils.LoadResource<Image>(quote.character.ToString());
+        dialogCanvas.DOFade(1, .5f).SetEase(Ease.InOutCubic);
+        await Utils.AwaitObservable(
+            Observable.Timer(TimeSpan.FromMilliseconds(textSpeed))
+                .Repeat()
+                .Zip(quote.phrase.ToObservable(), (_, y) => y),
+            _ => dialogText.maxVisibleCharacters += 1);
+        await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
+        dialogCanvas.DOFade(0, .5f).SetEase(Ease.InOutCubic);
     }
 }
