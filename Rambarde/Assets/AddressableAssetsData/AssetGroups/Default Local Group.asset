@@ -17,16 +17,30 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: f25db1a464c6e434ca03794a446d0d87
   m_SerializeEntries:
+  - m_GUID: 03d0c5c1ec93d5c4688eee850b31a6fd
+    m_Address: Animations/Mage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AnimatorOverrideController, UnityEngine.AnimationModule,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 22100000, guid: 03d0c5c1ec93d5c4688eee850b31a6fd, type: 2}
+    m_TargetAsset: {fileID: 22100000, guid: 03d0c5c1ec93d5c4688eee850b31a6fd, type: 2}
   - m_GUID: 0a1e254a1f41d0747889f15a007512b6
     m_Address: StatusEffectIcon
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 6789997390863644055, guid: 0a1e254a1f41d0747889f15a007512b6,
-      type: 3}
-    m_TargetAsset: {fileID: 6789997390863644055, guid: 0a1e254a1f41d0747889f15a007512b6,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 0ab1a97b25e867140941c8333df8cbb8
+    m_Address: Animations/Goblin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AnimatorOverrideController, UnityEngine.AnimationModule,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 22100000, guid: 0ab1a97b25e867140941c8333df8cbb8, type: 2}
+    m_TargetAsset: {fileID: 22100000, guid: 0ab1a97b25e867140941c8333df8cbb8, type: 2}
   - m_GUID: 1039e69a757a64b4c931f4cff6c14ba9
     m_Address: EnemyCharacterPrefab
     m_ReadOnly: 0
@@ -49,8 +63,8 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEditor.Animations.AnimatorController, UnityEditor, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 9100000, guid: 1d4247f365d1e6b41aa8bfcc8601c468, type: 2}
+    m_TargetAsset: {fileID: 9100000, guid: 1d4247f365d1e6b41aa8bfcc8601c468, type: 2}
   - m_GUID: 4274502919fd90942b0d49c9eecb283a
     m_Address: Warrior
     m_ReadOnly: 0
@@ -65,24 +79,36 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 1016758144277572083, guid: 5a73eb62c7f2f5f47959e8c80fb6045f,
+      type: 3}
+    m_TargetAsset: {fileID: 1016758144277572083, guid: 5a73eb62c7f2f5f47959e8c80fb6045f,
+      type: 3}
+  - m_GUID: 6d56e8116d4a8e348b10327aa600c513
+    m_Address: Animations/Warrior
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AnimatorOverrideController, UnityEngine.AnimationModule,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 22100000, guid: 6d56e8116d4a8e348b10327aa600c513, type: 2}
+    m_TargetAsset: {fileID: 22100000, guid: 6d56e8116d4a8e348b10327aa600c513, type: 2}
   - m_GUID: 7c78d02dd8936a7438531fc604d79b87
     m_Address: PlayerTeamCharacterPrefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 5804872141585677144, guid: 7c78d02dd8936a7438531fc604d79b87,
+      type: 3}
+    m_TargetAsset: {fileID: 5804872141585677144, guid: 7c78d02dd8936a7438531fc604d79b87,
+      type: 3}
   - m_GUID: 8456f3cec12d90948b1869d1ea47e20b
     m_Address: vfx-poison
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 2800000, guid: 8456f3cec12d90948b1869d1ea47e20b, type: 3}
+    m_TargetAsset: {fileID: 2800000, guid: 8456f3cec12d90948b1869d1ea47e20b, type: 3}
   - m_GUID: 98deba1df769be04da52a6adaa88c075
     m_Address: vfx-heal
     m_ReadOnly: 0
@@ -105,16 +131,20 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: -927199367670048503, guid: d89c9546b3733784fb032c3815ceecae,
+      type: 3}
+    m_TargetAsset: {fileID: -927199367670048503, guid: d89c9546b3733784fb032c3815ceecae,
+      type: 3}
   - m_GUID: e56ef2f874424424bb7b98b9da35de44
     m_Address: Mage
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: -927199367670048503, guid: e56ef2f874424424bb7b98b9da35de44,
+      type: 3}
+    m_TargetAsset: {fileID: -927199367670048503, guid: e56ef2f874424424bb7b98b9da35de44,
+      type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bce459c6cd4c5624abd220f9859e3ba8, type: 2}
   m_SchemaSet:
