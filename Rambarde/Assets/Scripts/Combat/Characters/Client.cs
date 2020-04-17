@@ -15,5 +15,7 @@ public class Client : CharacterBase
         Character = data;
         SkillWheel = skillIndex;
         _name = clientName;
+
+
     }
 }
