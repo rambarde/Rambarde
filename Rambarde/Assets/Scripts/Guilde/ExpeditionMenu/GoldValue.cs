@@ -47,6 +47,7 @@ public class GoldValue : MonoBehaviour
         GameObject[] buttons = GameObject.FindGameObjectsWithTag("SelectButton");
         foreach(GameObject button in buttons)
         {
+            Debug.Log(button.name);
             button.GetComponent<Button>().interactable = false;
         }
 
