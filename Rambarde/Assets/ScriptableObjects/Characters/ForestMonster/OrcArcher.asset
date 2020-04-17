@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OrcArcher
   m_EditorClassIdentifier: 
   modelName: Goblin
-  animatorController: Animations/Goblin
+  animatorController: Goblin
   baseStats:
     maxHp: 70
     atq: 20
