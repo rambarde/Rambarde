@@ -21,7 +21,9 @@ MonoBehaviour:
     prec: 90
     crit: 10
   charType: 0
-  baseEquipment: []
+  baseEquipment:
+  - {fileID: 11400000, guid: 7d33a3608dddfff48b2b3626a172d25c, type: 2}
+  - {fileID: 11400000, guid: 0d3fef149ac12cd4c8e656deaf97b285, type: 2}
   skills:
   - {fileID: 11400000, guid: b44ad70a2a07e9c4c95d356917f6fdb8, type: 2}
   - {fileID: 11400000, guid: 402b42e889ad3bc4a9210617811456c0, type: 2}

@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4083dec0c5e1c34a906099347847de7, type: 3}
   m_Name: "Dagues \xE9meraudes"
   m_EditorClassIdentifier: 
-  equipmentName: 
-  sprite: {fileID: 0}
+  equipmentName: "Dagues serties d'\xE9meraudes"
+  sprite: {fileID: 21300000, guid: 3b1348cbeaf22634686278611dde6753, type: 3}
   type: 0
-  allowedType: 0
-  atqMod: 0
+  allowedType: 1
+  atqMod: 15
   precMod: 0
-  critMod: 0
+  critMod: 0.15
   protMod: 0
   endMod: 0
-  price: 0
+  price: 1500
   numberOwned: 0
   numberEquiped: 0

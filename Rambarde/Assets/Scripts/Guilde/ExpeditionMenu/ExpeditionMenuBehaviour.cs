@@ -18,7 +18,7 @@ public class ExpeditionMenuBehaviour : MonoBehaviour
 
     public void SelectQuest()
     {
-        Debug.Log("Selected Quest: " + selectedQuest.name);
+        //Debug.Log("Selected Quest: " + selectedQuest.name);
         GameObject.Find("GuildeMenu").GetComponent<GuildeManagerBehaviour>().SetQuest(selectedQuest);
     }
 

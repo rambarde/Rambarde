@@ -127,7 +127,7 @@ namespace Characters {
             statusEffects = new ReactiveCollection<StatusEffect>();
             effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
             skillSlot = skillWheel.ToList();
-            
+
             //animator
             _combatManager = CombatManager.Instance;
             _animator = GetComponentInChildren<Animator>();
@@ -239,7 +239,7 @@ namespace Characters {
         public bool HasEffect(EffectType effect) => effectTypes.Value.HasFlag(effect);
 
         #region Unity
-
+        
         #endregion
     }
 }

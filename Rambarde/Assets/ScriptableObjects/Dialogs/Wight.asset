@@ -13,4 +13,40 @@ MonoBehaviour:
   m_Name: Wight
   m_EditorClassIdentifier: 
   commonDialog: {fileID: 0}
-  dialogPhrases: []
+  dialogPhrases:
+  - filter: 1
+    phrase: Comment osez-vous entrer dans mon domaine ?!
+  - filter: 2
+    phrase: Ressentez ma peine...
+  - filter: 2097154
+    phrase: Bouhouhou !
+  - filter: 2097154
+    phrase: Ma mort ne vous suffit pas ?
+  - filter: 4
+    phrase: "De mon vivant \xE7a vous aurait tu\xE9."
+  - filter: 2097156
+    phrase: On s'acharne toujours sur moi...
+  - filter: 8
+    phrase: Encore ! Encore !
+  - filter: 8
+    phrase: "Vous l'avez cherch\xE9 !"
+  - filter: 2097160
+    phrase: "Vengeance\u2026"
+  - filter: 2097160
+    phrase: "Soyez\u2026 Maudits..."
+  - filter: 2097168
+    phrase: C'est tout ?
+  - filter: 32
+    phrase: Personne ne m'aide...
+  - filter: 32
+    phrase: Je suis tout seul...
+  - filter: 32
+    phrase: J'ai peur...
+  - filter: 2097184
+    phrase: On ne me donne que les restes...
+  - filter: 2097184
+    phrase: J'en veux plus !
+  - filter: 2097216
+    phrase: Vous ne me laisserez donc jamais en paix ?
+  - filter: 2097280
+    phrase: Enfin un peu de calme...
