@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4083dec0c5e1c34a906099347847de7, type: 3}
   m_Name: Robe de chambre
   m_EditorClassIdentifier: 
-  equipmentName: 
-  sprite: {fileID: 0}
-  type: 0
-  allowedType: 0
+  equipmentName: Robe de chambre
+  sprite: {fileID: 21300000, guid: 084225eadfe5c8d40a9d56dc27446c79, type: 3}
+  type: 1
+  allowedType: 2
   atqMod: 0
   precMod: 0
   critMod: 0

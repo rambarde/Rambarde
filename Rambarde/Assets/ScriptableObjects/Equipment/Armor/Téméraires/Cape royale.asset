@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4083dec0c5e1c34a906099347847de7, type: 3}
   m_Name: Cape royale
   m_EditorClassIdentifier: 
-  equipmentName: 
-  sprite: {fileID: 0}
-  type: 0
-  allowedType: 0
+  equipmentName: Cape royale
+  sprite: {fileID: 21300000, guid: 6afabb509b7cb6049a018d2d301bae88, type: 3}
+  type: 1
+  allowedType: 1
   atqMod: 0
   precMod: 0
   critMod: 0
-  protMod: 0
-  endMod: 0
-  price: 0
+  protMod: 0.1
+  endMod: 15
+  price: 600
   numberOwned: 0
   numberEquiped: 0

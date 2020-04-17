@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4083dec0c5e1c34a906099347847de7, type: 3}
   m_Name: Cape elfique
   m_EditorClassIdentifier: 
-  equipmentName: 
-  sprite: {fileID: 0}
-  type: 0
-  allowedType: 0
+  equipmentName: Cape elfique
+  sprite: {fileID: 21300000, guid: 0421de78c42eefc45883a161b1bd6b2a, type: 3}
+  type: 1
+  allowedType: 1
   atqMod: 0
   precMod: 0
-  critMod: 0
+  critMod: 0.05
   protMod: 0
-  endMod: 0
-  price: 0
+  endMod: 20
+  price: 600
   numberOwned: 0
   numberEquiped: 0
