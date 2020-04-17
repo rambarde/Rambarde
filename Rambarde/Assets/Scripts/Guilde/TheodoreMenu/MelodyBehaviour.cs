@@ -60,7 +60,7 @@ public class MelodyBehaviour:
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        if (tooltip != null)
+        if (tooltip != null && melody != null)
         {
             tooltip.setObject(gameObject);
             tooltip.Activate(true);
