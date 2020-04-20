@@ -14,19 +14,21 @@ public class InstrumentShop : MonoBehaviour
         for (int i = 0; i<instrumentsButtons.Count; i++)
         {
             Bard.Instrument instrument = instruments[i];
+            Button button = instrumentsButtons[i];
             string instruName = instrumentsButtons[i].name;
             GameObject.Find(instruName + "_Image").GetComponent<Image>().sprite = instrument.sprite;
             GameObject.Find(instruName + "_Name").GetComponent<Text>().text = Utils.SplitPascalCase(instrument.name);
             GameObject.Find(instruName + "_Description").GetComponent<Text>().text = instrument.passif;
             GameObject.Find(instruName + "_Price").GetComponent<Text>().text = instrument.price + "G";
 
+            
             for (int j = 0; j<4; j++)
             {
                 GameObject.Find(instruName + "_Melody" + j.ToString()).GetComponent<Text>().text = Utils.SplitPascalCase(instrument.melodies[j].name) 
                                                                                                                     + " : " 
                                                                                                                     + instrument.melodies[j].effect;
             }
-
+            
             UpdateInstrumentShop();
         }
     }

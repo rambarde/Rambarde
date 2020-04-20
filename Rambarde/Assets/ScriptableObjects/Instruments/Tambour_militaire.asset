@@ -21,6 +21,5 @@ MonoBehaviour:
     Transe sont augment\xE9s de 25%"
   type: Attaque
   sprite: {fileID: 21300000, guid: 531c5196f4a57eb499f2360f1cf33935, type: 3}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  price: 0
+  price: 1000
   owned: 0
