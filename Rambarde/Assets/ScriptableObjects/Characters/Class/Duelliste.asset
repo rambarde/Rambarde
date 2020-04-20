@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Duelliste
   m_EditorClassIdentifier: 
   modelName: Warrior
-  animatorController: Animations/Warrior
+  animatorController: Warrior
   baseStats:
     maxHp: 70
     atq: 22
@@ -21,7 +21,9 @@ MonoBehaviour:
     prec: 90
     crit: 10
   charType: 0
-  baseEquipment: []
+  baseEquipment:
+  - {fileID: 11400000, guid: 9afaf8a61a406254b923f5a2a1e146b7, type: 2}
+  - {fileID: 11400000, guid: 1d23d3dd0f525ca46977ae525677e44f, type: 2}
   skills:
   - {fileID: 11400000, guid: ce17331fd2a1d1f46bdc3b82f485e183, type: 2}
   - {fileID: 11400000, guid: 928dabd2b5cf38a4791a439361e65615, type: 2}

@@ -38,7 +38,7 @@ public class ChooseQuest : MonoBehaviour
         List<int> pitchIndex = GeneratePitch(questPool[0].type, questPool.Count);
         for(int i = 0; i < questPool.Count; i++)
         {
-            Debug.Log("Init expe");
+            //Debug.Log("Init expe");
             questPool[i].Init();
             questPool[i].Pitch = pitchList.expeditionPitch(questPool[i].type, pitchIndex[i]);
         }

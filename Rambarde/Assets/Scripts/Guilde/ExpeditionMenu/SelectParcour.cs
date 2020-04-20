@@ -27,7 +27,7 @@ public class SelectParcour : MonoBehaviour
 
     public void DisplayQuests(string tag)
     {
-        Debug.Log("button " + tag + " has been pressed");
+        //Debug.Log("button " + tag + " has been pressed");
 
         foreach (GameObject menu in questMenus)
         {

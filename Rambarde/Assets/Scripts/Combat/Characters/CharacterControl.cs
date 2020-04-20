@@ -110,7 +110,7 @@ namespace Characters {
 
         #region CharacterData
 
-        public void Init(CharacterData data, int[] intSkillWheel)
+        public async Task Init(CharacterData data, int[] intSkillWheel)
         {
             characterData = data;
             characterData.Init();
@@ -123,10 +123,18 @@ namespace Characters {
                 temp[j] = characterData.skills[intSkillWheel[j]];
             skillWheel = temp;
 
-            //UpdateStats(0);
             UpdateStats();
-            
+            currentStats.hp = new ReactiveProperty<float>(currentStats.maxHp);
+
             slotAction = new Subject<SlotAction>();
+            statusEffects = new ReactiveCollection<StatusEffect>();
+            effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
+            skillSlot = skillWheel.ToList();
+
+            _combatManager = CombatManager.Instance;
+            _animator = GetComponentInChildren<Animator>();
+            AnimatorOverrideController myOverrideController = await Utils.LoadResource<AnimatorOverrideController>("Animations/" + characterData.animatorController);
+            _animator.runtimeAnimatorController = myOverrideController;
         }
 
         //private void UpdateStats(int accessory) {
@@ -238,18 +246,18 @@ namespace Characters {
 
         #region Unity
 
-        private void Awake() {
-            statusEffects = new ReactiveCollection<StatusEffect>();
-            effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
-        }
+        //private void Awake() {
+        //    statusEffects = new ReactiveCollection<StatusEffect>();
+        //    effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
+        //}
 
-        protected async void Start() {
-            _combatManager = CombatManager.Instance;
+        //protected async void Start() {
+        //    _combatManager = CombatManager.Instance;
 
-            _animator = GetComponentInChildren<Animator>();
-            AnimatorOverrideController myOverrideController = await Utils.LoadResource<AnimatorOverrideController>(characterData.animatorController);
-            _animator.runtimeAnimatorController = myOverrideController;
-        }
+        //    _animator = GetComponentInChildren<Animator>();
+        //    AnimatorOverrideController myOverrideController = await Utils.LoadResource<AnimatorOverrideController>(characterData.animatorController);
+        //    _animator.runtimeAnimatorController = myOverrideController;
+        //}
 
         #endregion
     }

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4083dec0c5e1c34a906099347847de7, type: 3}
   m_Name: "B\xE2ton de l'Archimage"
   m_EditorClassIdentifier: 
-  equipmentName: 
+  equipmentName: "B\xE2ton de l'Archimage"
   sprite: {fileID: 0}
   type: 0
-  allowedType: 0
-  atqMod: 0
+  allowedType: 2
+  atqMod: 15
   precMod: 0
-  critMod: 0
+  critMod: 0.05
   protMod: 0
   endMod: 0
   price: 0

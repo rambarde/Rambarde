@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4083dec0c5e1c34a906099347847de7, type: 3}
   m_Name: "Couteaux \xE0 beurre"
   m_EditorClassIdentifier: 
-  equipmentName: 
-  sprite: {fileID: 0}
+  equipmentName: "Couteau \xE0 beurre"
+  sprite: {fileID: 21300000, guid: 581181166a3e1d8409eb558db5df6056, type: 3}
   type: 0
-  allowedType: 0
+  allowedType: 1
   atqMod: 0
   precMod: 0
   critMod: 0

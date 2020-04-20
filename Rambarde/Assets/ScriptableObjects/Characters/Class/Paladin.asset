@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Paladin
   m_EditorClassIdentifier: 
   modelName: Warrior
-  animatorController: Animations/Warrior
+  animatorController: Warrior
   baseStats:
     maxHp: 90
     atq: 18
@@ -21,7 +21,9 @@ MonoBehaviour:
     prec: 90
     crit: 5
   charType: 0
-  baseEquipment: []
+  baseEquipment:
+  - {fileID: 11400000, guid: 0939e3f368652e64caeeef9f97dbd839, type: 2}
+  - {fileID: 11400000, guid: 41fee7973c7917a49a2ea657f7910027, type: 2}
   skills:
   - {fileID: 11400000, guid: 5331a681df04c19e1af9166fe2bf197d, type: 2}
   - {fileID: 11400000, guid: 0aade56fbbb57da429361d8bfb480ab7, type: 2}

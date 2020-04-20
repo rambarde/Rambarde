@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GuildeMenuTest.unity
     guid: c0e06ec8b602d7c439b90e3b9ff5f97b
   - enabled: 1
+    path: Assets/Scenes/Scene gabarit 4.unity
+    guid: e918ea1f220a72341b1dea2fff23bf0b
+  - enabled: 0
     path: Assets/Scenes/Scene gabarit.unity
     guid: 2140e3e49c7bd874fb802323b62ea89a
   - enabled: 1

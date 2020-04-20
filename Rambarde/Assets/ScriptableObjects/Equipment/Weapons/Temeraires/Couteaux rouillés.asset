@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4083dec0c5e1c34a906099347847de7, type: 3}
   m_Name: "Couteaux rouill\xE9s"
   m_EditorClassIdentifier: 
-  equipmentName: 
-  sprite: {fileID: 0}
+  equipmentName: "Couteaux rouill\xE9s"
+  sprite: {fileID: 21300000, guid: 8f949f440dceeac4caef984fb399371b, type: 3}
   type: 0
-  allowedType: 0
-  atqMod: 0
+  allowedType: 1
+  atqMod: 5
   precMod: 0
   critMod: 0
   protMod: 0
   endMod: 0
-  price: 0
+  price: 250
   numberOwned: 0
   numberEquiped: 0
