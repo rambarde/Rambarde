@@ -42,7 +42,7 @@ public class Tooltip : MonoBehaviour
             effect.SetActive(true);
             transform.GetChild(0).gameObject.SetActive(true);
 
-            if (TooltipObject.GetComponent<MelodyBehaviour>() != null)
+            if (TooltipObject.GetComponent<MelodyBehaviour>() != null) 
             {
                 Melodies.Melody melody = TooltipObject.GetComponent<MelodyBehaviour>().melody;
                 inspiration.SetActive(true);

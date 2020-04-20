@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Treant
   m_EditorClassIdentifier: 
   modelName: Goblin
-  animatorController: Animations/Goblin
+  animatorController: Goblin
   baseStats:
     maxHp: 60
     atq: 20

@@ -30,7 +30,7 @@ public class InstrumentBehaviour :
     {
         // do not display instruments the Bard doesnt own
         //Debug.Log(instrument.name);
-        if (!instrument.owned)
+        if (instrument != null && !instrument.owned)
         {
             IsClickable = false;
         }
@@ -39,7 +39,7 @@ public class InstrumentBehaviour :
             IsClickable = true;
         }
 
-        if (IsClickable)
+        if (instrument != null && IsClickable)
         {
             GetComponent<Image>().sprite = instrument.sprite;
 
@@ -79,7 +79,7 @@ public class InstrumentBehaviour :
             canvasRectTransform = tooltipRectTransform.parent.GetComponent<RectTransform>() as RectTransform;
         }
         
-        if (IsClickable)
+        if (instrument != null && IsClickable)
             for (int i= 0;i < melodiesInstrument.Length; i++)
             {
                 Melodies.Melody melody = instrument.melodies[i];
@@ -93,7 +93,7 @@ public class InstrumentBehaviour :
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        if (instrumentTooltip != null)
+        if (instrumentTooltip != null && instrument.owned)
         {
             instrumentTooltip.setObject(gameObject);
             instrumentTooltip.Activate(true);

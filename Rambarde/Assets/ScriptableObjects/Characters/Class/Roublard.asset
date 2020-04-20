@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Roublard
   m_EditorClassIdentifier: 
   modelName: Warrior
-  animatorController: Animations/Warrior
+  animatorController: Warrior
   baseStats:
     maxHp: 60
     atq: 23
