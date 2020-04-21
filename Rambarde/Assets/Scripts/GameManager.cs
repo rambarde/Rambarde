@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     static public List<Client> clients; 
     static public List<Bard.Instrument> instruments;
 
-    static public int gold = 300;
+    static public int gold = 1000;
 
     static public int CurrentFight;
     static public bool QuestState;     //false = fights remaining; true = expedition is done
