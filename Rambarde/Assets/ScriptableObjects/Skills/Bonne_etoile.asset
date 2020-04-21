@@ -21,4 +21,4 @@ MonoBehaviour:
     value: 7
   animationName: Atq
   sprite: {fileID: 21300000, guid: e80b0d0e60522da4e82ea80f7001323b, type: 3}
-  description: Soin 7
+  description: "Soigne 7 Endurance.\r\nCible tous les alli\xE9s."

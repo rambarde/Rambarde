@@ -26,4 +26,5 @@ MonoBehaviour:
     value: 1
   animationName: Atq
   sprite: {fileID: 21300000, guid: 15462240c6beb1c45bec07b9c1c78828, type: 3}
-  description: "ATQ \u2B9D+  + Exalt\xE9 1"
+  description: "Augmente l\xE9g\xE8rement l'Attaque.\r\nDonne Exalt\xE9 pour 1 tour.\r\nCible
+    soi-m\xEAme."

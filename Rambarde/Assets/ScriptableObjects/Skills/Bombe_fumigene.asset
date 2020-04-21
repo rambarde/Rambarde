@@ -26,4 +26,5 @@ MonoBehaviour:
     value: 1
   animationName: Atq
   sprite: {fileID: 21300000, guid: 6f4343a69b3b5f44eabffd201204f76a, type: 3}
-  description: "Invisible 1\r\nD\xE9stabilis\xE9 1"
+  description: "Donne Invisible pour 1 tour.\r\nCible soi-m\xEAme.\r\n\r\nInflige
+    D\xE9stabilis\xE9 pour 1 tour.\r\nCible tous les adversaires."
