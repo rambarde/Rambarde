@@ -4,7 +4,7 @@ namespace Status {
     class Grace : StatusEffect {
         public Grace(CharacterControl target, int turns) : base(target, turns) {
             type = EffectType.Grace;
-            spriteName = "vfx-heal";
+            spriteName = "Statut_Grâce";
         }
     }
 }

@@ -19,17 +19,17 @@ MonoBehaviour:
     effectType: 0
     buffType: 0
     value: 5
-  - actionType: 2
+  - actionType: 6
     targetMode: 0
     effectType: 8
     buffType: 0
     value: 0
-  - actionType: 2
+  - actionType: 6
     targetMode: 0
     effectType: 512
     buffType: 0
     value: 0
-  - actionType: 2
+  - actionType: 6
     targetMode: 0
     effectType: 16
     buffType: 0

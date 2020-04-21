@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tier: 2
   actions:
-  - actionType: 3
+  - actionType: 4
     targetMode: 5
     effectType: 0
     buffType: 3

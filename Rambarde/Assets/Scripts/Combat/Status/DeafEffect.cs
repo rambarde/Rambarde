@@ -10,7 +10,7 @@ namespace Status {
 
         public DeafEffect(CharacterControl target, int turns) : base(target, turns) {
             type = EffectType.Deaf;
-            spriteName = "vfx-poison";
+            spriteName = "Statut_Assourdi";
         }
     }
 }
