@@ -2582,7 +2582,7 @@ MonoBehaviour:
         m_MethodName: PurchaseInstrument
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 37d2947ab87ede945a8357c58c8e5eda,
+          m_ObjectArgument: {fileID: 11400000, guid: 925a82397ba314a41930939af1af295e,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: Bard.Instrument, Assembly-CSharp
           m_IntArgument: 0
@@ -6997,9 +6997,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instruments:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d832eebb617825c4d975b72ea13a63fb, type: 2}
+  - {fileID: 11400000, guid: 925a82397ba314a41930939af1af295e, type: 2}
+  - {fileID: 11400000, guid: 10fdb95a9e628b34fb9cf3034d4877d6, type: 2}
   instrumentsButtons:
   - {fileID: 912666150}
   - {fileID: 82124993}
@@ -24706,7 +24706,7 @@ MonoBehaviour:
         m_MethodName: PurchaseInstrument
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 08ec64a7366690548bf9c4d5f3c298a7,
+          m_ObjectArgument: {fileID: 11400000, guid: d832eebb617825c4d975b72ea13a63fb,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: Bard.Instrument, Assembly-CSharp
           m_IntArgument: 0
@@ -50747,7 +50747,7 @@ MonoBehaviour:
         m_MethodName: PurchaseInstrument
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 781c9ea8d21145a4fb6d479d7633fc22,
+          m_ObjectArgument: {fileID: 11400000, guid: 10fdb95a9e628b34fb9cf3034d4877d6,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: Bard.Instrument, Assembly-CSharp
           m_IntArgument: 0

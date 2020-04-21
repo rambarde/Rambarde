@@ -88,9 +88,11 @@ public class ClientMenuManager : MonoBehaviour
     {
         int[] classes = GenerateClasses();
         int[][] skills = GenerateSkillWheel();
+        ClientNamesList clientNamesList = new ClientNamesList();
+        clientNamesList.Init();
 
         for(int i = 0; i < clientList.Length; i++)
-            clientList[i].client = new Client(classList[classes[i]], skills[i], "NomDebug");
+            clientList[i].client = new Client(classList[classes[i]], skills[i], clientNamesList.generateClientName());
     }
 
     private int[] GenerateClasses()
