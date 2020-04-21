@@ -20,6 +20,8 @@ namespace Status {
             _buffType = buffType;
             _modifier = modifier;
 
+            spriteName = turns > 0 ? "vfx-heal" : "vfx-poison";
+
             switch (_modifier) {
                 case 1:
                     _modifiedValue = 1.3f;
