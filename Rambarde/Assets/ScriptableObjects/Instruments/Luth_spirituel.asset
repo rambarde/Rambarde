@@ -18,7 +18,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f4515fb7f7b3e964d8337a493b43fcd8, type: 2}
   - {fileID: 11400000, guid: 58a3507bd39794244b0ce8797c062a55, type: 2}
   passif: "Tant que le Luth Spirituel est l'instrument actif, un monstre affect\xE9
-    par un de vous morceaux re\xE7oit en plus D\xE9stabilis\xE9 1"
+    par un de vous morceaux re\xE7oit en plus <color=blue>D\xE9stabilis\xE9</color>
+    1"
   type: Protection
   sprite: {fileID: 21300000, guid: d763b6fd040aa0941a0ab81ccba81bb6, type: 3}
   price: 1000

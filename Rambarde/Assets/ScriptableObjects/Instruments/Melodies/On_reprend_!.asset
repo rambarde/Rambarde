@@ -15,7 +15,7 @@ MonoBehaviour:
   data: 2-2-33-2-
   targetMode: 4
   tier: 1
-  effect: "Recule d\u2019un cran la roue des comp\xE9tences.\r\nInflige Assourdi
+  effect: "Recule d\u2019un cran la roue des comp\xE9tences.\r\nInflige <color=blue>Assourdi</color>
     pour 3 tour."
   inspirationValue: 10
   tranceValue: 0

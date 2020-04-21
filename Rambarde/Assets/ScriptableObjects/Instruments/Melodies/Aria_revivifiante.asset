@@ -15,7 +15,7 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 2
   tier: 2
-  effect: "Donne R\xE9g\xE9n\xE9ration pour 5 tours."
+  effect: "Donne <color=blue>R\xE9g\xE9n\xE9ration</color> pour 5 tours."
   inspirationValue: -15
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 6de5c557ca9896b42ab2b49573e466ee, type: 3}
