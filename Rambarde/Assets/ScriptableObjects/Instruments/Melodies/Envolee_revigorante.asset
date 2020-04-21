@@ -15,8 +15,7 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 2
   tier: 2
-  effect: Soin 15
+  effect: Soigne 15 Endurance.
   inspirationValue: -15
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 49a2ac583f21ff84ca3175427f7f348b, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}

@@ -15,8 +15,7 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 2
   tier: 0
-  effect: "Gr\xE2ce P"
+  effect: "Donne Gr\xE2ce jusqu'\xE0 la fin du combat."
   inspirationValue: 0
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 3729ad9ec33ef5e428f89d757276bb76, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}

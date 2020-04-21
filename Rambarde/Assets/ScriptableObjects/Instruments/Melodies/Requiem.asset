@@ -15,9 +15,8 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 2
   tier: 0
-  effect: "ATQ \u2B9D\u2B9D\u2B9D + Implacable 1, Pr\xE9cipitation 1, Disciplin\xE9
-    1"
+  effect: "Augmente fortement l'Attaque.\nDonne implacable, pr\xE9cipitation et disciplin\xE9
+    pendant 1 tour."
   inspirationValue: 0
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 5ea2b18a9e2982a41924a2092a3e7f62, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}

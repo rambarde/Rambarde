@@ -15,8 +15,7 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 2
   tier: 2
-  effect: Protection ++
+  effect: "Augmente mod\xE9r\xE9ment la Protection."
   inspirationValue: -15
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 8c92082ec8e068a4e843773ebf258ced, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}

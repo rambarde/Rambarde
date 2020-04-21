@@ -15,8 +15,7 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 2
   tier: 0
-  effect: "Soin 20, Disciplin\xE9 1, Exalt\xE9 1"
+  effect: "Soigne 20 Endurance.\r\nDonne Disciplin\xE9 et Exalt\xE9 pendant 1 tour."
   inspirationValue: 0
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 7f35eea6475a8e64c84ad4ced4640fb3, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}

@@ -15,8 +15,7 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 2
   tier: 3
-  effect: Attaque +++
+  effect: Augmente fortement l'Attaque.
   inspirationValue: -25
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 6b611de4e36513b49be5157836d6e162, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}

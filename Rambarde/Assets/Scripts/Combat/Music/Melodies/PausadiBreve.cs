@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Music.Melodies
 {
     [CreateAssetMenu(fileName = "PausaDiBreve", menuName = "Melody/PausaDiBreve")]
-    class PausaDiBreve : Melody
+    class PausadiBreve : Melody
     {
         protected override async Task ExecuteOnTarget(CharacterControl t)
         {
