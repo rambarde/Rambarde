@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tier: 2
   actions:
-  - actionType: 3
+  - actionType: 4
     targetMode: 2
     effectType: 0
     buffType: 3
@@ -26,4 +26,5 @@ MonoBehaviour:
     value: 2
   animationName: Atq
   sprite: {fileID: 21300000, guid: 034062dbd5d8ae54ab04d211a8c8adc7, type: 3}
-  description: "Protection ++ et Marqu\xE9 2 sur soi"
+  description: "Augmente mod\xE9r\xE9ment la Protection\r\nInflige Marqu\xE9 pour
+    2 tours.\r\nCible soi-m\xEAme."

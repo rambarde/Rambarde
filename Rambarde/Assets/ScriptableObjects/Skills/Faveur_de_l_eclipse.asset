@@ -36,4 +36,5 @@ MonoBehaviour:
     value: 0
   animationName: Atq
   sprite: {fileID: 21300000, guid: 89172b9ded4709349b4fa9c4c5e688f0, type: 3}
-  description: "Soin 20 + Soigne Poison, Confus, D\xE9stabilis\xE9"
+  description: "Soigne 20 Endurance.\r\nRetire Poison, Confus et D\xE9stabilis\xE9.\r\nCible
+    un alli\xE9."

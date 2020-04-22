@@ -30,5 +30,6 @@ MonoBehaviour:
     buffType: 3
     value: 1
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: b2e8fc68eed3cd8469cb66c687675e58, type: 3}
+  description: "Soigne 15 Endurance.\r\nAugmente l\xE9g\xE8rement l'Attaque et la
+    Protection.\r\nCible un alli\xE9."
