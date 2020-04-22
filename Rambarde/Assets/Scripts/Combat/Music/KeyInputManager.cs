@@ -23,8 +23,12 @@ namespace Music {
                     .OnTriggerExitAsObservable()
                     .Where(c => c.gameObject.CompareTag("Note"))
                     .Subscribe(c => {
+                        
                         //Debug.Log("missed");
-                        NoteMissed(_currentNote.note);
+                        TweenSequenceWithDelay(
+                            InputImages[_currentNote.note - 1].DOColor(Color.red, 0.2f),
+                            InputImages[_currentNote.note - 1].DOColor(Color.white, 0.2f),
+                            0.3f);
                         _currentNote = null;
                     }).AddTo(this);
             }
@@ -46,7 +50,10 @@ namespace Music {
                         
                     } else {
                         Debug.Log("boooooooooh");
-                        NoteMissed(x);
+                        TweenSequenceWithDelay(
+                            InputImages[x-1].DOColor(Color.red, 0.2f),
+                            InputImages[x-1].DOColor(Color.white, 0.2f),
+                            0.3f);
                     }
                 }).AddTo(this);
         }
@@ -57,16 +64,6 @@ namespace Music {
             sequence.AppendInterval(delay);
             sequence.Append(b);
             sequence.Play();
-        }
-
-        private void NoteMissed(int x)
-        {
-            MusicManager.Instance.PlayBuzz();
-            Debug.Log("boooooooooh");
-            TweenSequenceWithDelay(
-                InputImages[x - 1].DOColor(Color.red, 0.2f),
-                InputImages[x - 1].DOColor(Color.white, 0.2f),
-                0.3f);
         }
 
         private static int GetInput() {
