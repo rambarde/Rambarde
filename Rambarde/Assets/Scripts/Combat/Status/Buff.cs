@@ -41,7 +41,6 @@ namespace Status {
             switch (_modifier) {
                 case 1:
                     _modifiedValue = 1.3f;
-
                     break;
                 case 2:
                     _modifiedValue = 1.4f;

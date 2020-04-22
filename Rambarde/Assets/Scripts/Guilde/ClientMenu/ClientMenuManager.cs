@@ -34,7 +34,7 @@ public class ClientMenuManager : MonoBehaviour
         doneButton.GetComponent<Button>().interactable = false;
     }
 
-    public void resetSelectedClient(int nClient) { SelectedClient -= nClient; }
+    public void resetSelectedClient(int nClient) { _selectedClient -= nClient; }
 
     public void resetClientMenu()
     {
