@@ -49,7 +49,6 @@ namespace Music {
                             0.3f);
                         
                     } else {
-                        Debug.Log("boooooooooh");
                         TweenSequenceWithDelay(
                             InputImages[x-1].DOColor(Color.red, 0.2f),
                             InputImages[x-1].DOColor(Color.white, 0.2f),
