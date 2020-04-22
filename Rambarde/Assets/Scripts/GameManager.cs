@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     static public int CurrentFight;
     static public bool QuestState;     //false = fights remaining; true = expedition is done
 
+    static public int CurrentInspiration = 0;
+
     // Change from combat Scene to Guilde Scene
     // 0: Guilde
     // 1: Combat
@@ -21,8 +23,6 @@ public class GameManager : MonoBehaviour
     public void ChangeScene(int SceneToPlay)
     {
         SceneManager.LoadScene(SceneToPlay);
-        Debug.Log("gold after exiting the guild : " + gold);
-        Debug.Log("selected quest : " + quest.name);
 
         if (SceneToPlay == 1 && QuestState == true)
         {

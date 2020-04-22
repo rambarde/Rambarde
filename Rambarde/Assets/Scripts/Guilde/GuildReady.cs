@@ -34,7 +34,7 @@ public class GuildReady : MonoBehaviour
             if (!ready[2])
                 Debug.Log("Menu Théodore non valide");
                 //feedback visuel
-            Debug.Log(guildManager.clients[0]);
+            //Debug.Log(guildManager.clients[0]);
         }
         if (andReady & orReady)
         {

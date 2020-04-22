@@ -32,14 +32,25 @@ namespace UI
             _skills = _characterControl.skillSlot;
             for (int i = 0; i < _skills.Count; i++)
             {
+                #region CHANGE_NICO_TOOLTIP_PART1
+                Sprite skillIcon = _skills[i].sprite;
+                string skillDesc = _skills[i].description;
+
+                slotIconPositions[i].GetComponent<Image>().sprite = skillIcon;
+                #endregion
+
                 slotIconPositions[i].GetComponent<Image>().sprite = _skills[i].sprite;
                 slotIconPositions[i].GetComponent<Image>().OnPointerEnterAsObservable()
                     .Subscribe(_ =>
                     {
                         //update tooltip ui
-                        
+
                         // show tooltip ui
-                        
+                        #region CHANGE_NICO_TOOLTIP_PART2
+                        descText.text = skillDesc;
+                        imageIcon.sprite = skillIcon;
+                        #endregion
+
                         tooltip.SetActive(true);
                     });
                 slotIconPositions[i].GetComponent<Image>().OnPointerExitAsObservable()

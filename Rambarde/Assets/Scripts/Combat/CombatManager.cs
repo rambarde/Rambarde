@@ -104,9 +104,11 @@ public class CombatManager : MonoBehaviour {
         if (teams[charTeam].Count == 0) {
             GetComponent<GameManager>().ChangeCombat();
             if (!GameManager.QuestState) {
+                GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
                 GetComponent<GameManager>().ChangeScene(2);
             } else {
                 int gold = GetComponent<GameManager>().CalculateGold();
+                GameManager.CurrentInspiration = 0;                                 //reset inspiration
                 GetComponent<GameManager>().ChangeScene(0);
             }
         }
