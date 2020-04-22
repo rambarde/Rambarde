@@ -22100,9 +22100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a06766f10b68e4f9325333f99baab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumValue: 10
-  tier2MinValue: 5
-  tier3MinValue: 10
+  maximumValue: 150
+  tier2MinValue: 50
+  tier3MinValue: 100
 --- !u!114 &8296172668646349648
 MonoBehaviour:
   m_ObjectHideFlags: 0
