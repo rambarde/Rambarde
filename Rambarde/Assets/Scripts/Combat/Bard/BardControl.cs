@@ -192,7 +192,7 @@ namespace Bard {
                           }
                       })
                       .ToList(); // Compute list elements before starting the timer
-
+            _ = MusicManager.Instance?.PlayMelodies(selectedMelodies);
             await Utils.AwaitObservable(
                 Observable.Timer(TimeSpan.FromSeconds(_beat))
                           .Repeat()

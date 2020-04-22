@@ -24,7 +24,8 @@ public class DialogManager : MonoBehaviour
     public int textSpeed = 200;
     public CanvasGroup dialogCanvas;
     public TextMeshProUGUI dialogText;
-    public Image dialogImage;
+    public Image dialogCharacterImage;
+    public TextMeshProUGUI dialogCharacterName;
 
     private Dictionary<CharacterType, List<DialogPhrase>> dialogs;
     private List<string> closedList;
@@ -197,7 +198,8 @@ public class DialogManager : MonoBehaviour
         Quote quote = GetDialogQuote(filter, actionExecutor, actionReceiver);
         dialogText.text = quote.phrase;
         dialogText.maxVisibleCharacters = 0;
-        dialogImage = await Utils.LoadResource<Image>(quote.character.ToString());
+        dialogCharacterImage = await Utils.LoadResource<Image>(quote.character.ToString());
+        dialogCharacterName.text = getCharacterName(quote.character);
         dialogCanvas.DOFade(1, .5f).SetEase(Ease.InOutCubic);
         await Utils.AwaitObservable(
             Observable.Timer(TimeSpan.FromMilliseconds(textSpeed))
@@ -206,5 +208,28 @@ public class DialogManager : MonoBehaviour
             _ => dialogText.maxVisibleCharacters += 1);
         await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
         dialogCanvas.DOFade(0, .5f).SetEase(Ease.InOutCubic);
+    }
+
+    private string getCharacterName(CharacterType character)
+    {
+        switch (character)
+        {
+            case CharacterType.Bard:
+                return "Théodore";
+            case CharacterType.Client:
+                return "Client";
+            case CharacterType.Goblins:
+                return "Gobelins";
+            case CharacterType.Orcs:
+                return "Orques";
+            case CharacterType.OrcsLeader:
+                return "Chef des Orques";
+            case CharacterType.Treant:
+                return "Tréant";
+            case CharacterType.Golem:
+                return "Golem";
+        }
+
+        return "";
     }
 }
