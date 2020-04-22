@@ -26,6 +26,5 @@ MonoBehaviour:
     value: 1
   animationName: Atq
   sprite: {fileID: 21300000, guid: cc14729df692b634b97764d4cb6d6238, type: 3}
-  description: 'ATQ 80%
-
-    Invisible 1'
+  description: "Inflige X d\xE9g\xE2ts.\r\nCible un adversaire.\r\n\r\nDonne Invisible
+    pour 1 tour.\r\nCible soi-m\xEAme."

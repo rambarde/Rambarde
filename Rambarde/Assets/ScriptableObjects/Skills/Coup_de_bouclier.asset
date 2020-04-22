@@ -26,5 +26,5 @@ MonoBehaviour:
     value: 1
   animationName: Atq
   sprite: {fileID: 21300000, guid: 396ae94709de6334db319eeac4e1215e, type: 3}
-  description: "Attaque un monstre et inflige 20% de dommages ainsi qu'\xC9tourdi
-    1"
+  description: "Inflige X d\xE9g\xE2ts.\r\nInflige \xC9tourdi pour 1 tour.\r\nCible
+    un adversaire."

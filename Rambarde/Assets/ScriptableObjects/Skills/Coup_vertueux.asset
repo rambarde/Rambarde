@@ -21,4 +21,4 @@ MonoBehaviour:
     value: 100
   animationName: Atq
   sprite: {fileID: 21300000, guid: 5806246e5ab156e44bb3dfc0f3511b97, type: 3}
-  description: Attaque un monstre et inflige 100% de dommage
+  description: "Inflige X d\xE9g\xE2ts.\r\nCible un adversaire."

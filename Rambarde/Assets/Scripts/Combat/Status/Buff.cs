@@ -20,11 +20,28 @@ namespace Status {
             _buffType = buffType;
             _modifier = modifier;
 
-            spriteName = turns > 0 ? "vfx-heal" : "vfx-poison";
+            //spriteName = turns > 0 ? "vfx-heal" : "vfx-poison";
+
+            switch (_buffType)
+            {
+                case BuffType.Attack:
+                    spriteName = "Statut_ATQ" + _modifier.ToString();
+                    break;
+                case BuffType.Critical:
+                    spriteName = "Statut_CRIT" + _modifier.ToString();
+                    break;
+                case BuffType.Protection:
+                    spriteName = "Statut_PROT" + _modifier.ToString();
+                    break;
+                default:
+                    Debug.LogError("error: missing sprite for buff type [" + _buffType + "]");
+                    break;
+            }
 
             switch (_modifier) {
                 case 1:
                     _modifiedValue = 1.3f;
+
                     break;
                 case 2:
                     _modifiedValue = 1.4f;

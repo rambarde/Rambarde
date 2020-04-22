@@ -7130,10 +7130,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad2550f9989ed74da5f80d44c935b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bard: {fileID: 8296172668646349648}
   playerTeamGo: {fileID: 1854248406}
   enemyTeamGo: {fileID: 1415330599}
   playerTeamUiContainer: {fileID: 49732620}
   enemyTeamUiContainer: {fileID: 166028383}
+  ignoreGameManager: 0
+  forcedClients:
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
+  forcedMonsters:
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
 --- !u!4 &543202384
 Transform:
   m_ObjectHideFlags: 0
@@ -28619,14 +28641,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9409fe4188e89934594b0d79c4b7ec8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseActionPoints: 40
-  spawner: {fileID: 45323497}
   hud: {fileID: 811600889}
   inspiration: {fileID: 8296172668646349647}
   instruments:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  baseActionPoints: 40
+  spawner: {fileID: 45323497}
 --- !u!4 &8345394285019801763
 Transform:
   m_ObjectHideFlags: 0
