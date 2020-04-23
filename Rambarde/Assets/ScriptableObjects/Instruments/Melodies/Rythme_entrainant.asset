@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84343e7255164765ae639d18f976f7c5, type: 3}
   m_Name: Rythme_entrainant
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 1-----2--2--
   targetMode: 0
   tier: 1
   effect: "Augmente mod\xE9r\xE9ment l'Attaque."
