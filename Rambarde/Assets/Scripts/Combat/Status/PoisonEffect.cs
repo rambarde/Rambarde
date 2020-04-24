@@ -11,7 +11,7 @@ namespace Status {
         public PoisonEffect(CharacterControl target, float dmg, int turns) : base(target, turns) {
             type = EffectType.Poison;
             _dmg = dmg;
-            spriteName = "vfx-poison";
+            spriteName = "Statut_Poison";
         }
 
         protected override async Task PreTurnStart() {

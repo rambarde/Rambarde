@@ -9,7 +9,7 @@ namespace Status {
         public HealthRegen(CharacterControl target, float pts, int turns) : base(target, turns) {
             type = EffectType.HealthRegen;
             _pts = pts;
-            spriteName = "vfx-heal";
+            spriteName = "Statut_Régénération";
         }
 
         protected override async Task PreTurnStart() {

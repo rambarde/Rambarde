@@ -21,4 +21,4 @@ MonoBehaviour:
     value: 3
   animationName: Atq
   sprite: {fileID: 21300000, guid: 6a80afee495887645a32cb4f68606c7c, type: 3}
-  description: "R\xE9g\xE9n\xE9ration 3"
+  description: "Donne R\xE9g\xE9n\xE9ration pour 3 tours.\r\nCible tous les alli\xE9s. "

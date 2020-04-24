@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tier: 2
   actions:
-  - actionType: 3
+  - actionType: 4
     targetMode: 5
     effectType: 0
     buffType: 3
     value: 2
   animationName: Atq
   sprite: {fileID: 21300000, guid: 982c3295c1e77c24c8cfe38292fe1ebe, type: 3}
-  description: "Applique Protection ++ sur un client autre que soi-m\xEAme"
+  description: "Augmente mod\xE9r\xE9ment la Protection \r\nCible un autre alli\xE9."

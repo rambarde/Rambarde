@@ -18,13 +18,13 @@ MonoBehaviour:
     targetMode: 1
     effectType: 0
     buffType: 0
-    value: 60
-  - actionType: 1
+    value: 80
+  - actionType: 4
     targetMode: 2
     effectType: 0
-    buffType: 0
-    value: 40
+    buffType: 3
+    value: 1
   animationName: Atq
   sprite: {fileID: 21300000, guid: 807bd3c1bf30a7840a1aee84732b868d, type: 3}
-  description: "Attaque un monstre qui inflige 80% de dommage \nProtection + sur
-    soi"
+  description: "Inflige X d\xE9g\xE2ts.\r\nCible un adversaire.\r\n\r\nAugmente l\xE9g\xE8rement
+    la Protection.\r\nCible soi-m\xEAme."
