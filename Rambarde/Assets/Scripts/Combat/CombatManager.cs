@@ -165,7 +165,7 @@ public class CombatManager : MonoBehaviour {
         string types = "";
         characterTypes.ForEach(c => types += " "+c);
         Debug.Log("Init dialogManager with character :" + types);
-        _dialogManager.Init(characterTypes);
+        await _dialogManager.Init(characterTypes);
         await _dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Client,
             CharacterType.None);
     }
