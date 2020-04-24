@@ -22,6 +22,9 @@ public static class Utils {
 
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(address);
         await handle.Task;
+        if (handle.Status != AsyncOperationStatus.Succeeded) {
+            Debug.LogError("Cannot load resource at address : " + address);
+        }
         return handle.Result;
     }
 
