@@ -29,8 +29,10 @@ public class DialogManager : MonoBehaviour
     private Dictionary<CharacterType, List<DialogPhrase>> dialogs;
     private List<string> closedList;
 
-    public async void Init(List<CharacterType> characters)
+    public async Task Init(List<CharacterType> characters)
     {
+        dialogs = new Dictionary<CharacterType, List<DialogPhrase>>();
+        closedList = new List<string>();
         foreach (var character in characters)
         {
             Dialog dialog = await Utils.LoadResource<Dialog>("ScriptableObjects/Dialogs/" + character.ToString());
