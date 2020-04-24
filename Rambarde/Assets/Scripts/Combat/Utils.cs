@@ -1,26 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 
 public static class Utils {
+    private static bool AddressableResourceExists(string address) {
+        return Addressables.ResourceLocators.OfType<ResourceLocationMap>()
+            .SelectMany(locationMap =>
+                locationMap.Locations.Keys.Select(key => key.ToString())
+            ).Contains(address);
+    }
     public static async Task<T> LoadResource<T>(string address) where T : UnityEngine.Object {
-        AsyncOperationHandle<T> handle;
-        T result;
-        try {
-            handle = Addressables.LoadAssetAsync<T>(address);
-            await handle.Task;
-            result = handle.Result;
-        } catch (Exception e) {
-            Debug.LogError("Could not load resource at address : " + address);
-            throw;
-        }
-        
-        return result;
+
+        AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(address);
+        await handle.Task;
+        return handle.Result;
     }
 
     public static async Task AwaitObservable<T>(IObservable<T> obs, Action<T> f = null) {
