@@ -5,13 +5,22 @@ using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public static class Utils {
-    public static async Task<T> LoadResource<T>(string address) where T : UnityEngine.Object
-    {
-        var handle = Addressables.LoadAssetAsync<T>(address);
-        await handle.Task;
-        return handle.Result;
+    public static async Task<T> LoadResource<T>(string address) where T : UnityEngine.Object {
+        AsyncOperationHandle<T> handle;
+        T result;
+        try {
+            handle = Addressables.LoadAssetAsync<T>(address);
+            await handle.Task;
+            result = handle.Result;
+        } catch (Exception e) {
+            Debug.LogError("Could not load resource at address : " + address);
+            throw;
+        }
+        
+        return result;
     }
 
     public static async Task AwaitObservable<T>(IObservable<T> obs, Action<T> f = null) {
