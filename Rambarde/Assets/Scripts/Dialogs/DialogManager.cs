@@ -33,7 +33,7 @@ public class DialogManager : MonoBehaviour
     {
         foreach (var character in characters)
         {
-            Dialog dialog = await Utils.LoadResource<Dialog>("ScriptableObjects/" + character.ToString());
+            Dialog dialog = await Utils.LoadResource<Dialog>("ScriptableObjects/Dialogs/" + character.ToString());
             dialogs.Add(character, dialog.GetPhrases());
         }
     }
@@ -173,6 +173,12 @@ public class DialogManager : MonoBehaviour
             foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,actionReceiver))
                 quotes.Add(filteredQuote);
 
+        // when all characters are involved  
+        if(actionExecutor == CharacterType.None && actionReceiver == CharacterType.None)
+            foreach (var character in dialogs.Keys)
+            foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,character))
+                quotes.Add(filteredQuote);
+        
         if (quotes.Count != 0)
         {
             int rand = Random.Range(0, quotes.Count);

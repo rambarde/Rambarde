@@ -27,6 +27,7 @@ public class CombatManager : MonoBehaviour {
     
     private List<CharacterBase> clientsMenu;
     private List<CharacterBase> currentMonsters;
+    private DialogManager _dialogManager;
 
     [Header("Combat Testing Only")]
     [SerializeField] public bool ignoreGameManager = false;
@@ -106,7 +107,7 @@ public class CombatManager : MonoBehaviour {
             if (!GameManager.QuestState) {
                 GetComponent<GameManager>().ChangeScene(2);
             } else {
-                int gold = GetComponent<GameManager>().CalculateGold();
+                /*int gold = */GetComponent<GameManager>().CalculateGold();
                 GetComponent<GameManager>().ChangeScene(0);
             }
         }
@@ -153,6 +154,20 @@ public class CombatManager : MonoBehaviour {
             await SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
             ++i;
         }
+
+        //dialogs
+        _dialogManager = GetComponent<DialogManager>();
+        List<CharacterType> characterTypes =
+            teams[(int) Team.EmemyTeam].Select(Dialog.GetCharacterTypeFromCharacterControl).ToList();
+
+        characterTypes.Add(CharacterType.Client);
+        characterTypes.Add(CharacterType.Bard);
+        string types = "";
+        characterTypes.ForEach(c => types += " "+c);
+        Debug.Log("Init dialogManager with character :" + types);
+        _dialogManager.Init(characterTypes);
+        await _dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Client,
+            CharacterType.None);
     }
 
     private async Task SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {

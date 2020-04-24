@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Characters;
 using Skills;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -22,6 +23,7 @@ public enum CharacterType
     Skeleton,
     AngrySkeleton,
     ColdSkeleton
+    
 }
 
 [Flags]
@@ -81,5 +83,25 @@ public class Dialog : ScriptableObject
                 phrases.Add(phrase);
         
         return phrases;
+    }
+
+    public static CharacterType GetCharacterTypeFromCharacterControl(CharacterControl c) {
+        switch (c.characterData.name) {
+            case "Goblin" :
+            case "CommandantGoblin" :
+                return CharacterType.Goblins;
+            case "Treant" :
+                return CharacterType.Treant;
+            case "StoneGolem" :
+                return CharacterType.Golem;
+            case "OrcClub" :
+            case "OrcArcher" :
+                return CharacterType.Orcs;
+            case "OrcChief" :
+                return CharacterType.OrcsLeader;
+            default:
+                Debug.Log("Warning : Unkown dialog character control");
+                return CharacterType.None;
+        }
     }
 }
