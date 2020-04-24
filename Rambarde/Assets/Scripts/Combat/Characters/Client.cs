@@ -29,6 +29,6 @@ public class Client : CharacterBase
         currentStats.prec = Character.baseStats.prec * (equipment[0].precMod + equipment[1].precMod + 1);
         currentStats.crit = Character.baseStats.crit * (equipment[0].critMod + equipment[1].critMod + 1);
         currentStats.maxHp = Character.baseStats.maxHp + equipment[0].endMod + equipment[1].endMod;
-        currentStats.prot = Character.baseStats.prot * (equipment[0].protMod + equipment[1].protMod + 1);
+        currentStats.prot.Value = Character.baseStats.prot.Value * (equipment[0].protMod + equipment[1].protMod + 1);
     }
 }

@@ -16,7 +16,7 @@ namespace UI
         [SerializeField] private float offset;
         [SerializeField] private List<RectTransform> slotIconPositions = new List<RectTransform>();
         [SerializeField] private RectTransform indicator;
-        [SerializeField] private GameObject tooltip;
+        [SerializeField] private CanvasGroup tooltip;
         private List<Skill> _skills;
 
         private CharacterControl _characterControl; 
@@ -39,14 +39,13 @@ namespace UI
                         //update tooltip ui
                         
                         // show tooltip ui
-                        
-                        tooltip.SetActive(true);
+                        tooltip.DOFade(1, .5f);
                     });
                 slotIconPositions[i].GetComponent<Image>().OnPointerExitAsObservable()
                     .Subscribe(_ =>
                     {
                         // hide tooltip ui 
-                        tooltip.SetActive(false);
+                        tooltip.DOFade(0, .5f);
                     });
             }
             

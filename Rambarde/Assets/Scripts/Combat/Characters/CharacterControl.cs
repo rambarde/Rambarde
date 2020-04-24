@@ -18,7 +18,7 @@ namespace Characters {
     }
 
     public class CharacterControl : MonoBehaviour {
-        public string clientName;
+        public string characterName;
         public Team team;
         public int clientNumber;
         public Skill[] skillWheel;
@@ -121,7 +121,7 @@ namespace Characters {
             skillWheel = temp;
 
             UpdateStats();
-            currentStats.hp = new ReactiveProperty<float>(currentStats.maxHp);
+            currentStats.Init();
 
             slotAction = new Subject<SlotAction>();
             statusEffects = new ReactiveCollection<StatusEffect>();
@@ -143,7 +143,7 @@ namespace Characters {
                 currentStats.prec = characterData.baseStats.prec * (equipment[0].precMod + equipment[1].precMod + 1);
                 currentStats.crit = characterData.baseStats.crit * (equipment[0].critMod + equipment[1].critMod + 1);
                 currentStats.maxHp = characterData.baseStats.maxHp + equipment[0].endMod + equipment[1].endMod;
-                currentStats.prot = characterData.baseStats.prot * (equipment[0].protMod + equipment[1].protMod + 1);
+                currentStats.prot.Value = characterData.baseStats.prot.Value * (equipment[0].protMod + equipment[1].protMod + 1);
             } else {
                 currentStats.atq = characterData.baseStats.atq;
                 currentStats.prec = characterData.baseStats.prec;
@@ -163,7 +163,7 @@ namespace Characters {
 
         private float CalculateDamage(float dmg) {
             var curEnd = currentStats.hp.Value;
-            curEnd -= dmg * (1 - currentStats.prot / 100f);
+            curEnd -= dmg * (1 - currentStats.prot.Value / 100f);
             if (curEnd < 0) {
                 curEnd = 0;
             }
@@ -237,9 +237,6 @@ namespace Characters {
         }
 
         public bool HasEffect(EffectType effect) => effectTypes.Value.HasFlag(effect);
-
-        #region Unity
         
-        #endregion
     }
 }

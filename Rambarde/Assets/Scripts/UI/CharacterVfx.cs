@@ -1,4 +1,6 @@
-﻿using Characters;
+﻿using System.Globalization;
+using Characters;
+using DG.Tweening;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -8,10 +10,9 @@ using UnityEngine.UI;
 namespace UI {
     public class CharacterVfx : MonoBehaviour {
         private CharacterControl _characterControl;
-        public GameObject greenBar;
-        public GameObject yellowBar;
+        public Image greenBar;
         public GameObject statusEffects;
-        public TextMeshProUGUI characterHealth;
+        public TextMeshProUGUI characterProt;
 
         private const float LerpTime = 1f;
         private const string ResourcesDir = "CharacterVfx";
@@ -20,13 +21,17 @@ namespace UI {
         public async void Init(CharacterControl characterControl)
         {
             _characterControl = characterControl;
-            _characterControl.currentStats.hp.AsObservable().Subscribe(x => characterHealth.text = x.ToString());
+            
+            if (greenBar) {
+                _characterControl.currentStats.hp.AsObservable().Subscribe(x =>
+                    greenBar.DOFillAmount(x/_characterControl.currentStats.maxHp,LerpTime)
+                ).AddTo(this);
+            }
 
-            if (greenBar && yellowBar) {
-                _characterControl.currentStats.hp.AsObservable().Pairwise().Subscribe(x =>
-                    Utils.UpdateGameObjectLerp(x, greenBar, 2, LerpTime, LerpHealthBar,
-                        pair => Utils.UpdateGameObjectLerp(x, yellowBar, 1, LerpTime, LerpHealthBar, _ => { }).AddTo(this)
-                    ).AddTo(this)
+            if (characterProt)
+            {
+                _characterControl.currentStats.prot.AsObservable().Subscribe(x =>
+                    characterProt.text = x.ToString(CultureInfo.InvariantCulture) + "%"
                 ).AddTo(this);
             }
 
@@ -51,13 +56,13 @@ namespace UI {
             }
         }
 
-        private static void LerpHealthBar(Pair<float> pair, GameObject go, ref float curLerpTime, float speed, float lerpTime, ref float t) {
-            float f = Mathf.Lerp(pair.Previous, pair.Current, t / LerpTime);
-            go.GetComponent<Image>().fillAmount = f / 100f;
-            curLerpTime += speed * Time.deltaTime;
-            t = curLerpTime / LerpTime;
-            t = Mathf.Sin(t * Mathf.PI * 0.5f);
-        }
+        // private static void LerpHealthBar(Pair<float> pair, GameObject go, ref float curLerpTime, float speed, float lerpTime, ref float t) {
+        //     float f = Mathf.Lerp(pair.Previous, pair.Current, t / LerpTime);
+        //     go.GetComponent<Image>().fillAmount = f / 100f;
+        //     curLerpTime += speed * Time.deltaTime;
+        //     t = curLerpTime / LerpTime;
+        //     t = Mathf.Sin(t * Mathf.PI * 0.5f);
+        // }
 
         // private void UpdateBar(Pair<float> values, GameObject bar, int speed, Action<Pair<float>> update) {
         //     float t = 0f, currentLerpTime = 0f;

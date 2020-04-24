@@ -23,7 +23,6 @@ namespace Music {
                     .OnTriggerExitAsObservable()
                     .Where(c => c.gameObject.CompareTag("Note"))
                     .Subscribe(c => {
-                        
                         //Debug.Log("missed");
                         TweenSequenceWithDelay(
                             InputImages[_currentNote.note - 1].DOColor(Color.red, 0.2f),
