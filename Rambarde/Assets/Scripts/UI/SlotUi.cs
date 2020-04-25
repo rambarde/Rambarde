@@ -24,10 +24,17 @@ namespace UI
         public void Init(CharacterControl characterControl)
         {
             _characterControl = characterControl;
+
+            TextMeshProUGUI descText = null;
+            TextMeshProUGUI propsText = null;
+            Image imageIcon = null;
             
-            TextMeshProUGUI descText = tooltip.transform.Find("Desc").GetComponent<TextMeshProUGUI>();
-            TextMeshProUGUI propsText = tooltip.transform.Find("Props").GetComponent<TextMeshProUGUI>();
-            Image imageIcon = tooltip.transform.Find("Icon").GetComponent<Image>();
+            if (tooltip != null)
+            {
+                descText = tooltip.transform.Find("Desc").GetComponent<TextMeshProUGUI>();
+                propsText = tooltip.transform.Find("Props").GetComponent<TextMeshProUGUI>();
+                imageIcon = tooltip.transform.Find("Icon").GetComponent<Image>();
+            }
 
             _skills = _characterControl.skillSlot;
             for (int i = 0; i < _skills.Count; i++)
