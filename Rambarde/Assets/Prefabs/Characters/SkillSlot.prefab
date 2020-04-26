@@ -917,7 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
-  offset: 55
+  offset: 48
   slotIconPositions:
   - {fileID: 7698310239363806994}
   - {fileID: 3188317418130864616}

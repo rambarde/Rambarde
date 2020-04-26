@@ -57,7 +57,7 @@ namespace UI
             }
             
             _characterControl.slotAction
-            .Where(slotAction => slotAction.Action is SlotAction.ActionType.Increment)
+            .Where(slotAction => slotAction.Action is SlotAction.ActionType.Decrement)
             .Subscribe(async next =>
             {
                 Sequence sequence = DOTween.Sequence();
@@ -66,9 +66,9 @@ namespace UI
                 sequence.Append(indicator.DOLocalRotate(new Vector3(0, 0, 0), speed)
                     .SetEase(Ease.OutElastic));
                 
-                Vector2 lastPos = slotIconPositions[0].anchoredPosition;
-                slotIconPositions[slotIconPositions.Count - 1].anchoredPosition = lastPos;
-                for (int i = 1; i < slotIconPositions.Count; i++)
+                Vector2 firstPos = slotIconPositions[0].anchoredPosition;
+                slotIconPositions[slotIconPositions.Count - 1].anchoredPosition = firstPos;
+                for (int i = 0; i < slotIconPositions.Count - 1; i++)
                     sequence.Insert(0,
                         slotIconPositions[i]
                             .DOAnchorPos(
@@ -89,7 +89,7 @@ namespace UI
             }).AddTo(this);
         
         _characterControl.slotAction
-            .Where(slotAction => slotAction.Action == SlotAction.ActionType.Decrement)
+            .Where(slotAction => slotAction.Action == SlotAction.ActionType.Increment)
             .Subscribe(async next =>
             {
                 Sequence sequence = DOTween.Sequence();
@@ -100,7 +100,7 @@ namespace UI
                 
                 Vector2 lastPos = slotIconPositions[slotIconPositions.Count - 1].anchoredPosition;
                 slotIconPositions[0].anchoredPosition = lastPos;
-                for (int i = 0; i < slotIconPositions.Count - 1; i++)
+                for (int i = 1; i < slotIconPositions.Count; i++)
                     sequence.Insert(0,
                         slotIconPositions[i]
                             .DOAnchorPos(
