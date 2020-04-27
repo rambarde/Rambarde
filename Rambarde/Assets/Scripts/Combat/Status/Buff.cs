@@ -41,7 +41,6 @@ namespace Status {
             switch (_modifier) {
                 case 1:
                     _modifiedValue = 1.3f;
-
                     break;
                 case 2:
                     _modifiedValue = 1.4f;
@@ -69,7 +68,7 @@ namespace Status {
                     target.currentStats.atq *= _modifiedValue;
                     break;
                 case BuffType.Protection :
-                    target.currentStats.prot *= _modifiedValue;
+                    target.currentStats.prot.Value *= _modifiedValue;
                     break;
                 case BuffType.Critical :
                     target.currentStats.crit *= _modifiedValue;
@@ -88,7 +87,7 @@ namespace Status {
                     target.currentStats.atq /= _modifiedValue;
                     break;
                 case BuffType.Protection :
-                    target.currentStats.prot /= _modifiedValue;
+                    target.currentStats.prot.Value /= _modifiedValue;
                     break;
                 case BuffType.Critical :
                     target.currentStats.crit /= _modifiedValue;

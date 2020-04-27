@@ -144,18 +144,18 @@ public class CombatManager : MonoBehaviour {
 
         int i = 0;
         foreach (Transform t in playerTeamGo.transform) {
-            await SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
+            SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
             ++i;
         }
 
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
-            await SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
+            SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
             ++i;
         }
     }
 
-    private async Task SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {
+    private async void SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {
         string charPrefabName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterPrefab" : "EnemyCharacterPrefab";
         string charPrefabUiName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterUI" : "EnemyCharacterUI";
 

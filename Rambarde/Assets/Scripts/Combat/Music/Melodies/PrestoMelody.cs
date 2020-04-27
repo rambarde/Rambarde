@@ -6,12 +6,12 @@ namespace Melodies {
      [CreateAssetMenu(fileName = "PrestoMelody", menuName = "Melody/Presto")]
      public class PrestoMelody : Melody {
          protected override async Task ExecuteOnTarget(CharacterControl t) {
-             if (target == null) {
+             if (t == null) {
                  Debug.Log("Tried to execute a " + targetMode + " melody with no target");
                  return;
              }
 
-             await target.IncrementSkillsSlot();
+             await t.IncrementSkillsSlot();
          }
      }
  }
