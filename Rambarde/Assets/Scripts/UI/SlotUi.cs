@@ -35,6 +35,19 @@ namespace UI
                 #region CHANGE_NICO_TOOLTIP_PART1
                 Sprite skillIcon = _skills[i].sprite;
                 string skillDesc = _skills[i].description;
+                float dmg;
+                if (skillDesc.Contains("X"))
+                {
+                    foreach (var action in _skills[i].actions)
+                    {
+                        if (action.actionType == SkillActionType.Attack)
+                        {
+                            dmg = action.value * 0.01f * _characterControl.currentStats.atq;
+                            skillDesc = skillDesc.Replace("X", Mathf.Ceil(dmg).ToString());
+                            break;
+                        }
+                    }
+                }
 
                 slotIconPositions[i].GetComponent<Image>().sprite = skillIcon;
                 #endregion

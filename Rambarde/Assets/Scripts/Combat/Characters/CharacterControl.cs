@@ -121,7 +121,10 @@ namespace Characters {
             skillWheel = temp;
 
             UpdateStats();
-            currentStats.hp = new ReactiveProperty<float>(currentStats.maxHp);
+            if(team == Team.PlayerTeam)
+                currentStats.hp = new ReactiveProperty<float>(GameManager.curentHPClients[clientNumber]);
+            else
+                currentStats.hp = new ReactiveProperty<float>(currentStats.maxHp);
 
             slotAction = new Subject<SlotAction>();
             statusEffects = new ReactiveCollection<StatusEffect>();

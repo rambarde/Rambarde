@@ -14,7 +14,8 @@ public enum CombatPhase {
     SelectMelodies,
     RhythmGame,
     ExecMelodies,
-    TurnFight
+    TurnFight,
+    ResolveFight
 }
 
 public class CombatManager : MonoBehaviour {
@@ -42,6 +43,9 @@ public class CombatManager : MonoBehaviour {
         bard.Reset();
         combatPhase.Value = CombatPhase.TurnFight;
         await ResolveTurnFight();
+        combatPhase.Value = CombatPhase.ResolveFight;
+        await ResolveFight();
+
         combatPhase.Value = CombatPhase.SelectMelodies;
     }
 
@@ -101,16 +105,41 @@ public class CombatManager : MonoBehaviour {
             Debug.Log(c);
         }
 
-        if (teams[charTeam].Count == 0) {
+        //if (teams[charTeam].Count == 0) {
+        //    GetComponent<GameManager>().ChangeCombat();
+        //    if (!GameManager.QuestState) {
+        //        GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
+        //        GetComponent<GameManager>().ChangeScene(2);
+        //    } else {
+        //        int gold = GetComponent<GameManager>().CalculateGold();
+        //        GameManager.CurrentInspiration = 0;                                 //reset inspiration
+        //        GetComponent<GameManager>().ChangeScene(0);
+        //    }
+        //}
+    }
+
+    private async Task ResolveFight()
+    {
+        if (teams[1].Count == 0)        //no more enemies
+        {
             GetComponent<GameManager>().ChangeCombat();
-            if (!GameManager.QuestState) {
+            if (!GameManager.QuestState)
+            {
                 GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
                 GetComponent<GameManager>().ChangeScene(2);
-            } else {
+            }
+            else
+            {
                 int gold = GetComponent<GameManager>().CalculateGold();
                 GameManager.CurrentInspiration = 0;                                 //reset inspiration
                 GetComponent<GameManager>().ChangeScene(0);
             }
+        }
+
+        if (teams[0].Count == 0)        //no more clients
+        {
+            Debug.Log("All my friends are dead, push me to the edge");
+            GetComponent<GameManager>().ChangeScene(0);
         }
     }
 
@@ -170,8 +199,10 @@ public class CombatManager : MonoBehaviour {
 
         // Init the character control
         CharacterControl character = characterGameObject.GetComponent<CharacterControl>();
-        await character.Init(team[i].Character, team[i].SkillWheel);
         character.team = charTeam;
+        if (charTeam == Team.PlayerTeam)
+            character.clientNumber = i;
+        await character.Init(team[i].Character, team[i].SkillWheel);
         teams[(int) charTeam].Add(character);
 
         // instantiate the UI on the canvas

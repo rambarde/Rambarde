@@ -19,12 +19,12 @@ MonoBehaviour:
     effectType: 0
     buffType: 0
     value: 15
-  - actionType: 3
+  - actionType: 4
     targetMode: 0
     effectType: 0
     buffType: 1
     value: 1
-  - actionType: 3
+  - actionType: 4
     targetMode: 0
     effectType: 0
     buffType: 3
