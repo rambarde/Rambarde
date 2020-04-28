@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf4e453c28147a448824739454c3bf9e, type: 3}
   m_Name: Cadence_martiale
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 1-1-122-1-1-221-
   targetMode: 2
   tier: 3
   effect: Augmente fortement l'Attaque.

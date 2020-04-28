@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4876a386ca1cbf947ba1659018740d2a, type: 3}
   m_Name: Ritournelle_decourageante
   m_EditorClassIdentifier: 
-  data: 3--2-33--2--1--1--1--1--
+  data: 1-1-1-1-
   targetMode: 3
   tier: 3
   effect: "Diminue mod\xE9r\xE9ment l'Attaque."

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea73731dd5b22ee4baaf412c4951d59a, type: 3}
   m_Name: Air_perturbant
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 3--2-33--2--1--1--1--1--
   targetMode: 3
   tier: 3
   effect: "Inflige <color=blue>D\xE9stabilis\xE9</color> pour 3 tours."
