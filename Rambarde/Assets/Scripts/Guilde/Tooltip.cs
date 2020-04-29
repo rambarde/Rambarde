@@ -3,6 +3,8 @@ using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Melodies;
+using Bard;
 
 
 public class Tooltip : MonoBehaviour
@@ -39,28 +41,25 @@ public class Tooltip : MonoBehaviour
         {
             if (TooltipObject.GetComponent<MelodyBehaviour>() != null) 
             {
-                Melodies.Melody melody = TooltipObject.GetComponent<MelodyBehaviour>().melody;
+                Melody melody = TooltipObject.GetComponent<MelodyBehaviour>().melody;
 
                 Name.GetComponent<Text>().text = Utils.SplitPascalCase(melody.name);
                 effect.GetComponent<Text>().text = melody.effect;
                 inspiration.GetComponent<Text>().text = stringInspiration(melody);
                 trance.GetComponent<Text>().text = stringTrance(melody);
-                type.GetComponent<Text>().text = "Tier " + melody.tier;         //add trance melody possibility
+                type.GetComponent<Text>().text = stringTier("melody");         //add trance melody possibility
 
                 inspiration.SetActive(true);
                 trance.SetActive(true);
-                type.SetActive(true);
             }
 
             if (TooltipObject.GetComponent<InstrumentBehaviour>() != null)
             {
-                Bard.Instrument instrument = TooltipObject.GetComponent<InstrumentBehaviour>().instrument;
+                Instrument instrument = TooltipObject.GetComponent<InstrumentBehaviour>().instrument;
 
                 Name.GetComponent<Text>().text = Utils.SplitPascalCase(instrument.name);
                 effect.GetComponent<Text>().text = instrument.passif;
                 type.GetComponent<Text>().text = instrument.type;
-
-                type.SetActive(true);
             }
 
             if (TooltipObject.GetComponent<SkillBehaviour>() != null)
@@ -69,10 +68,12 @@ public class Tooltip : MonoBehaviour
 
                 Name.GetComponent<Text>().text = Utils.SplitPascalCase(skill.name);
                 effect.GetComponent<Text>().text = skill.description;
+                type.GetComponent<Text>().text = stringTier("skill");
             }
 
             Name.SetActive(true);
             effect.SetActive(true);
+            type.SetActive(true);
             transform.GetChild(0).gameObject.SetActive(true);
         }
         else
@@ -86,7 +87,7 @@ public class Tooltip : MonoBehaviour
         }
     }
 
-    string stringInspiration(Melodies.Melody melody)
+    string stringInspiration(Melody melody)
     {
         int inspi = melody.inspirationValue;
         string s_inspi;
@@ -98,7 +99,7 @@ public class Tooltip : MonoBehaviour
         return s_inspi;
     }
 
-    string stringTrance(Melodies.Melody melody)
+    string stringTrance(Melody melody)
     {
         int trance = melody.tranceValue;
         string s_trance;
@@ -108,6 +109,34 @@ public class Tooltip : MonoBehaviour
             s_trance = baseCosts + -trance + " de transe";
 
         return s_trance;
+    }
+
+    string stringTier(string type)
+    {
+        int tier = 0;
+        string s_tier = "";
+        switch (type)
+        {
+            case "melody":
+                tier = TooltipObject.GetComponent<MelodyBehaviour>().melody.tier;
+                break;
+            case "skill":
+                tier = TooltipObject.GetComponent<SkillBehaviour>().skill.tier;
+                break;
+        }
+        switch (tier)
+        {
+            case 1:
+                s_tier = "Bronze";
+                break;
+            case 2:
+                s_tier = "Argent";
+                break;
+            case 3:
+                s_tier = "Or";
+                break;
+        }
+        return s_tier;
     }
 
     public void setObject(GameObject _object) { this.TooltipObject = _object; }

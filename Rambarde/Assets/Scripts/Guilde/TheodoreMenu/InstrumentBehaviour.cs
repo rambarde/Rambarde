@@ -80,7 +80,7 @@ public class InstrumentBehaviour :
         }
         
         if (instrument != null && IsClickable)
-            for (int i= 0;i < melodiesInstrument.Length; i++)
+            for (int i= 0; i < melodiesInstrument.Length; i++)
             {
                 Melodies.Melody melody = instrument.melodies[i];
                 melodiesInstrument[i].GetComponent<MelodyBehaviour>().melody = melody;
