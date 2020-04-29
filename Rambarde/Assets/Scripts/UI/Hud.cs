@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Bard;
 using Characters;
+using DG.Tweening;
 using Melodies;
 using Status;
 using TMPro;
@@ -14,7 +15,7 @@ using UnityEngine.UI;
 public class Hud : MonoBehaviour {
     public List<RectTransform> instPanels;
     public RectTransform actionPanel;
-    public RectTransform inspiJauge;
+    public Image inspiJauge;
 
     public GameObject melodyMenu;
     public GameObject musicMenu;
@@ -51,7 +52,9 @@ public class Hud : MonoBehaviour {
             }
         });
         
-        GameObject buttonPrefab = await Utils.LoadResource<GameObject>("Button");
+        GameObject t1ButtonPrefab = await Utils.LoadResource<GameObject>("MelodyButtonT1");
+        GameObject t2ButtonPrefab = await Utils.LoadResource<GameObject>("MelodyButtonT2");
+        GameObject t3ButtonPrefab = await Utils.LoadResource<GameObject>("MelodyButtonT3");
         GameObject separatorPrefab = await Utils.LoadResource<GameObject>("Separator");
 
         for (int i = 0; i < bard.instruments.Count; ++i) {
@@ -65,61 +68,87 @@ public class Hud : MonoBehaviour {
                     Instantiate(separatorPrefab, panel);
                     currentTier = melody.tier;
                 }
-                
-                GameObject buttonGo = Instantiate(buttonPrefab, panel);
-                Button button = buttonGo.GetComponent<Button>();
-                TextMeshProUGUI label = buttonGo.GetComponentInChildren<TextMeshProUGUI>();
-                label.text = Utils.SplitPascalCase(melody.name);
-                buttonGo.GetComponent<Image>().sprite = melody.sprite;
-                button.OnClickAsObservable()
-                    .Subscribe(_ => {
-                        List<IDisposable> subscriptions = new List<IDisposable>();
-                        switch (melody.targetMode) {
-                            case MelodyTargetMode.EveryAlly :
-                            case MelodyTargetMode.EveryEnemy :
-                            case MelodyTargetMode.Everyone :
-                                bard.SelectMelody(melody);
-                                break;
-                            
-                            case MelodyTargetMode.OneAlly :
-                                foreach (CharacterControl character
-                                    in CombatManager.Instance.teams[0].Where(c => ! c.HasEffect(EffectType.Deaf))) {
-                                    character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
-                                    AddSubscription(subscriptions, bard, character, melody);
-                                }
-                                break;
-                            
-                            case MelodyTargetMode.OneEnemy :
-                                foreach (CharacterControl character
-                                    in CombatManager.Instance.teams[1].Where(c => ! c.HasEffect(EffectType.Deaf))) {
-                                    character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
-                                    AddSubscription(subscriptions, bard, character, melody);
-                                }
-                                break;
-                            
-                            case MelodyTargetMode.Anyone :
-                                foreach (CharacterControl character
-                                    in CombatManager.Instance.teams.SelectMany(team => team)
-                                        .Where(c => ! c.HasEffect(EffectType.Deaf))) {
-                                    
-                                    character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
-                                    AddSubscription(subscriptions, bard, character, melody);
-                                }
-                                break;
-                            
-                            default:
-                                Debug.Log("Warning : Melody ["+ melody.name+"] " +
-                                          "has no known targetMode ("+ melody.targetMode +")");
-                                break;
-                        }
-                    })
-                    .AddTo(button);
 
-                melody.isPlayable.Subscribe(x => { button.interactable = x; }).AddTo(button);
+                GameObject buttonGo = null;
                 
-                button.OnPointerEnterAsObservable()
-                    .Subscribe(_ => { })
-                    .AddTo(button);
+                switch (currentTier)
+                {
+                    case 1:
+                        buttonGo = Instantiate(t1ButtonPrefab, panel);
+                        break;
+                    case 2:
+                        buttonGo = Instantiate(t2ButtonPrefab, panel);
+                        break;
+                    case 3:
+                        buttonGo = Instantiate(t3ButtonPrefab, panel);
+                        break;
+                }
+
+                if (buttonGo != null)
+                {
+                    Button button = buttonGo.GetComponent<Button>();
+                    Image image = buttonGo.transform.Find("Image").GetComponent<Image>();
+                    TextMeshProUGUI label = buttonGo.GetComponentInChildren<TextMeshProUGUI>();
+                    label.text = Utils.SplitPascalCase(melody.name);
+                    image.sprite = melody.sprite;
+                    button.OnClickAsObservable()
+                        .Subscribe(_ => {
+                            List<IDisposable> subscriptions = new List<IDisposable>();
+                            switch (melody.targetMode) {
+                                case MelodyTargetMode.EveryAlly :
+                                case MelodyTargetMode.EveryEnemy :
+                                case MelodyTargetMode.Everyone :
+                                    bard.SelectMelody(melody);
+                                    break;
+                            
+                                case MelodyTargetMode.OneAlly :
+                                    foreach (CharacterControl character
+                                        in CombatManager.Instance.teams[0].Where(c => ! c.HasEffect(EffectType.Deaf))) {
+                                        character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
+                                        AddSubscription(subscriptions, bard, character, melody);
+                                    }
+                                    break;
+                            
+                                case MelodyTargetMode.OneEnemy :
+                                    foreach (CharacterControl character
+                                        in CombatManager.Instance.teams[1].Where(c => ! c.HasEffect(EffectType.Deaf))) {
+                                        character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
+                                        AddSubscription(subscriptions, bard, character, melody);
+                                    }
+                                    break;
+                            
+                                case MelodyTargetMode.Anyone :
+                                    foreach (CharacterControl character
+                                        in CombatManager.Instance.teams.SelectMany(team => team)
+                                            .Where(c => ! c.HasEffect(EffectType.Deaf))) {
+                                    
+                                        character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
+                                        AddSubscription(subscriptions, bard, character, melody);
+                                    }
+                                    break;
+                            
+                                default:
+                                    Debug.Log("Warning : Melody ["+ melody.name+"] " +
+                                              "has no known targetMode ("+ melody.targetMode +")");
+                                    break;
+                            }
+                        })
+                        .AddTo(button);
+
+                    melody.isPlayable.Subscribe(playable =>
+                    {
+                        button.interactable = playable;
+                        SpriteRenderer spriteRenderer = button.GetComponent<SpriteRenderer>();
+                        if (playable)
+                        {
+                            
+                        }
+                    }).AddTo(button);
+                
+                    button.OnPointerEnterAsObservable()
+                        .Subscribe(_ => { })
+                        .AddTo(button);
+                }
             }
 
             bard.actionPoints.Subscribe(p => {
@@ -134,8 +163,9 @@ public class Hud : MonoBehaviour {
                 }
             });
 
-            bard.inspiration.current.Subscribe(inspi => {
-                inspiJauge.localScale = new Vector3(1, inspi / (float) bard.inspiration.maximumValue, 1);
+            bard.inspiration.current.Subscribe(inspi =>
+            {
+                inspiJauge.DOFillAmount(inspi / (float) bard.inspiration.maximumValue, .5f);
             });
         }
     }

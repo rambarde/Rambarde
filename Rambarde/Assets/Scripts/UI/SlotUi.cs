@@ -16,7 +16,7 @@ namespace UI
         [SerializeField] private float offset;
         [SerializeField] private List<RectTransform> slotIconPositions = new List<RectTransform>();
         [SerializeField] private RectTransform indicator;
-        [SerializeField] private GameObject tooltip;
+        [SerializeField] private CanvasGroup tooltip;
         private List<Skill> _skills;
 
         private CharacterControl _characterControl; 
@@ -24,10 +24,17 @@ namespace UI
         public void Init(CharacterControl characterControl)
         {
             _characterControl = characterControl;
+
+            TextMeshProUGUI descText = null;
+            TextMeshProUGUI propsText = null;
+            Image imageIcon = null;
             
-            TextMeshProUGUI descText = tooltip.transform.Find("Desc").GetComponent<TextMeshProUGUI>();
-            TextMeshProUGUI propsText = tooltip.transform.Find("Props").GetComponent<TextMeshProUGUI>();
-            Image imageIcon = tooltip.transform.Find("Icon").GetComponent<Image>();
+            if (tooltip != null)
+            {
+                descText = tooltip.transform.Find("Desc").GetComponent<TextMeshProUGUI>();
+                propsText = tooltip.transform.Find("Props").GetComponent<TextMeshProUGUI>();
+                imageIcon = tooltip.transform.Find("Icon").GetComponent<Image>();
+            }
 
             _skills = _characterControl.skillSlot;
             for (int i = 0; i < _skills.Count; i++)
@@ -39,19 +46,18 @@ namespace UI
                         //update tooltip ui
                         
                         // show tooltip ui
-                        
-                        tooltip.SetActive(true);
+                        tooltip.DOFade(1, .5f);
                     });
                 slotIconPositions[i].GetComponent<Image>().OnPointerExitAsObservable()
                     .Subscribe(_ =>
                     {
                         // hide tooltip ui 
-                        tooltip.SetActive(false);
+                        tooltip.DOFade(0, .5f);
                     });
             }
             
             _characterControl.slotAction
-            .Where(slotAction => slotAction.Action is SlotAction.ActionType.Increment)
+            .Where(slotAction => slotAction.Action is SlotAction.ActionType.Decrement)
             .Subscribe(async next =>
             {
                 Sequence sequence = DOTween.Sequence();
@@ -60,9 +66,9 @@ namespace UI
                 sequence.Append(indicator.DOLocalRotate(new Vector3(0, 0, 0), speed)
                     .SetEase(Ease.OutElastic));
                 
-                Vector2 lastPos = slotIconPositions[0].anchoredPosition;
-                slotIconPositions[slotIconPositions.Count - 1].anchoredPosition = lastPos;
-                for (int i = 1; i < slotIconPositions.Count; i++)
+                Vector2 firstPos = slotIconPositions[0].anchoredPosition;
+                slotIconPositions[slotIconPositions.Count - 1].anchoredPosition = firstPos;
+                for (int i = 0; i < slotIconPositions.Count - 1; i++)
                     sequence.Insert(0,
                         slotIconPositions[i]
                             .DOAnchorPos(
@@ -83,7 +89,7 @@ namespace UI
             }).AddTo(this);
         
         _characterControl.slotAction
-            .Where(slotAction => slotAction.Action == SlotAction.ActionType.Decrement)
+            .Where(slotAction => slotAction.Action == SlotAction.ActionType.Increment)
             .Subscribe(async next =>
             {
                 Sequence sequence = DOTween.Sequence();
@@ -94,7 +100,7 @@ namespace UI
                 
                 Vector2 lastPos = slotIconPositions[slotIconPositions.Count - 1].anchoredPosition;
                 slotIconPositions[0].anchoredPosition = lastPos;
-                for (int i = 0; i < slotIconPositions.Count - 1; i++)
+                for (int i = 1; i < slotIconPositions.Count; i++)
                     sequence.Insert(0,
                         slotIconPositions[i]
                             .DOAnchorPos(
