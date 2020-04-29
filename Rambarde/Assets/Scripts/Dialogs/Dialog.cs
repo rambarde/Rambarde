@@ -100,8 +100,7 @@ public class Dialog : ScriptableObject
             case "OrcChief" :
                 return CharacterType.OrcsLeader;
             default:
-                Debug.Log("Warning : Unkown dialog character control");
-                return CharacterType.None;
+                return CharacterType.Client;
         }
     }
 }

@@ -35,14 +35,14 @@ public class DialogManager : MonoBehaviour
         closedList = new List<string>();
         foreach (var character in characters)
         {
-            Dialog dialog = await Utils.LoadResource<Dialog>("ScriptableObjects/Dialogs/" + character.ToString());
+            Dialog dialog = await Utils.LoadResource<Dialog>("ScriptableObjects/Dialogs/" + character);
             dialogs.Add(character, dialog.GetPhrases());
         }
     }
     
     bool IsDialogAvailable()
     {
-        return Random.Range(0, 1) <= dialogAppearRate;
+        return Random.Range(0.0f, 1f) <= dialogAppearRate;
     }
     
     private Quote GetDialogQuote(DialogFilter filter, CharacterType actionExecutor, CharacterType actionReceiver)
@@ -193,6 +193,9 @@ public class DialogManager : MonoBehaviour
 
     private IEnumerable<Quote> GetFilteredCharacterQuotes(DialogFilter filter, CharacterType character)
     {
+        if (!dialogs.ContainsKey(character)) {
+            Debug.Log("Warning : tried to get quotes from unkown character type : " + character);
+        }
         foreach (var dialogPhrase in dialogs[character])
             if (dialogPhrase.filter == filter)
                 yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
@@ -205,7 +208,7 @@ public class DialogManager : MonoBehaviour
         Quote quote = GetDialogQuote(filter, actionExecutor, actionReceiver);
         dialogText.text = quote.phrase;
         dialogText.maxVisibleCharacters = 0;
-        dialogImage = await Utils.LoadResource<Image>(quote.character.ToString());
+        dialogImage = await Utils.LoadResource<Image>("" + quote.character.ToString());
         dialogCanvas.DOFade(1, .5f).SetEase(Ease.InOutCubic);
         await Utils.AwaitObservable(
             Observable.Timer(TimeSpan.FromMilliseconds(textSpeed))

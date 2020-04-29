@@ -64,6 +64,10 @@ namespace Skills {
 
                 switch (action.actionType) {
                     case SkillActionType.Attack :
+                        await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Atq,
+                            Dialog.GetCharacterTypeFromCharacterControl(s),
+                            CharacterType.None);
+                        
                         targets.ForEach(async t => await t.TakeDamage(action.value / 100f * s.currentStats.atq));
                         break;
                     case SkillActionType.Heal :

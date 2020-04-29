@@ -9,6 +9,8 @@ using Status;
 using UI;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public enum CombatPhase {
     SelectMelodies,
@@ -24,10 +26,11 @@ public class CombatManager : MonoBehaviour {
     public RectTransform playerTeamUiContainer;
     public RectTransform enemyTeamUiContainer;
     public ReactiveProperty<CombatPhase> combatPhase = new ReactiveProperty<CombatPhase>(CombatPhase.SelectMelodies);
+    public DialogManager dialogManager;
     
     private List<CharacterBase> clientsMenu;
     private List<CharacterBase> currentMonsters;
-    private DialogManager _dialogManager;
+    
 
     [Header("Combat Testing Only")]
     [SerializeField] public bool ignoreGameManager = false;
@@ -77,6 +80,8 @@ public class CombatManager : MonoBehaviour {
             l.SetActive(false);
         }
 
+        
+        //TODO check if fight is not over between each skill
         // Execute all character skills
         foreach (CharacterControl character in characters) {
             if (character == null) continue;
@@ -143,31 +148,40 @@ public class CombatManager : MonoBehaviour {
 
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
 
+        //Task[] setupTasks = new Task[6];
         int i = 0;
         foreach (Transform t in playerTeamGo.transform) {
-            await SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
+            /*setupTasks[i] = */await SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
             ++i;
         }
 
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
-            await SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
+            /*setupTasks[i+3] = */await SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
             ++i;
         }
 
+        //Task.WaitAll(setupTasks);
+
         //dialogs
-        _dialogManager = GetComponent<DialogManager>();
+        dialogManager = GetComponent<DialogManager>();
         List<CharacterType> characterTypes =
             teams[(int) Team.EmemyTeam].Select(Dialog.GetCharacterTypeFromCharacterControl).ToList();
-
         characterTypes.Add(CharacterType.Client);
         characterTypes.Add(CharacterType.Bard);
         string types = "";
-        characterTypes.ForEach(c => types += " "+c);
-        Debug.Log("Init dialogManager with character :" + types);
-        await _dialogManager.Init(characterTypes);
-        await _dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Client,
+        characterTypes.ForEach(c => types += " " + c);
+        Debug.Log("Init Dialog Manager   :  " + types);
+        await dialogManager.Init(characterTypes);
+        
+        /*await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Bard,
             CharacterType.None);
+        await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Client,
+            CharacterType.None);*/
+        await dialogManager.ShowDialog(DialogFilter.CombatStart,
+            Dialog.GetCharacterTypeFromCharacterControl(teams[(int) Team.EmemyTeam][Random.Range(0, 3)]),
+            CharacterType.None);
+
     }
 
     private async Task SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {
