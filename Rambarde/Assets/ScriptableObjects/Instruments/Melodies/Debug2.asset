@@ -19,5 +19,5 @@ MonoBehaviour:
   inspirationValue: -3
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 74b5e64aec3b4514fa6402ed58913d47, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}
+  clip: {fileID: 8300000, guid: 6fad342ab91543e44bb6976524cc6608, type: 3}
   message: Debug2!!!

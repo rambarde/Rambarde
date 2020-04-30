@@ -19,4 +19,4 @@ MonoBehaviour:
   inspirationValue: 10
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 7bd9b31948fb9df4183a9374710b4b22, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}
+  clip: {fileID: 8300000, guid: 6123b4f0d7fe0f74a9e909cbbf39d80f, type: 3}

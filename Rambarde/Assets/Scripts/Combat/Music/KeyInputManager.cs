@@ -63,10 +63,10 @@ namespace Music {
         {
             MusicManager.Instance.PlayBuzz();
             Debug.Log("boooooooooh");
-            TweenSequenceWithDelay(
-                InputImages[x - 1].DOColor(Color.red, 0.2f),
-                InputImages[x - 1].DOColor(Color.white, 0.2f),
-                0.3f);
+            //TweenSequenceWithDelay(
+            //    InputImages[x - 1].DOColor(Color.red, 0.2f),
+            //    InputImages[x - 1].DOColor(Color.white, 0.2f),
+            //    0.3f);
         }
 
         private static int GetInput() {

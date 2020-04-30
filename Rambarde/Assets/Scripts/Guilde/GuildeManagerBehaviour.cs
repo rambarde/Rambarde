@@ -53,6 +53,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
             menuAlreadyActive = true;
             switchMenuPanel.SetActive(true);
         }
+        MusicManager.Instance?.PlaySfx(MusicManager.Instance?.buzzClip, Vector3.zero);
     }
 
     public void CloseMenu()
@@ -61,9 +62,11 @@ public class GuildeManagerBehaviour : MonoBehaviour
         {
             menu.SetActive(false);
         }
-
+        
         menuAlreadyActive = false;
         switchMenuPanel.SetActive(false);
+
+        MusicManager.Instance?.PlaySfx(MusicManager.Instance?.buzzClip,Vector3.zero);
     }
 
     public void SetClients(List<Client> clients)
@@ -89,6 +92,8 @@ public class GuildeManagerBehaviour : MonoBehaviour
         //GameManager.quest = quest;
         signQuest.SetActive(false);
         menuValid[1] = true;
+
+        MusicManager.Instance?.PlaySfx(MusicManager.Instance?.buzzClip, Vector3.zero);
     }
 
     public void SetTheodore(Melodies.Melody[] melodies, List<Bard.Instrument> instruments)
@@ -100,6 +105,8 @@ public class GuildeManagerBehaviour : MonoBehaviour
         this.instruments = instruments;
         menuValid[2] = true;
         signTheodore.SetActive(false);
+
+        MusicManager.Instance?.PlaySfx(MusicManager.Instance?.buzzClip, Vector3.zero);
     }
 
     public void resetClients() 

@@ -37,14 +37,20 @@ public class MusicManager : MonoBehaviour
     public void PlayBuzz()
     {
         melodySource.volume = 0;
+        
         SFXSource.PlayOneShot(buzzClip, 1);
         melodySource.DOFade(1, buzzClip.length);
     }
 
-    internal async Task PlayMelodies(ReactiveCollection<Melody> selectedMelodies)
+    public void PlaySfx(AudioClip clip,Vector3 position)
+    {
+        AudioSource.PlayClipAtPoint(clip, position);
+    }
+
+    internal async Task PlayMelodies(ReactiveCollection<Melody> selectedMelodies, double delay)
     {
         Debug.Log("play melodies");
-        await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(4)));
+        await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(delay)));
         foreach (var melody in selectedMelodies)
         {
            //Debug.Log(melody.clip.name ?? "default");
