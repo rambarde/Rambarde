@@ -66,14 +66,18 @@ public class InstrumentShop : MonoBehaviour
     {
         selectedInstrumentID = instrumentID;
 
-        InfoPanel.transform.GetChild(0).GetComponent<Image>().sprite = instruments[selectedInstrumentID].sprite;
-        InfoPanel.transform.GetChild(1).GetComponent<Text>().text = Utils.SplitPascalCase(instruments[selectedInstrumentID].name);
-        InfoPanel.transform.GetChild(2).GetComponent<Text>().text = instruments[selectedInstrumentID].price.ToString() + "G";
-        InfoPanel.transform.GetChild(3).GetComponent<Text>().text = instruments[selectedInstrumentID].passif;
+        InfoPanel.transform.GetChild(0).GetComponent<Image>().sprite = instruments[selectedInstrumentID].sprite;                    // instrument Icon
+        InfoPanel.transform.GetChild(1).GetComponent<Text>().text = Utils.SplitPascalCase(instruments[selectedInstrumentID].name);  //intrument Name
+        InfoPanel.transform.GetChild(2).GetComponent<Text>().text = instruments[selectedInstrumentID].price.ToString() + "G";       // instrument Price
+        InfoPanel.transform.GetChild(3).GetComponent<Text>().text = instruments[selectedInstrumentID].passif;                       // instrument description
+        InfoPanel.transform.GetChild(3).GetComponent<StatusDetector>().resetStatusList();
+        InfoPanel.transform.GetChild(3).GetComponent<StatusDetector>().detectStatus();
 
         for(int i = 0; i<instruments[selectedInstrumentID].melodies.Length; i++)
         {
             InfoPanel.transform.GetChild(4).GetChild(i).GetComponent<Text>().text = Utils.SplitPascalCase(instruments[selectedInstrumentID].melodies[i].name) + " : " + instruments[selectedInstrumentID].melodies[i].effect;
+            InfoPanel.transform.GetChild(4).GetChild(i).GetComponent<StatusDetector>().resetStatusList();
+            InfoPanel.transform.GetChild(4).GetChild(i).GetComponent<StatusDetector>().detectStatus();
         }
 
         purchaseButton.GetComponent<Button>().interactable = true;

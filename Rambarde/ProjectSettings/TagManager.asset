@@ -27,6 +27,7 @@ TagManager:
   - SelectButton
   - WEAPON
   - ARMOR
+  - statusWindow
   layers:
   - Default
   - TransparentFX
