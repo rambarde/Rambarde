@@ -20,6 +20,8 @@ namespace Skills {
 
         private CharacterControl _randEnemy;
         private CharacterControl _randAlly;
+        private CharacterControl _forcedTarget;
+        private bool _hasForcedTarget = false;
 
         public async Task Execute(CharacterControl s) {
             _randAlly = RandomTargetInTeam(s.team);
@@ -61,6 +63,11 @@ namespace Skills {
                         Debug.LogError("Tried to execute melody with unknown targetMode [" + action.targetMode + "]");
                         break;
                 }
+                
+                if (_hasForcedTarget) {
+                    targets.Clear();
+                    targets.Add(_forcedTarget);
+                }
 
                 switch (action.actionType) {
                     case SkillActionType.Attack :
@@ -96,6 +103,14 @@ namespace Skills {
                         break;
                 }
             }
+
+            _hasForcedTarget = false;
+            _forcedTarget = null;
+        }
+
+        public void ForceTarget(CharacterControl target) {
+            _forcedTarget = target;
+            _hasForcedTarget = true;
         }
 
         private CharacterControl RandomTargetInTeam(Team team) {
