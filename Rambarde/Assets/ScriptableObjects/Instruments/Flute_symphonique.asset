@@ -21,5 +21,5 @@ MonoBehaviour:
     de la Fl\xFBte Symphonique re\xE7oit aussi ATQ + et PROT +"
   type: Soin
   sprite: {fileID: 21300000, guid: e447b7c531f4659459223a5715af24f0, type: 3}
-  price: 1000
-  owned: 0
+  price: 0
+  owned: 1
