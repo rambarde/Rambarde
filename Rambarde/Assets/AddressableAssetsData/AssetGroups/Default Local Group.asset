@@ -57,6 +57,13 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 144069bf650ce0b488e9d44ea2e612e0
+    m_Address: ScriptableObjects/Dialogs/Client
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 17a0b360413e1da40a4c047e78954e14
     m_Address: "Statut_D\xE9stabilis\xE9"
     m_ReadOnly: 0
@@ -89,6 +96,13 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 2271e81d900c2314da116ae720a92706
+    m_Address: ScriptableObjects/Dialogs/Bard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 22f895c26d74f6c4691b46ec5795b4e4
     m_Address: Statut_CRIT1
     m_ReadOnly: 0
@@ -103,6 +117,13 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 282a2648941f3984282d993e5ed132fa
+    m_Address: ScriptableObjects/Dialogs/Treant
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 352e7925c713b8845ae94de2dbbf18ca
@@ -145,6 +166,13 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 56afbf90f95e3604d855d59b07fd0bf7
+    m_Address: ScriptableObjects/Dialogs/Goblins
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 5a73eb62c7f2f5f47959e8c80fb6045f
     m_Address: NoteSeparator
     m_ReadOnly: 0
@@ -165,7 +193,8 @@ MonoBehaviour:
     m_Address: MelodyButtonT2
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 64f23aa755f7421459ebad91057ddde2
@@ -230,6 +259,13 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7555b855b2471cb4d804c15abf353989
+    m_Address: ScriptableObjects/Dialogs/Golem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 758da2d8ef2d56b4695bd62ffbeeac3e
@@ -388,7 +424,8 @@ MonoBehaviour:
     m_Address: MelodyButtonT3
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: cadda38b99f08c14698dcada68205f73
