@@ -169,9 +169,6 @@ public class CombatManager : MonoBehaviour {
             teams[(int) Team.EmemyTeam].Select(Dialog.GetCharacterTypeFromCharacterControl).ToList();
         characterTypes.Add(CharacterType.Client);
         characterTypes.Add(CharacterType.Bard);
-        string types = "";
-        characterTypes.ForEach(c => types += " " + c);
-        Debug.Log("Init Dialog Manager   :  " + types);
         await dialogManager.Init(characterTypes);
         
         await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Bard,
