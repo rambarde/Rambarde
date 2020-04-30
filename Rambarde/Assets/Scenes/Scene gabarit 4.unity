@@ -6272,6 +6272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543202384}
   - component: {fileID: 543202383}
+  - component: {fileID: 543202385}
   m_Layer: 0
   m_Name: CombatManager
   m_TagString: Untagged
@@ -6291,10 +6292,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad2550f9989ed74da5f80d44c935b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bard: {fileID: 8296172668646349648}
   playerTeamGo: {fileID: 1854248406}
   enemyTeamGo: {fileID: 1415330599}
   playerTeamUiContainer: {fileID: 49732620}
   enemyTeamUiContainer: {fileID: 166028383}
+  ignoreGameManager: 0
+  forcedClients:
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
+  forcedMonsters:
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
+  - _character: {fileID: 0}
+    _skillWheel: 
+    _name: 
 --- !u!4 &543202384
 Transform:
   m_ObjectHideFlags: 0
@@ -6309,6 +6332,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &543202385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543202382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7690f664684b27f46b7502527a3d8c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &571061500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22080,14 +22115,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9409fe4188e89934594b0d79c4b7ec8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseActionPoints: 40
-  spawner: {fileID: 45323497}
   hud: {fileID: 811600889}
   inspiration: {fileID: 8296172668646349647}
   instruments:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  baseActionPoints: 40
+  spawner: {fileID: 45323497}
 --- !u!4 &8345394285019801763
 Transform:
   m_ObjectHideFlags: 0

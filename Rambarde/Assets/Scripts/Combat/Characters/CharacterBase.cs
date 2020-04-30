@@ -1,8 +1,10 @@
-﻿using Characters;
+﻿using System;
+using Characters;
 using UnityEngine;
 
 namespace Combat.Characters
 {
+    [Serializable]
     public class CharacterBase
     {
         [SerializeField]

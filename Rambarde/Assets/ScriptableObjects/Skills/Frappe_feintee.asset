@@ -26,4 +26,5 @@ MonoBehaviour:
     value: -1
   animationName: Atq
   sprite: {fileID: 21300000, guid: ba1c3a09ac70d0f4c97139fe793cca81, type: 3}
-  description: "ATQ 80% + PROT \u2B9F-"
+  description: "Inflige X d\xE9g\xE2ts.\r\nDiminue l\xE9g\xE8rement la Protection.\r\nCible
+    un adversaire."

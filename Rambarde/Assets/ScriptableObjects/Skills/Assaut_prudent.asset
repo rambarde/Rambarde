@@ -26,6 +26,5 @@ MonoBehaviour:
     value: 3
   animationName: Atq
   sprite: {fileID: 21300000, guid: d8a13661ad7d776458221acef9ae07b7, type: 3}
-  description: 'ATQ 50%
-
-    Riposte 3'
+  description: "Inflige X d\xE9g\xE2ts.\r\nCible un adversaire.\r\n\r\nDonne Riposte
+    pour 3 tours.\r\nCible soi-m\xEAme."

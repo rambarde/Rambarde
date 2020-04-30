@@ -20,7 +20,7 @@ public class Hud : MonoBehaviour {
     public GameObject musicMenu;
     public GameObject pauseMenu;
 
-    private void AddSubscription(List<IDisposable> subscriptions, Bard.Bard bard, CharacterControl character, Melody melody) {
+    private static void AddSubscription(List<IDisposable> subscriptions, BardControl bard, CharacterControl character, Melody melody) {
         subscriptions.Add(
             character.gameObject.OnMouseDownAsObservable()
                 .Subscribe(__ => {
@@ -35,16 +35,16 @@ public class Hud : MonoBehaviour {
                 }));
     }
     
-    public async void Init(Bard.Bard bard) {
+    public async void Init(BardControl bard) {
 
         CombatManager.Instance.combatPhase.Subscribe(phase => {
             switch (phase) {
-                case "selectMelody" :
-                case "combatTurn" :
+                case CombatPhase.SelectMelodies :
+                case CombatPhase.TurnFight :
                     musicMenu.SetActive(false);
                     melodyMenu.SetActive(true);
                     break;
-                case "rhythmGame" :
+                case CombatPhase.RhythmGame :
                     musicMenu.SetActive(true);
                     melodyMenu.SetActive(false);
                     break;

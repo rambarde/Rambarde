@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9866149277c4e8b8840a07fb171035d, type: 3}
   m_Name: On_reprend_!
   m_EditorClassIdentifier: 
-  data: 2-2-33-2-
+  data: 2--3-2---2--
   targetMode: 4
   tier: 1
   effect: "Recule d\u2019un cran la roue des comp\xE9tences.\r\nInflige <color=blue>Assourdi</color>
-    pour 3 tour."
+    pour 3 tours."
   inspirationValue: 10
   tranceValue: 0
   sprite: {fileID: 21300000, guid: b68fc2d5bcd8bc84682252186b41588f, type: 3}

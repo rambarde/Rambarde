@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799bdceb60a94c344af9b83b22ae3346, type: 3}
   m_Name: Air_revigorant
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 2-32----12--
   targetMode: 0
   tier: 1
-  effect: "Donne <color=blue>R\xE9g\xE9n\xE9ration</color> pour 5 tours."
+  effect: "Donne <color=blue>R\xE9g\xE9n\xE9ration</color> pour 4 tours."
   inspirationValue: 10
   tranceValue: 0
   sprite: {fileID: 21300000, guid: e14cd87d6d161d44b97d87c4ef308e25, type: 3}

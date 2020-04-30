@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6a5f461ae64d2f9e2e7c7a92e7e82c, type: 3}
   m_Name: Cacophonie_generale
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 1-4---4--1--3--2-31-----
   targetMode: 5
   tier: 2
   effect: "R\xE9arrange al\xE9atoirement la roue des comp\xE9tences."

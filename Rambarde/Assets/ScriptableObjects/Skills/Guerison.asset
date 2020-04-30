@@ -19,21 +19,22 @@ MonoBehaviour:
     effectType: 0
     buffType: 0
     value: 5
-  - actionType: 2
+  - actionType: 6
     targetMode: 0
     effectType: 8
     buffType: 0
     value: 0
-  - actionType: 2
+  - actionType: 6
     targetMode: 0
     effectType: 512
     buffType: 0
     value: 0
-  - actionType: 2
+  - actionType: 6
     targetMode: 0
     effectType: 16
     buffType: 0
     value: 0
   animationName: Atq
   sprite: {fileID: 21300000, guid: 8eacb733d5c6df14cbd17244fc455f3f, type: 3}
-  description: "Soigne de 5 un client et gu\xE9rit Poison, Confus et D\xE9stabilis\xE9"
+  description: "Soigne 5 Endurance.\r\nRetire Poison, Confus et D\xE9stabilis\xE9.\r\nCible
+    un alli\xE9."

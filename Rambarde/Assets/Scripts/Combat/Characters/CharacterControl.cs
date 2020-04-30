@@ -30,7 +30,8 @@ namespace Characters {
         
         public List<Skill> skillSlot;
         public Subject<SlotAction> slotAction;
-        
+        public bool influenced;
+            
         private static Random rng = new Random();
         private int _skillIndex;
         private bool _skillIndexChanged;
@@ -53,22 +54,19 @@ namespace Characters {
             }
         }
 
-        public async Task ExecTurn()
-        {
+        public async Task ExecTurn() {
 
-            if (HasEffect(EffectType.Confused))
-            {
+            if (HasEffect(EffectType.Confused)) {
                 int r = UnityEngine.Random.Range(0, skillWheel.Length);
                 for (int i = 0; i <= r; ++i)
                     await IncrementSkillsSlot();
             }
 
-            var skill = skillWheel[_skillIndex];
+            Skill skill = skillWheel[_skillIndex];
 
-            if (HasEffect(EffectType.Dizzy))
+            if (HasEffect(EffectType.Dizzy)) {
                 _skillIndexChanged = true;
-            else
-            {
+            } else {
                 //calculate chances of miss and critical hit, and merciless effect
 
                 // Play and wait for skillAnimation to finish
@@ -76,8 +74,7 @@ namespace Characters {
                 // Execute the skill
                 await skill.Execute(this);
 
-                if (HasEffect(EffectType.Exalted))
-                {
+                if (HasEffect(EffectType.Exalted)) {
                     await IncrementSkillsSlot();
                     await SkillPreHitAnimation(skill.animationName);
                     await skill.Execute(this);
@@ -131,6 +128,7 @@ namespace Characters {
             effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
             skillSlot = skillWheel.ToList();
 
+            //animator
             _combatManager = CombatManager.Instance;
             _animator = GetComponentInChildren<Animator>();
             AnimatorOverrideController myOverrideController = await Utils.LoadResource<AnimatorOverrideController>("Animations/" + characterData.animatorController);
@@ -140,16 +138,13 @@ namespace Characters {
         //private void UpdateStats(int accessory) {
         public void UpdateStats() 
         {
-            if (equipment.Length != 0)
-            {
+            if (equipment != null && equipment.Length >= 2 && equipment[0] != null && equipment[1] != null) {
                 currentStats.atq = characterData.baseStats.atq + equipment[0].atqMod + equipment[1].atqMod;
                 currentStats.prec = characterData.baseStats.prec * (equipment[0].precMod + equipment[1].precMod + 1);
                 currentStats.crit = characterData.baseStats.crit * (equipment[0].critMod + equipment[1].critMod + 1);
                 currentStats.maxHp = characterData.baseStats.maxHp + equipment[0].endMod + equipment[1].endMod;
                 currentStats.prot = characterData.baseStats.prot * (equipment[0].protMod + equipment[1].protMod + 1);
-            }
-            else
-            {
+            } else {
                 currentStats.atq = characterData.baseStats.atq;
                 currentStats.prec = characterData.baseStats.prec;
                 currentStats.crit = characterData.baseStats.crit;
@@ -173,7 +168,7 @@ namespace Characters {
                 curEnd = 0;
             }
 
-            return curEnd;
+            return Mathf.Ceil(curEnd);
         }
 
         public async Task TakeDamage(float dmg) {
@@ -181,8 +176,7 @@ namespace Characters {
             if (currentStats.hp.Value > 0) return;
             
             //TODO: spawn floating text for damage taken
-            //TODO: Change this to wait for animation take damage finish
-            await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
+            await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(0.7f)));
             _combatManager.Remove(this);
         }
 
@@ -245,20 +239,7 @@ namespace Characters {
         public bool HasEffect(EffectType effect) => effectTypes.Value.HasFlag(effect);
 
         #region Unity
-
-        //private void Awake() {
-        //    statusEffects = new ReactiveCollection<StatusEffect>();
-        //    effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
-        //}
-
-        //protected async void Start() {
-        //    _combatManager = CombatManager.Instance;
-
-        //    _animator = GetComponentInChildren<Animator>();
-        //    AnimatorOverrideController myOverrideController = await Utils.LoadResource<AnimatorOverrideController>(characterData.animatorController);
-        //    _animator.runtimeAnimatorController = myOverrideController;
-        //}
-
+        
         #endregion
     }
 }

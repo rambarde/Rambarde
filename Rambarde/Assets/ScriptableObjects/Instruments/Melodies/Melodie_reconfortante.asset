@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45af8d7a1fe02114aaaa3ec9c6431042, type: 3}
   m_Name: Melodie_reconfortante
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 3-432-3-
   targetMode: 0
   tier: 1
-  effect: Soigne 15 Endurance.
+  effect: Soigne 20 Endurance.
   inspirationValue: 10
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 3955a4c2e875ea24987d9e1b940ab47a, type: 3}
