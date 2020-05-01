@@ -9,7 +9,7 @@ namespace Music {
     public class KeyInputManager : MonoBehaviour
     {
         public List<SphereCollider> colliders;
-        public List<Image> InputImages;
+        //public List<Image> InputImages;
 
         private Note _currentNote;
         void Start() {
@@ -23,11 +23,8 @@ namespace Music {
                     .OnTriggerExitAsObservable()
                     .Where(c => c.gameObject.CompareTag("Note"))
                     .Subscribe(c => {
-                        //Debug.Log("missed");
-                        TweenSequenceWithDelay(
-                            InputImages[_currentNote.note - 1].DOColor(Color.red, 0.2f),
-                            InputImages[_currentNote.note - 1].DOColor(Color.white, 0.2f),
-                            0.3f);
+                        //Missed
+                        
                         _currentNote = null;
                     }).AddTo(this);
             }
@@ -38,20 +35,16 @@ namespace Music {
                 .Subscribe(x => {
 
                     if (_currentNote != null && _currentNote.note == x) {
+                        //Played
                         _currentNote.Play();
                         Destroy(_currentNote.gameObject);
                         _currentNote = null;
                     
-                        TweenSequenceWithDelay(
-                            InputImages[x-1].DOColor(Color.green, 0.2f),
-                            InputImages[x-1].DOColor(Color.white, 0.2f),
-                            0.3f);
+                        
                         
                     } else {
-                        TweenSequenceWithDelay(
-                            InputImages[x-1].DOColor(Color.red, 0.2f),
-                            InputImages[x-1].DOColor(Color.white, 0.2f),
-                            0.3f);
+                        //Missed
+                        
                     }
                 }).AddTo(this);
         }
@@ -65,16 +58,16 @@ namespace Music {
         }
 
         private static int GetInput() {
-            if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            if (Input.GetKeyDown(KeyCode.A)) {
                 return 1;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            if (Input.GetKeyDown(KeyCode.Z)) {
                 return 2;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            if (Input.GetKeyDown(KeyCode.E)) {
                 return 3;
             }
-            if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            if (Input.GetKeyDown(KeyCode.R)) {
                 return 4;
             }
 

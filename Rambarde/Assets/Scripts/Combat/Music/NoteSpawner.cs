@@ -47,7 +47,6 @@ namespace Music {
             noteObj.GetComponent<Note>().melody = melody;
             noteObj.GetComponent<NoteMove>().speed = 200f;
             noteObj.GetComponent<Image>().color = c;
-            //noteObj.GetComponentInChildren<TextMeshProUGUI>().text = note;
         }
     }
 }
