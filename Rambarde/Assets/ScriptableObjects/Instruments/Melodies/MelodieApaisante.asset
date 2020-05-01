@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a06f297c2cb466ebd158760d26df64b, type: 3}
   m_Name: MelodieApaisante
   m_EditorClassIdentifier: 
-  data: 
+  data: 4--1--2-----
   targetMode: 0
-  tier: 0
-  effect: 
-  inspirationValue: 0
+  tier: 1
+  effect: "Retire Poison, Confus et D\xE9stabilis\xE9."
+  inspirationValue: 10
   tranceValue: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 61298b427331e914e93223dedfee5d77, type: 3}
