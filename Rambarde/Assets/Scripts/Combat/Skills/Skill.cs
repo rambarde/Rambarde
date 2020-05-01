@@ -9,7 +9,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Skills {
-    [CreateAssetMenu(fileName = "Skill", menuName = "Skill")]
+    [CreateAssetMenu(fileName = "Skill", menuName = "Skill/Skill")]
     public class Skill : ScriptableObject {
 
         public int tier;
@@ -18,23 +18,23 @@ namespace Skills {
         public Sprite sprite;
         [TextArea] public string description;
 
-        private CharacterControl _randEnemy;
-        private CharacterControl _randAlly;
-        private CharacterControl _forcedTarget;
-        private bool _hasForcedTarget = false;
+        protected CharacterControl randEnemy;
+        protected CharacterControl randAlly;
+        protected CharacterControl forcedTarget;
+        protected bool hasForcedTarget = false;
 
         public async Task Execute(CharacterControl s) {
-            _randAlly = RandomTargetInTeam(s.team);
-            _randEnemy = RandomTargetInTeam(s.team + 1);
+            randAlly = RandomTargetInTeam(s.team);
+            randEnemy = RandomTargetInTeam(s.team + 1);
             
             foreach (SkillAction action in actions) {
                 List<CharacterControl> targets = new List<CharacterControl>();
                 switch (action.targetMode) {
                     case SkillTargetMode.OneAlly:
-                        targets.Add(_randAlly);
+                        targets.Add(randAlly);
                         break;
                     case SkillTargetMode.OneEnemy:
-                        targets.Add(_randEnemy);
+                        targets.Add(randEnemy);
                         break;
                     case SkillTargetMode.OneOtherAlly:
                         targets.Add(RandomOtherAlly(s));
@@ -64,9 +64,9 @@ namespace Skills {
                         break;
                 }
                 
-                if (_hasForcedTarget) {
+                if (hasForcedTarget) {
                     targets.Clear();
-                    targets.Add(_forcedTarget);
+                    targets.Add(forcedTarget);
                 }
 
                 switch (action.actionType) {
@@ -104,16 +104,16 @@ namespace Skills {
                 }
             }
 
-            _hasForcedTarget = false;
-            _forcedTarget = null;
+            hasForcedTarget = false;
+            forcedTarget = null;
         }
 
         public void ForceTarget(CharacterControl target) {
-            _forcedTarget = target;
-            _hasForcedTarget = true;
+            forcedTarget = target;
+            hasForcedTarget = true;
         }
 
-        private CharacterControl RandomTargetInTeam(Team team) {
+        protected CharacterControl RandomTargetInTeam(Team team) {
             team = (Team) ((int) team % 2);
             float nMemb = CombatManager.Instance.teams[(int) team].Count;
             return CombatManager.Instance.teams[(int)team][Mathf.FloorToInt(Random.Range(0f, nMemb))];
