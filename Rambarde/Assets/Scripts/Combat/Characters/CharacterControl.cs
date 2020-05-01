@@ -31,14 +31,16 @@ namespace Characters {
         public List<Skill> skillSlot;
         public Subject<SlotAction> slotAction;
         public bool influenced;
+        public bool skillWheelShouldTick;
+        private CharacterControl _forcedTarget;
+        private bool _hasForcedTarget = false;
             
         private static Random rng = new Random();
         private int _skillIndex;
-        private bool _skillIndexChanged;
+        
         private Animator _animator;
         private CombatManager _combatManager;
-        //TODO make target modifiable through CombatManager/melodies
-        private CharacterControl _target;
+
         private IObservable<int> _animationSkillStateObservable;
 
         #region Turn
@@ -65,8 +67,15 @@ namespace Characters {
             Skill skill = skillWheel[_skillIndex];
 
             if (HasEffect(EffectType.Dizzy)) {
-                _skillIndexChanged = true;
+                skillWheelShouldTick = false;
             } else {
+                //force target
+                if (_hasForcedTarget) {
+                    skill.ForceTarget(_forcedTarget);
+                    _hasForcedTarget = false;
+                    _forcedTarget = null;
+                }
+                
                 //calculate chances of miss and critical hit, and merciless effect
 
                 // Play and wait for skillAnimation to finish
@@ -86,10 +95,10 @@ namespace Characters {
                 await statusEffects[i].TurnEnd();
 
             // Increment skillIndex ONLY if effects did not affect the wheel
-            if (!_skillIndexChanged)
+            if (skillWheelShouldTick)
                 await IncrementSkillsSlot();
 
-            _skillIndexChanged = false;
+            skillWheelShouldTick = true;
         }
 
         private async Task SkillPreHitAnimation(string animationName) {
@@ -182,10 +191,14 @@ namespace Characters {
 
         #endregion
 
+        public void ForceTarget(CharacterControl target) {
+            _hasForcedTarget = true;
+            _forcedTarget = target;
+        }
 
         public async Task IncrementSkillsSlot() {
             _skillIndex = (_skillIndex + 1) % skillSlot.Count;
-            _skillIndexChanged = true;
+            skillWheelShouldTick = false;
             
             //wait for skill wheel animation finish
             slotAction.OnNext(new SlotAction { Action = SlotAction.ActionType.Increment});
@@ -198,7 +211,7 @@ namespace Characters {
         {
             _skillIndex = (_skillIndex - 1) % skillSlot.Count;
             if (_skillIndex < 0) _skillIndex = skillSlot.Count - 1;
-            _skillIndexChanged = true;
+            skillWheelShouldTick = false;
             
             //wait for skill wheel animation finish
             slotAction.OnNext(new SlotAction { Action = SlotAction.ActionType.Decrement});
@@ -222,7 +235,7 @@ namespace Characters {
         public async Task ShuffleSkillsSlot()
         {
             ShuffleList(skillSlot);
-            _skillIndexChanged = true;
+            skillWheelShouldTick = false;
             
             //wait for skill wheel animation finish
             slotAction.OnNext(
