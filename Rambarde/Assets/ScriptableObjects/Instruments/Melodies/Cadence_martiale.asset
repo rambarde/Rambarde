@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf4e453c28147a448824739454c3bf9e, type: 3}
   m_Name: Cadence_martiale
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 1-1-122-1-1-221-
   targetMode: 2
   tier: 3
-  effect: Attaque +++
+  effect: Augmente fortement l'Attaque.
   inspirationValue: -25
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 6b611de4e36513b49be5157836d6e162, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}
