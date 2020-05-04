@@ -42,7 +42,7 @@ public class StatusDetector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         RectTransform rt = (RectTransform)gameObject.transform;
-        statusWindow.transform.position = gameObject.transform.position + new Vector3(rt.rect.width*2/3, 0, 0);
+        statusWindow.transform.position = gameObject.transform.position + new Vector3(rt.rect.width/2.0f, 0, 0);
 
         statusWindow.Activate(true, statusID);
     }
@@ -60,7 +60,8 @@ public class StatusDetector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if (statusID.Count > 0)
         {
             RectTransform rt = (RectTransform)gameObject.transform;
-            statusWindow.transform.position = gameObject.transform.position + new Vector3(rt.rect.width/2.0f, 0, 0);
+            RectTransform sw_rt = (RectTransform)statusWindow.transform;
+            statusWindow.transform.position = gameObject.transform.position + new Vector3(rt.rect.width, - sw_rt.rect.height/3.0f, 0);
             statusWindow.Activate(true, statusID);
         }
     }
