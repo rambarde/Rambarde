@@ -21,11 +21,14 @@ public class TheodoreMenuManager : MonoBehaviour
     private SlotBehaviour[] slots;
     private Counter[] counters;
     protected GameObject doneButton;
+    protected GameObject warningWindow;
 
     private void Awake()
     {
-        doneButton = transform.GetChild(transform.childCount - 1).gameObject;
+        doneButton = transform.GetChild(transform.childCount - 2).gameObject;
         doneButton.GetComponent<Button>().interactable = false;
+        warningWindow = transform.GetChild(transform.childCount - 1).gameObject;
+        warningWindow.SetActive(false);
         slots = transform.GetComponentsInChildren<SlotBehaviour>();
         counters = transform.GetComponentsInChildren<Counter>();
 
