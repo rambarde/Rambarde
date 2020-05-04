@@ -71,10 +71,18 @@ public class Tooltip : MonoBehaviour
                 type.GetComponent<Text>().text = stringTier("skill");
             }
 
+/*
             Name.SetActive(true);
             effect.SetActive(true);
             type.SetActive(true);
             transform.GetChild(0).gameObject.SetActive(true);
+*/ //develop-nico
+            //detect status and display status window if needed
+            Debug.Log("status detection");
+            effect.GetComponent<StatusDetector>().resetStatusList();
+            effect.GetComponent<StatusDetector>().detectStatus();
+            effect.GetComponent<StatusDetector>().displayStatus();
+
         }
         else
         {
@@ -84,6 +92,7 @@ public class Tooltip : MonoBehaviour
             trance.SetActive(false);
             type.SetActive(false);
             transform.GetChild(0).gameObject.SetActive(false);
+            effect.GetComponent<StatusDetector>().deactivateStatusWindow();
         }
     }
 

@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16afb2f856bdce845ad6f16b1096486f, type: 3}
   m_Name: Tapage
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 1--2--3--4--
   targetMode: 1
   tier: 1
-  effect: "Protection \u2B9F\u2B9F--"
+  effect: "Diminue mod\xE9r\xE9ment la Protection."
   inspirationValue: 10
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 5e603c41e5c725445a28cf84edaa1521, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}

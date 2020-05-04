@@ -2,6 +2,7 @@
 using Melodies;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Music {
     public class NoteSpawner : MonoBehaviour {
@@ -11,6 +12,7 @@ namespace Music {
 
         public void SpawnNote(string note, Melody melody) {
             Transform parent;
+            Color c;
             switch (note) {
                 case "_":
                 case "*":
@@ -21,15 +23,19 @@ namespace Music {
                 
                 case "1" :
                     parent = m1;
+                    c = Color.black;
                     break;
                 case "2" :
                     parent = m2;
+                    c = new Color(0.5660378f, 0.2369758f, 0.09878961f);
                     break;
                 case "3" :
                     parent = m3;
+                    c = new Color(1.0f, 0.8118182f, 0.655f);
                     break;
                 case "4" :
                     parent = m4;
+                    c = Color.white;
                     break;
                 default:
                     Debug.Log("warning : tried to spawn a note of unkown type : [" + note + "]");
@@ -40,7 +46,7 @@ namespace Music {
             noteObj.GetComponent<Note>().note = int.Parse(note);
             noteObj.GetComponent<Note>().melody = melody;
             noteObj.GetComponent<NoteMove>().speed = 200f;
-            noteObj.GetComponentInChildren<TextMeshProUGUI>().text = note;
+            noteObj.GetComponent<Image>().color = c;
         }
     }
 }

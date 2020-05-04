@@ -18,7 +18,7 @@ namespace Characters {
     }
 
     public class CharacterControl : MonoBehaviour {
-        public string clientName;
+        public string characterName;
         public Team team;
         public int clientNumber;
         public Skill[] skillWheel;
@@ -31,14 +31,16 @@ namespace Characters {
         public List<Skill> skillSlot;
         public Subject<SlotAction> slotAction;
         public bool influenced;
+        public bool skillWheelShouldTick;
+        private CharacterControl _forcedTarget;
+        private bool _hasForcedTarget = false;
             
         private static Random rng = new Random();
         private int _skillIndex;
-        private bool _skillIndexChanged;
+        
         private Animator _animator;
         private CombatManager _combatManager;
-        //TODO make target modifiable through CombatManager/melodies
-        private CharacterControl _target;
+
         private IObservable<int> _animationSkillStateObservable;
 
         #region Turn
@@ -65,8 +67,15 @@ namespace Characters {
             Skill skill = skillWheel[_skillIndex];
 
             if (HasEffect(EffectType.Dizzy)) {
-                _skillIndexChanged = true;
+                skillWheelShouldTick = false;
             } else {
+                //force target
+                if (_hasForcedTarget) {
+                    skill.ForceTarget(_forcedTarget);
+                    _hasForcedTarget = false;
+                    _forcedTarget = null;
+                }
+                
                 //calculate chances of miss and critical hit, and merciless effect
 
                 // Play and wait for skillAnimation to finish
@@ -86,10 +95,10 @@ namespace Characters {
                 await statusEffects[i].TurnEnd();
 
             // Increment skillIndex ONLY if effects did not affect the wheel
-            if (!_skillIndexChanged)
+            if (skillWheelShouldTick)
                 await IncrementSkillsSlot();
 
-            _skillIndexChanged = false;
+            skillWheelShouldTick = true;
         }
 
         private async Task SkillPreHitAnimation(string animationName) {
@@ -121,10 +130,14 @@ namespace Characters {
             skillWheel = temp;
 
             UpdateStats();
+/*
             if(team == Team.PlayerTeam)
                 currentStats.hp = new ReactiveProperty<float>(GameManager.curentHPClients[clientNumber]);
             else
                 currentStats.hp = new ReactiveProperty<float>(currentStats.maxHp);
+*/ //develop-nico stuff
+=======
+            currentStats.Init();
 
             slotAction = new Subject<SlotAction>();
             statusEffects = new ReactiveCollection<StatusEffect>();
@@ -146,7 +159,7 @@ namespace Characters {
                 currentStats.prec = characterData.baseStats.prec * (equipment[0].precMod + equipment[1].precMod + 1);
                 currentStats.crit = characterData.baseStats.crit * (equipment[0].critMod + equipment[1].critMod + 1);
                 currentStats.maxHp = characterData.baseStats.maxHp + equipment[0].endMod + equipment[1].endMod;
-                currentStats.prot = characterData.baseStats.prot * (equipment[0].protMod + equipment[1].protMod + 1);
+                currentStats.prot.Value = characterData.baseStats.prot.Value * (equipment[0].protMod + equipment[1].protMod + 1);
             } else {
                 currentStats.atq = characterData.baseStats.atq;
                 currentStats.prec = characterData.baseStats.prec;
@@ -166,7 +179,7 @@ namespace Characters {
 
         private float CalculateDamage(float dmg) {
             var curEnd = currentStats.hp.Value;
-            curEnd -= dmg * (1 - currentStats.prot / 100f);
+            curEnd -= dmg * (1 - currentStats.prot.Value / 100f);
             if (curEnd < 0) {
                 curEnd = 0;
             }
@@ -185,10 +198,14 @@ namespace Characters {
 
         #endregion
 
+        public void ForceTarget(CharacterControl target) {
+            _hasForcedTarget = true;
+            _forcedTarget = target;
+        }
 
         public async Task IncrementSkillsSlot() {
             _skillIndex = (_skillIndex + 1) % skillSlot.Count;
-            _skillIndexChanged = true;
+            skillWheelShouldTick = false;
             
             //wait for skill wheel animation finish
             slotAction.OnNext(new SlotAction { Action = SlotAction.ActionType.Increment});
@@ -201,7 +218,7 @@ namespace Characters {
         {
             _skillIndex = (_skillIndex - 1) % skillSlot.Count;
             if (_skillIndex < 0) _skillIndex = skillSlot.Count - 1;
-            _skillIndexChanged = true;
+            skillWheelShouldTick = false;
             
             //wait for skill wheel animation finish
             slotAction.OnNext(new SlotAction { Action = SlotAction.ActionType.Decrement});
@@ -225,7 +242,7 @@ namespace Characters {
         public async Task ShuffleSkillsSlot()
         {
             ShuffleList(skillSlot);
-            _skillIndexChanged = true;
+            skillWheelShouldTick = false;
             
             //wait for skill wheel animation finish
             slotAction.OnNext(
@@ -240,9 +257,6 @@ namespace Characters {
         }
 
         public bool HasEffect(EffectType effect) => effectTypes.Value.HasFlag(effect);
-
-        #region Unity
         
-        #endregion
     }
 }
