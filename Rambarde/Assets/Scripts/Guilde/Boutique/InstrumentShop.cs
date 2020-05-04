@@ -73,11 +73,13 @@ public class InstrumentShop : MonoBehaviour
         InfoPanel.transform.GetChild(3).GetComponent<StatusDetector>().resetStatusList();
         InfoPanel.transform.GetChild(3).GetComponent<StatusDetector>().detectStatus();
 
+        // Melodies
         for(int i = 0; i<instruments[selectedInstrumentID].melodies.Length; i++)
         {
-            InfoPanel.transform.GetChild(4).GetChild(i).GetComponent<Text>().text = Utils.SplitPascalCase(instruments[selectedInstrumentID].melodies[i].name) + " : " + instruments[selectedInstrumentID].melodies[i].effect;
-            InfoPanel.transform.GetChild(4).GetChild(i).GetComponent<StatusDetector>().resetStatusList();
-            InfoPanel.transform.GetChild(4).GetChild(i).GetComponent<StatusDetector>().detectStatus();
+            InfoPanel.transform.GetChild(4).GetChild(i).GetChild(0).GetComponent<Image>().sprite = instruments[selectedInstrumentID].melodies[i].sprite;
+            InfoPanel.transform.GetChild(4).GetChild(i).GetChild(1).GetComponent<Text>().text = Utils.SplitPascalCase(instruments[selectedInstrumentID].melodies[i].name) + " : " + instruments[selectedInstrumentID].melodies[i].effect;
+            InfoPanel.transform.GetChild(4).GetChild(i).GetChild(1).GetComponent<StatusDetector>().resetStatusList();
+            InfoPanel.transform.GetChild(4).GetChild(i).GetChild(1).GetComponent<StatusDetector>().detectStatus();
         }
 
         purchaseButton.GetComponent<Button>().interactable = true;
