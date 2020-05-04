@@ -15,7 +15,7 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 3
   tier: 3
-  effect: Attaque --
+  effect: "Diminue mod\xE9r\xE9ment l'Attaque."
   inspirationValue: -25
   tranceValue: 0
   sprite: {fileID: 21300000, guid: c77f29bc8d19ee44ab2c709fe34ea0b9, type: 3}

@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94110e2909bf87f4ea2c6a80a3d0c140, type: 3}
   m_Name: Passez_!
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 1-----1-12-32--4--3-----
   targetMode: 5
   tier: 2
-  effect: "Avance d\u2019un cran la roue"
+  effect: "Avance d\u2019un cran la roue des comp\xE9tences."
   inspirationValue: -15
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 012fba1b60458fb44bf13e678870c7e7, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}

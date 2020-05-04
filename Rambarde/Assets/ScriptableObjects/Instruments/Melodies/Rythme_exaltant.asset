@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c2e32885f635447859d06c16ae7d25, type: 3}
   m_Name: Rythme_exaltant
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 1-----2--2--2-22-22-----
   targetMode: 0
   tier: 2
-  effect: Attaque +++, Critique ++
+  effect: "Augmente fortement l'Attaque.\r\nAugmente mod\xE9r\xE9ment les chances
+    de Critique."
   inspirationValue: -15
   tranceValue: 0
   sprite: {fileID: 21300000, guid: c18ec68fbe52a934b9df2b7cc8807f35, type: 3}

@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90866bdf343ec7842a83aa24ba34a5af, type: 3}
+  m_Script: {fileID: 11500000, guid: cc090f6817f978047a290757ab2c14d6, type: 3}
   m_Name: Envolee_fortifiante
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
-  targetMode: 2
-  tier: 2
-  effect: Protection ++
-  inspirationValue: -15
+  data: 1--2--2--1--
+  targetMode: 0
+  tier: 1
+  effect: "Augmente mod\xE9r\xE9ment la Protection."
+  inspirationValue: 10
   tranceValue: 0
-  sprite: {fileID: 21300000, guid: 8c92082ec8e068a4e843773ebf258ced, type: 3}
+  sprite: {fileID: 21300000, guid: bbbf44b2facc4004caac3bd95d2b30a7, type: 3}
   clip: {fileID: 8300000, guid: c7b471cb1b48ad4459b76c3f3171298d, type: 3}

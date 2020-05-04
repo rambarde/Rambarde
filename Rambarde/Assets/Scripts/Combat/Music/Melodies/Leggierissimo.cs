@@ -11,6 +11,8 @@ namespace Music.Melodies
     {
         protected override async Task ExecuteOnTarget(CharacterControl t)
         {
+            await t.Heal(10);
+            // Heal Poison, Confused, Destabilised
             Debug.Log("Annule tous les changements de stats de: " + t.name);
         }
     }

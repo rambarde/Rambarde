@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6e458cbea65414c9ab2fe0510203ba, type: 3}
   m_Name: Battement_menacant
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 2-332-3-2-33222-
   targetMode: 3
   tier: 2
-  effect: Protection --
+  effect: "Diminue mod\xE9r\xE9ment la Protection."
   inspirationValue: -15
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 82dd767ed32ff4f4785c48fba9c15f66, type: 3}

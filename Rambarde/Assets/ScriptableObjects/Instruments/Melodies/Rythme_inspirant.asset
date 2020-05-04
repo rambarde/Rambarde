@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a158425faca284da9ed2bd7ca57694, type: 3}
   m_Name: Rythme_inspirant
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 1-2-333-
   targetMode: 2
   tier: 1
-  effect: "Attaque +, Critique \u2B9D\u2B9D++"
+  effect: "Augmente l\xE9g\xE8rement l'Attaque.\r\nAugmente mod\xE9r\xE9ment les
+    chances de Critique."
   inspirationValue: 10
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 0678fac4e3d5e954f8894daa53ba37e3, type: 3}
