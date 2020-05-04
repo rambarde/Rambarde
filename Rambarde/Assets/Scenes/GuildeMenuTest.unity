@@ -18637,7 +18637,7 @@ PrefabInstance:
     - target: {fileID: 453461829732271986, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: "Fl\xFBte sylvestre"
+      value: "Fl\xFBte symphonique"
       objectReference: {fileID: 0}
     - target: {fileID: 469694898970509307, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -18693,7 +18693,7 @@ PrefabInstance:
         type: 3}
       propertyPath: instrument
       value: 
-      objectReference: {fileID: 11400000, guid: 60ae94033cef7a5448ba56605b3299fd,
+      objectReference: {fileID: 11400000, guid: 10fdb95a9e628b34fb9cf3034d4877d6,
         type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -27269,7 +27269,7 @@ PrefabInstance:
     - target: {fileID: 453461829732271986, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: "Fl\xFBte symphonique"
+      value: "Fl\xFBte sylvestre"
       objectReference: {fileID: 0}
     - target: {fileID: 469694898970509307, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -27360,7 +27360,7 @@ PrefabInstance:
         type: 3}
       propertyPath: instrument
       value: 
-      objectReference: {fileID: 11400000, guid: 10fdb95a9e628b34fb9cf3034d4877d6,
+      objectReference: {fileID: 11400000, guid: 60ae94033cef7a5448ba56605b3299fd,
         type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}

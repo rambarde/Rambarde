@@ -41,10 +41,10 @@ public class StatusDetector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        statusWindow.Activate(true, statusID);
+        RectTransform rt = (RectTransform)gameObject.transform;
+        statusWindow.transform.position = gameObject.transform.position + new Vector3(rt.rect.width/2.0f, 0, 0);
 
-        Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        statusWindow.transform.position = pz;
+        statusWindow.Activate(true, statusID);
     }
 
     public void OnPointerExit(PointerEventData poinerEventData)
@@ -59,11 +59,10 @@ public class StatusDetector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (statusID.Count > 0)
         {
+            RectTransform rt = (RectTransform)gameObject.transform;
+            RectTransform sw_rt = (RectTransform)statusWindow.transform;
+            statusWindow.transform.position = gameObject.transform.position + new Vector3(rt.rect.width, - sw_rt.rect.height/3.0f, 0);
             statusWindow.Activate(true, statusID);
-
-            Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            statusWindow.transform.position = pz;
-            Debug.Log(pz);
         }
     }
 
@@ -71,7 +70,6 @@ public class StatusDetector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (statusWindow != null)
         {
-            //Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             statusWindow.transform.position = new Vector3(2000,2000,0);
         }
     }

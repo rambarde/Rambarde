@@ -66,11 +66,6 @@ public class StatusWindow : MonoBehaviour
     {
         if(displayStatusInfo)
         {
-            /* TO DO
-             * afficher le nombre de panels correspondant au nombre de status
-             * pour chaque status, afficher le bon nom et la bonne définition4
-             * */
-
             gameObject.SetActive(true);
 
             for(int i = 0; i<3; i++)

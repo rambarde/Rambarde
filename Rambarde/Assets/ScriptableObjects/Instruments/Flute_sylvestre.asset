@@ -16,10 +16,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a56c58f1c2b77b4c8ecf4563c48fecc, type: 2}
   - {fileID: 11400000, guid: 31c1f0a0fe4842d438d609f143a1ee51, type: 2}
   - {fileID: 11400000, guid: 644efc5ab04eca14da60940ca8cc8bb4, type: 2}
-  - {fileID: 11400000, guid: 85a9705b77483c540915f4c9226b406f, type: 2}
+  - {fileID: 11400000, guid: c962af1dc9b13da469fd94d75f0dd69e, type: 2}
   passif: "Un client affect\xE9 par un morceau de soin de la Fl\xFBte Sylvestre est
-    aussi gu\xE9ri du Poison"
+    aussi gu\xE9ri du Poison."
   type: Soin
   sprite: {fileID: 21300000, guid: 9cd15c172b6133040827fe45e328a5c5, type: 3}
-  price: 0
-  owned: 1
+  price: 1000
+  owned: 0
