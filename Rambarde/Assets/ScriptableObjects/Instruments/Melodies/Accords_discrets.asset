@@ -15,8 +15,7 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 2
   tier: 0
-  effect: Invisible 2
+  effect: Donne Invisible pour 2 tours.
   inspirationValue: 0
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 3663b8aa7e4e2df41b6ac1e9dfd9a990, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e90c3cd18355147b5f198425b897e1, type: 3}
   m_Name: Air_encourageant
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 3-3-2-3-
   targetMode: 0
   tier: 1
-  effect: Attaque +, Critique ++
+  effect: "Augmente mod\xE9r\xE9ment l'Attaque.\r\nAugmente mod\xE9r\xE9ment les
+    chances de Critique.\r"
   inspirationValue: 10
   tranceValue: 0
   sprite: {fileID: 21300000, guid: d3b7b51c5afc52e45a3cd9624a6ac934, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}
