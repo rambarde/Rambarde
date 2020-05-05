@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae1592f2ab645cb9793dd76f86c3420, type: 3}
   m_Name: AriaApaisante
   m_EditorClassIdentifier: 
-  data: 4--1--2--4321----22-----
+  data: 4--1--2--4321___--2___--
   targetMode: 2
-  tier: 3
+  tier: 1
   effect: "Soigne 10 Endurance.\r\nRetire Poison, Confus et D\xE9stabilis\xE9."
   inspirationValue: -25
   tranceValue: 0

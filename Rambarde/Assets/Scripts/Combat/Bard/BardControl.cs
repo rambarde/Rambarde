@@ -10,6 +10,14 @@ using UniRx;
 using UnityEngine;
 
 namespace Bard {
+    
+    public struct NoteInfo
+    {
+        public char Data { get; set; }
+        public int MelodyIndex { get; set; }
+        public float Duration { get; set; }
+    }
+    
     public class BardControl : MonoBehaviour {
         
         public Hud hud;
@@ -17,7 +25,7 @@ namespace Bard {
         public List<Instrument> instruments;
         public ReactiveProperty<int> actionPoints;
         public ReactiveProperty<int> maxActionPoints;
-        public ReactiveCollection<Melody> selectedMelodies = new  ReactiveCollection<Melody>(new List<Melody>());
+        public List<Melody> selectedMelodies = new List<Melody>();
         public ReactiveCommand onDone = new ReactiveCommand();
 
         [SerializeField] private int baseActionPoints;
@@ -143,72 +151,57 @@ namespace Bard {
                 }
             }
         }
-
-
-        private class Aggregate {
-            public readonly string data;
-            public readonly int melodyIndex;
-            public int noteIndex;
-
-            public Aggregate(string data, int i1, int i2 = 0) {
-                this.data = data;
-                melodyIndex = i1;
-                noteIndex = i2;
-            }
-
-            public Aggregate SetNoteIndex(int i2) {
-                noteIndex = i2;
-                return this;
-            }
-        }
         
         //                         bpm\      /beat division(croche)
         private float _beat = 60f / (110f * 3f);
 
-        public async Task StartRhythmGame() {
-            
-            
-            
+        public async Task InitRhythmGame()
+        {
             CombatManager.Instance.combatPhase.Value = CombatPhase.RhythmGame;
-            selectedMelodies.ToList().ForEach(m => m.score.Value = 0);
-            var melodyIndex = 0;
-            var charIndex = 0;
-            var melody = selectedMelodies
-                         // Transform melody list to (string, index) pairs
-                         .Select(x => new Aggregate(x.Data, melodyIndex++))
-                         // Transform every char from every melody to Aggregate with character index in array
-                         .SelectMany(x => x.data.Select(m => new Aggregate(m.ToString(), x.melodyIndex, charIndex++)));
+            
+            selectedMelodies.ForEach(m => m.score.Value = 0);
             var melodyStr = string.Concat(selectedMelodies.SelectMany(x => x.Data));
-
-            var obs = melody
-                      .Select(x => {
-                          switch (x.data) {
-                              case "_":
-                                  return new Aggregate("*", x.melodyIndex, x.noteIndex);
-                              case "-":
-                                  return new Aggregate("-", x.melodyIndex, x.noteIndex);
-                              default:
-                                  if (x.noteIndex == melodyStr.Length - 1) return x;
-
-                                  var len = melodyStr.Substring(x.noteIndex + 1).TakeWhile(c => c == '_').Count() + 1;
-                                  return new Aggregate(melodyStr.Substring(x.noteIndex, len), x.melodyIndex, x.noteIndex);
-                          }
-                      })
-                      .ToList(); // Compute list elements before starting the timer
-
-            await Utils.AwaitObservable(
-                Observable.Timer(TimeSpan.FromSeconds(_beat))
-                          .Repeat()
-                          .Zip(obs.ToObservable(), (_, y) => y),
-                SpawnMusicNote
-            );
+            var melodyList = new List<NoteInfo>();
+            var melodyIndex = 0;
+            int charIndex = 0;
+            for (int i = 0; i < selectedMelodies.Count; i++)
+            {
+                melodyList.Add(new NoteInfo(){ Data = ' ', Duration = 1f} );
+            }
+            
+            spawner.InitNotes(melodyList);
         }
 
-        private void SpawnMusicNote(Aggregate note) {
-            /*if (note.noteIndex % 2 == 0) {
-                GetComponent<AudioSource>().Play();
-            }*/
-            spawner.SpawnNote(note.data, selectedMelodies[note.melodyIndex]);
+        public async Task StartRhythmGame() 
+        {
+            
+
+            // var obs = melody
+            //     .Select(x =>
+            //     {
+            //         switch (x.data)
+            //         {
+            //             case "_":
+            //                 return new Aggregate("*", x.melodyIndex, x.noteIndex);
+            //             case "-":
+            //                 return new Aggregate("-", x.melodyIndex, x.noteIndex);
+            //             default:
+            //                 if (x.noteIndex == melodyStr.Length - 1) return x;
+            //
+            //                 var len = melodyStr.Substring(x.noteIndex + 1).TakeWhile(c => c == '_').Count() + 1;
+            //                 return new Aggregate(melodyStr.Substring(x.noteIndex, len), x.melodyIndex, x.noteIndex);
+            //         }
+            //     })
+            //     .ToList(); // Compute list elements before starting the timer
+            //
+            // await Utils.AwaitObservable(
+            //     Observable.Timer(TimeSpan.FromSeconds(_beat))
+            //         .Repeat()
+            //         .Zip(obs.ToObservable(), (_, y) => y),
+            //     SpawnMusicNote
+            // );
+            
+            
         }
     }
 }

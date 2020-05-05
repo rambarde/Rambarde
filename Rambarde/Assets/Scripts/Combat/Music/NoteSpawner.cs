@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Bard;
 using Melodies;
 using TMPro;
 using UnityEngine;
@@ -10,16 +12,21 @@ namespace Music {
         [SerializeField] private Transform m1, m2, m3, m4;
         [SerializeField] private GameObject notePrefab;
 
-        public void SpawnNote(string note, Melody melody) {
+        public void InitNotes(List<NoteInfo> notes)
+        {
+            foreach (var noteInfo in notes)
+            {
+                
+            }
+        }
+        
+        private GameObject SpawnNote(string note, Melody melody) {
             Transform parent;
             Color c;
             switch (note) {
-                case "_":
-                case "*":
-                    return;
                 case "-" :
                     melody.score.Value += 1;
-                    return;
+                    return new GameObject();
                 
                 case "1" :
                     parent = m1;
