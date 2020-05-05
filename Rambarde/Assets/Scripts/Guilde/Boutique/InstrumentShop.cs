@@ -67,7 +67,7 @@ public class InstrumentShop : MonoBehaviour
         selectedInstrumentID = instrumentID;
 
         InfoPanel.transform.GetChild(0).GetComponent<Image>().sprite = instruments[selectedInstrumentID].sprite;                    // instrument Icon
-        InfoPanel.transform.GetChild(1).GetComponent<Text>().text = Utils.SplitPascalCase(instruments[selectedInstrumentID].name);  //intrument Name
+        InfoPanel.transform.GetChild(1).GetComponent<Text>().text = Utils.SplitPascalCase(instruments[selectedInstrumentID].name);  // intrument Name
         InfoPanel.transform.GetChild(2).GetComponent<Text>().text = instruments[selectedInstrumentID].price.ToString() + "G";       // instrument Price
         InfoPanel.transform.GetChild(3).GetComponent<Text>().text = instruments[selectedInstrumentID].passif;                       // instrument description
         InfoPanel.transform.GetChild(3).GetComponent<StatusDetector>().resetStatusList();
