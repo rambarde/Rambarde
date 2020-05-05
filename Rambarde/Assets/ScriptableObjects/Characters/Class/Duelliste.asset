@@ -12,15 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
   m_Name: Duelliste
   m_EditorClassIdentifier: 
-  modelName: Warrior
-  animatorController: Warrior
+  modelName: Temeraire
+  animatorController: Temeraire
   baseStats:
     maxHp: 70
     atq: 22
-    prot: 5
     prec: 90
     crit: 10
-  charType: 0
+  charType: 1
   baseEquipment:
   - {fileID: 11400000, guid: 9afaf8a61a406254b923f5a2a1e146b7, type: 2}
   - {fileID: 11400000, guid: 1d23d3dd0f525ca46977ae525677e44f, type: 2}

@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
   m_Name: Roublard
   m_EditorClassIdentifier: 
-  modelName: Warrior
-  animatorController: Warrior
+  modelName: Temeraire
+  animatorController: Temeraire
   baseStats:
     maxHp: 60
     atq: 23
-    prot: 0
     prec: 90
     crit: 15
   charType: 1

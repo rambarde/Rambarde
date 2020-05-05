@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Stratege
+  m_Controller: {fileID: 9100000, guid: 1d4247f365d1e6b41aa8bfcc8601c468, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 97317e454078ae94dabd6d23de6261db, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6c26870bad18c314397a7b5561616b5a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2f65fccd7e8601a4f8ff8ed0724f497a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6c04b7010050e554f870c7583513f880, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9f90687a91b751049a65267f80d18cdb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 281aef1580bb1ac4596112d3ef796917, type: 2}

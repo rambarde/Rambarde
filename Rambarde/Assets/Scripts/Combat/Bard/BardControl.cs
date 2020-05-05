@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Melodies;
 using Music;
 using UniRx;
+using UnityEditor.Animations;
 //using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace Bard {
         public ReactiveProperty<int> maxActionPoints;
         public ReactiveCollection<Melody> selectedMelodies = new  ReactiveCollection<Melody>(new List<Melody>());
         public ReactiveCommand onDone = new ReactiveCommand();
+        public Animator animator;
 
         [SerializeField] private int baseActionPoints;
         [SerializeField] private NoteSpawner spawner;
@@ -135,10 +137,13 @@ namespace Bard {
             foreach (var melody in selectedMelodies) {
                 //apply melodies based on their score (and reset their score)
                 if (melody.score.Value == melody.Data.Length) {
+                    animator.SetTrigger(0);
                     await melody.Execute();
                     inspiration.current.Value += melody.inspirationValue;
                     inspiration.ResetTurnValues();
-                } else {
+                } else
+                {
+                    animator.SetTrigger(1);
                     Debug.Log("you failed melody [" + melody.name +"]");
                 }
             }

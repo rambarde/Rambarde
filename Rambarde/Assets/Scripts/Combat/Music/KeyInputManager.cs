@@ -24,7 +24,7 @@ namespace Music {
                     .Where(c => c.gameObject.CompareTag("Note"))
                     .Subscribe(c => {
                         //Missed
-                        
+                        NoteMissed(c.gameObject.GetComponent<Note>().note);
                         _currentNote = null;
                     }).AddTo(this);
             }

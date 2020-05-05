@@ -17,10 +17,9 @@ MonoBehaviour:
   baseStats:
     maxHp: 55
     atq: 25
-    prot: 0
     prec: 90
     crit: 10
-  charType: 0
+  charType: 2
   baseEquipment:
   - {fileID: 11400000, guid: 7d33a3608dddfff48b2b3626a172d25c, type: 2}
   - {fileID: 11400000, guid: 0d3fef149ac12cd4c8e656deaf97b285, type: 2}
