@@ -11,7 +11,13 @@ namespace Music.Melodies
     {
         protected override async Task ExecuteOnTarget(CharacterControl t)
         {
+            await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Heal,
+                CharacterType.Bard, CharacterType.None);
+                            
             await t.Heal(10);
+                            
+            await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Heal,
+                CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t));
             // Heal Poison, Confused, Destabilised
             Debug.Log("Annule tous les changements de stats de: " + t.name);
         }

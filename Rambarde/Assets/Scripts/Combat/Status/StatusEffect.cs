@@ -93,7 +93,10 @@ namespace Status {
         }
         
         public static async Task ApplyBuff(CharacterControl target, BuffType buffType, int nbrTurn) {
-            // TODO: applying effect animation
+            
+            DialogFilter filter = nbrTurn > 0 ? DialogFilter.Buff : DialogFilter.Unbuff;
+            await CombatManager.Instance.dialogManager.ShowDialog(filter,
+                CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(target));
 
             var effects = target.statusEffects;
             Buff effect = (Buff) effects.FirstOrDefault(e => 
