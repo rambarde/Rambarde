@@ -29,7 +29,7 @@ public class StatusDetector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             if (GetComponent<Text>().text.Contains(status))
             {
                 statusID.Add(statusWindow.getStatusNames().IndexOf(status));
-                Debug.Log(status + " détecté");
+                //Debug.Log(status + " détecté");
             }
         }
     }
@@ -63,7 +63,7 @@ public class StatusDetector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
             Vector3 pz = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             statusWindow.transform.position = pz;
-            Debug.Log(pz);
+            //Debug.Log(pz);
         }
     }
 

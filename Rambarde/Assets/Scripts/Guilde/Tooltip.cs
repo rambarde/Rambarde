@@ -13,7 +13,6 @@ public class Tooltip : MonoBehaviour
 
     GameObject Name;
     GameObject effect;
-    GameObject target;
     GameObject inspiration;
     GameObject trance;
     GameObject type;
@@ -67,18 +66,18 @@ public class Tooltip : MonoBehaviour
                 Skills.Skill skill = TooltipObject.GetComponent<SkillBehaviour>().skill;
 
                 Name.GetComponent<Text>().text = Utils.SplitPascalCase(skill.name);
-                effect.GetComponent<Text>().text = skill.description;
+                effect.GetComponent<Text>().text = previewDamage();// skill.description;
                 type.GetComponent<Text>().text = stringTier("skill");
             }
 
-/*
+
             Name.SetActive(true);
             effect.SetActive(true);
             type.SetActive(true);
             transform.GetChild(0).gameObject.SetActive(true);
-*/ //develop-nico
+ //develop-nico
             //detect status and display status window if needed
-            Debug.Log("status detection");
+            //Debug.Log("status detection");
             effect.GetComponent<StatusDetector>().resetStatusList();
             effect.GetComponent<StatusDetector>().detectStatus();
             effect.GetComponent<StatusDetector>().displayStatus();
@@ -146,6 +145,26 @@ public class Tooltip : MonoBehaviour
                 break;
         }
         return s_tier;
+    }
+
+    string previewDamage()
+    {
+        Skills.Skill skill = TooltipObject.GetComponent<SkillBehaviour>().skill;
+        string skillDesc = skill.description;
+        float dmg;
+        if (skillDesc.Contains("X"))
+        {
+            foreach (var action in skill.actions)
+            {
+                if (action.actionType == Skills.SkillActionType.Attack)
+                {
+                    dmg = action.value * 0.01f * TooltipObject.GetComponent<SkillBehaviour>().AtqValue;
+                    skillDesc = skillDesc.Replace("X", Mathf.Ceil(dmg).ToString());
+                    break;
+                }
+            }
+        }
+        return skillDesc;
     }
 
     public void setObject(GameObject _object) { this.TooltipObject = _object; }

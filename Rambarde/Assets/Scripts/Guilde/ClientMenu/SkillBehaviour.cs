@@ -12,6 +12,8 @@ public class SkillBehaviour :
     RectTransform canvasRectTransform;
     RectTransform tooltipRectTransform;
     Tooltip tooltip;
+    private float _atqValue;
+    public float AtqValue { get { return _atqValue; } set { _atqValue = value; } }
 
     void Start()
     {

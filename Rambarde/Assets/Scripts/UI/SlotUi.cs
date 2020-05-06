@@ -66,14 +66,14 @@ namespace UI
                         //update tooltip ui
 
                         // show tooltip ui
-/*
+
                         #region CHANGE_NICO_TOOLTIP_PART2
                         descText.text = skillDesc;
                         imageIcon.sprite = skillIcon;
                         #endregion
 
-                        tooltip.SetActive(true);
-*/ //develop-nico
+                        //tooltip.SetActive(true);
+ //develop-nico
                         tooltip.DOFade(1, .5f);
                     });
                 slotIconPositions[i].GetComponent<Image>().OnPointerExitAsObservable()

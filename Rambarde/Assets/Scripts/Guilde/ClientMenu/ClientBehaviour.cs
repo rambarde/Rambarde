@@ -66,7 +66,7 @@ public class ClientBehaviour :
 
             statEnd.GetComponent<Text>().text = client.Character.baseStats.maxHp.ToString();
             statAtq.GetComponent<Text>().text = client.Character.baseStats.atq.ToString();
-            statProt.GetComponent<Text>().text = client.Character.baseStats.prot + "%";
+            statProt.GetComponent<Text>().text = client.Character.baseStats.baseProt + "%";
             statPrec.GetComponent<Text>().text = client.Character.baseStats.prec + "%";
             statCrit.GetComponent<Text>().text = client.Character.baseStats.crit + "%";
 
@@ -74,26 +74,35 @@ public class ClientBehaviour :
             {
                 GameObject skill = skills.transform.GetChild(i).gameObject;
                 skill.GetComponent<SkillBehaviour>().skill = client.Character.skills[client.SkillWheel[i]];
-                skill.GetComponent<Image>().sprite = //client.Character.skills[client.SkillWheel[i]].sprite!=null ?
-                    client.Character.skills[client.SkillWheel[i]].sprite; //: AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
+                skill.GetComponent<SkillBehaviour>().AtqValue = client.Character.baseStats.atq;
+                skill.GetComponent<Image>().sprite = client.Character.skills[client.SkillWheel[i]].sprite; 
             }
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!IsClickable) 
-            return;
+        if (!IsClickable)
+        {
+            counter.GetComponent<Counter>().decrement();
+            transform.GetChild(0).GetComponent<Image>().color = new Color(1f, 1f, 1f);
 
-        if (counter.GetComponent<Counter>().CurrentCount >= 3)
-            return;
+            IsClickable = true;
+            GameObject.Find("Reset Client").GetComponent<Button>().onClick.RemoveListener(ResetSelected);
+            transform.parent.GetComponentInParent<ClientMenuManager>().SelectedClient -= 1;
+        }
+        else
+        {
+            if (counter.GetComponent<Counter>().CurrentCount >= 3)
+                return;
 
-        counter.GetComponent<Counter>().increment();
-        transform.GetChild(0).GetComponent<Image>().color = new Color(1f, 215f/255f, 0f);
+            counter.GetComponent<Counter>().increment();
+            transform.GetChild(0).GetComponent<Image>().color = new Color(1f, 215f / 255f, 0f);
 
-        IsClickable = false;
-        GameObject.Find("Reset Client").GetComponent<Button>().onClick.AddListener(ResetSelected);
-        transform.parent.GetComponentInParent<ClientMenuManager>().SelectedClient += 1;
+            IsClickable = false;
+            GameObject.Find("Reset Client").GetComponent<Button>().onClick.AddListener(ResetSelected);
+            transform.parent.GetComponentInParent<ClientMenuManager>().SelectedClient += 1;
+        }
     }
 
     public void ResetSelected()

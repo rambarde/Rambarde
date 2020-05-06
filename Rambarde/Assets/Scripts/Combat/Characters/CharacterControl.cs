@@ -136,7 +136,6 @@ namespace Characters {
             else
                 currentStats.hp = new ReactiveProperty<float>(currentStats.maxHp);
 */ //develop-nico stuff
-=======
             currentStats.Init();
 
             slotAction = new Subject<SlotAction>();
