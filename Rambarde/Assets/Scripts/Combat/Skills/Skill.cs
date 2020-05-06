@@ -9,7 +9,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Skills {
-    [CreateAssetMenu(fileName = "Skill", menuName = "Skill")]
+    [CreateAssetMenu(fileName = "Skill", menuName = "Skill/Skill")]
     public class Skill : ScriptableObject {
 
         public int tier;
@@ -18,21 +18,23 @@ namespace Skills {
         public Sprite sprite;
         [TextArea] public string description;
 
-        private CharacterControl _randEnemy;
-        private CharacterControl _randAlly;
+        protected CharacterControl randEnemy;
+        protected CharacterControl randAlly;
+        protected CharacterControl forcedTarget;
+        protected bool hasForcedTarget = false;
 
         public async Task Execute(CharacterControl s) {
-            _randAlly = RandomTargetInTeam(s.team);
-            _randEnemy = RandomTargetInTeam(s.team + 1);
+            randAlly = RandomTargetInTeam(s.team);
+            randEnemy = RandomTargetInTeam(s.team + 1);
             
             foreach (SkillAction action in actions) {
                 List<CharacterControl> targets = new List<CharacterControl>();
                 switch (action.targetMode) {
                     case SkillTargetMode.OneAlly:
-                        targets.Add(_randAlly);
+                        targets.Add(randAlly);
                         break;
                     case SkillTargetMode.OneEnemy:
-                        targets.Add(_randEnemy);
+                        targets.Add(randEnemy);
                         break;
                     case SkillTargetMode.OneOtherAlly:
                         targets.Add(RandomOtherAlly(s));
@@ -60,6 +62,11 @@ namespace Skills {
                     default:
                         Debug.LogError("Tried to execute melody with unknown targetMode [" + action.targetMode + "]");
                         break;
+                }
+                
+                if (hasForcedTarget) {
+                    targets.Clear();
+                    targets.Add(forcedTarget);
                 }
 
                 switch (action.actionType) {
@@ -100,9 +107,17 @@ namespace Skills {
                         break;
                 }
             }
+
+            hasForcedTarget = false;
+            forcedTarget = null;
         }
 
-        private CharacterControl RandomTargetInTeam(Team team) {
+        public void ForceTarget(CharacterControl target) {
+            forcedTarget = target;
+            hasForcedTarget = true;
+        }
+
+        protected CharacterControl RandomTargetInTeam(Team team) {
             team = (Team) ((int) team % 2);
             float nMemb = CombatManager.Instance.teams[(int) team].Count;
             return CombatManager.Instance.teams[(int)team][Mathf.FloorToInt(Random.Range(0f, nMemb))];

@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6a5f461ae64d2f9e2e7c7a92e7e82c, type: 3}
   m_Name: Cacophonie_generale
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 1-4---4--1--3--2-31-----
   targetMode: 5
   tier: 2
-  effect: "R\xE9arrange les comp\xE9tence de la roue dans un ordre al\xE9atoire"
+  effect: "R\xE9arrange al\xE9atoirement la roue des comp\xE9tences."
   inspirationValue: -15
   tranceValue: 0
   sprite: {fileID: 21300000, guid: e79dff01b463d3a428612dff6dad4f45, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}

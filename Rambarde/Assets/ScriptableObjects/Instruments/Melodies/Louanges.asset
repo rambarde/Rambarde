@@ -15,8 +15,8 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 0
   tier: 2
-  effect: "Gr\xE2ce 1, Disciplin\xE9 2"
+  effect: "Donne <color=blue>Gr\xE2ce</color> pour 1 tour.\r\nDonne <color=blue>Disciplin\xE9</color>
+    pour 2 tours."
   inspirationValue: -15
   tranceValue: 0
   sprite: {fileID: 21300000, guid: b3e26a9a39b18fb4d824d26e9fa30589, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}
