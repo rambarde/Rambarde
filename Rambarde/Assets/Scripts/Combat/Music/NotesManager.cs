@@ -20,9 +20,21 @@ namespace Music {
         public void Init(List<Melody> melodies)
         {
             notesSequence = DOTween.Sequence();
+            int melodyIndex = 0;
             foreach (var melody in melodies)
             {
-                                
+                // spawn notes
+                for (int i = 0; i < melody.Size; i++)
+                {
+                    
+                }
+                
+                melodyIndex++;
+                if (melodyIndex != melodies.Count)
+                {
+                    // spawn separator
+                    
+                }
             }
         }
         
@@ -31,7 +43,7 @@ namespace Music {
             Color c = Color.black;
             switch (note) {
                 case "-" :
-                    melody.score.Value += 1;
+                    melody.score.Value += 1; //???
                     return new GameObject();
                 
                 case "1" :
@@ -63,6 +75,11 @@ namespace Music {
             noteObj.GetComponent<Image>().color = c;
 
             return noteObj;
+        }
+
+        private GameObject SpawnSeparator(string note, Melody melody)
+        {
+            return new GameObject();
         }
     }
 }

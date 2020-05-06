@@ -148,8 +148,8 @@ namespace Bard {
             }
         }
         
-        //                         bpm\      /beat division(croche)
-        private float _beat = 60f / (110f * 3f);
+        //                           bpm\      /beat division(croche)
+        //private float _beat = 60f / (110f * 3f);
 
         public async Task InitRhythmGame()
         {
@@ -160,9 +160,9 @@ namespace Bard {
             notesManager.Init(selectedMelodies);
         }
 
-        public async Task StartRhythmGame() 
+        public async Task StartRhythmGame()
         {
-            
+            await notesManager.Start();
 
             // var obs = melody
             //     .Select(x =>
@@ -188,8 +188,8 @@ namespace Bard {
             //         .Zip(obs.ToObservable(), (_, y) => y),
             //     SpawnMusicNote
             // );
-            
-            
+
+
         }
     }
 }

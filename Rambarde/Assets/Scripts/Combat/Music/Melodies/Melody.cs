@@ -11,7 +11,13 @@ namespace Melodies {
     public abstract class Melody : ScriptableObject {
         [SerializeField] private string data;
         public string Data => data;
+        
+        [SerializeField] private string parallelData;
+        public string ParallelData => parallelData;
         public int Size => data.Length; 
+        
+        [SerializeField] private float beat;
+        public float Beat => beat;
         
         public MelodyTargetMode targetMode;
         [NonSerialized] public ReactiveProperty<int> score = new ReactiveProperty<int>(0);

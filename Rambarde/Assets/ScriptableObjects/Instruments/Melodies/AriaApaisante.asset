@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AriaApaisante
   m_EditorClassIdentifier: 
   data: 4--1--2--4321___--2___--
+  parallelData: ------------------------
   targetMode: 2
   tier: 1
   effect: "Soigne 10 Endurance.\r\nRetire Poison, Confus et D\xE9stabilis\xE9."
