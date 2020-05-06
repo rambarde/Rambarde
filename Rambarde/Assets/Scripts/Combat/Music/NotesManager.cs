@@ -1,28 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bard;
+using DG.Tweening;
 using Melodies;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Music {
-    public class NoteSpawner : MonoBehaviour {
+    public class NotesManager : MonoBehaviour {
         
         [SerializeField] private Transform m1, m2, m3, m4;
+        [SerializeField] private Transform t1, t2, t3, t4;
         [SerializeField] private GameObject notePrefab;
 
-        public void InitNotes(List<NoteInfo> notes)
+        private List<GameObject> notes;
+        private Sequence notesSequence;
+        
+        public void Init(List<Melody> melodies)
         {
-            foreach (var noteInfo in notes)
+            notesSequence = DOTween.Sequence();
+            foreach (var melody in melodies)
             {
-                
+                                
             }
         }
         
         private GameObject SpawnNote(string note, Melody melody) {
-            Transform parent;
-            Color c;
+            Transform parent = null;
+            Color c = Color.black;
             switch (note) {
                 case "-" :
                     melody.score.Value += 1;
@@ -46,7 +52,8 @@ namespace Music {
                     break;
                 default:
                     Debug.Log("warning : tried to spawn a note of unkown type : [" + note + "]");
-                    return;
+                    //return;
+                break;
             }
 
             GameObject noteObj = Instantiate(notePrefab, parent);
@@ -54,6 +61,8 @@ namespace Music {
             noteObj.GetComponent<Note>().melody = melody;
             noteObj.GetComponent<NoteMove>().speed = 200f;
             noteObj.GetComponent<Image>().color = c;
+
+            return noteObj;
         }
     }
 }

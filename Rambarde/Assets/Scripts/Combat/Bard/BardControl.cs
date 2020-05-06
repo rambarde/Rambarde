@@ -11,13 +11,6 @@ using UnityEngine;
 
 namespace Bard {
     
-    public struct NoteInfo
-    {
-        public char Data { get; set; }
-        public int MelodyIndex { get; set; }
-        public float Duration { get; set; }
-    }
-    
     public class BardControl : MonoBehaviour {
         
         public Hud hud;
@@ -29,7 +22,7 @@ namespace Bard {
         public ReactiveCommand onDone = new ReactiveCommand();
 
         [SerializeField] private int baseActionPoints;
-        [SerializeField] private NoteSpawner spawner;
+        [SerializeField] private NotesManager notesManager;
         private int _selectedInstrumentIndex;
 
         private void Start() {
@@ -134,12 +127,15 @@ namespace Bard {
             SetInspirationPlayableMelodies();
         }
 
-        public async void Done() {
+        public async void Done() 
+        {
             await CombatManager.Instance.ExecTurn();
-            }
+        }
 
-        public async Task ExecMelodies() {
+        public async Task ExecMelodies() 
+        {
             CombatManager.Instance.combatPhase.Value = CombatPhase.ExecMelodies;
+            
             foreach (var melody in selectedMelodies) {
                 //apply melodies based on their score (and reset their score)
                 if (melody.score.Value == melody.Data.Length) {
@@ -160,16 +156,8 @@ namespace Bard {
             CombatManager.Instance.combatPhase.Value = CombatPhase.RhythmGame;
             
             selectedMelodies.ForEach(m => m.score.Value = 0);
-            var melodyStr = string.Concat(selectedMelodies.SelectMany(x => x.Data));
-            var melodyList = new List<NoteInfo>();
-            var melodyIndex = 0;
-            int charIndex = 0;
-            for (int i = 0; i < selectedMelodies.Count; i++)
-            {
-                melodyList.Add(new NoteInfo(){ Data = ' ', Duration = 1f} );
-            }
             
-            spawner.InitNotes(melodyList);
+            notesManager.Init(selectedMelodies);
         }
 
         public async Task StartRhythmGame() 

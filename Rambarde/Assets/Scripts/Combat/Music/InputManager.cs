@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Music {
-    public class KeyInputManager : MonoBehaviour
+    public class InputManager : MonoBehaviour
     {
         public List<SphereCollider> colliders;
         //public List<Image> InputImages;
