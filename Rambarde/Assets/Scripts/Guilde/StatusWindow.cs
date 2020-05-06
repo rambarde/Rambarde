@@ -10,6 +10,7 @@ public class StatusWindow : MonoBehaviour
     GameObject StatusPanel02;
     GameObject StatusPanel03;
 
+    public Sprite[] statusSprite;
     List<string> statusNames = new List<string>();
     List<string> statusEffect = new List<string>();
 
@@ -41,25 +42,25 @@ public class StatusWindow : MonoBehaviour
 
 
 
-        statusEffect.Add("La cible récupère 5% de son endurance maximum au début de son tour");
-        statusEffect.Add("La cible perd 5% de son endurance maximum au début de son tour");
-        statusEffect.Add("La cible effectue ses compétence avec 30% de précision en mois");
-        statusEffect.Add("La prochaine compétence de la cible est utilisée à 100% de précision et de chances de critiques. Si la cible est aussi affectée par un bonus aux chances de critique, celui-ci n'est pas affiché et ses effets sont écrasés par ceux d'Implacable. Cependant, il continue à se réduire naturellement comme n'importe quel bonus.");
-        statusEffect.Add("La cible n'agit pas à son tour de jeu (et sa roue n'avance pas d'un cran).");
-        statusEffect.Add("La cible joue en premier, même si elle n'a pas été influencée par Théodore. Si plusieurs combattants sont affectés, ils jouent tous en premier selon l'ordre 'Théodore de gauche à droite' puis 'les autres de gauche à droite', et les autres combattants agissent selon l'ordre classique. Si Précipitation est appliqué sur un combattant déjà affecté par Traînard, celui-ci est soigné de ce dernier.");
-        statusEffect.Add("La cible joue en dernier, même si elle a été influencée par Théodore. Si plusieurs combattants sont affectés, d'abord les autres combattants agissent selon l'ordre classique, puis les traînards jouent selon l'ordre 'Théodore de gauche à droite' suivi de 'les autres de gauche à droite'. Si Traînard est appliqué sur un combattant déjà affecté par Précipitation, celui-ci est soigné de ce dernier.");
-        statusEffect.Add("Au début du round, la roue de la cible tourne jusqu'à une compétence aléatoire.");
-        statusEffect.Add("La roue de la cible est invisible.	");
-        statusEffect.Add("Au début du round, la roue de la cible tourne jusqu'à son incompétence.	");
-        statusEffect.Add("À son tour de jeu, la cible utilise sa compétence actuelle et immédiatement la suivante.	");
-        statusEffect.Add("La prochaine fois qu'un client devait utiliser une incompétence, sa roue avance immédiatement d'un cran et il utilise la compétence suivante.	");
-        statusEffect.Add("Si a son tour, la cible réalise une incompétence, elle est immédiatement épuisée.	");
-        statusEffect.Add("Si ce statut n'est pas soigné avant la fin de son timer, la cible est immédiatement épuisée.	");
-        statusEffect.Add("La cible n'est pas affectée par les morceaux de Théodore, qu'ils soient ciblés ou non.	");
-        statusEffect.Add("Le combattant affecté ne peut pas être ciblé par les compétences des monstres. Le tick down s'effectue à la fin du round, et pas à la fin du tour du combattant affecté.	");
-        statusEffect.Add("La cible est toujours prise pour cible par le camp adverse. Si plusieurs combattants du même camp sont marqués, seuls ceux-ci peuvent être pris pour cible. Le tick down s'effectue à la fin du round, et pas à la fin du tour du combattant affecté.	");
-        statusEffect.Add("La cible revient immédiatement à 25% de son endurance max après être épuisé. Le tick down s'effectue à la fin du round, et pas à la fin du tour du combattant affecté.	");
-        statusEffect.Add("À chaque fois que le combattant affecté est ciblé par une compétence d'un monstre, il contre-attaque avec la compétence [NOM] [ID]. Le tick down s'effectue à la fin du round, et pas à la fin du tour du combattant affecté.	");
+        statusEffect.Add("Soigne un peu d'Endurance au début du tour.");
+        statusEffect.Add("Perd un peu d'Endurance au début du tour.");
+        statusEffect.Add("Diminue fortement la Précision.");
+        statusEffect.Add("La prochaine compétence touche automatiquement sa cible avec un coup Critique.");
+        statusEffect.Add("La prochaine compétence n'est pas effectuée et la roue des compétences n'avance pas à la fin du tour.");
+        statusEffect.Add("Effectue sa compétence en premier.");
+        statusEffect.Add("Effectue sa compétence en dernier.");
+        statusEffect.Add("La roue des compétences tourne jusqu'à une compétence aléatoire au début du tour.");
+        statusEffect.Add("La roue des compétences est invisible.");
+        statusEffect.Add("La roue des compétences tourne jusqu'à Incompétence au début du tour.");
+        statusEffect.Add("Immédiatement après avoir effectué sa compétence, effectue la compétence suivante.");
+        statusEffect.Add("Au lieu d'effectuer Incompétence, effectue la compétence suivante.");
+        statusEffect.Add("Effectuer Incompétence rend épuisé.");
+        statusEffect.Add("Rend épuisé si ce statut n'est pas soigné avant la fin du décompte.");
+        statusEffect.Add("Ne peut pas être ciblé par les morceaux de Théodore.");
+        statusEffect.Add("Ne peut pas être ciblé par les compétences des adversaires.");
+        statusEffect.Add("Est ciblé en priorité par les compétences des adversaires.");
+        statusEffect.Add("Soigne une partie de l'Endurance après avoir été épuisé.");
+        statusEffect.Add("Inflige instantanément des dégâts à un adversaire le ciblant.");
     }
 
     public void Activate(bool displayStatusInfo, List<int> statusID)
@@ -73,8 +74,9 @@ public class StatusWindow : MonoBehaviour
                 if(i<statusID.Count)
                 {
                     transform.GetChild(i).gameObject.SetActive(true);
-                    transform.GetChild(i).GetChild(0).GetComponent<Text>().text = statusNames[statusID[i]];  //display status name
-                    transform.GetChild(i).GetChild(1).GetComponent<Text>().text = statusEffect[statusID[i]];
+                    transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Image>().sprite = statusSprite[statusID[i]]; //display status icon
+                    transform.GetChild(i).GetChild(0).GetChild(1).GetComponent<Text>().text = statusNames[statusID[i]];     // display status name
+                    transform.GetChild(i).GetChild(1).GetComponent<Text>().text = statusEffect[statusID[i]];                // display status effect
                 }
                 else
                     transform.GetChild(i).gameObject.SetActive(false);
