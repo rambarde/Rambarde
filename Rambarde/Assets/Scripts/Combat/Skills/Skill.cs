@@ -23,6 +23,8 @@ namespace Skills {
         protected CharacterControl forcedTarget;
         protected bool hasForcedTarget = false;
 
+        public bool IsIncompetence => false;
+
         public async Task Execute(CharacterControl s) {
             randAlly = RandomTargetInTeam(s.team);
             randEnemy = RandomTargetInTeam(s.team + 1);
