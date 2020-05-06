@@ -35,6 +35,8 @@ public class EquipmentSelection : MonoBehaviour
             }
         }
 
+        selectedClientID = 0;
+
         DisplayClientInfo();
         ManageButtons();
     }
@@ -97,6 +99,27 @@ public class EquipmentSelection : MonoBehaviour
         }
     }
 
+    public void Unequip(int eType)
+    {
+        Characters.Equipment equipment = clients[selectedClientID].equipment[eType];
+
+        // get back the equipment in the list
+        equipment.numberEquiped--;
+        for (int i = 0; i < equipButtons.Length; i++)
+        {
+            if (i < equipmentOwned.Count)
+            {
+                equipButtons[i].GetComponent<EquipmentButton>().UpdateNumber();
+            }
+        }
+
+        // reset client equipment to base equipment from class
+        clients[selectedClientID].equipment[eType] = new Characters.Equipment();
+        clients[selectedClientID].equipment[eType] = clients[selectedClientID].Character.baseEquipment[eType];
+
+        UpdateStatsAndEquip();
+    }
+
     public void ChangeClient(bool increment)
     {
         if (increment)
@@ -120,5 +143,18 @@ public class EquipmentSelection : MonoBehaviour
             case (2): switchClientButtons[1].interactable = false; break;
             default: switchClientButtons[0].interactable = true; switchClientButtons[1].interactable = true; break;
         }
+    }
+
+    public void BackToClientSelection()
+    {
+        for(selectedClientID=0; selectedClientID<3; selectedClientID++)
+        {
+            for (int i=0; i<2; i++)
+            {
+                Unequip(i);
+            }
+        }
+
+        //clients.Clear();
     }
 }
