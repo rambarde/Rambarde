@@ -20,5 +20,5 @@ MonoBehaviour:
     buffType: 0
     value: 5
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 4560a45f4a488aa499ea07b70e045232, type: 3}
+  description: "Inflige Condamn\xE9 pour 5 tours.\r\nCible un adversaire."

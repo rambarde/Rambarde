@@ -25,5 +25,6 @@ MonoBehaviour:
     buffType: 0
     value: 5
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: c53c78f2ae29ab247a9f1a7569a21fed, type: 3}
+  description: "Inflige X d\xE9g\xE2ts.\r\nInflige Poison pour 5 tours.\r\nCible
+    un adversaire."

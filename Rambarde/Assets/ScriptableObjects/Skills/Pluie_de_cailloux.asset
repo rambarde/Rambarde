@@ -21,4 +21,4 @@ MonoBehaviour:
     value: 50
   animationName: Atq
   sprite: {fileID: 21300000, guid: 241f3a3e432c7ad4f80a77e1f98d6ccb, type: 3}
-  description: 
+  description: "Inflige X d\xE9g\xE2ts.\r\nCible tous les adversaires."

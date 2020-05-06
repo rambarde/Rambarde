@@ -21,4 +21,4 @@ MonoBehaviour:
     value: 3
   animationName: Atq
   sprite: {fileID: 21300000, guid: dee9a7069daedfb40b1ff6359cb86747, type: 3}
-  description: 
+  description: "Donne Riposte pour 3 tours.\r\nCible soi-m\xEAme."

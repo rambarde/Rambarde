@@ -26,4 +26,5 @@ MonoBehaviour:
     value: 3
   animationName: Atq
   sprite: {fileID: 21300000, guid: 2512e4df19e13214299bbf8a8ff35a22, type: 3}
-  description: 
+  description: "Inflige X d\xE9g\xE2ts.\r\nInflige D\xE9stabilis\xE9 pour 3 tours.\r\nCible
+    un adversaire."
