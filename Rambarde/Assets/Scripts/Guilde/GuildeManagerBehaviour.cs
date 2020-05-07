@@ -120,9 +120,4 @@ public class GuildeManagerBehaviour : MonoBehaviour
         menuValid[2] = false;
         signTheodore.SetActive(true);
     }
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
 }

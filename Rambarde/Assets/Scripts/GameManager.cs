@@ -73,4 +73,10 @@ public class GameManager : MonoBehaviour
             curentHPClients.Add(clients[i].currentStats.maxHp);
     }
 
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
 }
