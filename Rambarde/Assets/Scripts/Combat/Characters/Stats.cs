@@ -22,7 +22,7 @@ namespace Characters {
         public float crit;
     
         public void Init() {
-            hp = new ReactiveProperty<float>(maxHp);
+            hp = new ReactiveProperty<float>(0);
             prot = new ReactiveProperty<float>(0);
         }
     }

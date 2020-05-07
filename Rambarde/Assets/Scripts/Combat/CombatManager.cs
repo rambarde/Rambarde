@@ -7,8 +7,10 @@ using Characters;
 using Combat.Characters;
 using Status;
 using UI;
+using TMPro;
 using UniRx;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -240,6 +242,10 @@ public class CombatManager : MonoBehaviour {
         charUi.SetParent(charTeam == Team.PlayerTeam ? playerTeamUiContainer : enemyTeamUiContainer);
         charUi.localScale = Vector3.one;
         charUi.localEulerAngles = Vector3.zero;
+        charUi.transform.GetChild(0).GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = character.currentStats.prot.Value.ToString() + " %";
+        charUi.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = team[i].Name;
+        if (charTeam == Team.PlayerTeam)
+            charUi.transform.GetChild(1).GetChild(0).GetChild(1).GetChild(0).GetComponent<Image>().sprite = character.characterData.clientImage;
         characterGameObject.GetComponent<CharacterVfx>().Init(character);
         SlotUi slotUi = charUi.GetComponentInChildren<SlotUi>();
         slotUi.Init(character);
