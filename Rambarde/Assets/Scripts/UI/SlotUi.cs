@@ -42,7 +42,6 @@ namespace UI
             _skills = _characterControl.skillSlot;
             for (int i = 0; i < _skills.Count; i++)
             {
-                #region CHANGE_NICO_TOOLTIP_PART1
                 Sprite skillIcon = _skills[i].sprite;
                 string skillDesc = _skills[i].description;
                 float dmg;
@@ -60,7 +59,6 @@ namespace UI
                 }
 
                 slotIconPositions[i].GetComponent<Image>().sprite = skillIcon;
-                #endregion
 
                 slotIconPositions[i].GetComponent<Image>().sprite = _skills[i].sprite;
                 int skillIndex = i;

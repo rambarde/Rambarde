@@ -4,7 +4,7 @@ namespace Status {
     class Rushing : StatusEffect {
         public Rushing(CharacterControl target, int turns) : base(target, turns) {
             type = EffectType.Rushing;
-            spriteName = "Statut_Précipitation";
+            spriteName = "Statut_Precipitation";
         }
     }
 }

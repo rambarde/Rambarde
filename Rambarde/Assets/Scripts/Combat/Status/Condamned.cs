@@ -4,7 +4,7 @@ namespace Status {
     class Condemned : StatusEffect {
         public Condemned(CharacterControl target, int turns) : base(target, turns) {
             type = EffectType.Condemned;
-            spriteName = "Statut_Condamné";
+            spriteName = "Statut_Condamne";
         }
     }
 }

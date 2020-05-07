@@ -166,9 +166,7 @@ namespace Bard {
         private float _beat = 60f / (110f * 3f);
 
         public async Task StartRhythmGame() {
-            
-            
-            
+
             CombatManager.Instance.combatPhase.Value = CombatPhase.RhythmGame;
             selectedMelodies.ToList().ForEach(m => m.score.Value = 0);
             var melodyIndex = 0;

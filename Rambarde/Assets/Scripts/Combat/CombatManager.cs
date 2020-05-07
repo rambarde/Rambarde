@@ -106,10 +106,6 @@ public class CombatManager : MonoBehaviour {
 
         Destroy(characterControl.gameObject);
         teams[charTeam].Remove(characterControl);
-        Debug.Log("a character died in team " + charTeam + ". Remaining characters :");
-        foreach (CharacterControl c in teams[charTeam]) {
-            Debug.Log(c);
-        }
 
         if (teams[charTeam].Count == 0)
         {

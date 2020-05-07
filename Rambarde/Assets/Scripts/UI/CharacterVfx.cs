@@ -1,8 +1,10 @@
 ﻿using System.Globalization;
 using Characters;
 using DG.Tweening;
+using Status;
 using TMPro;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -13,7 +15,8 @@ namespace UI {
         public Image greenBar;
         public GameObject statusEffects;
         public TextMeshProUGUI characterProt;
-
+        [SerializeField] private CanvasGroup effectTooltip;
+        
         private const float LerpTime = 1f;
         private const string ResourcesDir = "CharacterVfx";
 
@@ -34,6 +37,19 @@ namespace UI {
                     characterProt.text = x.ToString(CultureInfo.InvariantCulture) + "%"
                 ).AddTo(this);
             }
+            
+            TextMeshProUGUI descText = null;
+            TextMeshProUGUI propsText = null;
+            Image imageIcon = null;
+            if (effectTooltip != null)
+            {
+                descText = effectTooltip.transform.Find("Desc").GetComponent<TextMeshProUGUI>();
+                propsText = effectTooltip.transform.Find("Props").GetComponent<TextMeshProUGUI>();
+                imageIcon = effectTooltip.transform.Find("Icon").GetComponent<Image>();
+
+                RectTransform rt = effectTooltip.GetComponent<RectTransform>();
+                rt.sizeDelta = new Vector2(300, 200);
+            }
 
             if (statusEffects) {
                 _characterControl.statusEffects.ObserveAdd().Subscribe(async x => {
@@ -43,6 +59,25 @@ namespace UI {
                     var go = Instantiate(await Utils.LoadResource<GameObject>("StatusEffectIcon"), statusEffects.transform);
                     var image = go.transform.Find("Image").gameObject.GetComponent<Image>();
                     var text = go.transform.Find("TurnsLeft").gameObject.GetComponent<TextMeshProUGUI>();
+                    
+                    image.GetComponent<Image>().OnPointerEnterAsObservable()
+                        .Subscribe(_ =>
+                        {
+                            //update tooltip ui
+
+                            imageIcon.sprite = image.sprite;
+                            descText.text = StatusEffect.GetEffectDescription(added.type); //_skills[skillIndex].description;
+                            //propsText.text = StatusEffect.GetEffectName(added.type);
+                            propsText.text = "Poison";
+
+                            effectTooltip.DOFade(1, .5f);
+                        });
+                    image.OnPointerExitAsObservable()
+                        .Subscribe(_ =>
+                        {
+                            // hide tooltip ui 
+                            effectTooltip.DOFade(0, .5f);
+                        });
 
                     image.sprite = await Utils.LoadResource<Sprite>(added.spriteName);
                     added.turnsLeft.AsObservable().Subscribe(turns => {
