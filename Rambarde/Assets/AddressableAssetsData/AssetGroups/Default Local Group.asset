@@ -70,16 +70,16 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 17a0b360413e1da40a4c047e78954e14, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 17a0b360413e1da40a4c047e78954e14, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 1803996709e22d04987684e65598762f
     m_Address: Statut_PROT-1
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 1803996709e22d04987684e65598762f, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 1803996709e22d04987684e65598762f, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 1b0d1cf3855f7f344bd626b99476e3b8
     m_Address: Elvis
     m_ReadOnly: 0
@@ -109,8 +109,8 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 22f895c26d74f6c4691b46ec5795b4e4, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 22f895c26d74f6c4691b46ec5795b4e4, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 24e9b64bc0a154a48a02434e668240a4
     m_Address: Separator
     m_ReadOnly: 0
@@ -126,14 +126,28 @@ MonoBehaviour:
     m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 2a11a88ee4e9eee4390c74274cd118d9
+    m_Address: ScriptableObjects/Dialogs/Ghost
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 3210e2374dc386e429739777ce20227d
+    m_Address: ScriptableObjects/Dialogs/AngrySkeleton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 352e7925c713b8845ae94de2dbbf18ca
     m_Address: Statut_Grace
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 352e7925c713b8845ae94de2dbbf18ca, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 352e7925c713b8845ae94de2dbbf18ca, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 4274502919fd90942b0d49c9eecb283a
     m_Address: Warrior
     m_ReadOnly: 0
@@ -148,24 +162,24 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 46d5489dc4f32c046abf703ed3ca28ef, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 46d5489dc4f32c046abf703ed3ca28ef, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 53e6a0bf17a79b044a27d403e901ad49
     m_Address: Statut_Implacable
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 53e6a0bf17a79b044a27d403e901ad49, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 53e6a0bf17a79b044a27d403e901ad49, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 55e5d5d608d44c14db7f8b20b1cb229f
     m_Address: Statut_ATQ-3
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 55e5d5d608d44c14db7f8b20b1cb229f, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 55e5d5d608d44c14db7f8b20b1cb229f, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 56afbf90f95e3604d855d59b07fd0bf7
     m_Address: ScriptableObjects/Dialogs/Goblins
     m_ReadOnly: 0
@@ -187,8 +201,8 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 5e85a24f4388b3748a75e17a96ca74c4, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 5e85a24f4388b3748a75e17a96ca74c4, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 646a60e5a7abc8e4c9c3b996110c5ebf
     m_Address: MelodyButtonT2
     m_ReadOnly: 0
@@ -203,24 +217,24 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 64f23aa755f7421459ebad91057ddde2, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 64f23aa755f7421459ebad91057ddde2, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 686be5bea2029e045a5154112313558e
     m_Address: Statut_Precipitation
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 686be5bea2029e045a5154112313558e, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 686be5bea2029e045a5154112313558e, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 6a2254e4c5c062349badd0f47e39b386
     m_Address: Statut_Confus
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 6a2254e4c5c062349badd0f47e39b386, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 6a2254e4c5c062349badd0f47e39b386, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 6b5830c8e8fcb3042bdcd2a0d63acc4a
     m_Address: Statut_PROT3
     m_ReadOnly: 0
@@ -243,24 +257,24 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 6e01092358f335840a733a0ca28a396b, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 6e01092358f335840a733a0ca28a396b, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 7069687c37afa1946b1c6d5fa77cf967
     m_Address: Statut_PROT-2
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 7069687c37afa1946b1c6d5fa77cf967, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 7069687c37afa1946b1c6d5fa77cf967, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 732fa5a4250fc22408a1c238f2a9c354
     m_Address: Statut_Condamne
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 732fa5a4250fc22408a1c238f2a9c354, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 732fa5a4250fc22408a1c238f2a9c354, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 7555b855b2471cb4d804c15abf353989
     m_Address: ScriptableObjects/Dialogs/Golem
     m_ReadOnly: 0
@@ -282,22 +296,36 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 75a23936cef7af84c93b8ad1d83ca303, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 75a23936cef7af84c93b8ad1d83ca303, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 7c1c0bd9e26876c4e8a925158a792cb4
     m_Address: Statut_Imprevisible
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 7c1c0bd9e26876c4e8a925158a792cb4, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 7c1c0bd9e26876c4e8a925158a792cb4, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 7c78d02dd8936a7438531fc604d79b87
     m_Address: PlayerTeamCharacterPrefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7efc9d678ffff9c4083cd1101f796f6d
+    m_Address: ScriptableObjects/Dialogs/Wight
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 80e144f4f87f66a4a8d1cd341217e646
+    m_Address: ScriptableObjects/Dialogs/Orcs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 8456f3cec12d90948b1869d1ea47e20b
@@ -332,28 +360,42 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 8daf1b2dcb8920540a4c618c92343f95
+    m_Address: ScriptableObjects/Dialogs/OrcsLeader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 8f8c474b0b36b7149a5b66e9b890d410
     m_Address: Statut_Exalte
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 8f8c474b0b36b7149a5b66e9b890d410, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 8f8c474b0b36b7149a5b66e9b890d410, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 98191c64819a72c47908876a31c61256
     m_Address: Statut_Invisible
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 2800000, guid: 98191c64819a72c47908876a31c61256, type: 3}
-    m_TargetAsset: {fileID: 2800000, guid: 98191c64819a72c47908876a31c61256, type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 98deba1df769be04da52a6adaa88c075
     m_Address: vfx-heal
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 9eccac0f2900ccf4eaceefc81c367a80
+    m_Address: ScriptableObjects/Dialogs/Wisp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: a3f8940d3089c414297d6c16fa28dc66
@@ -444,6 +486,13 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: d83b83da39d58074cb7421009d0c9181
+    m_Address: ScriptableObjects/Dialogs/Brasier
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: d89c9546b3733784fb032c3815ceecae
     m_Address: Goblin
     m_ReadOnly: 0
@@ -460,12 +509,33 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: e128651da2a8439498c2826e76b878b4
+    m_Address: ScriptableObjects/Dialogs/FakeMonstersGeneric
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e1871d5f2c7bcd4449c12897113b283d
+    m_Address: ScriptableObjects/Dialogs/Skeleton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: e56ef2f874424424bb7b98b9da35de44
     m_Address: Mage
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e627dd487a16b0c41866609e4245afae
+    m_Address: ScriptableObjects/Dialogs/ColdSkeleton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: e73678d1525670d488760b8f17234725
