@@ -9,6 +9,8 @@ using Status;
 using UI;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public enum CombatPhase {
     SelectMelodies,
@@ -25,9 +27,11 @@ public class CombatManager : MonoBehaviour {
     public RectTransform playerTeamUiContainer;
     public RectTransform enemyTeamUiContainer;
     public ReactiveProperty<CombatPhase> combatPhase = new ReactiveProperty<CombatPhase>(CombatPhase.SelectMelodies);
+    public DialogManager dialogManager;
     
     private List<CharacterBase> clientsMenu;
     private List<CharacterBase> currentMonsters;
+    
 
     [Header("Combat Testing Only")]
     [SerializeField] public bool ignoreGameManager = false;
@@ -80,6 +84,8 @@ public class CombatManager : MonoBehaviour {
             l.SetActive(false);
         }
 
+        
+        //TODO check if fight is not over between each skill
         // Execute all character skills
         foreach (CharacterControl character in characters) {
             if (character == null) continue;
@@ -112,30 +118,34 @@ public class CombatManager : MonoBehaviour {
             {
                 GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
                 GetComponent<GameManager>().ChangeScene(2);
-            }
-            else
-            {
-                int gold = GetComponent<GameManager>().CalculateGold();
-                GameManager.CurrentInspiration = 0;                                 //reset inspiration
-                GetComponent<GameManager>().ChangeScene(0);
-            }
-        }
-    }
+    // develop-nico
+    //        }
+    //        else
+    //        {
+    //            int gold = GetComponent<GameManager>().CalculateGold();
+    //            GameManager.CurrentInspiration = 0;                                 //reset inspiration
+    //            GetComponent<GameManager>().ChangeScene(0);
+    //        }
+    //    }
+    //}
 
-    private async Task ResolveFight()
-    {
-        if (teams[1].Count == 0)        //no more enemies
-        {
-            GetComponent<GameManager>().ChangeCombat();
-            if (!GameManager.QuestState)
-            {
-                GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
-                GetComponent<GameManager>().ChangeScene(2);
-            }
-            else
-            {
-                int gold = GetComponent<GameManager>().CalculateGold();
-                GameManager.CurrentInspiration = 0;                                 //reset inspiration
+    //private async Task ResolveFight()
+    //{
+    //    if (teams[1].Count == 0)        //no more enemies
+    //    {
+    //        GetComponent<GameManager>().ChangeCombat();
+    //        if (!GameManager.QuestState)
+    //        {
+    //            GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
+    //            GetComponent<GameManager>().ChangeScene(2);
+    //        }
+    //        else
+    //        {
+    //            int gold = GetComponent<GameManager>().CalculateGold();
+    //            GameManager.CurrentInspiration = 0;                                 //reset inspiration
+
+            } else {
+                /*int gold = */GetComponent<GameManager>().CalculateGold();
                 GetComponent<GameManager>().ChangeScene(0);
             }
         }
@@ -177,20 +187,40 @@ public class CombatManager : MonoBehaviour {
 
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
 
+        //Task[] setupTasks = new Task[6];
         int i = 0;
         foreach (Transform t in playerTeamGo.transform) {
-            SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
+            /*setupTasks[i] = */await SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
             ++i;
         }
 
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
-            SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
+            /*setupTasks[i+3] = */await SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
             ++i;
         }
+
+        //Task.WaitAll(setupTasks);
+
+        //dialogs
+        dialogManager = GetComponent<DialogManager>();
+        List<CharacterType> characterTypes =
+            teams[(int) Team.EmemyTeam].Select(Dialog.GetCharacterTypeFromCharacterControl).ToList();
+        characterTypes.Add(CharacterType.Client);
+        characterTypes.Add(CharacterType.Bard);
+        await dialogManager.Init(characterTypes);
+        
+        await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Bard,
+            CharacterType.None);
+        await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Client,
+            CharacterType.None);
+        await dialogManager.ShowDialog(DialogFilter.CombatStart,
+            Dialog.GetCharacterTypeFromCharacterControl(teams[(int) Team.EmemyTeam][Random.Range(0, 3)]),
+            CharacterType.None);
+
     }
 
-    private async void SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {
+    private async Task SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {
         string charPrefabName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterPrefab" : "EnemyCharacterPrefab";
         string charPrefabUiName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterUI" : "EnemyCharacterUI";
 

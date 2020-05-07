@@ -12,6 +12,7 @@ namespace Skills {
     [CreateAssetMenu(fileName = "Skill", menuName = "Skill/Skill")]
     public class Skill : ScriptableObject {
 
+        public string verboseName;
         public int tier;
         public SkillAction[] actions;
         public string animationName;
@@ -22,6 +23,8 @@ namespace Skills {
         protected CharacterControl randAlly;
         protected CharacterControl forcedTarget;
         protected bool hasForcedTarget = false;
+
+        public bool IsIncompetence => false;
 
         public async Task Execute(CharacterControl s) {
             randAlly = RandomTargetInTeam(s.team);
@@ -71,10 +74,33 @@ namespace Skills {
 
                 switch (action.actionType) {
                     case SkillActionType.Attack :
-                        targets.ForEach(async t => await t.TakeDamage(action.value / 100f * s.currentStats.atq));
+                        foreach (var t in targets) {
+                            await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Damage,
+                                Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None);
+                            
+                            await t.TakeDamage(action.value / 100f * s.currentStats.atq);
+                            
+                            await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Damage,
+                                CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t));
+
+                            if (t.currentStats.hp.Value <= 0) {
+                                await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Kill,
+                                    Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None);
+                                await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Kill,
+                                    CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t));
+                            }
+                        }
                         break;
                     case SkillActionType.Heal :
-                        targets.ForEach(async t => await t.Heal(action.value));
+                        foreach (var t in targets) {
+                            await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Heal,
+                                Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None);
+                            
+                            await t.Heal(action.value);
+                            
+                            await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Heal,
+                                CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t));
+                        }
                         break;
                     case SkillActionType.StealHealth :
                         targets.ForEach(async t => {
