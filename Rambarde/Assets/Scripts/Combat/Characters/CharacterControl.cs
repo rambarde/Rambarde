@@ -130,6 +130,12 @@ namespace Characters {
             skillWheel = temp;
 
             UpdateStats();
+/*
+            if(team == Team.PlayerTeam)
+                currentStats.hp = new ReactiveProperty<float>(GameManager.curentHPClients[clientNumber]);
+            else
+                currentStats.hp = new ReactiveProperty<float>(currentStats.maxHp);
+*/ //develop-nico stuff
             currentStats.Init();
 
             slotAction = new Subject<SlotAction>();
@@ -142,6 +148,7 @@ namespace Characters {
             _animator = GetComponentInChildren<Animator>();
             AnimatorOverrideController myOverrideController = await Utils.LoadResource<AnimatorOverrideController>("Animations/" + characterData.animatorController);
             _animator.runtimeAnimatorController = myOverrideController;
+            _animator.SetFloat("CycleOffset", UnityEngine.Random.Range(-5,5));
         }
 
         //private void UpdateStats(int accessory) {
@@ -186,6 +193,7 @@ namespace Characters {
             
             //TODO: spawn floating text for damage taken
             await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(0.7f)));
+            //await SkillPreHitAnimation("Dead");
             _combatManager.Remove(this);
         }
 

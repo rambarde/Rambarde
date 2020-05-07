@@ -11,6 +11,8 @@ public class ChooseQuest : MonoBehaviour
 
     GameObject questMap;
     GameObject questDescription;
+    GameObject questLevel;
+    GameObject questReward;
 
     int selectedQuestID = -1;
 
@@ -28,6 +30,8 @@ public class ChooseQuest : MonoBehaviour
         // GameObjects that have to be changed depending on the selected quest
         questMap = GameObject.Find("QuestMap");
         questDescription = GameObject.Find("QuestDescription");
+        questLevel = GameObject.Find("QuestLevel");
+        questReward = GameObject.Find("QuestReward");
 
         // Label displaying how much gold the player has
         goldManager = GameObject.FindGameObjectWithTag("GoldLabel");
@@ -49,13 +53,17 @@ public class ChooseQuest : MonoBehaviour
         // Display either normal quest are upgraded quest
         if (questPool[quest_id].IsUpgradable)
         {
-            questMap.GetComponent<Image>().sprite = questPool[quest_id].map;
+            //questMap.GetComponent<Image>().sprite = questPool[quest_id].map;
+            questLevel.GetComponent<Text>().text = "Expédition de niveau 1";
+            //questReward.GetComponent<Text>().text = "Gain minimum:" + questPool[quest_id].Gold + " or.";
         }
         else
         {
-            questMap.GetComponent<Image>().sprite = questPool[quest_id].upgradedMap;
+            //questMap.GetComponent<Image>().sprite = questPool[quest_id].upgradedMap;
+            questLevel.GetComponent<Text>().text = "Expédition de niveau 2";
         }
-        
+
+        questReward.GetComponent<Text>().text = "Gain minimum: " + questPool[quest_id].Gold + " or.";
         // Display quest description
         questDescription.GetComponent<Text>().text = questPool[quest_id].Pitch;
         selectedQuestID = quest_id;
@@ -85,7 +93,9 @@ public class ChooseQuest : MonoBehaviour
             // update currently displayed quest map if needed
             if (selectedQuestID != -1)
             {
-                questMap.GetComponent<Image>().sprite = questPool[selectedQuestID].upgradedMap;
+                //questMap.GetComponent<Image>().sprite = questPool[selectedQuestID].upgradedMap;
+                questLevel.GetComponent<Text>().text = "Expédition de niveau 2";
+                questReward.GetComponent<Text>().text = "Gain minimum: " + questPool[selectedQuestID].Gold + " or.";
             }
 
         }

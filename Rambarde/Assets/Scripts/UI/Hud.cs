@@ -25,6 +25,7 @@ public class Hud : MonoBehaviour {
         subscriptions.Add(
             character.gameObject.OnMouseDownAsObservable()
                 .Subscribe(__ => {
+
                     bard.SelectMelody(melody, character);
                     subscriptions.ForEach(s => s.Dispose());
                     

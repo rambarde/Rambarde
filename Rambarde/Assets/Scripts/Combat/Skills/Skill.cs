@@ -23,6 +23,8 @@ namespace Skills {
         protected CharacterControl forcedTarget;
         protected bool hasForcedTarget = false;
 
+        public bool IsIncompetence => false;
+
         public async Task Execute(CharacterControl s) {
             randAlly = RandomTargetInTeam(s.team);
             randEnemy = RandomTargetInTeam(s.team + 1);
@@ -71,6 +73,10 @@ namespace Skills {
 
                 switch (action.actionType) {
                     case SkillActionType.Attack :
+                        await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Atq,
+                            Dialog.GetCharacterTypeFromCharacterControl(s),
+                            CharacterType.None);
+                        
                         targets.ForEach(async t => await t.TakeDamage(action.value / 100f * s.currentStats.atq));
                         break;
                     case SkillActionType.Heal :

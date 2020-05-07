@@ -26,4 +26,5 @@ MonoBehaviour:
     value: 2
   animationName: Atq
   sprite: {fileID: 21300000, guid: d6478317faada084ea4ac8cb742287f5, type: 3}
-  description: 
+  description: "Inflige X d\xE9g\xE2ts.\r\nInflige Poison pour 2 tours.\r\nCible
+    tous les adversaires."

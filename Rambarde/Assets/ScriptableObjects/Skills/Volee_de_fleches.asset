@@ -20,5 +20,5 @@ MonoBehaviour:
     buffType: 0
     value: 30
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 354fa78b4f2fe4744aa6f3f0448b732b, type: 3}
+  description: "Inflige X d\xE9g\xE2ts.\r\nCible tous les adversaires."

@@ -29,18 +29,20 @@ public class DialogManager : MonoBehaviour
     private Dictionary<CharacterType, List<DialogPhrase>> dialogs;
     private List<string> closedList;
 
-    public async void Init(List<CharacterType> characters)
+    public async Task Init(List<CharacterType> characters)
     {
+        dialogs = new Dictionary<CharacterType, List<DialogPhrase>>();
+        closedList = new List<string>();
         foreach (var character in characters)
         {
-            Dialog dialog = await Utils.LoadResource<Dialog>("ScriptableObjects/" + character.ToString());
+            Dialog dialog = await Utils.LoadResource<Dialog>("ScriptableObjects/Dialogs/" + character);
             dialogs.Add(character, dialog.GetPhrases());
         }
     }
     
     bool IsDialogAvailable()
     {
-        return Random.Range(0, 1) <= dialogAppearRate;
+        return Random.Range(0.0f, 1f) <= dialogAppearRate;
     }
     
     private Quote GetDialogQuote(DialogFilter filter, CharacterType actionExecutor, CharacterType actionReceiver)
@@ -173,6 +175,12 @@ public class DialogManager : MonoBehaviour
             foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,actionReceiver))
                 quotes.Add(filteredQuote);
 
+        // when all characters are involved  
+        if(actionExecutor == CharacterType.None && actionReceiver == CharacterType.None)
+            foreach (var character in dialogs.Keys)
+            foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,character))
+                quotes.Add(filteredQuote);
+        
         if (quotes.Count != 0)
         {
             int rand = Random.Range(0, quotes.Count);
@@ -185,6 +193,9 @@ public class DialogManager : MonoBehaviour
 
     private IEnumerable<Quote> GetFilteredCharacterQuotes(DialogFilter filter, CharacterType character)
     {
+        if (!dialogs.ContainsKey(character)) {
+            Debug.Log("Warning : tried to get quotes from unkown character type : " + character);
+        }
         foreach (var dialogPhrase in dialogs[character])
             if (dialogPhrase.filter == filter)
                 yield return new Quote() {character = character, phrase = dialogPhrase.phrase};

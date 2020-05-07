@@ -20,5 +20,7 @@ MonoBehaviour:
     buffType: 0
     value: 1
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: e9bd95ef010d1084bb2971f9b1b91c20, type: 3}
+  description: 'Donne Inapte pour 1 tour.
+
+    Cible un adversaire.'

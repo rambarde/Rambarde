@@ -9,12 +9,15 @@ using Status;
 using UI;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public enum CombatPhase {
     SelectMelodies,
     RhythmGame,
     ExecMelodies,
-    TurnFight
+    TurnFight,
+    ResolveFight
 }
 
 public class CombatManager : MonoBehaviour {
@@ -24,9 +27,11 @@ public class CombatManager : MonoBehaviour {
     public RectTransform playerTeamUiContainer;
     public RectTransform enemyTeamUiContainer;
     public ReactiveProperty<CombatPhase> combatPhase = new ReactiveProperty<CombatPhase>(CombatPhase.SelectMelodies);
+    public DialogManager dialogManager;
     
     private List<CharacterBase> clientsMenu;
     private List<CharacterBase> currentMonsters;
+    
 
     [Header("Combat Testing Only")]
     [SerializeField] public bool ignoreGameManager = false;
@@ -42,6 +47,9 @@ public class CombatManager : MonoBehaviour {
         bard.Reset();
         combatPhase.Value = CombatPhase.TurnFight;
         await ResolveTurnFight();
+        combatPhase.Value = CombatPhase.ResolveFight;
+        await ResolveFight();
+
         combatPhase.Value = CombatPhase.SelectMelodies;
     }
 
@@ -72,10 +80,12 @@ public class CombatManager : MonoBehaviour {
             l.SetActive(true);
 
             await character.EffectsTurnStart();
-
-            l.SetActive(false);
+            if(l)
+                l.SetActive(false);
         }
 
+        
+        //TODO check if fight is not over between each skill
         // Execute all character skills
         foreach (CharacterControl character in characters) {
             if (character == null) continue;
@@ -84,8 +94,8 @@ public class CombatManager : MonoBehaviour {
             l.SetActive(true);
 
             await character.ExecTurn();
-
-            l.SetActive(false);
+            if(l)
+                l.SetActive(false);
         }
     }
 
@@ -101,14 +111,41 @@ public class CombatManager : MonoBehaviour {
             Debug.Log(c);
         }
 
-        if (teams[charTeam].Count == 0) {
+        //if (teams[charTeam].Count == 0) {
+        //    GetComponent<GameManager>().ChangeCombat();
+        //    if (!GameManager.QuestState) {
+        //        GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
+        //        GetComponent<GameManager>().ChangeScene(2);
+        //    } else {
+        //        int gold = GetComponent<GameManager>().CalculateGold();
+        //        GameManager.CurrentInspiration = 0;                                 //reset inspiration
+        //        GetComponent<GameManager>().ChangeScene(0);
+        //    }
+        //}
+    }
+
+    private async Task ResolveFight()
+    {
+        if (teams[1].Count == 0)        //no more enemies
+        {
             GetComponent<GameManager>().ChangeCombat();
-            if (!GameManager.QuestState) {
+            if (!GameManager.QuestState)
+            {
+                GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
                 GetComponent<GameManager>().ChangeScene(2);
-            } else {
+            }
+            else
+            {
                 int gold = GetComponent<GameManager>().CalculateGold();
+                GameManager.CurrentInspiration = 0;                                 //reset inspiration
                 GetComponent<GameManager>().ChangeScene(0);
             }
+        }
+
+        if (teams[0].Count == 0)        //no more clients
+        {
+            Debug.Log("All my friends are dead, push me to the edge");
+            GetComponent<GameManager>().ChangeScene(0);
         }
     }
 
@@ -142,20 +179,40 @@ public class CombatManager : MonoBehaviour {
 
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
 
+        //Task[] setupTasks = new Task[6];
         int i = 0;
         foreach (Transform t in playerTeamGo.transform) {
-            SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
+            /*setupTasks[i] = */await SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
             ++i;
         }
 
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
-            SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
+            /*setupTasks[i+3] = */await SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
             ++i;
         }
+
+        //Task.WaitAll(setupTasks);
+
+        //dialogs
+        dialogManager = GetComponent<DialogManager>();
+        List<CharacterType> characterTypes =
+            teams[(int) Team.EmemyTeam].Select(Dialog.GetCharacterTypeFromCharacterControl).ToList();
+        characterTypes.Add(CharacterType.Client);
+        characterTypes.Add(CharacterType.Bard);
+        await dialogManager.Init(characterTypes);
+        
+        await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Bard,
+            CharacterType.None);
+        await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Client,
+            CharacterType.None);
+        await dialogManager.ShowDialog(DialogFilter.CombatStart,
+            Dialog.GetCharacterTypeFromCharacterControl(teams[(int) Team.EmemyTeam][Random.Range(0, 3)]),
+            CharacterType.None);
+
     }
 
-    private async void SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {
+    private async Task SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {
         string charPrefabName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterPrefab" : "EnemyCharacterPrefab";
         string charPrefabUiName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterUI" : "EnemyCharacterUI";
 
@@ -168,8 +225,10 @@ public class CombatManager : MonoBehaviour {
 
         // Init the character control
         CharacterControl character = characterGameObject.GetComponent<CharacterControl>();
-        await character.Init(team[i].Character, team[i].SkillWheel);
         character.team = charTeam;
+        if (charTeam == Team.PlayerTeam)
+            character.clientNumber = i;
+        await character.Init(team[i].Character, team[i].SkillWheel);
         teams[(int) charTeam].Add(character);
 
         // instantiate the UI on the canvas

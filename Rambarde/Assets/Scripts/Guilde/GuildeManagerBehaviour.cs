@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GuildeManagerBehaviour : MonoBehaviour
 {
     public GameObject[] subMenus;
+    public string[] subMenusSound;
     public Bard.Instrument BaseInstrument;
 
     GameObject switchMenuPanel;
@@ -49,11 +50,15 @@ public class GuildeManagerBehaviour : MonoBehaviour
     {
         if (!menuAlreadyActive)
         {
+            MusicManager.Instance?.PlayUI(subMenusSound[menuID]);
             subMenus[menuID].SetActive(true);
             menuAlreadyActive = true;
             switchMenuPanel.SetActive(true);
         }
-        MusicManager.Instance?.PlaySfx(MusicManager.Instance?.buzzClip, Vector3.zero);
+
+
+       
+
     }
 
     public void CloseMenu()
@@ -65,8 +70,8 @@ public class GuildeManagerBehaviour : MonoBehaviour
         
         menuAlreadyActive = false;
         switchMenuPanel.SetActive(false);
+        MusicManager.Instance?.PlayUIOneShot("ClickBack");
 
-        MusicManager.Instance?.PlaySfx(MusicManager.Instance?.buzzClip,Vector3.zero);
     }
 
     public void SetClients(List<Client> clients)
@@ -89,11 +94,10 @@ public class GuildeManagerBehaviour : MonoBehaviour
     public void SetQuest(ExpeditionMenu.Expedition quest)
     {
         selectedQuest = quest;
-        //GameManager.quest = quest;
         signQuest.SetActive(false);
         menuValid[1] = true;
 
-        MusicManager.Instance?.PlaySfx(MusicManager.Instance?.buzzClip, Vector3.zero);
+       
     }
 
     public void SetTheodore(Melodies.Melody[] melodies, List<Bard.Instrument> instruments)
@@ -106,7 +110,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
         menuValid[2] = true;
         signTheodore.SetActive(false);
 
-        MusicManager.Instance?.PlaySfx(MusicManager.Instance?.buzzClip, Vector3.zero);
+        
     }
 
     public void resetClients() 
@@ -127,5 +131,10 @@ public class GuildeManagerBehaviour : MonoBehaviour
         this.instruments = null;
         menuValid[2] = false;
         signTheodore.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

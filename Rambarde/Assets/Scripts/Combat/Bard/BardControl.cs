@@ -137,13 +137,13 @@ namespace Bard {
             foreach (var melody in selectedMelodies) {
                 //apply melodies based on their score (and reset their score)
                 if (melody.score.Value == melody.Data.Length) {
-                    animator.SetTrigger(0);
+                    animator.SetTrigger("Right");
                     await melody.Execute();
                     inspiration.current.Value += melody.inspirationValue;
                     inspiration.ResetTurnValues();
                 } else
                 {
-                    animator.SetTrigger(1);
+                    animator.SetTrigger("Wrong");
                     Debug.Log("you failed melody [" + melody.name +"]");
                 }
             }

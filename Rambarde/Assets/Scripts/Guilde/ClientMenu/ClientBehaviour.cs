@@ -22,6 +22,7 @@ public class ClientBehaviour :
     GameObject ClientImage;
     GameObject Name;
     GameObject Trait;
+    GameObject archetype;
     GameObject Class;
     GameObject statEnd;
     GameObject statAtq;
@@ -36,13 +37,14 @@ public class ClientBehaviour :
         ClientImage = transform.GetChild(1).gameObject;
         Name = transform.GetChild(2).gameObject;
         Trait = transform.GetChild(3).gameObject;
-        Class = transform.GetChild(4).gameObject;
-        statEnd = transform.GetChild(5).GetChild(5).gameObject;
-        statAtq = transform.GetChild(5).GetChild(6).gameObject;
-        statProt = transform.GetChild(5).GetChild(7).gameObject;
-        statPrec = transform.GetChild(5).GetChild(8).gameObject;
-        statCrit = transform.GetChild(5).GetChild(9).gameObject;
-        skills = transform.GetChild(6).gameObject;
+        archetype = transform.GetChild(4).gameObject;
+        Class = transform.GetChild(5).gameObject;
+        statEnd = transform.GetChild(6).GetChild(5).gameObject;
+        statAtq = transform.GetChild(6).GetChild(6).gameObject;
+        statProt = transform.GetChild(6).GetChild(7).gameObject;
+        statPrec = transform.GetChild(6).GetChild(8).gameObject;
+        statCrit = transform.GetChild(6).GetChild(9).gameObject;
+        skills = transform.GetChild(7).gameObject;
         counter = GameObject.Find("ClientCounter");
     }
 
@@ -54,9 +56,17 @@ public class ClientBehaviour :
             Name.GetComponent<Text>().text = client.Name;
             //Trait                                             ///add trait/envy to characterData????????
             Class.GetComponent<Text>().text = client.Character.name;
+
+            if(client.Character.name == "Paladin" || client.Character.name == "Capitaine")
+                archetype.GetComponent<Text>().text = "Stratège";
+            if (client.Character.name == "Duelliste" || client.Character.name == "Roublard")
+                archetype.GetComponent<Text>().text = "Téméraire";
+            if (client.Character.name == "Astromancien" || client.Character.name == "Elementaliste")
+                archetype.GetComponent<Text>().text = "Mage";
+
             statEnd.GetComponent<Text>().text = client.Character.baseStats.maxHp.ToString();
             statAtq.GetComponent<Text>().text = client.Character.baseStats.atq.ToString();
-            statProt.GetComponent<Text>().text = client.Character.baseStats.prot + "%";
+            statProt.GetComponent<Text>().text = client.Character.baseStats.baseProt + "%";
             statPrec.GetComponent<Text>().text = client.Character.baseStats.prec + "%";
             statCrit.GetComponent<Text>().text = client.Character.baseStats.crit + "%";
 
@@ -64,26 +74,35 @@ public class ClientBehaviour :
             {
                 GameObject skill = skills.transform.GetChild(i).gameObject;
                 skill.GetComponent<SkillBehaviour>().skill = client.Character.skills[client.SkillWheel[i]];
-                skill.GetComponent<Image>().sprite = //client.Character.skills[client.SkillWheel[i]].sprite!=null ?
-                    client.Character.skills[client.SkillWheel[i]].sprite; //: AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
+                skill.GetComponent<SkillBehaviour>().AtqValue = client.Character.baseStats.atq;
+                skill.GetComponent<Image>().sprite = client.Character.skills[client.SkillWheel[i]].sprite; 
             }
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!IsClickable) 
-            return;
+        if (!IsClickable)
+        {
+            counter.GetComponent<Counter>().decrement();
+            transform.GetChild(0).GetComponent<Image>().color = new Color(1f, 1f, 1f);
 
-        if (counter.GetComponent<Counter>().CurrentCount >= 3)
-            return;
+            IsClickable = true;
+            GameObject.Find("Reset Client").GetComponent<Button>().onClick.RemoveListener(ResetSelected);
+            transform.parent.GetComponentInParent<ClientMenuManager>().SelectedClient -= 1;
+        }
+        else
+        {
+            if (counter.GetComponent<Counter>().CurrentCount >= 3)
+                return;
 
-        counter.GetComponent<Counter>().increment();
-        transform.GetChild(0).GetComponent<Image>().color = new Color(1f, 215f/255f, 0f);
+            counter.GetComponent<Counter>().increment();
+            transform.GetChild(0).GetComponent<Image>().color = new Color(1f, 215f / 255f, 0f);
 
-        IsClickable = false;
-        GameObject.Find("Reset Client").GetComponent<Button>().onClick.AddListener(ResetSelected);
-        transform.parent.GetComponentInParent<ClientMenuManager>().SelectedClient += 1;
+            IsClickable = false;
+            GameObject.Find("Reset Client").GetComponent<Button>().onClick.AddListener(ResetSelected);
+            transform.parent.GetComponentInParent<ClientMenuManager>().SelectedClient += 1;
+        }
     }
 
     public void ResetSelected()
@@ -98,6 +117,7 @@ public class ClientBehaviour :
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        MusicManager.Instance?.PlayUIOneShot("Hover");
         GetComponent<RectTransform>().SetAsLastSibling();
         GetComponent<RectTransform>().localScale = new Vector3(0.7f, 0.7f, 0.7f);
     }

@@ -21,4 +21,4 @@ MonoBehaviour:
     value: 1
   animationName: Atq
   sprite: {fileID: 21300000, guid: be3a99e7f2129be43aad40168913eda5, type: 3}
-  description: 
+  description: "Donne Exalt\xE9 pour 1 tour.\r\nCible soi-m\xEAme."
