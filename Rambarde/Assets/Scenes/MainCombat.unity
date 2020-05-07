@@ -2393,8 +2393,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6648,7 +6648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fbcf5d6e28af3488ab123c8cfcd936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogAppearRate: 0
+  dialogAppearRate: 1
   textSpeed: 50
   dialogCanvas: {fileID: 1786486382}
   dialogText: {fileID: 183905443}
