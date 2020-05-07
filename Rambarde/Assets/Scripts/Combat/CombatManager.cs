@@ -117,7 +117,7 @@ public class CombatManager : MonoBehaviour {
             if (!GameManager.QuestState)
             {
                 GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
-                GetComponent<GameManager>().ChangeScene(2);
+                GetComponent<GameManager>().ChangeScene(3);
     // develop-nico
     //        }
     //        else
@@ -146,14 +146,14 @@ public class CombatManager : MonoBehaviour {
 
             } else {
                 /*int gold = */GetComponent<GameManager>().CalculateGold();
-                GetComponent<GameManager>().ChangeScene(0);
+                GetComponent<GameManager>().ChangeScene(1);
             }
         }
 
         if (teams[0].Count == 0)        //no more clients
         {
             Debug.Log("All my friends are dead, push me to the edge");
-            GetComponent<GameManager>().ChangeScene(0);
+            GetComponent<GameManager>().ChangeScene(1);
         }
     }
 
