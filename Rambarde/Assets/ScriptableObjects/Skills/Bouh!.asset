@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
   m_Name: Bouh!
   m_EditorClassIdentifier: 
+  verboseName: Bouh !
   tier: 0
   actions:
   - actionType: 3
@@ -20,5 +21,5 @@ MonoBehaviour:
     buffType: 0
     value: 1
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 975566821ffca9144a68b2d3227ae9af, type: 3}
+  description: "Inflige D\xE9stabilis\xE9 pour 1 tour.\r\nCible tous les adversaires."

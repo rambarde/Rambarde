@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
   m_Name: Vague_scelerate
   m_EditorClassIdentifier: 
+  verboseName: "Vague sc\xE9l\xE9rate"
   tier: 1
   actions:
   - actionType: 0

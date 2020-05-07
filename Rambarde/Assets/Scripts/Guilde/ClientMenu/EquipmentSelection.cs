@@ -45,6 +45,8 @@ public class EquipmentSelection : MonoBehaviour
     {
         clientPanel.transform.GetChild(0).GetComponent<Text>().text = clients[selectedClientID].Name;
         clientPanel.transform.GetChild(1).GetComponent<Image>().sprite = clients[selectedClientID].Character.clientImage;
+        clientPanel.transform.GetChild(2).GetComponent<Text>().text = clients[selectedClientID].Character.name;
+        clientPanel.transform.GetChild(3).GetComponent<Text>().text = clients[selectedClientID].Character.charType.ToString();
 
         UpdateStatsAndEquip();
     }
@@ -54,15 +56,15 @@ public class EquipmentSelection : MonoBehaviour
         clients[selectedClientID].UpdateStats();
 
         // stats values
-        clientPanel.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = "ATQ " + clients[selectedClientID].currentStats.atq;    // ATQ
-        clientPanel.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = "PREC " + clients[selectedClientID].currentStats.prec + "%";  // PREC
-        clientPanel.transform.GetChild(2).GetChild(2).GetComponent<Text>().text = "CRIT " + clients[selectedClientID].currentStats.crit + "%";  // CRIT
-        clientPanel.transform.GetChild(2).GetChild(3).GetComponent<Text>().text = "END " + clients[selectedClientID].currentStats.maxHp;  // END
-        clientPanel.transform.GetChild(2).GetChild(4).GetComponent<Text>().text = "PROT " + clients[selectedClientID].currentStats.prot + "%";  // PROT
+        clientPanel.transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "ATQ " + clients[selectedClientID].currentStats.atq;    // ATQ
+        clientPanel.transform.GetChild(4).GetChild(1).GetComponent<Text>().text = "PREC " + clients[selectedClientID].currentStats.prec + "%";  // PREC
+        clientPanel.transform.GetChild(4).GetChild(2).GetComponent<Text>().text = "CRIT " + clients[selectedClientID].currentStats.crit + "%";  // CRIT
+        clientPanel.transform.GetChild(4).GetChild(3).GetComponent<Text>().text = "END " + clients[selectedClientID].currentStats.maxHp;  // END
+        clientPanel.transform.GetChild(4).GetChild(4).GetComponent<Text>().text = "PROT " + clients[selectedClientID].currentStats.prot + "%";  // PROT
 
         // Weapon and armor icons
-        clientPanel.transform.GetChild(3).GetChild(0).GetComponent<Image>().sprite = clients[selectedClientID].equipment[0].sprite;         //weapon
-        clientPanel.transform.GetChild(3).GetChild(1).GetComponent<Image>().sprite = clients[selectedClientID].equipment[1].sprite;         //armor
+        clientPanel.transform.GetChild(5).GetChild(0).GetComponent<Image>().sprite = clients[selectedClientID].equipment[0].sprite;         //weapon
+        clientPanel.transform.GetChild(5).GetChild(1).GetComponent<Image>().sprite = clients[selectedClientID].equipment[1].sprite;         //armor
     }
 
     public void Equip(int buttonId)

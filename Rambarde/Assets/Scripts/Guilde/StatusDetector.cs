@@ -33,7 +33,7 @@ public class StatusDetector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             if (GetComponent<Text>().text.Contains(status))
             {
                 statusID.Add(statusWindow.getStatusNames().IndexOf(status));
-                Debug.Log(status + " détecté");
+                //Debug.Log(status + " détecté");
             }
         }
     }

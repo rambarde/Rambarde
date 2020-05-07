@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Rambarde/Assets/Sprites/UI/MainMenu.meta
+guid: 68e095847db4e6e4896296cb68fd9e26
+folderAsset: yes
+DefaultImporter:
+=======
 guid: 9fe602e3f5f77dad2a325671a9e9e035
 NativeFormatImporter:
+>>>>>>> develop:Rambarde/Assets/ScriptableObjects/Skills/Incompetences/CielVoile.asset.meta
   externalObjects: {}
   mainObjectFileID: 0
   userData: 

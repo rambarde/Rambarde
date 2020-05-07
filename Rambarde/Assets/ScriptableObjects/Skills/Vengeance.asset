@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0a345aeafc4e31a657cc191045a3e8, type: 3}
   m_Name: Vengeance
   m_EditorClassIdentifier: 
+  verboseName: Vengeance
   tier: 0
   actions: []
   animationName: 
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 5afa3f598443f464eb4ce52ed7f60650, type: 3}
+  description: "Inflige X d\xE9g\xE2ts.\r\nPlus puissant si l'Endurance du lanceur
+    est faible.\r\nCible un adversaire."

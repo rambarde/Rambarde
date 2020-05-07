@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Rambarde/Assets/Prefabs/GuildUI.meta
+guid: 6f74ca42e9e037a499f3d9aec2517639
+folderAsset: yes
+DefaultImporter:
+=======
 guid: 3106e6836deba4033a134b3296f34559
 NativeFormatImporter:
+>>>>>>> develop:Rambarde/Assets/ScriptableObjects/Skills/Incompetences/AssassinEgoiste.asset.meta
   externalObjects: {}
   mainObjectFileID: 0
   userData: 

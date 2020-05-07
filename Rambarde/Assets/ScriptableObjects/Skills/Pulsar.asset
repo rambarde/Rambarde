@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7a331669b344cfbe2f4b1014720869, type: 3}
   m_Name: Pulsar
   m_EditorClassIdentifier: 
+  verboseName: Pulsar
   tier: 0
   actions: []
   animationName: 

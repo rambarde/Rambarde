@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
   m_Name: Dent_pour_dent
   m_EditorClassIdentifier: 
+  verboseName: Dent pour dent
   tier: 0
   actions:
   - actionType: 3
@@ -30,5 +31,6 @@ MonoBehaviour:
     buffType: 3
     value: -2
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 8f5b31d08dfad774485bd36610845b83, type: 3}
+  description: "Donne Riposte pour 2 tours.\r\nAugmente mod\xE9r\xE9ment l'Attaque.\r\nDiminue
+    mod\xE9r\xE9ment la Protection.\r\nCible soi-m\xEAme."

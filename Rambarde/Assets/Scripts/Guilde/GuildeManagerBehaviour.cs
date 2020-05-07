@@ -86,7 +86,6 @@ public class GuildeManagerBehaviour : MonoBehaviour
     public void SetQuest(ExpeditionMenu.Expedition quest)
     {
         selectedQuest = quest;
-        //GameManager.quest = quest;
         signQuest.SetActive(false);
         menuValid[1] = true;
     }
