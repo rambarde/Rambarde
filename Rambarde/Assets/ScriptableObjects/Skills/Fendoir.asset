@@ -27,4 +27,5 @@ MonoBehaviour:
     value: -2
   animationName: Atq
   sprite: {fileID: 21300000, guid: 4e8141209b7d086489727624f3545695, type: 3}
-  description: 
+  description: "Inflige X d\xE9g\xE2ts.\r\nDiminue mod\xE9r\xE9ment la Protection.\r\nCible
+    un adversaire."

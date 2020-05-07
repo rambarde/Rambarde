@@ -21,5 +21,5 @@ MonoBehaviour:
     buffType: 0
     value: 1
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 975566821ffca9144a68b2d3227ae9af, type: 3}
+  description: "Inflige D\xE9stabilis\xE9 pour 1 tour.\r\nCible tous les adversaires."

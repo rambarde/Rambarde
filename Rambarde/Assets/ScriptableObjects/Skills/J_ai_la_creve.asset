@@ -16,5 +16,5 @@ MonoBehaviour:
   tier: 0
   actions: []
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: c2f9dc3a2068aa54e9c270b0464989e6, type: 3}
+  description: Rien du tout. Oui, vraiment !

@@ -12,6 +12,7 @@ namespace Characters {
         public float atq;
 
         // Protection (percentage)
+        public float baseProt;
         public ReactiveProperty<float> prot;
 
         // Precision (percentage)

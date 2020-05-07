@@ -86,7 +86,6 @@ public class GuildeManagerBehaviour : MonoBehaviour
     public void SetQuest(ExpeditionMenu.Expedition quest)
     {
         selectedQuest = quest;
-        //GameManager.quest = quest;
         signQuest.SetActive(false);
         menuValid[1] = true;
     }
@@ -120,5 +119,10 @@ public class GuildeManagerBehaviour : MonoBehaviour
         this.instruments = null;
         menuValid[2] = false;
         signTheodore.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

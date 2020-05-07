@@ -3,6 +3,8 @@ using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Melodies;
+using Bard;
 
 
 public class Tooltip : MonoBehaviour
@@ -11,7 +13,6 @@ public class Tooltip : MonoBehaviour
 
     GameObject Name;
     GameObject effect;
-    GameObject target;
     GameObject inspiration;
     GameObject trance;
     GameObject type;
@@ -23,10 +24,9 @@ public class Tooltip : MonoBehaviour
     {
         Name = this.transform.GetChild(1).gameObject;
         effect = this.transform.GetChild(2).gameObject;
-        target = this.transform.GetChild(3).gameObject;
-        inspiration = this.transform.GetChild(4).gameObject;
-        trance = this.transform.GetChild(5).gameObject;
-        type = this.transform.GetChild(6).gameObject;
+        inspiration = this.transform.GetChild(3).gameObject;
+        trance = this.transform.GetChild(4).gameObject;
+        type = this.transform.GetChild(5).gameObject;
 
         baseCosts = "Coûte: \n";
         baseGeneration = "Génère:\n";
@@ -38,30 +38,23 @@ public class Tooltip : MonoBehaviour
     {
         if (m_bool)
         {
-            Name.SetActive(true);
-            effect.SetActive(true);
-            transform.GetChild(0).gameObject.SetActive(true);
-
             if (TooltipObject.GetComponent<MelodyBehaviour>() != null) 
             {
-                Melodies.Melody melody = TooltipObject.GetComponent<MelodyBehaviour>().melody;
-                inspiration.SetActive(true);
-                trance.SetActive(true);
-                target.SetActive(true);
-                type.SetActive(true);
+                Melody melody = TooltipObject.GetComponent<MelodyBehaviour>().melody;
 
                 Name.GetComponent<Text>().text = Utils.SplitPascalCase(melody.name);
                 effect.GetComponent<Text>().text = melody.effect;
                 inspiration.GetComponent<Text>().text = stringInspiration(melody);
                 trance.GetComponent<Text>().text = stringTrance(melody);
-                type.GetComponent<Text>().text = "Tier " + melody.tier;         //add trance melody possibility
-                target.GetComponent<Text>().text = melodyTargetToString(melody.targetMode);
+                type.GetComponent<Text>().text = stringTier("melody");         //add trance melody possibility
+
+                inspiration.SetActive(true);
+                trance.SetActive(true);
             }
 
             if (TooltipObject.GetComponent<InstrumentBehaviour>() != null)
             {
-                Bard.Instrument instrument = TooltipObject.GetComponent<InstrumentBehaviour>().instrument;
-                type.SetActive(true);
+                Instrument instrument = TooltipObject.GetComponent<InstrumentBehaviour>().instrument;
 
                 Name.GetComponent<Text>().text = Utils.SplitPascalCase(instrument.name);
                 effect.GetComponent<Text>().text = instrument.passif;
@@ -71,27 +64,29 @@ public class Tooltip : MonoBehaviour
             if (TooltipObject.GetComponent<SkillBehaviour>() != null)
             {
                 Skills.Skill skill = TooltipObject.GetComponent<SkillBehaviour>().skill;
-                target.SetActive(true);
 
                 Name.GetComponent<Text>().text = Utils.SplitPascalCase(skill.name);
-                effect.GetComponent<Text>().text = skill.description;
-                target.GetComponent<Text>().text = skillTargetToString(skill.actions);
+                effect.GetComponent<Text>().text = previewDamage();// skill.description;
+                type.GetComponent<Text>().text = stringTier("skill");
             }
 
+
+            Name.SetActive(true);
+            effect.SetActive(true);
+            type.SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(true);
+ //develop-nico
             //detect status and display status window if needed
-            Debug.Log("status detection");
+            //Debug.Log("status detection");
             effect.GetComponent<StatusDetector>().resetStatusList();
             effect.GetComponent<StatusDetector>().detectStatus();
             effect.GetComponent<StatusDetector>().displayStatus();
-
-
 
         }
         else
         {
             Name.SetActive(false);
             effect.SetActive(false);
-            target.SetActive(false);
             inspiration.SetActive(false);
             trance.SetActive(false);
             type.SetActive(false);
@@ -100,74 +95,7 @@ public class Tooltip : MonoBehaviour
         }
     }
 
-    string melodyTargetToString(Bard.MelodyTargetMode targetMode)
-    {
-        string target = "";
-        switch (targetMode)
-        {
-            case Bard.MelodyTargetMode.OneAlly:
-                target = "Un Client";
-                break;
-            case Bard.MelodyTargetMode.OneEnemy:
-                target = "Un Monstre";
-                break;
-            case Bard.MelodyTargetMode.EveryAlly:
-                target = "Tous les clients";
-                break;
-            case Bard.MelodyTargetMode.EveryEnemy:
-                target = "Tous les ennemis";
-                break;
-            case Bard.MelodyTargetMode.Anyone:
-                target = "Une cible"; //?????????????
-                break;
-            case Bard.MelodyTargetMode.Everyone:
-                target = "Tout le monde";
-                break;
-        }
-        return target;
-    }
-
-    string skillTargetToString(Skills.SkillAction[] actions)
-    {
-        if (actions.Length == 0)
-            return "";
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        foreach(Skills.SkillAction action in actions)
-        {
-            switch (action.targetMode)
-            {
-                case Skills.SkillTargetMode.OneAlly:
-                    appendTarget(stringBuilder, "Un allié");
-                    break;
-                case Skills.SkillTargetMode.OneEnemy:
-                    appendTarget(stringBuilder, "Un ennemi");
-                    break;
-                case Skills.SkillTargetMode.Self:
-                    appendTarget(stringBuilder, "Soi-même");
-                    break;
-                case Skills.SkillTargetMode.EveryAlly:
-                    appendTarget(stringBuilder, "Tous les alliés");
-                    break;
-                case Skills.SkillTargetMode.EveryEnemy:
-                    appendTarget(stringBuilder, "Tous les ennemis");
-                    break;
-                case Skills.SkillTargetMode.Everyone:
-                    appendTarget(stringBuilder, "Tous le monde");
-                    break;
-                case Skills.SkillTargetMode.EveryOtherAlly:
-                    appendTarget(stringBuilder, "Tous les alliés (lui-même exclu)");
-                    break;
-                case Skills.SkillTargetMode.OneOtherAlly:
-                    appendTarget(stringBuilder, "Un allié (différent de lui-même)");
-                    break;
-            }
-        }
-        return stringBuilder.ToString();
-    }
-
-    string stringInspiration(Melodies.Melody melody)
+    string stringInspiration(Melody melody)
     {
         int inspi = melody.inspirationValue;
         string s_inspi;
@@ -179,7 +107,7 @@ public class Tooltip : MonoBehaviour
         return s_inspi;
     }
 
-    string stringTrance(Melodies.Melody melody)
+    string stringTrance(Melody melody)
     {
         int trance = melody.tranceValue;
         string s_trance;
@@ -191,14 +119,53 @@ public class Tooltip : MonoBehaviour
         return s_trance;
     }
 
-    public void setObject(GameObject _object) { this.TooltipObject = _object; }
-
-    void appendTarget(StringBuilder sb, string target)
+    string stringTier(string type)
     {
-        if (!sb.ToString().Contains(target))
+        int tier = 0;
+        string s_tier = "";
+        switch (type)
         {
-            sb.Append(target);
-            sb.AppendLine();
+            case "melody":
+                tier = TooltipObject.GetComponent<MelodyBehaviour>().melody.tier;
+                break;
+            case "skill":
+                tier = TooltipObject.GetComponent<SkillBehaviour>().skill.tier;
+                break;
         }
+        switch (tier)
+        {
+            case 1:
+                s_tier = "Bronze";
+                break;
+            case 2:
+                s_tier = "Argent";
+                break;
+            case 3:
+                s_tier = "Or";
+                break;
+        }
+        return s_tier;
     }
+
+    string previewDamage()
+    {
+        Skills.Skill skill = TooltipObject.GetComponent<SkillBehaviour>().skill;
+        string skillDesc = skill.description;
+        float dmg;
+        if (skillDesc.Contains("X"))
+        {
+            foreach (var action in skill.actions)
+            {
+                if (action.actionType == Skills.SkillActionType.Attack)
+                {
+                    dmg = action.value * 0.01f * TooltipObject.GetComponent<SkillBehaviour>().AtqValue;
+                    skillDesc = skillDesc.Replace("X", Mathf.Ceil(dmg).ToString());
+                    break;
+                }
+            }
+        }
+        return skillDesc;
+    }
+
+    public void setObject(GameObject _object) { this.TooltipObject = _object; }
 }
