@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a06f297c2cb466ebd158760d26df64b, type: 3}
   m_Name: Melodie_apaisante
   m_EditorClassIdentifier: 
-  data: 4--1--2-----
-  parallelData: 
-  bpm: 0
+  data: 4--1--2___--
+  parallelData: ------------
+  bpm: 120
+  measure: 12
   targetMode: 0
   tier: 1
   effect: "Retire Poison, Confus et D\xE9stabilis\xE9."

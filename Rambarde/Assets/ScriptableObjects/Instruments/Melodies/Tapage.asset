@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Tapage
   m_EditorClassIdentifier: 
   data: 1--2--3--4--
+  parallelData: ------------
+  bpm: 110
+  measure: 12
   targetMode: 1
   tier: 1
   effect: "Diminue mod\xE9r\xE9ment la Protection."

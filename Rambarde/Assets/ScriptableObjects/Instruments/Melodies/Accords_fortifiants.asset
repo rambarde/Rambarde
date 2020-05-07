@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90866bdf343ec7842a83aa24ba34a5af, type: 3}
   m_Name: Accords_fortifiants
   m_EditorClassIdentifier: 
-  data: 3-----3--3--2-----1-----
+  data: 3___--3--3--2___--1___--
+  parallelData: ------------------------
+  bpm: 120
+  measure: 12
   targetMode: 2
   tier: 2
   effect: "Augmente mod\xE9r\xE9ment la Protection."
