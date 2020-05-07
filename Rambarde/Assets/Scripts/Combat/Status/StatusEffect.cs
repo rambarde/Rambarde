@@ -158,8 +158,11 @@ namespace Status {
                     return null;
             }
         }
-        
-        public static String GetEffectDescription(EffectType effectType) {
+
+        public static string GetEffectDescription(EffectType effectType) {
+            return "\n" + GetEffectTrueDescription(effectType);
+        }
+        private static String GetEffectTrueDescription(EffectType effectType) {
             switch (effectType) {
                 case EffectType.Poison :
                     return "Perd un peu d'Endurance au début du tour.";

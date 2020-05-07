@@ -139,7 +139,8 @@ MonoBehaviour:
   m_text: PROT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be8a5825b50351e47b0bbcb32494a938, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 89368d618c7219d48bbe0d2d5509fd49, type: 2}
+  m_sharedMaterial: {fileID: -1387466591001205471, guid: be8a5825b50351e47b0bbcb32494a938,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -294,7 +295,8 @@ MonoBehaviour:
   m_text: 0%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be8a5825b50351e47b0bbcb32494a938, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 89368d618c7219d48bbe0d2d5509fd49, type: 2}
+  m_sharedMaterial: {fileID: -1387466591001205471, guid: be8a5825b50351e47b0bbcb32494a938,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -438,7 +440,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 3
+  m_ChildAlignment: 5
   m_Spacing: 3
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
@@ -969,7 +971,8 @@ MonoBehaviour:
   m_text: 'Personnage '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be8a5825b50351e47b0bbcb32494a938, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 89368d618c7219d48bbe0d2d5509fd49, type: 2}
+  m_sharedMaterial: {fileID: -1387466591001205471, guid: be8a5825b50351e47b0bbcb32494a938,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

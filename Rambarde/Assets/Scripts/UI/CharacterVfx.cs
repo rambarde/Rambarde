@@ -59,25 +59,6 @@ namespace UI {
                     var go = Instantiate(await Utils.LoadResource<GameObject>("StatusEffectIcon"), statusEffects.transform);
                     var image = go.transform.Find("Image").gameObject.GetComponent<Image>();
                     var text = go.transform.Find("TurnsLeft").gameObject.GetComponent<TextMeshProUGUI>();
-                    
-                    image.GetComponent<Image>().OnPointerEnterAsObservable()
-                        .Subscribe(_ =>
-                        {
-                            //update tooltip ui
-
-                            imageIcon.sprite = image.sprite;
-                            descText.text = StatusEffect.GetEffectDescription(added.type); //_skills[skillIndex].description;
-                            //propsText.text = StatusEffect.GetEffectName(added.type);
-                            propsText.text = "Poison";
-
-                            effectTooltip.DOFade(1, .5f);
-                        });
-                    image.OnPointerExitAsObservable()
-                        .Subscribe(_ =>
-                        {
-                            // hide tooltip ui 
-                            effectTooltip.DOFade(0, .5f);
-                        });
 
                     image.sprite = await Utils.LoadResource<Sprite>(added.spriteName);
                     added.turnsLeft.AsObservable().Subscribe(turns => {
@@ -87,6 +68,27 @@ namespace UI {
                             Destroy(go);
                         }
                     }).AddTo(go);
+                    
+                    image.GetComponent<Image>().OnPointerEnterAsObservable()
+                        .Subscribe(_ =>
+                        {
+                            //update tooltip ui
+                            Debug.Log("enter tooltip");
+                            
+                            imageIcon.sprite = image.sprite;
+                            descText.text = StatusEffect.GetEffectDescription(added.type);
+                            propsText.text = StatusEffect.GetEffectName(added.type)
+                                             + "\n" + added.turnsLeft.Value + " tour" + (added.turnsLeft.Value > 1 ? "s" : "");
+
+                            effectTooltip.DOFade(1, .5f);
+                        });
+                    image.OnPointerExitAsObservable()
+                        .Subscribe(_ =>
+                        {
+                            // hide tooltip ui 
+                            effectTooltip.DOFade(0, .5f);
+                        });
+                    
                 }).AddTo(this);
             }
         }
