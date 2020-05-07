@@ -15,5 +15,5 @@ MonoBehaviour:
   tier: 0
   actions: []
   animationName: 
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 50918a2e238284b4c9ac6dff088eab3b, type: 3}
+  description: "ATTENTION !\r\nLance une comp\xE9tence qui peut \xEAtre dangereuse."
