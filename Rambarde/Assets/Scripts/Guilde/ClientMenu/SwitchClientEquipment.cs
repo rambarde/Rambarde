@@ -21,4 +21,10 @@ public class SwitchClientEquipment : MonoBehaviour
         clientSelection.SetActive(false);
         equipmentSelection.SetActive(true);
     }
+
+    public void GoToClientSelection()
+    {
+        clientSelection.SetActive(true);
+        equipmentSelection.SetActive(false);
+    }
 }
