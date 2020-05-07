@@ -14,7 +14,7 @@ using Random = System.Random;
 namespace Characters {
     public enum Team {
         PlayerTeam = 0,
-        EmemyTeam = 1
+        EnemyTeam = 1
     }
 
     public class CharacterControl : MonoBehaviour {

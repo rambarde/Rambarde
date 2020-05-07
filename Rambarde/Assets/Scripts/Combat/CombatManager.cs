@@ -194,7 +194,7 @@ public class CombatManager : MonoBehaviour {
 
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
-            /*setupTasks[i+3] = */await SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
+            /*setupTasks[i+3] = */await SetupCharacterControl(t, currentMonsters, i, Team.EnemyTeam);
             ++i;
         }
 
@@ -203,7 +203,7 @@ public class CombatManager : MonoBehaviour {
         //dialogs
         dialogManager = GetComponent<DialogManager>();
         List<CharacterType> characterTypes =
-            teams[(int) Team.EmemyTeam].Select(Dialog.GetCharacterTypeFromCharacterControl).Distinct().ToList();
+            teams[(int) Team.EnemyTeam].Select(Dialog.GetCharacterTypeFromCharacterControl).Distinct().ToList();
         characterTypes.Add(CharacterType.Client);
         characterTypes.Add(CharacterType.Bard);
         await dialogManager.Init(characterTypes);
@@ -213,7 +213,7 @@ public class CombatManager : MonoBehaviour {
         await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Client,
             CharacterType.None);
         await dialogManager.ShowDialog(DialogFilter.CombatStart,
-            Dialog.GetCharacterTypeFromCharacterControl(teams[(int) Team.EmemyTeam][Random.Range(0, 3)]),
+            Dialog.GetCharacterTypeFromCharacterControl(teams[(int) Team.EnemyTeam][Random.Range(0, 3)]),
             CharacterType.None);
 
     }
