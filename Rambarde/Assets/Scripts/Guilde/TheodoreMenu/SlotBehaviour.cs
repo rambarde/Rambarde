@@ -36,7 +36,6 @@ public class SlotBehaviour :
             if (slotted.GetComponent<InstrumentBehaviour>() != null)
             {
                 slotted.GetComponent<InstrumentBehaviour>().instrument = null;
-                slotted.GetComponent<InstrumentBehaviour>().IsClickable = false;
             }
 
             if (slotted.GetComponent<MelodyBehaviour>() != null)

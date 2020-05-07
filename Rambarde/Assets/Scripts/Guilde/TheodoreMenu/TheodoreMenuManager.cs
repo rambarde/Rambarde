@@ -18,8 +18,9 @@ public class TheodoreMenuManager : MonoBehaviour
         }
     }
 
+    public GameObject warning;
+
     private SlotBehaviour[] slots;
-    private Counter[] counters;
     protected GameObject doneButton;
     protected GameObject warningWindow;
 
@@ -30,7 +31,6 @@ public class TheodoreMenuManager : MonoBehaviour
         warningWindow = transform.GetChild(transform.childCount - 1).gameObject;
         warningWindow.SetActive(false);
         slots = transform.GetComponentsInChildren<SlotBehaviour>();
-        counters = transform.GetComponentsInChildren<Counter>();
 
         //TO DO//
         //if (GameManager.instruments != null)
@@ -77,8 +77,6 @@ public class TheodoreMenuManager : MonoBehaviour
 
         foreach (SlotBehaviour slot in slots)
             slot.resetSlotted();
-        foreach (Counter counter in counters)
-            counter.resetCounter();
         
         transform.GetComponentInParent<GuildeManagerBehaviour>().resetTheodore();
         //pop a 'r u sure ? (you'll lose unsaved change)' window
