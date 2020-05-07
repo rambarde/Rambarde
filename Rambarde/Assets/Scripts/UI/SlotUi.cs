@@ -28,6 +28,8 @@ namespace UI
             TextMeshProUGUI descText = null;
             TextMeshProUGUI propsText = null;
             Image imageIcon = null;
+
+
             
             if (tooltip != null)
             {

@@ -147,6 +147,7 @@ namespace Characters {
                 temp[j] = characterData.skills[intSkillWheel[j]];
             skillWheel = temp;
 
+            currentStats.Init();
             UpdateStats();
 /*
             if(team == Team.PlayerTeam)
@@ -154,7 +155,6 @@ namespace Characters {
             else
                 currentStats.hp = new ReactiveProperty<float>(currentStats.maxHp);
 */ //develop-nico stuff
-            currentStats.Init();
 
             slotAction = new Subject<SlotAction>();
             statusEffects = new ReactiveCollection<StatusEffect>();
@@ -176,13 +176,15 @@ namespace Characters {
                 currentStats.prec = characterData.baseStats.prec * (equipment[0].precMod + equipment[1].precMod + 1);
                 currentStats.crit = characterData.baseStats.crit * (equipment[0].critMod + equipment[1].critMod + 1);
                 currentStats.maxHp = characterData.baseStats.maxHp + equipment[0].endMod + equipment[1].endMod;
-                currentStats.prot.Value = characterData.baseStats.prot.Value * (equipment[0].protMod + equipment[1].protMod + 1);
+                currentStats.prot.Value = characterData.baseStats.baseProt * (equipment[0].protMod + equipment[1].protMod + 1);
+                currentStats.hp.Value = characterData.baseStats.maxHp * (equipment[0].protMod + equipment[1].protMod + 1);
             } else {
                 currentStats.atq = characterData.baseStats.atq;
                 currentStats.prec = characterData.baseStats.prec;
                 currentStats.crit = characterData.baseStats.crit;
                 currentStats.maxHp = characterData.baseStats.maxHp;
-                currentStats.prot = characterData.baseStats.prot;
+                currentStats.prot.Value = characterData.baseStats.baseProt;
+                currentStats.hp.Value = characterData.baseStats.maxHp;
             }
         }
 
