@@ -40,10 +40,14 @@ namespace UI
             for (int i = 0; i < _skills.Count; i++)
             {
                 slotIconPositions[i].GetComponent<Image>().sprite = _skills[i].sprite;
+                int skillIndex = i;
                 slotIconPositions[i].GetComponent<Image>().OnPointerEnterAsObservable()
                     .Subscribe(_ =>
                     {
                         //update tooltip ui
+                        imageIcon.sprite = _skills[skillIndex].sprite;
+                        descText.text = _skills[skillIndex].description;
+                        propsText.text = _skills[skillIndex].verboseName;
                         
                         // show tooltip ui
                         tooltip.DOFade(1, .5f);
