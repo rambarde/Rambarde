@@ -130,9 +130,10 @@ public class EquipmentSelection : MonoBehaviour
         {
             selectedClientID--;
         }
+        ManageButtons();
         DisplayClientInfo();
         UpdateStatsAndEquip();
-        ManageButtons();
+        
     }
 
     void ManageButtons()
