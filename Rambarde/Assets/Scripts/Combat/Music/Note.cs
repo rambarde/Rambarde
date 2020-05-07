@@ -2,23 +2,45 @@
 using UnityEngine;
 
 namespace Music {
-    public class Note : MonoBehaviour {
-        public int note;
-        public Melody melody;
+    public class Note : MonoBehaviour
+    {
+        private bool _isLongNote;
+        private char _note;
+        private Melody _melody;
         private bool _played;
-        private int _length;
+        private float _width;
 
+        public bool IsLongNote => _isLongNote;
+        public int Data => int.Parse(_note.ToString());
         public bool Played => _played;
-        public int Length => _length;
+        public float Width => _width;
 
-        public void SetLength(int length)
+        public void Init(bool isLongNote, char note, Melody melody, float width)
         {
-            _length = length;
-            //todo GetComponent<RectTransform>().rect.width = 
+            _isLongNote = isLongNote;
+            _note = note;
+            _melody = melody;
+            _played = false;
+            _width = width;
+        }
+        
+        public void Start()
+        {
+            _played = false;
+            if (!_isLongNote) return;
+            RectTransform rectTransform = GetComponent<RectTransform>();
+            Vector2 size = rectTransform.sizeDelta;
+            size.x = _width;
+            rectTransform.sizeDelta = size;
+            //collider
+            BoxCollider2D boxCollider2D = GetComponent<BoxCollider2D>();
+            size = boxCollider2D.size;
+            size.x = _width;
+            boxCollider2D.size = size;
         }
         
         public void Play() {
-            melody.score.Value += 1;
+            _melody.score.Value += 1;
             _played = true;
         }
     }

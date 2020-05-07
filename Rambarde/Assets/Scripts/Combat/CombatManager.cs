@@ -35,8 +35,9 @@ public class CombatManager : MonoBehaviour {
     
     public async Task ExecTurn() {
         combatPhase.Value = CombatPhase.RhythmGame;
+        bard.InitRhythmGame();
         await bard.StartRhythmGame();
-        await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1600f / 200f))); // wait actual rhythm end
+        await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
         combatPhase.Value = CombatPhase.ExecMelodies;
         await bard.ExecMelodies();
         bard.Reset();

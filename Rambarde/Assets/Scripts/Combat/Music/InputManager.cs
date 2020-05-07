@@ -34,12 +34,11 @@ namespace Music {
                 .Select(x => GetInput())
                 .Subscribe(x => {
 
-                    if (_currentNote != null && _currentNote.note == x) {
+                    if (_currentNote != null && _currentNote.Data == x) {
                         //Played
                         _currentNote.Play();
                         Destroy(_currentNote.gameObject);
                         _currentNote = null;
-                    
                         
                         
                     } else {

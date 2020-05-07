@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Characters;
 using System.Threading.Tasks;
+using DG.Tweening;
 using Melodies;
 using Music;
 using UniRx;
@@ -79,13 +80,17 @@ namespace Bard {
         /**
          * Make melodies playable or not based on the action points
          */
-        private void SetActionPlayableMelodies() {
-            foreach (var melody in instruments.SelectMany(instrument => instrument.melodies)) {
-                melody.isPlayable.Value &= actionPoints.Value - melody.Size >= 0;
+        private void SetActionPlayableMelodies()
+        {
+            foreach (var melody in instruments.SelectMany(instrument => instrument.melodies)) 
+            {
+                if(melody != null)
+                    melody.isPlayable.Value &= actionPoints.Value - melody.Size >= 0;
             }
         }
 
-        private void SetInspirationPlayableMelodies() {
+        private void SetInspirationPlayableMelodies() 
+        {
             foreach (var melody
                 in instruments.SelectMany(instrument => instrument.melodies).Where(m => m.isPlayable.Value)) {
                 switch (melody.tier) {
@@ -151,7 +156,7 @@ namespace Bard {
         //                           bpm\      /beat division(croche)
         //private float _beat = 60f / (110f * 3f);
 
-        public async Task InitRhythmGame()
+        public void InitRhythmGame()
         {
             CombatManager.Instance.combatPhase.Value = CombatPhase.RhythmGame;
             
@@ -162,34 +167,7 @@ namespace Bard {
 
         public async Task StartRhythmGame()
         {
-            await notesManager.Start();
-
-            // var obs = melody
-            //     .Select(x =>
-            //     {
-            //         switch (x.data)
-            //         {
-            //             case "_":
-            //                 return new Aggregate("*", x.melodyIndex, x.noteIndex);
-            //             case "-":
-            //                 return new Aggregate("-", x.melodyIndex, x.noteIndex);
-            //             default:
-            //                 if (x.noteIndex == melodyStr.Length - 1) return x;
-            //
-            //                 var len = melodyStr.Substring(x.noteIndex + 1).TakeWhile(c => c == '_').Count() + 1;
-            //                 return new Aggregate(melodyStr.Substring(x.noteIndex, len), x.melodyIndex, x.noteIndex);
-            //         }
-            //     })
-            //     .ToList(); // Compute list elements before starting the timer
-            //
-            // await Utils.AwaitObservable(
-            //     Observable.Timer(TimeSpan.FromSeconds(_beat))
-            //         .Repeat()
-            //         .Zip(obs.ToObservable(), (_, y) => y),
-            //     SpawnMusicNote
-            // );
-
-
+            await notesManager.Play();
         }
     }
 }
