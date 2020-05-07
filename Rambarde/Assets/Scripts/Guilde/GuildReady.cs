@@ -11,7 +11,7 @@ public class GuildReady : MonoBehaviour
         guildManager = GameObject.Find("GuildeMenu").GetComponent<GuildeManagerBehaviour>();
     }
 
-    private void OnMouseDown()
+    public void checkReady()
     {
         bool[] ready = guildManager.menuValid;
         bool orReady = ready[0] || ready[1] || ready[2];
