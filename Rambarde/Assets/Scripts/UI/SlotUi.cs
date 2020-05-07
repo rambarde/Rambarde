@@ -34,6 +34,9 @@ namespace UI
                 descText = tooltip.transform.Find("Desc").GetComponent<TextMeshProUGUI>();
                 propsText = tooltip.transform.Find("Props").GetComponent<TextMeshProUGUI>();
                 imageIcon = tooltip.transform.Find("Icon").GetComponent<Image>();
+
+                RectTransform rt = tooltip.GetComponent<RectTransform>();
+                rt.sizeDelta = new Vector2(300, 200);
             }
 
             _skills = _characterControl.skillSlot;
