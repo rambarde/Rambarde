@@ -158,7 +158,104 @@ namespace Status {
                     return null;
             }
         }
-        
+
+        public static string GetEffectDescription(EffectType effectType) {
+            return "\n" + GetEffectTrueDescription(effectType);
+        }
+        private static String GetEffectTrueDescription(EffectType effectType) {
+            switch (effectType) {
+                case EffectType.Poison :
+                    return "Perd un peu d'Endurance au début du tour.";
+                case EffectType.HealthRegen :
+                    return "Soigne un peu d'Endurance au début du tour.";
+                case EffectType.Deaf :
+                    return "Ne peut pas être ciblé par les morceaux de Théodore.";
+                case EffectType.Destabilized :
+                    return "Diminue fortement la Précision.";
+                case EffectType.Merciless :
+                    return "La prochaine compétence touche automatiquement sa cible avec un coup Critique.";
+                case EffectType.Dizzy :
+                    return "La prochaine compétence n'est pas effectuée et la roue des compétences n'avance pas à la fin du tour.";
+                case EffectType.Rushing :
+                    return "Effectue sa compétence en premier.";
+                case EffectType.Lagging :
+                    return "Effectue sa compétence en dernier.";
+                case EffectType.Confused :
+                    return "La roue des compétences tourne jusqu'à une compétence aléatoire au début du tour.";
+                case EffectType.Unpredictable :
+                    return "La roue des compétences est invisible.";
+                case EffectType.Inapt :
+                    return "La roue des compétences tourne jusqu'à <b>Incompétence</b> au début du tour.";
+                case EffectType.Exalted :
+                    return "Immédiatement après avoir effectué sa compétence, effectue la compétence suivante.";
+                case EffectType.Disciplined :
+                    return "Au lieu d'effectuer <b>Incompétence</b>, effectue la compétence suivante.";
+                case EffectType.Cursed :
+                    return "Effectuer <b>Incompétence</b> rend épuisé.";
+                case EffectType.Condemned :
+                    return "Rend épuisé si ce statut n'est pas soigné avant la fin du décompte.";
+                case EffectType.Invisible :
+                    return "Ne peut pas être ciblé par les compétences des adversaires.";
+                case EffectType.Marked :
+                    return "Est ciblé en priorité par les compétences des adversaires.";
+                case EffectType.Grace :
+                    return "Soigne une partie de l'Endurance après avoir été épuisé.";
+                case EffectType.Counter :
+                    return "Inflige instantanément des dégâts à un adversaire le ciblant.";
+                default:
+                    Debug.LogError("Error : tried to get description of an invalid status effect [" + effectType + "]");
+                    return null;
+            }
+        }
+
+        public static String GetEffectName(EffectType effectType)
+        {
+            switch (effectType)
+            {
+                case EffectType.Poison:
+                    return "Poison";
+                case EffectType.HealthRegen:
+                    return "Régénération";
+                case EffectType.Deaf:
+                    return "Assourdi";
+                case EffectType.Destabilized:
+                    return "Déstabilisé";
+                case EffectType.Merciless:
+                    return "Implacable";
+                case EffectType.Dizzy:
+                    return "Étourdi";
+                case EffectType.Rushing:
+                    return "Précipitation";
+                case EffectType.Lagging:
+                    return "Traînard";
+                case EffectType.Confused:
+                    return "Confus";
+                case EffectType.Unpredictable:
+                    return "Imprévisible";
+                case EffectType.Inapt:
+                    return "Inapte";
+                case EffectType.Exalted:
+                    return "Exalté";
+                case EffectType.Disciplined:
+                    return "Discipliné";
+                case EffectType.Cursed:
+                    return "Maudit";
+                case EffectType.Condemned:
+                    return "Condamné";
+                case EffectType.Invisible:
+                    return "Invisible";
+                case EffectType.Marked:
+                    return "Marqué";
+                case EffectType.Grace:
+                    return "Grâce";
+                case EffectType.Counter:
+                    return "Riposte";
+                default:
+                    Debug.LogError("Error : tried to get name of an invalid status effect [" + effectType + "]");
+                    return null;
+            }
+        }
+
 
         public void AddTurns(int n) {
             turnsLeft.Value += n;

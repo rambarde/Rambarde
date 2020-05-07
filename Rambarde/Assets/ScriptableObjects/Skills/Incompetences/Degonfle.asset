@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 217ddf6d6cce483ebf9e3d6ae9af1c10, type: 3}
   m_Name: Degonfle
   m_EditorClassIdentifier: 
+  verboseName: "Incomp\xE9tence"
   tier: 0
   actions: []
   animationName: 

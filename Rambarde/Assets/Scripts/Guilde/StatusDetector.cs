@@ -9,8 +9,12 @@ public class StatusDetector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     StatusWindow statusWindow;
     List<int> statusID = new List<int>();
 
+    Canvas parentCanvas;
+
     void Start()
     {
+        parentCanvas = GameObject.Find("GuildeMenu").GetComponent<Canvas>();
+
         if(GameObject.FindGameObjectWithTag("statusWindow")!= null)
         {
             statusWindow = GameObject.FindGameObjectWithTag("statusWindow").GetComponent<StatusWindow>();
@@ -42,7 +46,8 @@ public class StatusDetector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         RectTransform rt = (RectTransform)gameObject.transform;
-        statusWindow.transform.position = gameObject.transform.position + new Vector3(rt.rect.width/2.0f, 0, 0);
+        //statusWindow.transform.position = gameObject.transform.position + new Vector3(rt.rect.width/2.0f, 0, 0);
+        statusWindow.transform.position = Utils.WorldToUiSpace(parentCanvas, gameObject.transform.position + new Vector3(rt.rect.width / 2.0f, 0, 0));
 
         statusWindow.Activate(true, statusID);
     }
@@ -61,7 +66,15 @@ public class StatusDetector : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             RectTransform rt = (RectTransform)gameObject.transform;
             RectTransform sw_rt = (RectTransform)statusWindow.transform;
-            statusWindow.transform.position = gameObject.transform.position + new Vector3(rt.rect.width, - sw_rt.rect.height/3.0f, 0);
+            
+
+            switch(statusID.Count)
+            {
+                case (1):
+                case (2): statusWindow.transform.position = gameObject.transform.position + new Vector3(rt.rect.width, - sw_rt.rect.height / 3.4f, 0); break;
+                case (3): statusWindow.transform.position = gameObject.transform.position + new Vector3(rt.rect.width, 0, 0); break;
+            }
+            //statusWindow.transform.position = gameObject.transform.position + Utils.WorldToUiSpace(parentCanvas, new Vector3(0, -sw_rt.rect.height / 3.0f, 0));
             statusWindow.Activate(true, statusID);
         }
     }

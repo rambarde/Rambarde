@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72df4d9f67b24b029423e18afa4d741f, type: 3}
   m_Name: ExcesDeConfiance
   m_EditorClassIdentifier: 
+  verboseName: "Incomp\xE9tence"
   tier: 0
   actions: []
   animationName: 

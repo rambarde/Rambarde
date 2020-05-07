@@ -4,7 +4,7 @@ namespace Status {
     class Unpredictable : StatusEffect {
         public Unpredictable(CharacterControl target, int turns) : base(target, turns) {
             type = EffectType.Unpredictable;
-            spriteName = "Statut_Imprévisible";
+            spriteName = "Statut_Imprevisible";
         }
     }
 }

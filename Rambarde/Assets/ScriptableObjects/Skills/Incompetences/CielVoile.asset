@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0664df03b385432b9a385e26cab218a3, type: 3}
   m_Name: CielVoile
   m_EditorClassIdentifier: 
+  verboseName: "Incomp\xE9tence"
   tier: 0
   actions: []
   animationName: 

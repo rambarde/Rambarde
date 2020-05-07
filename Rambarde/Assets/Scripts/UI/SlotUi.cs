@@ -34,12 +34,14 @@ namespace UI
                 descText = tooltip.transform.Find("Desc").GetComponent<TextMeshProUGUI>();
                 propsText = tooltip.transform.Find("Props").GetComponent<TextMeshProUGUI>();
                 imageIcon = tooltip.transform.Find("Icon").GetComponent<Image>();
+
+                RectTransform rt = tooltip.GetComponent<RectTransform>();
+                rt.sizeDelta = new Vector2(300, 200);
             }
 
             _skills = _characterControl.skillSlot;
             for (int i = 0; i < _skills.Count; i++)
             {
-                #region CHANGE_NICO_TOOLTIP_PART1
                 Sprite skillIcon = _skills[i].sprite;
                 string skillDesc = _skills[i].description;
                 float dmg;
@@ -57,7 +59,6 @@ namespace UI
                 }
 
                 slotIconPositions[i].GetComponent<Image>().sprite = skillIcon;
-                #endregion
 
                 slotIconPositions[i].GetComponent<Image>().sprite = _skills[i].sprite;
                 int skillIndex = i;
