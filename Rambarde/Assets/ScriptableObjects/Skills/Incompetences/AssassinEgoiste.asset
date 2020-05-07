@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c86c3c3c084ca0930914b6f3dd321d, type: 3}
   m_Name: AssassinEgoiste
   m_EditorClassIdentifier: 
+  verboseName: "Incomp\xE9tence"
   tier: 0
   actions: []
   animationName: 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0a345aeafc4e31a657cc191045a3e8, type: 3}
   m_Name: Vengeance
   m_EditorClassIdentifier: 
+  verboseName: Vengeance
   tier: 0
   actions: []
   animationName: 

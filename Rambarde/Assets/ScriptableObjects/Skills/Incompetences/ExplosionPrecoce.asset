@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1b1496d1d64cb593682441fc295433, type: 3}
   m_Name: ExplosionPrecoce
   m_EditorClassIdentifier: 
+  verboseName: "Incomp\xE9tence"
   tier: 0
   actions: []
   animationName: 
