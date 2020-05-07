@@ -64,6 +64,16 @@ namespace Characters {
                     await IncrementSkillsSlot();
             }
 
+            if (HasEffect(EffectType.Inapt)) {
+                while (!skillWheel[_skillIndex].IsIncompetence) {
+                    await IncrementSkillsSlot();
+                }
+            }
+            
+            if (HasEffect(EffectType.Disciplined) && skillWheel[_skillIndex].IsIncompetence) {
+                await IncrementSkillsSlot();
+            }
+
             Skill skill = skillWheel[_skillIndex];
 
             if (HasEffect(EffectType.Dizzy)) {
@@ -83,10 +93,18 @@ namespace Characters {
                 // Execute the skill
                 await skill.Execute(this);
 
+                if (skill.IsIncompetence && HasEffect(EffectType.Cursed)) {
+                    await TakeDamage(10000000f);
+                }
+
                 if (HasEffect(EffectType.Exalted)) {
                     await IncrementSkillsSlot();
+                    skill = skillWheel[_skillIndex];
                     await SkillPreHitAnimation(skill.animationName);
                     await skill.Execute(this);
+                    if (skill.IsIncompetence && HasEffect(EffectType.Cursed)) {
+                        await TakeDamage(10000000f);
+                    }
                 }
             }
 
@@ -183,8 +201,11 @@ namespace Characters {
         public async Task TakeDamage(float dmg) {
             currentStats.hp.Value = CalculateDamage(dmg);
             if (currentStats.hp.Value > 0) return;
+
+            if (HasEffect(EffectType.Grace)) {
+                currentStats.hp.Value = currentStats.maxHp / 4f;
+            }
             
-            //TODO: spawn floating text for damage taken
             await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(0.7f)));
             _combatManager.Remove(this);
         }

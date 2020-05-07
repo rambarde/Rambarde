@@ -172,21 +172,21 @@ namespace Status {
         HealthRegen = 1 << 2,    //-
         Poison = 1 << 3,         //-
         Destabilized = 1 << 4,   //-
-        Merciless = 1 << 5,      //
+        Merciless = 1 << 5,      
         Dizzy = 1 << 6,          //-
         Rushing = 1 << 7,        //-
         Lagging = 1 << 8,        //-
         Confused = 1 << 9,       //-
         Unpredictable  = 1 << 10,
-        Inapt = 1 << 11,         //
+        Inapt = 1 << 11,         //-
         Exalted = 1 << 12,       //~
-        Disciplined = 1 << 13,   //
-        Cursed = 1 << 14,        //
+        Disciplined = 1 << 13,   //-
+        Cursed = 1 << 14,        //-
         Condemned = 1 << 15,     //-
         Deaf = 1 << 16,          //-
-        Invisible = 1 << 17,     //
-        Marked = 1 << 18,        //
-        Grace = 1 << 19,         //
-        Counter = 1 << 20,       //
+        Invisible = 1 << 17,     
+        Marked = 1 << 18,        
+        Grace = 1 << 19,         //-
+        Counter = 1 << 20,       
     }
 }
