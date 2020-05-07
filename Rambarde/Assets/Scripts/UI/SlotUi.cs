@@ -67,20 +67,9 @@ namespace UI
                         //update tooltip ui
 
                         imageIcon.sprite = _skills[skillIndex].sprite;
-                        descText.text = _skills[skillIndex].description;
+                        descText.text = skillDesc; //_skills[skillIndex].description;
                         propsText.text = _skills[skillIndex].verboseName;
-                        
 
-                        // show tooltip ui
-                        
-                        #region CHANGE_NICO_TOOLTIP_PART2
-                        /*
-                        descText.text = skillDesc;
-                        imageIcon.sprite = skillIcon;
-                        */
-                        #endregion
-                        
-                        //tooltip.SetActive(true);
                         tooltip.DOFade(1, .5f);
                     });
                 slotIconPositions[i].GetComponent<Image>().OnPointerExitAsObservable()
