@@ -159,6 +159,53 @@ namespace Status {
             }
         }
         
+        public static String GetEffectDescription(EffectType effectType) {
+            switch (effectType) {
+                case EffectType.Poison :
+                    return "";
+                case EffectType.HealthRegen :
+                    return "";
+                case EffectType.Deaf :
+                    return "";
+                case EffectType.Destabilized :
+                    return "";
+                case EffectType.Merciless :
+                    return "";
+                case EffectType.Dizzy :
+                    return "";
+                case EffectType.Rushing :
+                    return "";
+                case EffectType.Lagging :
+                    return "";
+                case EffectType.Confused :
+                    return "";
+                case EffectType.Unpredictable :
+                    return "";
+                case EffectType.Inapt :
+                    return "";
+                case EffectType.Exalted :
+                    return "";
+                case EffectType.Disciplined :
+                    return "";
+                case EffectType.Cursed :
+                    return "";
+                case EffectType.Condemned :
+                    return "";
+                case EffectType.Invisible :
+                    return "";
+                case EffectType.Marked :
+                    Debug.Log("Oh hi Mark!");
+                    return "";
+                case EffectType.Grace :
+                    return "";
+                case EffectType.Counter :
+                    return "";
+                default:
+                    Debug.LogError("Error : tried to get description of an invalid status effect [" + effectType + "]");
+                    return null;
+            }
+        }
+        
 
         public void AddTurns(int n) {
             turnsLeft.Value += n;
