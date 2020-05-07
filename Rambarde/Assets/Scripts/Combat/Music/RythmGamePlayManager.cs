@@ -37,6 +37,8 @@ namespace Music {
                     .Subscribe(c =>
                     {
                         Note note = c.gameObject.GetComponent<Note>();
+                        if (note == null) note = c.gameObject.GetComponentInParent<Note>();
+                        
                         if (note.IsLongNote)
                         {
                             if (!note.Played)
@@ -48,11 +50,14 @@ namespace Music {
                                 
                                     // error sound
 
+                                    Debug.Log("error");
                                 }
                             }
                             else
                             {
+                                // played note animation
                                 
+                                Debug.Log("played");
                             }
                         }
                         else
@@ -64,6 +69,7 @@ namespace Music {
                                 
                                 // error sound
                                 
+                                Debug.Log("error");
                             }
                         }
                     }).AddTo(this);
@@ -76,35 +82,53 @@ namespace Music {
                 {
                     // missed note
                     if (_currentNotes[x-1] == null) {
-                        
+                        // error animation
+                                
+                        // error sound
+
+                        Debug.Log("error");
                     }
                     else 
                     {
                         // missed note
                         if (_currentNotes[x - 1].Data != x)
                         {
-                            
+                            // error animation
+                                
+                            // error sound
+
+                            Debug.Log("error");
                         }
                         // good note
                         else
                         {
-                            if (_currentNotes[x - 1].IsLongNote)
-                            {
-                                // while the button is pressed
-                                this.UpdateAsObservable()
-                                    .SkipWhile(_ => GetKeyInput() == x)
-                                    .Subscribe(_ =>
-                                    {
-                                        
-                                    })
-                            }
-                            
                             // played note animation
                             
+                            Debug.Log("played");
                         }
                     }
                 }).AddTo(this);
+
+            this.UpdateAsObservable()
+                .Where(_ => GetKeyUpInput() != 0)
+                .Select(x => GetKeyUpInput())
+                .Subscribe(x =>
+                {
+                    if (_currentNotes[x - 1].IsLongNote)
+                    {
+                        if (_currentNotes[x - 1].LongPlay)
+                        {
+                            // error animation
+                                
+                            // error sound
+
+                            Debug.Log("error");
+                        }
+                    }
+                });
         }
+        
+        
 
         private static int GetKeyDownInput() {
             if (Input.GetKeyDown(KeyCode.A)) {
@@ -123,17 +147,17 @@ namespace Music {
             return 0;
         }
         
-        private static int GetKeyInput() {
-            if (Input.GetKey(KeyCode.A)) {
+        private static int GetKeyUpInput() {
+            if (Input.GetKeyUp(KeyCode.A)) {
                 return 1;
             }
-            if (Input.GetKey(KeyCode.Z)) {
+            if (Input.GetKeyUp(KeyCode.Z)) {
                 return 2;
             }
-            if (Input.GetKey(KeyCode.E)) {
+            if (Input.GetKeyUp(KeyCode.E)) {
                 return 3;
             }
-            if (Input.GetKey(KeyCode.R)) {
+            if (Input.GetKeyUp(KeyCode.R)) {
                 return 4;
             }
             
