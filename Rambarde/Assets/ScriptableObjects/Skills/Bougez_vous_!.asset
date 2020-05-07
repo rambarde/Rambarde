@@ -26,4 +26,5 @@ MonoBehaviour:
     value: 3
   animationName: Atq
   sprite: {fileID: 21300000, guid: a199a667e6fa5fe4792997cab6d6bac2, type: 3}
-  description: 
+  description: "Augmente fortement l'Attaque et les chances de Critique.\r\nCible
+    tous les autres alli\xE9s."

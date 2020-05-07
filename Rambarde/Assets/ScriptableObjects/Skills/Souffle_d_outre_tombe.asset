@@ -20,5 +20,7 @@ MonoBehaviour:
     buffType: 0
     value: 2
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 7a04a2ee525fce14589d92ef59dd8315, type: 3}
+  description: 'Inflige Maudit pour 2 tours.
+
+    Cible un adversaire.'

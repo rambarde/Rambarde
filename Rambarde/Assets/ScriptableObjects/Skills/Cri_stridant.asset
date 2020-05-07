@@ -25,5 +25,6 @@ MonoBehaviour:
     buffType: 0
     value: 1
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 25d9eb26573a70b48a8b48c52b074b1c, type: 3}
+  description: "Inflige X d\xE9g\xE2ts.\r\nInflige Confus pour 1 tour.\r\nCible un
+    adversaire."

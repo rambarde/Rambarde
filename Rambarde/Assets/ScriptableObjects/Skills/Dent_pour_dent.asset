@@ -30,5 +30,6 @@ MonoBehaviour:
     buffType: 3
     value: -2
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 8f5b31d08dfad774485bd36610845b83, type: 3}
+  description: "Donne Riposte pour 2 tours.\r\nAugmente mod\xE9r\xE9ment l'Attaque.\r\nDiminue
+    mod\xE9r\xE9ment la Protection.\r\nCible soi-m\xEAme."

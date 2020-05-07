@@ -26,4 +26,5 @@ MonoBehaviour:
     value: 3
   animationName: Atq
   sprite: {fileID: 21300000, guid: 2215205b6533f0f419138d34ec823c20, type: 3}
-  description: 
+  description: "Inflige Marqu\xE9 pour 2 tours.\r\nAugmente fortement la Protection.\r\nCible
+    un autre alli\xE9."

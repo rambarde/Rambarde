@@ -36,4 +36,5 @@ MonoBehaviour:
     value: 0
   animationName: Atq
   sprite: {fileID: 21300000, guid: ff1f0c335b08c3b468d945e270c625f1, type: 3}
-  description: 
+  description: "Retire Poison, D\xE9stabilis\xE9, \xC9tourdi et Confus.\r\nCible
+    tous les alli\xE9s."
