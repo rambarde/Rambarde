@@ -115,6 +115,7 @@ namespace Melodies {
                     }
                 }
             }
+            else if (noteData[index] == '-') score.Value += 1;
 
             return note;
         }

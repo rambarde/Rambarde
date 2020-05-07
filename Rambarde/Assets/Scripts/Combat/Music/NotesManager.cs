@@ -48,16 +48,15 @@ namespace Music {
                         SpawnNote(n1, melody, notesSequence, noteIndex * melody.Beat);
                     if (n2 != null)
                         SpawnNote(n2, melody, notesSequence, noteIndex * melody.Beat);
-
-                    if ((melodyIndex != 0 || i != 0) &&                              // no sep at the beginning 
-                        (melodyIndex+1 != melodies.Count || i+1 != melody.Size) &&   // no sep at the end
-                        (i+1) % melody.Measure == 0)                                 // sep between measures
-                    {
-                        // spawn separator
-                        SpawnSeparator(notesSequence, noteIndex * melody.Beat + melody.Beat / 2);
-                    }
                     noteIndex++;
                 }
+                
+                if (melodyIndex+1 != melodies.Count) // no sep at the end
+                {
+                    // spawn separator
+                    SpawnSeparator(notesSequence, (noteIndex - 1) * melody.Beat + melody.Beat / 2);
+                }
+                    
                 melodyIndex++;
             }
         }
@@ -102,7 +101,7 @@ namespace Music {
             // Instantiate 
             GameObject noteObj = Instantiate(noteInfo.IsLongNote ? longNotePrefab : simpleNotePrefab, parent);
             //offset
-            float offset = noteInfo.IsLongNote ? noteInfo.Width / 2.0f : 0;
+            float offset = noteInfo.IsLongNote ? (noteInfo.Width - 65) / 2.0f : 0;
             Vector2 pos = ((RectTransform) noteObj.transform).anchoredPosition;
             pos.x += offset ;
             ((RectTransform) noteObj.transform).anchoredPosition = pos;
@@ -115,8 +114,9 @@ namespace Music {
                 notesSequence.Insert(delay,
                     ((RectTransform) noteObj.transform)
                     .DOAnchorPosX(target.anchoredPosition.x - (noteInfo.IsLongNote ? (noteInfo.Width - 65) / 2.0f : 0),
-                        (screenNotesDistance + offset * 2 - (noteInfo.IsLongNote ? 65 : 0)) / notesSpeed)
-                    .SetEase(Ease.Linear));
+                        (screenNotesDistance + offset * 2) / notesSpeed)
+                    .SetEase(Ease.Linear)
+                    .OnComplete(() => Destroy(noteObj)));
         }
 
         private void SpawnSeparator(Sequence notesSequence, float delay)
@@ -127,7 +127,9 @@ namespace Music {
             notesSequence.Insert(delay,
                 ((RectTransform) noteSepObj.transform)
                 .DOAnchorPosX(separatorTarget.anchoredPosition.x,
-                    screenNotesDistance / notesSpeed).SetEase(Ease.Linear));
+                    screenNotesDistance / notesSpeed)
+                .SetEase(Ease.Linear)
+                .OnComplete(() => Destroy(noteSepObj)));
         }
     }
 }

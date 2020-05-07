@@ -12,6 +12,7 @@ namespace Music {
 
         public bool IsLongNote => _isLongNote;
         public int Data => int.Parse(_note.ToString());
+        public bool LongPlay { get; set; }
         public bool Played => _played;
         public float Width => _width;
 
@@ -32,11 +33,6 @@ namespace Music {
             Vector2 size = rectTransform.sizeDelta;
             size.x = _width;
             rectTransform.sizeDelta = size;
-            //collider
-            BoxCollider2D boxCollider2D = GetComponent<BoxCollider2D>();
-            size = boxCollider2D.size;
-            size.x = _width;
-            boxCollider2D.size = size;
         }
         
         public void Play() {
