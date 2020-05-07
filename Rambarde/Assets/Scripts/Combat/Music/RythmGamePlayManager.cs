@@ -53,12 +53,6 @@ namespace Music {
                                     Debug.Log("error");
                                 }
                             }
-                            else
-                            {
-                                // played note animation
-                                
-                                Debug.Log("played");
-                            }
                         }
                         else
                         {
@@ -102,9 +96,13 @@ namespace Music {
                         // good note
                         else
                         {
-                            // played note animation
-                            
-                            Debug.Log("played");
+                            if (!_currentNotes[x - 1].IsLongNote)
+                            {
+                                _currentNotes[x - 1].Play();
+                                // played note animation
+                                
+                                Debug.Log("played");
+                            }
                         }
                     }
                 }).AddTo(this);
@@ -114,16 +112,26 @@ namespace Music {
                 .Select(x => GetKeyUpInput())
                 .Subscribe(x =>
                 {
-                    if (_currentNotes[x - 1].IsLongNote)
+                    if (_currentNotes[x - 1] != null)
                     {
-                        if (_currentNotes[x - 1].LongPlay)
+                        if (_currentNotes[x - 1].IsLongNote)
                         {
-                            // error animation
+                            if (_currentNotes[x - 1].LongPlay)
+                            {
+                                // error animation
                                 
-                            // error sound
+                                // error sound
 
-                            Debug.Log("error");
-                        }
+                                Debug.Log("error");
+                            }
+                            else
+                            {
+                                _currentNotes[x - 1].Play();
+                                // played note animation
+                                
+                                Debug.Log("played");
+                            }
+                        }   
                     }
                 });
         }
