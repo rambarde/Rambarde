@@ -73,14 +73,33 @@ namespace Skills {
 
                 switch (action.actionType) {
                     case SkillActionType.Attack :
-                        await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Atq,
-                            Dialog.GetCharacterTypeFromCharacterControl(s),
-                            CharacterType.None);
-                        
-                        targets.ForEach(async t => await t.TakeDamage(action.value / 100f * s.currentStats.atq));
+                        foreach (var t in targets) {
+                            await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Damage,
+                                Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None);
+                            
+                            await t.TakeDamage(action.value / 100f * s.currentStats.atq);
+                            
+                            await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Damage,
+                                CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t));
+
+                            if (t.currentStats.hp.Value <= 0) {
+                                await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Kill,
+                                    Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None);
+                                await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Kill,
+                                    CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t));
+                            }
+                        }
                         break;
                     case SkillActionType.Heal :
-                        targets.ForEach(async t => await t.Heal(action.value));
+                        foreach (var t in targets) {
+                            await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Heal,
+                                Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None);
+                            
+                            await t.Heal(action.value);
+                            
+                            await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Heal,
+                                CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t));
+                        }
                         break;
                     case SkillActionType.StealHealth :
                         targets.ForEach(async t => {
