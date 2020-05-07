@@ -43,8 +43,8 @@ public class CombatManager : MonoBehaviour {
         bard.Reset();
         combatPhase.Value = CombatPhase.TurnFight;
         await ResolveTurnFight();
-        combatPhase.Value = CombatPhase.ResolveFight;
-        await ResolveFight();
+        //combatPhase.Value = CombatPhase.ResolveFight;
+        //await ResolveFight();
 
         combatPhase.Value = CombatPhase.SelectMelodies;
     }
@@ -105,17 +105,21 @@ public class CombatManager : MonoBehaviour {
             Debug.Log(c);
         }
 
-        //if (teams[charTeam].Count == 0) {
-        //    GetComponent<GameManager>().ChangeCombat();
-        //    if (!GameManager.QuestState) {
-        //        GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
-        //        GetComponent<GameManager>().ChangeScene(2);
-        //    } else {
-        //        int gold = GetComponent<GameManager>().CalculateGold();
-        //        GameManager.CurrentInspiration = 0;                                 //reset inspiration
-        //        GetComponent<GameManager>().ChangeScene(0);
-        //    }
-        //}
+        if (teams[charTeam].Count == 0)
+        {
+            GetComponent<GameManager>().ChangeCombat();
+            if (!GameManager.QuestState)
+            {
+                GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
+                GetComponent<GameManager>().ChangeScene(2);
+            }
+            else
+            {
+                int gold = GetComponent<GameManager>().CalculateGold();
+                GameManager.CurrentInspiration = 0;                                 //reset inspiration
+                GetComponent<GameManager>().ChangeScene(0);
+            }
+        }
     }
 
     private async Task ResolveFight()

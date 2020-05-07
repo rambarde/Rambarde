@@ -65,7 +65,7 @@ public class TheodoreMenuManager : MonoBehaviour
 
     void Start()
     {
-        GameObject.Find("Instruments Panel").SetActive(false);
+        //GameObject.Find("Instruments Panel").SetActive(false);
     }
     
     public void resetSelectedSkill(int nSkills){ SelectedSkill -= nSkills; }

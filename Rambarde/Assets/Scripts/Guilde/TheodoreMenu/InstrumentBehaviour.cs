@@ -22,9 +22,9 @@ public class InstrumentBehaviour :
     RectTransform tooltipRectTransform;
     GameObject[] instrumentSlots;
     GameObject[] instrumentSkillSlots;
-    GameObject[] melodiesInstrument;
+    public GameObject[] melodiesInstrument;
     GameObject slot;
-    GameObject counter;
+    //GameObject counter;
 
     void Awake()
     {
@@ -63,10 +63,10 @@ public class InstrumentBehaviour :
                     k += 1;
                 }
             }
-            melodiesInstrument = new GameObject[4];
+            //melodiesInstrument = new GameObject[4];
 
-            for (int i = 0; i < transform.parent.GetChild(1).childCount; i++)
-                melodiesInstrument[i] = transform.parent.GetChild(1).GetChild(i).gameObject;
+            //for (int i = 0; i < transform.parent.GetChild(1).childCount; i++)
+            //    melodiesInstrument[i] = transform.parent.GetChild(1).GetChild(i).gameObject;
         }
     }
 
@@ -135,7 +135,7 @@ public class InstrumentBehaviour :
         if (!IsClickable)
             return;
 
-        counter = GameObject.Find("Instruments counter");
+        //counter = GameObject.Find("Instruments counter");
 
         if (findSlot(instrumentSlots) == -1)
             return;
@@ -144,19 +144,20 @@ public class InstrumentBehaviour :
 
         GameObject slottedSkill = slot.transform.GetChild(0).gameObject;
         slottedSkill.GetComponent<InstrumentBehaviour>().instrument = instrument;
+        slottedSkill.GetComponent<InstrumentBehaviour>().enabled = true;
         slottedSkill.GetComponent<Image>().color = GetComponent<Image>().color;
         slottedSkill.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
         slottedSkill.GetComponent<Image>().enabled = true;
 
         slot.GetComponent<SlotBehaviour>().Slotted = true;
 
-        counter.GetComponent<Counter>().increment();
+        //counter.GetComponent<Counter>().increment();
 
         foreach (Melodies.Melody melody in instrument.melodies)
             displayMelody(instrumentSkillSlots, melody);
 
         IsClickable = false;
-        GameObject.Find("Reset Instruments").GetComponent<Button>().onClick.AddListener(() => { IsClickable = true; });
+        //GameObject.Find("Reset Instruments").GetComponent<Button>().onClick.AddListener(() => { IsClickable = true; });
         GameObject.Find("QuitButton").GetComponent<Button>().onClick.AddListener(() => { IsClickable = true; });
         transform.parent.GetComponentInParent<TheodoreMenuManager>().SelectedSkill += 4;
     }

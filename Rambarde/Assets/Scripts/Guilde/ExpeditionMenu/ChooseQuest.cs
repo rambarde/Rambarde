@@ -83,11 +83,12 @@ public class ChooseQuest : MonoBehaviour
             GameObject.Find("UpgradeButton").SetActive(false);
 
             // Upgrade all Parcours quests
-            for (int i = 0; i < questPool.Count; i++)
+            for (int i = 1; i < questPool.Count; i++)
             {
                 //questPool[i].isUpgradable = false;
                 questPool[i].IsUpgradable = false;
-                questPool[i].Gold = (int)(questPool[i].Gold * 1.5f);
+                questPool[i].Upgrade();
+                //questPool[i].Gold = (int)(questPool[i].Gold * 1.5f);
             }
 
             // update currently displayed quest map if needed
