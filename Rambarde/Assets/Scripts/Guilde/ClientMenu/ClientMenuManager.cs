@@ -34,7 +34,7 @@ public class ClientMenuManager : MonoBehaviour
         doneButton.GetComponent<Button>().interactable = false;
     }
 
-    public void resetSelectedClient(int nClient) { _selectedClient -= nClient; }
+    public void resetSelectedClient(int nClient) { SelectedClient -= nClient; }
 
     public void resetClientMenu()
     {
@@ -123,14 +123,19 @@ public class ClientMenuManager : MonoBehaviour
         for(int i = 0; i < skillWheel.Length; i++)
         {
             int[] currentSW = skillWheel[i];
-            List<int> skillChoice = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7 };
+            List<int> tier1Choice = new List<int>() { 0, 1, 2, 3 };
+            List<int> tier2Choice = new List<int>() { 4, 5 };
+            List<int> tier3Choice = new List<int>() { 6, 7 };
             
-            for (int j = 0; j < currentSW.Length; j++)
+            for (int j = 0; j < currentSW.Length - 2; j++)
             {
-                int n = Random.Range(0, skillChoice.Count);
-                currentSW[j] = skillChoice[n];
-                skillChoice.RemoveAt(n);
+                int n = Random.Range(0, tier1Choice.Count);
+                currentSW[j] = tier1Choice[n];
+                tier1Choice.RemoveAt(n);
             }
+
+            currentSW[2] = tier2Choice[Random.Range(0, tier2Choice.Count)];
+            currentSW[3] = tier3Choice[Random.Range(0, tier3Choice.Count)];
         }
 
         return skillWheel;

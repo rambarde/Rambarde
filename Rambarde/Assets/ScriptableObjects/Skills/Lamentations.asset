@@ -26,5 +26,6 @@ MonoBehaviour:
     buffType: 3
     value: 1
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 537e144b865f32d459e379cf5b2b1487, type: 3}
+  description: "Augmente l\xE9g\xE8rement l'Attaque et la Protection.\r\nCible tous
+    les autres alli\xE9s."

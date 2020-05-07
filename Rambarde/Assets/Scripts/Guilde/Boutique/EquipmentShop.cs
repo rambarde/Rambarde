@@ -7,6 +7,7 @@ public class EquipmentShop : MonoBehaviour
 {
     public Characters.Equipment[] equipments;
     public GameObject[] buttons;
+    public Sprite[] badges;
 
     public GameObject infoPanel;
 
@@ -37,7 +38,15 @@ public class EquipmentShop : MonoBehaviour
         infoPanel.transform.GetChild(0).GetComponent<Image>().sprite = equipment.sprite;
         infoPanel.transform.GetChild(1).GetComponent<Text>().text = equipment.equipmentName;
         infoPanel.transform.GetChild(2).GetComponent<Text>().text = "Prix : " + equipment.price + "G";
-        infoPanel.transform.GetChild(3).GetComponent<Text>().text = "Peut être utilisé par : " + equipment.allowedType;
+
+        switch(equipment.allowedType)
+        {
+            case (CharacterClass.Mage): infoPanel.transform.GetChild(3).GetChild(0).GetComponent<Image>().sprite = badges[0]; infoPanel.transform.GetChild(3).GetChild(1).GetComponent<Image>().sprite = badges[1]; break;
+            case (CharacterClass.Stratege): infoPanel.transform.GetChild(3).GetChild(0).GetComponent<Image>().sprite = badges[2]; infoPanel.transform.GetChild(3).GetChild(1).GetComponent<Image>().sprite = badges[3]; break;
+            case (CharacterClass.Temeraire): infoPanel.transform.GetChild(3).GetChild(0).GetComponent<Image>().sprite = badges[4]; infoPanel.transform.GetChild(3).GetChild(1).GetComponent<Image>().sprite = badges[5]; break;
+        }
+        //infoPanel.transform.GetChild(3).GetComponent<Text>().text = "Peut être utilisé par : " + equipment.allowedType;
+
 
         // Display information about the equipment
         infoPanel.transform.GetChild(4).GetComponent<Text>().text = "ATQ +" + equipment.atqMod;

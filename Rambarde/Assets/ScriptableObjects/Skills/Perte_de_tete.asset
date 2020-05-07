@@ -26,5 +26,6 @@ MonoBehaviour:
     buffType: 0
     value: 2
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: c01a8b9d6bf063e439b148a1459e9668, type: 3}
+  description: "Inflige X d\xE9g\xE2ts.\r\nCible un adversaire.\r\n\r\nInflige \xC9tourdi
+    pour 2 tours.\r\nCible soi-m\xEAme"

@@ -49,6 +49,7 @@ namespace ExpeditionMenu
         public void Init()
         {
             _isUpgradable = true;
+            NumberOfFights = 4;
             Gold = 0;
             if (FightMax is null)
                 FightMax = new List<int>();
@@ -81,6 +82,37 @@ namespace ExpeditionMenu
             fightManager.GenerateFights();
             fightManager.InitMonsters(monsterData);
             //Debug.Log("Wait...");
+        }
+
+        public void Upgrade()
+        {
+            switch (type)
+            {
+                case QuestType.Forest:
+                    Gold = (int)(400 * 1.5f);
+                    break;
+                case QuestType.Crypt:
+                    Gold =(int)(700 * 1.5f);
+                    break;
+            }
+
+            if (FightMax.Count == 0)
+            {
+                for (int i = 0; i < 3; i++)
+                    FightMax.Add(NumberOfFights);
+            }
+            else
+            {
+                for (int i = 0; i < 3; i++)
+                    FightMax[i] = NumberOfFights;
+            }
+
+            //Fights init
+            fightManager = new FightManager(type, !IsUpgradable, NumberOfFights); //remplacer par nFights plus tard
+
+            fightManager.Init();
+            fightManager.GenerateFights();
+            fightManager.InitMonsters(monsterData);
         }
     }
 }

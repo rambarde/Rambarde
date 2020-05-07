@@ -21,8 +21,8 @@ public class MelodyBehaviour:
     Tooltip tooltip;
     GameObject[] slottedSkills;
     GameObject slot;
-    GameObject counter;
-    Button resetTier;
+    //GameObject counter;
+    //Button resetTier;
     int currentSelected;
     
     void Awake()
@@ -102,8 +102,8 @@ public class MelodyBehaviour:
         if (!IsClickable)
             return;
 
-        counter = GameObject.Find("Innates counter");
-        resetTier = GameObject.Find("Reset Innates").GetComponent<Button>();
+        //counter = GameObject.Find("Innates counter");
+        //resetTier = GameObject.Find("Reset Innates").GetComponent<Button>();
 
         if (findSlot(slottedSkills) == -1)
             return;
@@ -112,19 +112,20 @@ public class MelodyBehaviour:
         GameObject slottedSkill = slot.transform.GetChild(0).gameObject;
         slottedSkill.GetComponent<MelodyBehaviour>().melody = melody;
         slottedSkill.GetComponent<MelodyBehaviour>().IsClickable = false;
+        slottedSkill.GetComponent<MelodyBehaviour>().enabled = true;
         slottedSkill.GetComponent<Image>().color = GetComponent<Image>().color;
         slottedSkill.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
         slottedSkill.GetComponent<Image>().enabled = true;
 
         slot.GetComponent<SlotBehaviour>().Slotted = true;
 
-        counter.GetComponent<Counter>().increment();
+        //counter.GetComponent<Counter>().increment();
         currentSelected++;
 
-        if(currentSelected==maxSelected)
+        if (currentSelected == maxSelected)
             IsClickable = false;
 
-        resetTier.onClick.AddListener(() => { IsClickable = true; currentSelected = 0; });
+        //resetTier.onClick.AddListener(() => { IsClickable = true; currentSelected = 0; });
         GameObject.Find("QuitButton").GetComponent<Button>().onClick.AddListener(()=> { IsClickable = true; currentSelected = 0; });
         transform.parent.GetComponentInParent<TheodoreMenuManager>().SelectedSkill += 1;
     }

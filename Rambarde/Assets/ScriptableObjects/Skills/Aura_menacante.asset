@@ -27,4 +27,5 @@ MonoBehaviour:
     value: 0
   animationName: Atq
   sprite: {fileID: 21300000, guid: 90f5e1b1a493f69408a8b73e3171d384, type: 3}
-  description: 
+  description: "Inflige D\xE9stabilis\xE9 pour 1 tour.\r\nCible tous les adversaires.\r\n\r\nR\xE9arrange
+    al\xE9atoirement la roue des comp\xE9tences.\r\nCible soi-m\xEAme."

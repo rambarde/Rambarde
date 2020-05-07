@@ -17,8 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e610733fe28f304429343c7a21d33b2a, type: 2}
   - {fileID: 11400000, guid: d89c81ef87d997c41811a6eaafc9a2b5, type: 2}
   - {fileID: 11400000, guid: 813db6d785212244db8e503a0c4963c0, type: 2}
-  passif: "Tant que le Luth F\xE9tiche est l'instrument actif, tous les gains d'Inspiration
-    sont augment\xE9s de 25%"
+  passif: Aucun.
   type: Protection
   sprite: {fileID: 21300000, guid: 23781c56b6754734cad75de465341574, type: 3}
   price: 0

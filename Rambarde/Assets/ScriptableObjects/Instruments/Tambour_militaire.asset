@@ -17,8 +17,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c1ba7a381ba5a4647952dc44ccffee5f, type: 2}
   - {fileID: 11400000, guid: 4aeb6bdac9f84f84994d9e0e02d800e9, type: 2}
   - {fileID: 11400000, guid: d7c03f12d89ed834e8baec3eadd35bf6, type: 2}
-  passif: "Tant que le Tambour Militaire est l'instrument actif, tous les gains de
-    Transe sont augment\xE9s de 25%"
+  passif: "Tant que le Tambour Militaire est l'instrument actif, un client affect\xE9
+    par un de vos morceaux est en plus soign\xE9 de 3 Endurance."
   type: Attaque
   sprite: {fileID: 21300000, guid: 531c5196f4a57eb499f2360f1cf33935, type: 3}
   price: 1000

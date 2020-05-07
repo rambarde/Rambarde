@@ -21,5 +21,6 @@ MonoBehaviour:
     buffType: 0
     value: 100
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 24e9635da4c0e6444810265e18470ca7, type: 3}
+  description: "Inflige X d\xE9g\xE2ts.\r\nCible un adversaire.\r\n\r\nSoigne l'Endurance
+    \xE0 hauteur des d\xE9g\xE2ts inflig\xE9s.\r\nCible soi-m\xEAme."

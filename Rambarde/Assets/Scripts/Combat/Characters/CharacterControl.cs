@@ -148,6 +148,12 @@ namespace Characters {
             skillWheel = temp;
 
             UpdateStats();
+/*
+            if(team == Team.PlayerTeam)
+                currentStats.hp = new ReactiveProperty<float>(GameManager.curentHPClients[clientNumber]);
+            else
+                currentStats.hp = new ReactiveProperty<float>(currentStats.maxHp);
+*/ //develop-nico stuff
             currentStats.Init();
 
             slotAction = new Subject<SlotAction>();

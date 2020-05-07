@@ -17,7 +17,7 @@ MonoBehaviour:
   baseStats:
     maxHp: 60
     atq: 20
-    prot: 0
+    baseProt: 0
     prec: 90
     crit: 5
   charType: 2
