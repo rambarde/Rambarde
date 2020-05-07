@@ -1571,7 +1571,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3985343869402083350}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 51614518}
   m_CullTransparentMesh: 0
 --- !u!224 &51770400 stripped
@@ -1580,8 +1579,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 677389625}
   m_PrefabAsset: {fileID: 0}
-=======
->>>>>>> develop-guild-UI-2
 --- !u!1 &51829605
 GameObject:
   m_ObjectHideFlags: 0
