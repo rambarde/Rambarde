@@ -105,7 +105,7 @@ namespace Melodies {
                         note = new NoteInfo
                         {
                             IsLongNote = true, Note = noteData[index], Melody = melody,
-                            Width = twoNotesDist * (length - 1)// there are n-1 spaces between n notes
+                            Width = twoNotesDist * (length - 1) + 65 // there are n-1 spaces between n notes
                         }; 
                     }
                     // simple

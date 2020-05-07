@@ -50,7 +50,7 @@ namespace Music {
                         SpawnNote(n2, melody, notesSequence, noteIndex * melody.Beat);
 
                     if ((melodyIndex != 0 || i != 0) &&                              // no sep at the beginning 
-                        (melodyIndex+1 != melodies.Count || i+1 != melody.Size) &&     // no sep at the end
+                        (melodyIndex+1 != melodies.Count || i+1 != melody.Size) &&   // no sep at the end
                         (i+1) % melody.Measure == 0)                                 // sep between measures
                     {
                         // spawn separator
@@ -115,7 +115,8 @@ namespace Music {
                 notesSequence.Insert(delay,
                     ((RectTransform) noteObj.transform)
                     .DOAnchorPosX(target.anchoredPosition.x - (noteInfo.IsLongNote ? (noteInfo.Width - 65) / 2.0f : 0),
-                        (screenNotesDistance + offset * 2 ) / notesSpeed).SetEase(Ease.Linear));
+                        (screenNotesDistance + offset * 2 - (noteInfo.IsLongNote ? 65 : 0)) / notesSpeed)
+                    .SetEase(Ease.Linear));
         }
 
         private void SpawnSeparator(Sequence notesSequence, float delay)
