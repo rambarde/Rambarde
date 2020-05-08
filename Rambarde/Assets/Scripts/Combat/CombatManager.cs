@@ -23,7 +23,7 @@ public enum CombatPhase {
 }
 
 public class CombatManager : MonoBehaviour {
-    public BardControl bard; //TODO init bard in GameManager
+    public BardControl bard;
     public List<List<CharacterControl>> teams = new List<List<CharacterControl>>(2);
     public GameObject playerTeamGo, enemyTeamGo;
     public RectTransform playerTeamUiContainer;
@@ -43,6 +43,7 @@ public class CombatManager : MonoBehaviour {
     public async Task ExecTurn() {
         combatPhase.Value = CombatPhase.RhythmGame;
         bard.InitRhythmGame();
+        MusicManager.Instance.PlayMelodies(bard.selectedMelodies, 0f);
         await bard.StartRhythmGame();
         await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
         combatPhase.Value = CombatPhase.ExecMelodies;

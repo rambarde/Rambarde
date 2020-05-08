@@ -74,7 +74,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    internal async Task PlayMelodies(ReactiveCollection<Melody> selectedMelodies, double delay)
+    internal async void PlayMelodies(List<Melody> selectedMelodies, double delay)
     {
         Debug.Log("play melodies");
         await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(delay)));
