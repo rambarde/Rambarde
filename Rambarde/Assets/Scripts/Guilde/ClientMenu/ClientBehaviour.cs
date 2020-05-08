@@ -70,7 +70,7 @@ public class ClientBehaviour :
             statPrec.GetComponent<Text>().text = client.Character.baseStats.prec + "%";
             statCrit.GetComponent<Text>().text = client.Character.baseStats.crit + "%";
 
-            for (int i = 0; i < client.SkillWheel.Length; i++)
+            for (int i = 0; i < client.SkillWheel.Length-1; i++)
             {
                 GameObject skill = skills.transform.GetChild(i).gameObject;
                 skill.GetComponent<SkillBehaviour>().skill = client.Character.skills[client.SkillWheel[i]];

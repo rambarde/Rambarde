@@ -97,7 +97,7 @@ public class ClientMenuManager : MonoBehaviour
     {
         int[][] skillWheel = new int[6][];
         for (int i = 0; i < skillWheel.Length; i++)
-            skillWheel[i] = new int[4];
+            skillWheel[i] = new int[5];
         for(int i = 0; i < skillWheel.Length; i++)
         {
             int[] currentSW = skillWheel[i];
@@ -105,7 +105,7 @@ public class ClientMenuManager : MonoBehaviour
             List<int> tier2Choice = new List<int>() { 4, 5 };
             List<int> tier3Choice = new List<int>() { 6, 7 };
             
-            for (int j = 0; j < currentSW.Length - 2; j++)
+            for (int j = 0; j < currentSW.Length - 3; j++)
             {
                 int n = Random.Range(0, tier1Choice.Count);
                 currentSW[j] = tier1Choice[n];
@@ -114,6 +114,7 @@ public class ClientMenuManager : MonoBehaviour
 
             currentSW[2] = tier2Choice[Random.Range(0, tier2Choice.Count)];
             currentSW[3] = tier3Choice[Random.Range(0, tier3Choice.Count)];
+            currentSW[4] = 8;
         }
 
         return skillWheel;
