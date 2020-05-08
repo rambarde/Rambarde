@@ -6961,7 +6961,7 @@ MonoBehaviour:
   enemyTeamUiContainer: {fileID: 166028383}
   dialogManager: {fileID: 0}
   rythmGameSyncDelay: 0.15
-  ignoreGameManager: 1
+  ignoreGameManager: 0
   forcedClients:
   - _character: {fileID: 11400000, guid: a4f81d4fe565ef540a98fc8a70dd3824, type: 2}
     _skillWheel: 00000000010000000200000003000000
