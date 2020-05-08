@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83732d32f25682e4abaf26b89e5c8e48, type: 3}
   m_Name: Louanges
   m_EditorClassIdentifier: 
-  data: 1-1-1-1-
+  data: 3-332-221-111-1-
+  parallelData: 4---4---4---4---
+  bpm: 110
+  measure: 8
   targetMode: 0
   tier: 2
   effect: "Donne <color=blue>Gr\xE2ce</color> pour 1 tour.\r\nDonne <color=blue>Disciplin\xE9</color>

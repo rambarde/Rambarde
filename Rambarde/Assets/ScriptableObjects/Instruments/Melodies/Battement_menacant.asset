@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6e458cbea65414c9ab2fe0510203ba, type: 3}
   m_Name: Battement_menacant
   m_EditorClassIdentifier: 
-  data: 2-332-3-2-33222-
+  data: 2-332-3-2-332-2-
+  parallelData: 4-------4-----4-
+  bpm: 110
+  measure: 8
   targetMode: 3
   tier: 2
   effect: "Diminue mod\xE9r\xE9ment la Protection."

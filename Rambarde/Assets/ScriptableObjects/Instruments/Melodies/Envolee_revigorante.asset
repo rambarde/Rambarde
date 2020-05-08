@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25eec220d2b6214bba328a1f6c8df0c, type: 3}
   m_Name: Envolee_revigorante
   m_EditorClassIdentifier: 
-  data: 4--2----31--3--1--2-----
+  data: 4--2___-31--3--1--2___--
+  parallelData: ------------------------
+  bpm: 120
+  measure: 12
   targetMode: 2
   tier: 2
   effect: Soigne 15 Endurance.

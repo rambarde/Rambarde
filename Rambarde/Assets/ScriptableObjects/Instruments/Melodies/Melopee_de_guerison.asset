@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d174639bce7f54db40dafb42fce06e, type: 3}
   m_Name: Melopee_de_guerison
   m_EditorClassIdentifier: 
-  data: 2-341--32-343---
+  data: 2-341__-2-343__-
+  parallelData: ----------------
+  bpm: 110
+  measure: 8
   targetMode: 0
   tier: 3
   effect: Soigne 40 Endurance.

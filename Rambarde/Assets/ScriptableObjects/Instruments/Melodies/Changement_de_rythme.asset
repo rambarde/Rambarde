@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b47e621780391945a3776c0999e93ae, type: 3}
   m_Name: Changement_de_rythme
   m_EditorClassIdentifier: 
-  data: 1-----2--3--
+  data: 1_____2--3--
+  parallelData: ------------
+  bpm: 120
+  measure: 12
   targetMode: 4
   tier: 1
   effect: "Diminue mod\xE9r\xE9ment l'Attaque.\r\nAugmente fortement la Protection."
