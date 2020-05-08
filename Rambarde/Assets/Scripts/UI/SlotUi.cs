@@ -70,8 +70,9 @@ namespace UI
                         //update tooltip ui
 
                         imageIcon.sprite = _skills[skillIndex].sprite;
-                        descText.text = skillDesc; //_skills[skillIndex].description;
                         propsText.text = _skills[skillIndex].verboseName;
+                        descText.text = skillDesc; //_skills[skillIndex].description;
+                        
 
                         tooltip.DOFade(1, .5f);
                     });

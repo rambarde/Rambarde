@@ -164,7 +164,7 @@ namespace Characters {
             //animator
             _combatManager = CombatManager.Instance;
             _animator = GetComponentInChildren<Animator>();
-            AnimatorOverrideController myOverrideController = await Utils.LoadResource<AnimatorOverrideController>("Animations/" + characterData.animatorController);
+            AnimatorOverrideController myOverrideController = await Utils.LoadResource<AnimatorOverrideController>(characterData.animatorController);
             _animator.runtimeAnimatorController = myOverrideController;
         }
 

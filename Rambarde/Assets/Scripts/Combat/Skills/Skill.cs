@@ -75,10 +75,10 @@ namespace Skills {
                 switch (action.actionType) {
                     case SkillActionType.Attack :
                         foreach (var t in targets) {
+                            await t.TakeDamage(action.value / 100f * s.currentStats.atq);
+                            
                             await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Damage,
                                 Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None);
-                            
-                            await t.TakeDamage(action.value / 100f * s.currentStats.atq);
                             
                             await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Damage,
                                 CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t));
