@@ -11,6 +11,8 @@ namespace Music {
         public List<CircleCollider2D> colliders;
         //public List<Image> InputImages;
 
+        [SerializeField] private bool shouldLog = false;
+
         private Note[] _currentNotes;
         void Start() {
             _currentNotes = new Note[4];
@@ -50,7 +52,7 @@ namespace Music {
                                 
                                     // error sound
 
-                                    Debug.Log("error");
+                                    LogNotePlay("error");
                                 }
                             }
                         }
@@ -63,7 +65,7 @@ namespace Music {
                                 
                                 // error sound
                                 
-                                Debug.Log("error");
+                                LogNotePlay("error");
                             }
                         }
                     }).AddTo(this);
@@ -80,7 +82,7 @@ namespace Music {
                                 
                         // error sound
 
-                        Debug.Log("error");
+                        LogNotePlay("error");
                     }
                     else 
                     {
@@ -91,7 +93,7 @@ namespace Music {
                                 
                             // error sound
 
-                            Debug.Log("error");
+                            LogNotePlay("error");
                         }
                         // good note
                         else
@@ -101,7 +103,7 @@ namespace Music {
                                 _currentNotes[x - 1].Play();
                                 // played note animation
                                 
-                                Debug.Log("played");
+                                LogNotePlay("played");
                             }
                         }
                     }
@@ -122,14 +124,14 @@ namespace Music {
                                 
                                 // error sound
 
-                                Debug.Log("error");
+                                LogNotePlay("error");
                             }
                             else
                             {
                                 _currentNotes[x - 1].Play();
                                 // played note animation
                                 
-                                Debug.Log("played");
+                                LogNotePlay("played");
                             }
                         }   
                     }
@@ -170,6 +172,12 @@ namespace Music {
             }
             
             return 0;
+        }
+
+        private void LogNotePlay(string message) {
+            if (shouldLog) {
+                Debug.Log(message);
+            }
         }
     }
 }
