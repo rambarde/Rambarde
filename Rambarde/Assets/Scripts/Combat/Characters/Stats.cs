@@ -12,6 +12,7 @@ namespace Characters {
         public float atq;
 
         // Protection (percentage)
+        public float baseProt;
         public ReactiveProperty<float> prot;
 
         // Precision (percentage)
@@ -21,7 +22,7 @@ namespace Characters {
         public float crit;
     
         public void Init() {
-            hp = new ReactiveProperty<float>(maxHp);
+            hp = new ReactiveProperty<float>(0);
             prot = new ReactiveProperty<float>(0);
         }
     }

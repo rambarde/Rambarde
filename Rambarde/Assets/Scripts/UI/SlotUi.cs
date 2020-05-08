@@ -28,24 +28,51 @@ namespace UI
             TextMeshProUGUI descText = null;
             TextMeshProUGUI propsText = null;
             Image imageIcon = null;
+
+
             
             if (tooltip != null)
             {
                 descText = tooltip.transform.Find("Desc").GetComponent<TextMeshProUGUI>();
                 propsText = tooltip.transform.Find("Props").GetComponent<TextMeshProUGUI>();
                 imageIcon = tooltip.transform.Find("Icon").GetComponent<Image>();
+
+                RectTransform rt = tooltip.GetComponent<RectTransform>();
+                rt.sizeDelta = new Vector2(300, 200);
             }
 
             _skills = _characterControl.skillSlot;
             for (int i = 0; i < _skills.Count; i++)
             {
+                Sprite skillIcon = _skills[i].sprite;
+                string skillDesc = _skills[i].description;
+                float dmg;
+                if (skillDesc.Contains("X"))
+                {
+                    foreach (var action in _skills[i].actions)
+                    {
+                        if (action.actionType == SkillActionType.Attack)
+                        {
+                            dmg = action.value * 0.01f * _characterControl.currentStats.atq;
+                            skillDesc = skillDesc.Replace("X", Mathf.Ceil(dmg).ToString());
+                            break;
+                        }
+                    }
+                }
+
+                slotIconPositions[i].GetComponent<Image>().sprite = skillIcon;
+
                 slotIconPositions[i].GetComponent<Image>().sprite = _skills[i].sprite;
+                int skillIndex = i;
                 slotIconPositions[i].GetComponent<Image>().OnPointerEnterAsObservable()
                     .Subscribe(_ =>
                     {
                         //update tooltip ui
-                        
-                        // show tooltip ui
+
+                        imageIcon.sprite = _skills[skillIndex].sprite;
+                        descText.text = skillDesc; //_skills[skillIndex].description;
+                        propsText.text = _skills[skillIndex].verboseName;
+
                         tooltip.DOFade(1, .5f);
                     });
                 slotIconPositions[i].GetComponent<Image>().OnPointerExitAsObservable()

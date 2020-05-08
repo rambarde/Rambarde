@@ -4,7 +4,7 @@ namespace Status {
     class Dizzy : StatusEffect {
         public Dizzy(CharacterControl target, int turns) : base(target, turns) {
             type = EffectType.Dizzy;
-            spriteName = "Statut_Étourdi";
+            spriteName = "Statut_Etourdi";
         }
     }
 }

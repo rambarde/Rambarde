@@ -35,6 +35,8 @@ public class EquipmentSelection : MonoBehaviour
             }
         }
 
+        selectedClientID = 0;
+
         DisplayClientInfo();
         ManageButtons();
     }
@@ -43,6 +45,8 @@ public class EquipmentSelection : MonoBehaviour
     {
         clientPanel.transform.GetChild(0).GetComponent<Text>().text = clients[selectedClientID].Name;
         clientPanel.transform.GetChild(1).GetComponent<Image>().sprite = clients[selectedClientID].Character.clientImage;
+        clientPanel.transform.GetChild(2).GetComponent<Text>().text = clients[selectedClientID].Character.name;
+        clientPanel.transform.GetChild(3).GetComponent<Text>().text = clients[selectedClientID].Character.charType.ToString();
 
         UpdateStatsAndEquip();
     }
@@ -52,15 +56,15 @@ public class EquipmentSelection : MonoBehaviour
         clients[selectedClientID].UpdateStats();
 
         // stats values
-        clientPanel.transform.GetChild(2).GetChild(0).GetComponent<Text>().text = "ATQ = " + clients[selectedClientID].currentStats.atq;    // ATQ
-        clientPanel.transform.GetChild(2).GetChild(1).GetComponent<Text>().text = "PREC = " + clients[selectedClientID].currentStats.prec;  // PREC
-        clientPanel.transform.GetChild(2).GetChild(2).GetComponent<Text>().text = "CRIT = " + clients[selectedClientID].currentStats.crit;  // CRIT
-        clientPanel.transform.GetChild(2).GetChild(3).GetComponent<Text>().text = "END = " + clients[selectedClientID].currentStats.maxHp;  // END
-        clientPanel.transform.GetChild(2).GetChild(4).GetComponent<Text>().text = "PROT = " + clients[selectedClientID].currentStats.prot;  // PROT
+        clientPanel.transform.GetChild(4).GetChild(0).GetComponent<Text>().text = "ATQ " + clients[selectedClientID].currentStats.atq;    // ATQ
+        clientPanel.transform.GetChild(4).GetChild(1).GetComponent<Text>().text = "PREC " + clients[selectedClientID].currentStats.prec + "%";  // PREC
+        clientPanel.transform.GetChild(4).GetChild(2).GetComponent<Text>().text = "CRIT " + clients[selectedClientID].currentStats.crit + "%";  // CRIT
+        clientPanel.transform.GetChild(4).GetChild(3).GetComponent<Text>().text = "END " + clients[selectedClientID].currentStats.maxHp;  // END
+        clientPanel.transform.GetChild(4).GetChild(4).GetComponent<Text>().text = "PROT " + clients[selectedClientID].currentStats.prot + "%";  // PROT
 
         // Weapon and armor icons
-        clientPanel.transform.GetChild(3).GetChild(0).GetComponent<Image>().sprite = clients[selectedClientID].equipment[0].sprite;         //weapon
-        clientPanel.transform.GetChild(3).GetChild(1).GetComponent<Image>().sprite = clients[selectedClientID].equipment[1].sprite;         //armor
+        clientPanel.transform.GetChild(5).GetChild(0).GetComponent<Image>().sprite = clients[selectedClientID].equipment[0].sprite;         //weapon
+        clientPanel.transform.GetChild(5).GetChild(1).GetComponent<Image>().sprite = clients[selectedClientID].equipment[1].sprite;         //armor
     }
 
     public void Equip(int buttonId)
@@ -79,7 +83,7 @@ public class EquipmentSelection : MonoBehaviour
             }
             else
             {
-                currentEquipment = clients[selectedClientID].equipment[0];
+                currentEquipment = clients[selectedClientID].equipment[1];
                 clients[selectedClientID].equipment[1] = equipment; // ARMOR
             }
 
@@ -97,6 +101,27 @@ public class EquipmentSelection : MonoBehaviour
         }
     }
 
+    public void Unequip(int eType)
+    {
+        Characters.Equipment equipment = clients[selectedClientID].equipment[eType];
+
+        // get back the equipment in the list
+        equipment.numberEquiped--;
+        for (int i = 0; i < equipButtons.Length; i++)
+        {
+            if (i < equipmentOwned.Count)
+            {
+                equipButtons[i].GetComponent<EquipmentButton>().UpdateNumber();
+            }
+        }
+
+        // reset client equipment to base equipment from class
+        clients[selectedClientID].equipment[eType] = new Characters.Equipment();
+        clients[selectedClientID].equipment[eType] = clients[selectedClientID].Character.baseEquipment[eType];
+
+        UpdateStatsAndEquip();
+    }
+
     public void ChangeClient(bool increment)
     {
         if (increment)
@@ -107,9 +132,10 @@ public class EquipmentSelection : MonoBehaviour
         {
             selectedClientID--;
         }
+        ManageButtons();
         DisplayClientInfo();
         UpdateStatsAndEquip();
-        ManageButtons();
+        
     }
 
     void ManageButtons()
@@ -120,5 +146,18 @@ public class EquipmentSelection : MonoBehaviour
             case (2): switchClientButtons[1].interactable = false; break;
             default: switchClientButtons[0].interactable = true; switchClientButtons[1].interactable = true; break;
         }
+    }
+
+    public void BackToClientSelection()
+    {
+        for(selectedClientID=0; selectedClientID<3; selectedClientID++)
+        {
+            for (int i=0; i<2; i++)
+            {
+                Unequip(i);
+            }
+        }
+
+        //clients.Clear();
     }
 }

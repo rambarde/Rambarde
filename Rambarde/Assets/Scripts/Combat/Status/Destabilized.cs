@@ -5,7 +5,7 @@ namespace Status {
     class Destabilized : StatusEffect {
         public Destabilized(CharacterControl target, int turns) : base(target, turns) {
             type = EffectType.Destabilized;
-            spriteName = "Statut_Déstabilisé";
+            spriteName = "Statut_Destabilise";
         }
         
         protected override Task Apply() {

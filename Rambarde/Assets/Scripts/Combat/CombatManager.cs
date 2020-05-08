@@ -7,14 +7,19 @@ using Characters;
 using Combat.Characters;
 using Status;
 using UI;
+using TMPro;
 using UniRx;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public enum CombatPhase {
     SelectMelodies,
     RhythmGame,
     ExecMelodies,
-    TurnFight
+    TurnFight,
+    ResolveFight
 }
 
 public class CombatManager : MonoBehaviour {
@@ -24,9 +29,11 @@ public class CombatManager : MonoBehaviour {
     public RectTransform playerTeamUiContainer;
     public RectTransform enemyTeamUiContainer;
     public ReactiveProperty<CombatPhase> combatPhase = new ReactiveProperty<CombatPhase>(CombatPhase.SelectMelodies);
+    public DialogManager dialogManager;
     
     private List<CharacterBase> clientsMenu;
     private List<CharacterBase> currentMonsters;
+    
 
     [Header("Combat Testing Only")]
     [SerializeField] public bool ignoreGameManager = false;
@@ -43,6 +50,9 @@ public class CombatManager : MonoBehaviour {
         bard.Reset();
         combatPhase.Value = CombatPhase.TurnFight;
         await ResolveTurnFight();
+        //combatPhase.Value = CombatPhase.ResolveFight;
+        //await ResolveFight();
+
         combatPhase.Value = CombatPhase.SelectMelodies;
     }
 
@@ -77,6 +87,8 @@ public class CombatManager : MonoBehaviour {
             l.SetActive(false);
         }
 
+        
+        //TODO check if fight is not over between each skill
         // Execute all character skills
         foreach (CharacterControl character in characters) {
             if (character == null) continue;
@@ -97,19 +109,50 @@ public class CombatManager : MonoBehaviour {
 
         Destroy(characterControl.gameObject);
         teams[charTeam].Remove(characterControl);
-        Debug.Log("a character died in team " + charTeam + ". Remaining characters :");
-        foreach (CharacterControl c in teams[charTeam]) {
-            Debug.Log(c);
+
+        if (teams[charTeam].Count == 0)
+        {
+            GetComponent<GameManager>().ChangeCombat();
+            if (!GameManager.QuestState)
+            {
+                GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
+                GetComponent<GameManager>().ChangeScene(3);
+    // develop-nico
+    //        }
+    //        else
+    //        {
+    //            int gold = GetComponent<GameManager>().CalculateGold();
+    //            GameManager.CurrentInspiration = 0;                                 //reset inspiration
+    //            GetComponent<GameManager>().ChangeScene(0);
+    //        }
+    //    }
+    //}
+
+    //private async Task ResolveFight()
+    //{
+    //    if (teams[1].Count == 0)        //no more enemies
+    //    {
+    //        GetComponent<GameManager>().ChangeCombat();
+    //        if (!GameManager.QuestState)
+    //        {
+    //            GameManager.CurrentInspiration = bard.inspiration.current.Value;    //save the current inspiration for the next fight
+    //            GetComponent<GameManager>().ChangeScene(2);
+    //        }
+    //        else
+    //        {
+    //            int gold = GetComponent<GameManager>().CalculateGold();
+    //            GameManager.CurrentInspiration = 0;                                 //reset inspiration
+
+            } else {
+                /*int gold = */GetComponent<GameManager>().CalculateGold();
+                GetComponent<GameManager>().ChangeScene(1);
+            }
         }
 
-        if (teams[charTeam].Count == 0) {
-            GetComponent<GameManager>().ChangeCombat();
-            if (!GameManager.QuestState) {
-                GetComponent<GameManager>().ChangeScene(2);
-            } else {
-                int gold = GetComponent<GameManager>().CalculateGold();
-                GetComponent<GameManager>().ChangeScene(0);
-            }
+        if (teams[0].Count == 0)        //no more clients
+        {
+            Debug.Log("All my friends are dead, push me to the edge");
+            GetComponent<GameManager>().ChangeScene(1);
         }
     }
 
@@ -143,20 +186,40 @@ public class CombatManager : MonoBehaviour {
 
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
 
+        //Task[] setupTasks = new Task[6];
         int i = 0;
         foreach (Transform t in playerTeamGo.transform) {
-            SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
+            /*setupTasks[i] = */await SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
             ++i;
         }
 
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
-            SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
+            /*setupTasks[i+3] = */await SetupCharacterControl(t, currentMonsters, i, Team.EnemyTeam);
             ++i;
         }
+
+        //Task.WaitAll(setupTasks);
+
+        //dialogs
+        dialogManager = GetComponent<DialogManager>();
+        List<CharacterType> characterTypes =
+            teams[(int) Team.EnemyTeam].Select(Dialog.GetCharacterTypeFromCharacterControl).Distinct().ToList();
+        characterTypes.Add(CharacterType.Client);
+        characterTypes.Add(CharacterType.Bard);
+        await dialogManager.Init(characterTypes);
+        
+        await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Bard,
+            CharacterType.None);
+        await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Client,
+            CharacterType.None);
+        await dialogManager.ShowDialog(DialogFilter.CombatStart,
+            Dialog.GetCharacterTypeFromCharacterControl(teams[(int) Team.EnemyTeam][Random.Range(0, 3)]),
+            CharacterType.None);
+
     }
 
-    private async void SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {
+    private async Task SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam) {
         string charPrefabName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterPrefab" : "EnemyCharacterPrefab";
         string charPrefabUiName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterUI" : "EnemyCharacterUI";
 
@@ -169,8 +232,10 @@ public class CombatManager : MonoBehaviour {
 
         // Init the character control
         CharacterControl character = characterGameObject.GetComponent<CharacterControl>();
-        await character.Init(team[i].Character, team[i].SkillWheel);
         character.team = charTeam;
+        if (charTeam == Team.PlayerTeam)
+            character.clientNumber = i;
+        await character.Init(team[i].Character, team[i].SkillWheel);
         teams[(int) charTeam].Add(character);
 
         // instantiate the UI on the canvas
@@ -178,6 +243,10 @@ public class CombatManager : MonoBehaviour {
         charUi.SetParent(charTeam == Team.PlayerTeam ? playerTeamUiContainer : enemyTeamUiContainer);
         charUi.localScale = Vector3.one;
         charUi.localEulerAngles = Vector3.zero;
+        charUi.transform.GetChild(0).GetChild(2).GetChild(1).GetComponent<TextMeshProUGUI>().text = character.currentStats.prot.Value.ToString() + " %";
+        charUi.transform.GetChild(1).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = team[i].Name;
+        if (charTeam == Team.PlayerTeam)
+            charUi.transform.GetChild(1).GetChild(0).GetChild(1).GetChild(0).GetComponent<Image>().sprite = character.characterData.clientImage;
         characterGameObject.GetComponent<CharacterVfx>().Init(character);
         SlotUi slotUi = charUi.GetComponentInChildren<SlotUi>();
         slotUi.Init(character);

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
   m_Name: Aspiration_de_vitalite
   m_EditorClassIdentifier: 
+  verboseName: "Aspiration de vitalit\xE9"
   tier: 0
   actions:
   - actionType: 4
@@ -25,5 +26,6 @@ MonoBehaviour:
     buffType: 3
     value: -2
   animationName: Atq
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300000, guid: 0cf9f446471dcee41b560e4980d3114b, type: 3}
+  description: "Augmente fortement la Protection.\r\nCible soi-m\xEAme.\r\n\r\nDiminue
+    mod\xE9r\xE9ment la Protection.\r\nCible tous les adversaires."

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
   m_Name: Cest_pas_moi_cest_lui
   m_EditorClassIdentifier: 
+  verboseName: "C\u2019est pas moi c\u2019est lui !"
   tier: 0
   actions:
   - actionType: 3
@@ -26,4 +27,5 @@ MonoBehaviour:
     value: 3
   animationName: Atq
   sprite: {fileID: 21300000, guid: 2215205b6533f0f419138d34ec823c20, type: 3}
-  description: 
+  description: "Inflige Marqu\xE9 pour 2 tours.\r\nAugmente fortement la Protection.\r\nCible
+    un autre alli\xE9."

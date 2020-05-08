@@ -50,6 +50,7 @@ MonoBehaviour:
   greenBar: {fileID: 2810271490728996370}
   statusEffects: {fileID: 3237745662182348778}
   characterProt: {fileID: 2127110492567582531}
+  effectTooltip: {fileID: 4505765973320283750}
 --- !u!114 &3326105704599261602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,12 +70,14 @@ MonoBehaviour:
   currentStats:
     maxHp: 0
     atq: 0
+    baseProt: 0
     prec: 0
     crit: 0
   equipment: []
   characterData: {fileID: 0}
   skillSlot: []
   influenced: 0
+  skillWheelShouldTick: 0
 --- !u!65 &9130248816315088009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -247,6 +250,12 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1367721596789862919, guid: 9978c60e1e75b9e4388f3d1cadeb296e,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1387466591001205471, guid: be8a5825b50351e47b0bbcb32494a938,
+        type: 2}
     - target: {fileID: 1771878929523679874, guid: 9978c60e1e75b9e4388f3d1cadeb296e,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -332,6 +341,12 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2846115769595339041, guid: 9978c60e1e75b9e4388f3d1cadeb296e,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1387466591001205471, guid: be8a5825b50351e47b0bbcb32494a938,
+        type: 2}
     - target: {fileID: 2981921372772750669, guid: 9978c60e1e75b9e4388f3d1cadeb296e,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -357,6 +372,12 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2981921372772750669, guid: 9978c60e1e75b9e4388f3d1cadeb296e,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1387466591001205471, guid: be8a5825b50351e47b0bbcb32494a938,
+        type: 2}
     - target: {fileID: 3946829563878709135, guid: 9978c60e1e75b9e4388f3d1cadeb296e,
         type: 3}
       propertyPath: m_AnchorMin.y

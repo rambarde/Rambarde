@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     static public int CurrentFight;
     static public bool QuestState;     //false = fights remaining; true = expedition is done
 
+    static public int CurrentInspiration = 0;
+    static public List<float> curentHPClients = new List<float>();
+
     // Change from combat Scene to Guilde Scene
     // 0: Guilde
     // 1: Combat
@@ -21,8 +24,6 @@ public class GameManager : MonoBehaviour
     public void ChangeScene(int SceneToPlay)
     {
         SceneManager.LoadScene(SceneToPlay);
-        Debug.Log("gold after exiting the guild : " + gold);
-        Debug.Log("selected quest : " + quest.name);
 
         if (SceneToPlay == 1 && QuestState == true)
         {
@@ -65,4 +66,17 @@ public class GameManager : MonoBehaviour
 
         return reward;
     }
+
+    public void SetClientsHp()
+    {
+        for (int i = 0; i < clients.Count; i++)
+            curentHPClients.Add(clients[i].currentStats.maxHp);
+    }
+
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
 }

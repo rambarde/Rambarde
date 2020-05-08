@@ -50,6 +50,7 @@ MonoBehaviour:
   greenBar: {fileID: 1182298622870307609}
   statusEffects: {fileID: 3297774146768987147}
   characterProt: {fileID: 3545022651669489018}
+  effectTooltip: {fileID: 3736986819171386698}
 --- !u!114 &3326105704599261602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,12 +70,14 @@ MonoBehaviour:
   currentStats:
     maxHp: 0
     atq: 0
+    baseProt: 0
     prec: 0
     crit: 0
   equipment: []
   characterData: {fileID: 0}
   skillSlot: []
   influenced: 0
+  skillWheelShouldTick: 0
 --- !u!65 &9130248816315088009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -327,6 +330,12 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4289068316108081348, guid: e958c7cc108ffa948a16ab34259b4fe0,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1387466591001205471, guid: be8a5825b50351e47b0bbcb32494a938,
+        type: 2}
     - target: {fileID: 4374850349585903040, guid: e958c7cc108ffa948a16ab34259b4fe0,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -347,6 +356,12 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4374850349585903040, guid: e958c7cc108ffa948a16ab34259b4fe0,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1387466591001205471, guid: be8a5825b50351e47b0bbcb32494a938,
+        type: 2}
     - target: {fileID: 4666564693752456392, guid: e958c7cc108ffa948a16ab34259b4fe0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -542,6 +557,12 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7724745792656810644, guid: e958c7cc108ffa948a16ab34259b4fe0,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1387466591001205471, guid: be8a5825b50351e47b0bbcb32494a938,
+        type: 2}
     - target: {fileID: 7956157523498197497, guid: e958c7cc108ffa948a16ab34259b4fe0,
         type: 3}
       propertyPath: m_textInfo.characterCount

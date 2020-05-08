@@ -11,7 +11,7 @@ public class GuildReady : MonoBehaviour
         guildManager = GameObject.Find("GuildeMenu").GetComponent<GuildeManagerBehaviour>();
     }
 
-    private void OnMouseDown()
+    public void checkReady()
     {
         bool[] ready = guildManager.menuValid;
         bool orReady = ready[0] || ready[1] || ready[2];
@@ -34,7 +34,7 @@ public class GuildReady : MonoBehaviour
             if (!ready[2])
                 Debug.Log("Menu Théodore non valide");
                 //feedback visuel
-            Debug.Log(guildManager.clients[0]);
+            //Debug.Log(guildManager.clients[0]);
         }
         if (andReady & orReady)
         {
@@ -43,7 +43,8 @@ public class GuildReady : MonoBehaviour
             GameManager.instruments = guildManager.instruments;
             GameManager.clients = guildManager.clients;
             GameManager.quest = guildManager.selectedQuest;
-            GetComponent<GameManager>().ChangeScene(1);
+            GetComponent<GameManager>().SetClientsHp();
+            GetComponent<GameManager>().ChangeScene(2);
         }
     }
 }

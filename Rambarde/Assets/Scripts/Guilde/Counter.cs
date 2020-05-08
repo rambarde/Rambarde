@@ -35,6 +35,18 @@ public class Counter : MonoBehaviour
             updateText();
         }
     }
+    
+    public void decrement()
+    {
+        if (_currentCount > 0)
+        {
+            //button.interactable = true;
+            _currentCount -= 1;
+            updateText();
+        }
+        if(_currentCount == 0 )
+            button.interactable = false;
+    }
 
     private void updateText()
     {
