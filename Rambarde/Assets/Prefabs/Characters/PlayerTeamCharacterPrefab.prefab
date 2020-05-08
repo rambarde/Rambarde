@@ -588,6 +588,21 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5705414567058950170, guid: 9978c60e1e75b9e4388f3d1cadeb296e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3326105704599261602}
+    - target: {fileID: 5705414567058950170, guid: 9978c60e1e75b9e4388f3d1cadeb296e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Shf
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705414567058950170, guid: 9978c60e1e75b9e4388f3d1cadeb296e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8993796286663988529, guid: 9978c60e1e75b9e4388f3d1cadeb296e,
         type: 3}
       propertyPath: m_textInfo.characterCount

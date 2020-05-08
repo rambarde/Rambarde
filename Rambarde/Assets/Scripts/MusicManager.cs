@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DG.Tweening;
 using Melodies;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
@@ -18,7 +19,10 @@ public class MusicManager : MonoBehaviour
     public AudioSource[] OSTSource;
     public AudioClip melodyDefault;
     public AudioClip buzzClip;
+    
+    public AudioClip combatPhase1;
     public AudioClip combatPhase2;
+    public AudioClip combatPhase3;
 
     public void Awake()
     {
@@ -31,9 +35,33 @@ public class MusicManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             _instance = this;
         }
-
+        
     }
 
+    public void StartCombatMusic() {
+        CombatManager.Instance.combatPhase.Subscribe(phase => {
+            switch (phase) {
+                case CombatPhase.SelectMelodies :
+                    OSTSource[0].clip = combatPhase1;
+                    OSTSource[0].Play();
+                    break;
+                case CombatPhase.ResovleFight :
+                    OSTSource[0].clip = combatPhase3;
+                    OSTSource[0].Play();
+                    break;
+                case CombatPhase.RhythmGame :
+                    OSTSource[0].clip = combatPhase2;
+                    OSTSource[0].Play();
+                    break;
+                case CombatPhase.ExecMelodies:
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+
+    
 
 
     public void PlayBuzz()

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: 4--2___-31--3--1--2___--
   parallelData: ------------------------
-  bpm: 120
+  bpm: 110
   measure: 12
   targetMode: 2
   tier: 2

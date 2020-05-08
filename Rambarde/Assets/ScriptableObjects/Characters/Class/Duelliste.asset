@@ -32,5 +32,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 498673ac43302034a9f7cff6c4178232, type: 2}
   - {fileID: 11400000, guid: ee279eb4a3b37d243ba40a37ce7465f6, type: 2}
   - {fileID: 11400000, guid: cfa8a637b35d4034c821bff98b5e392e, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
+  - {fileID: 11400000, guid: ad4099c69a217e4a2a4a4c3d0b1d14f2, type: 2}
+  - {fileID: 11400000, guid: af0ae17648862d708ac24c17c3bbe613, type: 2}
   clientImage: {fileID: 21300000, guid: 2af14dca8066eb641899c89d34eb0772, type: 3}

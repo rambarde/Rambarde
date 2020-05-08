@@ -19,7 +19,7 @@ namespace ExpeditionMenu
 
         private int[] GenerateSkillWheel()
         {
-            int[] skillWheel = new int[4];
+            int[] skillWheel = new int[5];
             List<int> skillChoice = new List<int>();
 
             for (int i = 0; i < Character.skills.Length; i++)

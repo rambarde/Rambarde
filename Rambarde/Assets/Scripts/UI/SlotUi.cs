@@ -85,7 +85,7 @@ namespace UI
             }
             
             _characterControl.slotAction
-            .Where(slotAction => slotAction.Action is SlotAction.ActionType.Decrement)
+            .Where(slotAction => slotAction.Action is SlotAction.ActionType.Increment)
             .Subscribe(async next =>
             {
                 Sequence sequence = DOTween.Sequence();
@@ -117,7 +117,7 @@ namespace UI
             }).AddTo(this);
         
         _characterControl.slotAction
-            .Where(slotAction => slotAction.Action == SlotAction.ActionType.Increment)
+            .Where(slotAction => slotAction.Action == SlotAction.ActionType.Decrement)
             .Subscribe(async next =>
             {
                 Sequence sequence = DOTween.Sequence();
@@ -157,17 +157,18 @@ namespace UI
                 Sequence sequenceIndic = DOTween.Sequence();
 
                 Transform parent = slotIconPositions[slotIconPositions.Count - 1].parent;
-                Vector3 lastPos = slotIconPositions[slotIconPositions.Count - 1].position;
+                RectTransform lastTransform = slotIconPositions[slotIconPositions.Count - 1];
                 
                 for (int i = 0; i < next.Skills.Count; i++)
                 {
                     var go = new GameObject("Skill" + i);
                     go.transform.parent = parent;
-                    go.transform.position = lastPos;
                     go.transform.localScale = Vector3.one;
-                    go.AddComponent<RectTransform>().anchoredPosition =
-                        new Vector2(((RectTransform) go.transform).anchoredPosition.x + i * offset,
-                            ((RectTransform) go.transform).anchoredPosition.y);
+                    RectTransform t = go.AddComponent<RectTransform>();
+                    var anchoredPosition = lastTransform.anchoredPosition;
+                    anchoredPosition = new Vector2(anchoredPosition.x - i * offset, anchoredPosition.y);
+                    t.anchoredPosition = anchoredPosition;
+                    t.sizeDelta = lastTransform.sizeDelta;
                     go.AddComponent<Image>().sprite = next.Skills[i].sprite;
                     slotIconPositions.Add(go.GetComponent<RectTransform>());
                 }
@@ -184,7 +185,7 @@ namespace UI
                     sequenceSlot.Insert(0,
                             slotIconPositions[i]
                                 .DOAnchorPos(
-                                    new Vector2(slotIconPositions[i].anchoredPosition.x - (next.Skills.Count - 1) * offset,
+                                    new Vector2(slotIconPositions[i].anchoredPosition.x + (next.Skills.Count - 1) * offset,
                                         slotIconPositions[i].anchoredPosition.y),
                                     speed / 2.5f * next.Skills.Count));
                 

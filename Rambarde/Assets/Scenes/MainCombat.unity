@@ -595,6 +595,7 @@ MonoBehaviour:
   - {fileID: 1509598405}
   - {fileID: 2114502187}
   - {fileID: 1426008951}
+  shouldLog: 0
 --- !u!114 &45323497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6916,26 +6917,27 @@ MonoBehaviour:
   playerTeamUiContainer: {fileID: 49732620}
   enemyTeamUiContainer: {fileID: 166028383}
   dialogManager: {fileID: 0}
-  ignoreGameManager: 1
+  rythmGameSyncDelay: 0.15
+  ignoreGameManager: 0
   forcedClients:
   - _character: {fileID: 11400000, guid: a4f81d4fe565ef540a98fc8a70dd3824, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000003000000
     _name: Bertrand
   - _character: {fileID: 11400000, guid: 219f6d9762df3e54d9573eb84121a519, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000003000000
     _name: clheuredudududuel
   - _character: {fileID: 11400000, guid: 219f6d9762df3e54d9573eb84121a519, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000003000000
     _name: duel2
   forcedMonsters:
   - _character: {fileID: 11400000, guid: 28cd9fa3e50328645aa73122bb6d6ea1, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000004000000
     _name: elgoblino
   - _character: {fileID: 11400000, guid: 0dedada56c039c04ca689502a5d9223d, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000004000000
     _name: sylvain
   - _character: {fileID: 11400000, guid: 45997c4a3e4ffed4f977a0bac0d8096b, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000004000000
     _name: caillou
 --- !u!4 &543202384
 Transform:
@@ -6975,11 +6977,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fbcf5d6e28af3488ab123c8cfcd936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogAppearRate: 0
+  dialogAppearRate: 1
   textSpeed: 50
   dialogCanvas: {fileID: 1786486382}
   dialogText: {fileID: 183905443}
-  dialogImage: {fileID: 0}
+  dialogImage: {fileID: 710983615}
+  dialogTitle: {fileID: 2090788977}
 --- !u!1 &551982214
 GameObject:
   m_ObjectHideFlags: 0
@@ -16519,7 +16522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -9.999939}
+  m_AnchoredPosition: {x: 10, y: -10}
   m_SizeDelta: {x: 140, y: -40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &1653116896
@@ -16603,6 +16606,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1010168616368000250, guid: 6b6a618e0fe84104bbb6d38072c28853,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1196435749460316841, guid: 6b6a618e0fe84104bbb6d38072c28853,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2174063248856626796, guid: 6b6a618e0fe84104bbb6d38072c28853,
         type: 3}
       propertyPath: m_Name
@@ -16667,6 +16680,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217321988963978568, guid: 6b6a618e0fe84104bbb6d38072c28853,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b6a618e0fe84104bbb6d38072c28853, type: 3}
