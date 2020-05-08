@@ -182,6 +182,9 @@ MonoBehaviour:
   - {fileID: 8771797057514146633}
   melodyDefault: {fileID: 8300000, guid: 31f79b0f5ed12994380dfb414d03498e, type: 3}
   buzzClip: {fileID: 8300000, guid: 4b63cf8b77fa0dd469b7d5dafc2b07b0, type: 3}
+  combatPhase1: {fileID: 8300000, guid: c460155be38202a4480a22db6c93752f, type: 3}
+  combatPhase2: {fileID: 8300000, guid: 1498b82e48acf3b45954f4c21a47ba7c, type: 3}
+  combatPhase3: {fileID: 8300000, guid: 57e9bc6607ccd97468386dbfc4d49a0b, type: 3}
 --- !u!1 &2208478990259924372
 GameObject:
   m_ObjectHideFlags: 0

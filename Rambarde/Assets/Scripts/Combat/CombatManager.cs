@@ -18,8 +18,7 @@ public enum CombatPhase {
     SelectMelodies,
     RhythmGame,
     ExecMelodies,
-    TurnFight,
-    ResolveFight
+    ResovleFight
 }
 
 public class CombatManager : MonoBehaviour {
@@ -34,6 +33,7 @@ public class CombatManager : MonoBehaviour {
     private List<CharacterBase> clientsMenu;
     private List<CharacterBase> currentMonsters;
     
+    [SerializeField] public float rythmGameSyncDelay = 0.5f;
 
     [Header("Combat Testing Only")]
     [SerializeField] public bool ignoreGameManager = false;
@@ -42,17 +42,18 @@ public class CombatManager : MonoBehaviour {
     
     public async Task ExecTurn() {
         combatPhase.Value = CombatPhase.RhythmGame;
+        
+        await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(rythmGameSyncDelay)));
         bard.InitRhythmGame();
         MusicManager.Instance.PlayMelodies(bard.selectedMelodies, 4.25f);
         await bard.StartRhythmGame();
-        await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
+        await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(2)));
+        
         combatPhase.Value = CombatPhase.ExecMelodies;
         await bard.ExecMelodies();
         bard.Reset();
-        combatPhase.Value = CombatPhase.TurnFight;
+        combatPhase.Value = CombatPhase.ResovleFight;
         await ResolveTurnFight();
-        //combatPhase.Value = CombatPhase.ResolveFight;
-        //await ResolveFight();
 
         combatPhase.Value = CombatPhase.SelectMelodies;
     }
@@ -166,6 +167,8 @@ public class CombatManager : MonoBehaviour {
     }
 
     private async void Start() {
+        
+        MusicManager.Instance.StartCombatMusic();
 
         clientsMenu = new List<CharacterBase>();
         currentMonsters = new List<CharacterBase>();

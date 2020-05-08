@@ -41,7 +41,7 @@ public class Hud : MonoBehaviour {
         CombatManager.Instance.combatPhase.Subscribe(phase => {
             switch (phase) {
                 case CombatPhase.SelectMelodies :
-                case CombatPhase.TurnFight :
+                case CombatPhase.ResovleFight :
                     musicMenu.SetActive(false);
                     melodyMenu.SetActive(true);
                     break;
