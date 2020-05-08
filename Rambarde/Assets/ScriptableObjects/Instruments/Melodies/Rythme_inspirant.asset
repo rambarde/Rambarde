@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Rythme_inspirant
   m_EditorClassIdentifier: 
   data: 1-2-333-
+  parallelData: --------
+  bpm: 110
+  measure: 8
   targetMode: 2
   tier: 1
   effect: "Augmente l\xE9g\xE8rement l'Attaque.\r\nAugmente mod\xE9r\xE9ment les

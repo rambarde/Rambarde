@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Melodie_reconfortante
   m_EditorClassIdentifier: 
   data: 3-432-3-
+  parallelData: --------
+  bpm: 110
+  measure: 8
   targetMode: 0
   tier: 1
   effect: Soigne 20 Endurance.

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Characters;
 using System.Threading.Tasks;
+using DG.Tweening;
 using Melodies;
 using Music;
 using UniRx;
@@ -10,6 +11,7 @@ using UniRx;
 using UnityEngine;
 
 namespace Bard {
+    
     public class BardControl : MonoBehaviour {
         
         public Hud hud;
@@ -17,11 +19,11 @@ namespace Bard {
         public List<Instrument> instruments;
         public ReactiveProperty<int> actionPoints;
         public ReactiveProperty<int> maxActionPoints;
-        public ReactiveCollection<Melody> selectedMelodies = new  ReactiveCollection<Melody>(new List<Melody>());
+        public List<Melody> selectedMelodies = new List<Melody>();
         public ReactiveCommand onDone = new ReactiveCommand();
 
         [SerializeField] private int baseActionPoints;
-        [SerializeField] private NoteSpawner spawner;
+        [SerializeField] private NotesManager notesManager;
         private int _selectedInstrumentIndex;
 
         private void Start() {
@@ -78,13 +80,17 @@ namespace Bard {
         /**
          * Make melodies playable or not based on the action points
          */
-        private void SetActionPlayableMelodies() {
-            foreach (var melody in instruments.SelectMany(instrument => instrument.melodies)) {
-                melody.isPlayable.Value &= actionPoints.Value - melody.Size >= 0;
+        private void SetActionPlayableMelodies()
+        {
+            foreach (var melody in instruments.SelectMany(instrument => instrument.melodies)) 
+            {
+                if(melody != null)
+                    melody.isPlayable.Value &= actionPoints.Value - melody.Size >= 0;
             }
         }
 
-        private void SetInspirationPlayableMelodies() {
+        private void SetInspirationPlayableMelodies() 
+        {
             foreach (var melody
                 in instruments.SelectMany(instrument => instrument.melodies).Where(m => m.isPlayable.Value)) {
                 switch (melody.tier) {
@@ -126,12 +132,15 @@ namespace Bard {
             SetInspirationPlayableMelodies();
         }
 
-        public async void Done() {
+        public async void Done() 
+        {
             await CombatManager.Instance.ExecTurn();
-            }
+        }
 
-        public async Task ExecMelodies() {
+        public async Task ExecMelodies() 
+        {
             CombatManager.Instance.combatPhase.Value = CombatPhase.ExecMelodies;
+            
             foreach (var melody in selectedMelodies) {
                 //apply melodies based on their score (and reset their score)
                 if (melody.score.Value == melody.Data.Length) {
@@ -143,70 +152,22 @@ namespace Bard {
                 }
             }
         }
-
-
-        private class Aggregate {
-            public readonly string data;
-            public readonly int melodyIndex;
-            public int noteIndex;
-
-            public Aggregate(string data, int i1, int i2 = 0) {
-                this.data = data;
-                melodyIndex = i1;
-                noteIndex = i2;
-            }
-
-            public Aggregate SetNoteIndex(int i2) {
-                noteIndex = i2;
-                return this;
-            }
-        }
         
-        //                         bpm\      /beat division(croche)
-        private float _beat = 60f / (110f * 3f);
+        //                           bpm\      /beat division(croche)
+        //private float _beat = 60f / (110f * 3f);
 
-        public async Task StartRhythmGame() {
-
+        public void InitRhythmGame()
+        {
             CombatManager.Instance.combatPhase.Value = CombatPhase.RhythmGame;
-            selectedMelodies.ToList().ForEach(m => m.score.Value = 0);
-            var melodyIndex = 0;
-            var charIndex = 0;
-            var melody = selectedMelodies
-                         // Transform melody list to (string, index) pairs
-                         .Select(x => new Aggregate(x.Data, melodyIndex++))
-                         // Transform every char from every melody to Aggregate with character index in array
-                         .SelectMany(x => x.data.Select(m => new Aggregate(m.ToString(), x.melodyIndex, charIndex++)));
-            var melodyStr = string.Concat(selectedMelodies.SelectMany(x => x.Data));
-
-            var obs = melody
-                      .Select(x => {
-                          switch (x.data) {
-                              case "_":
-                                  return new Aggregate("*", x.melodyIndex, x.noteIndex);
-                              case "-":
-                                  return new Aggregate("-", x.melodyIndex, x.noteIndex);
-                              default:
-                                  if (x.noteIndex == melodyStr.Length - 1) return x;
-
-                                  var len = melodyStr.Substring(x.noteIndex + 1).TakeWhile(c => c == '_').Count() + 1;
-                                  return new Aggregate(melodyStr.Substring(x.noteIndex, len), x.melodyIndex, x.noteIndex);
-                          }
-                      })
-                      .ToList(); // Compute list elements before starting the timer
-
-            await Utils.AwaitObservable(
-                Observable.Timer(TimeSpan.FromSeconds(_beat))
-                          .Repeat()
-                          .Zip(obs.ToObservable(), (_, y) => y),
-                SpawnMusicNote
-            );
+            
+            selectedMelodies.ForEach(m => m.score.Value = 0);
+            
+            notesManager.Init(selectedMelodies);
         }
 
-        private void SpawnMusicNote(Aggregate note) {
-            /*if (note.noteIndex % 2 == 0) {
-                GetComponent<AudioSource>().Play();
-            }*/
-            spawner.SpawnNote(note.data, selectedMelodies[note.melodyIndex]);
+        public async Task StartRhythmGame()
+        {
+            await notesManager.Play();
         }
     }
 }

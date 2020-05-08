@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374d19cdd2b44b44aac1eed92521bee6, type: 3}
   m_Name: Aria_revivifiante
   m_EditorClassIdentifier: 
-  data: 123-2-3-3--34---
+  data: 123-2__-3__-4__-
+  parallelData: ----------------
+  bpm: 110
+  measure: 8
   targetMode: 2
   tier: 2
   effect: "Donne <color=blue>R\xE9g\xE9n\xE9ration</color> pour 5 tours."

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Air_revigorant
   m_EditorClassIdentifier: 
   data: 2-32----12--
+  parallelData: ------------
+  bpm: 120
+  measure: 12
   targetMode: 0
   tier: 1
   effect: "Donne <color=blue>R\xE9g\xE9n\xE9ration</color> pour 4 tours."
