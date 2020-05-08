@@ -17,7 +17,7 @@ MonoBehaviour:
   bpm: 120
   measure: 12
   targetMode: 2
-  tier: 1
+  tier: 3
   effect: "Soigne 10 Endurance.\r\nRetire Poison, Confus et D\xE9stabilis\xE9."
   inspirationValue: -25
   tranceValue: 0

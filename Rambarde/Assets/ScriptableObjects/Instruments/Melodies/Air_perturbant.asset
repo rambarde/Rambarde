@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Air_perturbant
   m_EditorClassIdentifier: 
   data: 3--2--3--2--2--1--1___--
-  parallelData: 
-  bpm: 0
-  measure: 0
+  parallelData: 4-----4-----4-----4___--
+  bpm: 120
+  measure: 12
   targetMode: 3
   tier: 3
   effect: "Inflige <color=blue>D\xE9stabilis\xE9</color> pour 3 tours."
