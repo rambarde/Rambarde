@@ -27,4 +27,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 91ac146e6f048c14f93c13d613cdec9e, type: 2}
   - {fileID: 11400000, guid: 43f5adae417b2d44780add811dc362f9, type: 2}
   - {fileID: 11400000, guid: 7217420cbf1151548a24777e1e25b5c2, type: 2}
-  clientImage: {fileID: 0}
+  clientImage: {fileID: 21300000, guid: 61ea4dea63e62e144be224aa00186781, type: 3}

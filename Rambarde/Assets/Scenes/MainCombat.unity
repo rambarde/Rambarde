@@ -4292,49 +4292,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297842022}
   m_CullTransparentMesh: 0
---- !u!1 &309585334
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 309585336}
-  - component: {fileID: 309585335}
-  m_Layer: 0
-  m_Name: ResourceManagerCallbacks
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &309585335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309585334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3a73b848f18b6b498c76e82b2551f0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &309585336
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309585334}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &341770982
 GameObject:
   m_ObjectHideFlags: 0
@@ -5693,7 +5650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &482256639
 Transform:
   m_ObjectHideFlags: 0
@@ -6961,7 +6918,7 @@ MonoBehaviour:
   enemyTeamUiContainer: {fileID: 166028383}
   dialogManager: {fileID: 0}
   rythmGameSyncDelay: 0.15
-  ignoreGameManager: 1
+  ignoreGameManager: 0
   forcedClients:
   - _character: {fileID: 11400000, guid: a4f81d4fe565ef540a98fc8a70dd3824, type: 2}
     _skillWheel: 00000000010000000200000003000000
@@ -7020,11 +6977,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fbcf5d6e28af3488ab123c8cfcd936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogAppearRate: 0.4
+  dialogAppearRate: 1
   textSpeed: 50
   dialogCanvas: {fileID: 1786486382}
   dialogText: {fileID: 183905443}
-  dialogImage: {fileID: 0}
+  dialogImage: {fileID: 710983615}
+  dialogTitle: {fileID: 2090788977}
 --- !u!1 &551982214
 GameObject:
   m_ObjectHideFlags: 0

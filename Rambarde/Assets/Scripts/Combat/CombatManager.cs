@@ -214,12 +214,18 @@ public class CombatManager : MonoBehaviour {
         await dialogManager.Init(characterTypes);
         
         await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Bard,
-            CharacterType.None);
+            CharacterType.None, bard.instruments[1].sprite, "Theodore");
+        
+        var randClient = clientsMenu[Random.Range(0, 3)];
         await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Client,
-            CharacterType.None);
+            CharacterType.None,  randClient.Character.clientImage, randClient.Name);
+
+        int r = Random.Range(0, 3);
+        var randEnemy = currentMonsters[r];
+        var randEnemyControl = teams[1][r];
         await dialogManager.ShowDialog(DialogFilter.CombatStart,
-            Dialog.GetCharacterTypeFromCharacterControl(teams[(int) Team.EnemyTeam][Random.Range(0, 3)]),
-            CharacterType.None);
+            Dialog.GetCharacterTypeFromCharacterControl(randEnemyControl),
+            CharacterType.None, randEnemy.Character.clientImage, randEnemy.Name);
 
     }
 
