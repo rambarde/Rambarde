@@ -35,18 +35,43 @@ public class MusicManager : MonoBehaviour
 
 
 
-    public void PlayBuzz()
+    #region Ost
+    internal async Task PlayOST(ReactiveCollection<Melody> selectedMelodies, double delay)
     {
-        melodySource.volume = 0;
+        Debug.Log("play melodies");
+        await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(delay)));
+        foreach (var melody in selectedMelodies)
+        {
+            //Debug.Log(melody.clip.name ?? "default");
+            melodySource.clip = melody.clip != null ? melody.clip : melodyDefault;
+            melodySource.Play();
+            await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(melodySource.clip.length)));
+        }
 
-        SFXSource.PlayOneShot(buzzClip, 1);
-        melodySource.DOFade(1, buzzClip.length);
     }
+    #endregion
 
+    #region SFx
     public void PlaySfx(AudioClip clip, Vector3 position)
     {
         AudioSource.PlayClipAtPoint(clip, position);
     }
+
+    public async Task PlaySFXOneShotTask(string clipStr)
+    {
+        AudioClip clip = await Utils.LoadResource<AudioClip>("Sound/" + clipStr);
+        if (clip)
+        {
+            SFXSource.PlayOneShot(clip, 1);
+        }
+    }
+    public void PlaySFXOneShot(string clipStr)
+    {
+        _ = PlaySFXOneShotTask(clipStr);
+    }
+    #endregion
+
+    #region UI
     public async Task PlayUIOneShotTask(string clipStr)
     {
         AudioClip clip = await Utils.LoadResource<AudioClip>("Sound/" + clipStr);
@@ -72,8 +97,10 @@ public class MusicManager : MonoBehaviour
             UISource.clip = clip;
             UISource.Play();
         }
-    }
+    } 
+    #endregion
 
+    #region Melodies
     internal async Task PlayMelodies(ReactiveCollection<Melody> selectedMelodies, double delay)
     {
         Debug.Log("play melodies");
@@ -87,4 +114,12 @@ public class MusicManager : MonoBehaviour
         }
 
     }
+    public void PlayBuzz()
+    {
+        melodySource.volume = 0;
+
+        SFXSource.PlayOneShot(buzzClip, 1);
+        melodySource.DOFade(1, buzzClip.length);
+    } 
+    #endregion
 }
