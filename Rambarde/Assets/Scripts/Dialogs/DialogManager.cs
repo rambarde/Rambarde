@@ -25,6 +25,7 @@ public class DialogManager : MonoBehaviour
     public CanvasGroup dialogCanvas;
     public TextMeshProUGUI dialogText;
     public Image dialogImage;
+    public TextMeshProUGUI dialogTitle; 
 
     private Dictionary<CharacterType, List<DialogPhrase>> dialogs;
     private List<string> closedList;
@@ -201,14 +202,15 @@ public class DialogManager : MonoBehaviour
                 yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
     }
 
-    public async Task ShowDialog(DialogFilter filter, CharacterType actionExecutor, CharacterType actionReceiver)
+    public async Task ShowDialog(DialogFilter filter, CharacterType actionExecutor, CharacterType actionReceiver, Sprite icon, String name)
     {
         if (!IsDialogAvailable()) return;
         
         Quote quote = GetDialogQuote(filter, actionExecutor, actionReceiver);
         dialogText.text = quote.phrase;
         dialogText.maxVisibleCharacters = 0;
-        dialogImage = await Utils.LoadResource<Image>(quote.character.ToString());
+        dialogImage.sprite = icon;
+        dialogTitle.text = name;
         dialogCanvas.DOFade(1, .5f).SetEase(Ease.InOutCubic);
         await Utils.AwaitObservable(
             Observable.Timer(TimeSpan.FromMilliseconds(textSpeed))

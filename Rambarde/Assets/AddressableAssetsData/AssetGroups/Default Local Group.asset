@@ -53,7 +53,8 @@ MonoBehaviour:
     m_Address: Animations/Stratege
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.AnimatorOverrideController, UnityEngine.AnimationModule,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 1039e69a757a64b4c931f4cff6c14ba9
@@ -75,7 +76,8 @@ MonoBehaviour:
     m_Address: Animations/Treant
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.AnimatorOverrideController, UnityEngine.AnimationModule,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 17a0b360413e1da40a4c047e78954e14
@@ -133,6 +135,13 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 2632c54c660b9c949a58dc38e84079c2
+    m_Address: Icons/Capitaine
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 282a2648941f3984282d993e5ed132fa
     m_Address: ScriptableObjects/Dialogs/Treant
     m_ReadOnly: 0
@@ -145,6 +154,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 2af14dca8066eb641899c89d34eb0772
+    m_Address: Icons/Duelliste
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 3210e2374dc386e429739777ce20227d
@@ -213,7 +229,8 @@ MonoBehaviour:
     m_Address: Characters/Gobelin
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 5e85a24f4388b3748a75e17a96ca74c4
@@ -226,6 +243,14 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: 5fb3faa2c76d33544b74c8f497c32d2e
     m_Address: Animations/Orc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AnimatorOverrideController, UnityEngine.AnimationModule,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 60c7368b5be0fed469ed1d790e8c7ef9
+    m_Address: Icons/Astromancien
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: 
@@ -275,7 +300,8 @@ MonoBehaviour:
     m_Address: Characters/Treant
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 6d56e8116d4a8e348b10327aa600c513
@@ -363,6 +389,13 @@ MonoBehaviour:
     m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 81b3396888868e84bb97c8e85d184a04
+    m_Address: Icons/Elementaliste
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 8456f3cec12d90948b1869d1ea47e20b
     m_Address: vfx-poison
     m_ReadOnly: 0
@@ -410,6 +443,13 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 97e82fae8dfb1d346abe381dd0b592ed
+    m_Address: Icons/Paladin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 98191c64819a72c47908876a31c61256
     m_Address: Statut_Invisible
     m_ReadOnly: 0
@@ -445,7 +485,8 @@ MonoBehaviour:
     m_Address: Characters/Orque
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: a5b90772e132d0c4890a26dc7ae599cb
@@ -462,6 +503,13 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: a6859e3b2347b8e4b97bc513f38b79bf
+    m_Address: Icons/Roublard
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: a7c18746cbd991547a5f10f4af9715dc
@@ -484,7 +532,8 @@ MonoBehaviour:
     m_Address: Animations/Temeraire
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.AnimatorOverrideController, UnityEngine.AnimationModule,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: b4ff950e6ffb6394a9de2895f211028c
@@ -507,7 +556,8 @@ MonoBehaviour:
     m_Address: Animations/Golem
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.AnimatorOverrideController, UnityEngine.AnimationModule,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: c15c20e00a4133c49b2ae1cd943a7949
@@ -546,14 +596,16 @@ MonoBehaviour:
     m_Address: Characters/temeraire_homme
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: d815fb9249956094799349dd7395f164
     m_Address: Characters/Golem
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: d83b83da39d58074cb7421009d0c9181
@@ -583,7 +635,8 @@ MonoBehaviour:
     m_Address: Characters/mage_homme
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: e128651da2a8439498c2826e76b878b4
@@ -627,7 +680,8 @@ MonoBehaviour:
     m_Address: Characters/stratege_homme
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: fc4d8349d147a684da77e7d5c0c56152

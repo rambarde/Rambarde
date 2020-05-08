@@ -78,28 +78,34 @@ namespace Skills {
                             await t.TakeDamage(action.value / 100f * s.currentStats.atq);
                             
                             await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Damage,
-                                Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None);
+                                Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None,
+                                s.characterData.clientImage, s.characterName);
                             
                             await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Damage,
-                                CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t));
+                                CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t),
+                                t.characterData.clientImage, t.characterName);
 
                             if (t.currentStats.hp.Value <= 0) {
                                 await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Kill,
-                                    Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None);
+                                    Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None,
+                                    s.characterData.clientImage, s.characterName);
                                 await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Kill,
-                                    CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t));
+                                    CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t),
+                                    t.characterData.clientImage, t.characterName);
                             }
                         }
                         break;
                     case SkillActionType.Heal :
                         foreach (var t in targets) {
                             await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Heal,
-                                Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None);
+                                Dialog.GetCharacterTypeFromCharacterControl(s), CharacterType.None,
+                                s.characterData.clientImage, s.characterName);
                             
                             await t.Heal(action.value);
                             
                             await CombatManager.Instance.dialogManager.ShowDialog(DialogFilter.Heal,
-                                CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t));
+                                CharacterType.None, Dialog.GetCharacterTypeFromCharacterControl(t),
+                                t.characterData.clientImage, t.characterName);
                         }
                         break;
                     case SkillActionType.StealHealth :
