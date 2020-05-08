@@ -18,6 +18,7 @@ public class MusicManager : MonoBehaviour
     public AudioSource[] OSTSource;
     public AudioClip melodyDefault;
     public AudioClip buzzClip;
+    public AudioClip combatPhase2;
 
     public void Awake()
     {
@@ -77,6 +78,8 @@ public class MusicManager : MonoBehaviour
     internal async void PlayMelodies(List<Melody> selectedMelodies, double delay)
     {
         Debug.Log("play melodies");
+        /*OSTSource[0].clip = combatPhase2;
+        OSTSource[0].Play();*/
         await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(delay)));
         foreach (var melody in selectedMelodies)
         {

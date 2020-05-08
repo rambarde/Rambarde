@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc090f6817f978047a290757ab2c14d6, type: 3}
   m_Name: Envolee_fortifiante
   m_EditorClassIdentifier: 
-  data: 1_______-1--
+  data: 1________1--
   parallelData: ---2--2-----
   bpm: 120
   measure: 12

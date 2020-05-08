@@ -19,7 +19,7 @@ namespace Melodies {
         public string Data => data;
         public string ParallelData => parallelData;
         public int Size => data.Length;
-        public float Beat => 60f / bpm;
+        public float Beat => 60f / (bpm * (measure == 12 ? 3 : 2));
         public int Measure => measure;
 
         public MelodyTargetMode targetMode;

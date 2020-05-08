@@ -13,7 +13,7 @@ using UnityEngine.UI;
 namespace Music {
     public class NotesManager : MonoBehaviour
     {
-        [SerializeField] private float notesSpeed = 200; //pixel per sec
+        [SerializeField] private float notesSpeed = 350; //pixel per sec
         [SerializeField] private RectTransform m1, m2, m3, m4;
         [SerializeField] private RectTransform t1, t2, t3, t4;
         [SerializeField] private RectTransform separatorSpawner, separatorTarget;

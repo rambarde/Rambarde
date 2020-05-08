@@ -88,12 +88,12 @@ namespace UI {
                                         break;
                                     case BuffType.Protection :
                                         descText.text = "\nModifie la Protection";
-                                        propsText.text = "Buff d'Protection"
+                                        propsText.text = "Buff de Protection"
                                                          + "\nNiveau " + added.turnsLeft.Value;
                                         break;
                                     case BuffType.Critical :
                                         descText.text = "\nModifie le Critique";
-                                        propsText.text = "Buff d'Critique"
+                                        propsText.text = "Buff de Critique"
                                                          + "\nNiveau " + added.turnsLeft.Value;
                                         break;
                                     
