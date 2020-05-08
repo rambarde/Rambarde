@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Paladin
   m_EditorClassIdentifier: 
   modelName: Characters/stratege_homme
-  animatorController: Warrior
+  animatorController: Animations/Stratege
   baseStats:
     maxHp: 90
     atq: 18

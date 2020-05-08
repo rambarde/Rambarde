@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Elementaliste
   m_EditorClassIdentifier: 
   modelName: Characters/mage_homme
-  animatorController: Mage
+  animatorController: Animations/Mage
   baseStats:
     maxHp: 55
     atq: 25

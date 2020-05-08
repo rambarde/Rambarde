@@ -49,6 +49,13 @@ MonoBehaviour:
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 0c0e62c6938798d48bb01878675ed755
+    m_Address: Animations/Stratege
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 1039e69a757a64b4c931f4cff6c14ba9
     m_Address: EnemyCharacterPrefab
     m_ReadOnly: 0
@@ -62,6 +69,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: Dialog, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 177ad8c3ab07b7740b174fdb430f0907
+    m_Address: Animations/Treant
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 17a0b360413e1da40a4c047e78954e14
@@ -208,6 +222,13 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 5fb3faa2c76d33544b74c8f497c32d2e
+    m_Address: Animations/Orc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 646a60e5a7abc8e4c9c3b996110c5ebf
@@ -459,6 +480,13 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: b2fa1ba57b1d80f4dab6a60a4178c9cc
+    m_Address: Animations/Temeraire
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: b4ff950e6ffb6394a9de2895f211028c
     m_Address: Statut_Poison
     m_ReadOnly: 0
@@ -473,6 +501,13 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: bbd1fe859bf0d324395ec13c8fd89eb8
+    m_Address: Animations/Golem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: c15c20e00a4133c49b2ae1cd943a7949
@@ -515,7 +550,7 @@ MonoBehaviour:
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: d815fb9249956094799349dd7395f164
-    m_Address: Characters/golem
+    m_Address: Characters/Golem
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: 

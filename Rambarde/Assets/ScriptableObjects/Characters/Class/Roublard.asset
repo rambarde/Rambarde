@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Roublard
   m_EditorClassIdentifier: 
   modelName: Characters/temeraire_homme
-  animatorController: Warrior
+  animatorController: Animations/Temeraire
   baseStats:
     maxHp: 60
     atq: 23

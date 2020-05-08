@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Duelliste
   m_EditorClassIdentifier: 
   modelName: Characters/temeraire_homme
-  animatorController: Warrior
+  animatorController: Animations/Temeraire
   baseStats:
     maxHp: 70
     atq: 22
