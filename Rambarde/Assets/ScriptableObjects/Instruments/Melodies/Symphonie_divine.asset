@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Symphonie_divine
   m_EditorClassIdentifier: 
   data: 1-1-1-1-
+  parallelData: 
+  bpm: 0
+  measure: 0
   targetMode: 2
   tier: 0
   effect: "Donne <color=blue>Gr\xE2ce</color> jusqu'\xE0 la fin du combat."
   inspirationValue: 0
   tranceValue: 0
   sprite: {fileID: 21300000, guid: 3729ad9ec33ef5e428f89d757276bb76, type: 3}
+  clip: {fileID: 8300000, guid: e14b49c09af1d2a4ca5740690f4edec3, type: 3}
