@@ -139,16 +139,16 @@ namespace Music {
         
 
         private static int GetKeyDownInput() {
-            if (Input.GetKeyDown(KeyCode.A)) {
+            if (Input.GetKeyDown(KeyCode.Alpha1)) {
                 return 1;
             }
-            if (Input.GetKeyDown(KeyCode.Z)) {
+            if (Input.GetKeyDown(KeyCode.Alpha2)) {
                 return 2;
             }
-            if (Input.GetKeyDown(KeyCode.E)) {
+            if (Input.GetKeyDown(KeyCode.Alpha3)) {
                 return 3;
             }
-            if (Input.GetKeyDown(KeyCode.R)) {
+            if (Input.GetKeyDown(KeyCode.Alpha4)) {
                 return 4;
             }
             
@@ -156,16 +156,16 @@ namespace Music {
         }
         
         private static int GetKeyUpInput() {
-            if (Input.GetKeyUp(KeyCode.A)) {
+            if (Input.GetKeyUp(KeyCode.Alpha1)) {
                 return 1;
             }
-            if (Input.GetKeyUp(KeyCode.Z)) {
+            if (Input.GetKeyUp(KeyCode.Alpha2)) {
                 return 2;
             }
-            if (Input.GetKeyUp(KeyCode.E)) {
+            if (Input.GetKeyUp(KeyCode.Alpha3)) {
                 return 3;
             }
-            if (Input.GetKeyUp(KeyCode.R)) {
+            if (Input.GetKeyUp(KeyCode.Alpha4)) {
                 return 4;
             }
             

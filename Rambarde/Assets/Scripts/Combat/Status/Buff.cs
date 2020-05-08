@@ -17,6 +17,7 @@ namespace Status {
         public readonly int _modifier;
 
         public Buff(CharacterControl target, int turns, BuffType buffType, int modifier) : base(target, turns) {
+            type = EffectType.Buff;
             _buffType = buffType;
             _modifier = modifier;
 

@@ -24,6 +24,7 @@ namespace Bard {
 
         [SerializeField] private int baseActionPoints;
         [SerializeField] private NotesManager notesManager;
+        [SerializeField] private int errorMargin = 1;
         private int _selectedInstrumentIndex;
 
         private void Start() {
@@ -137,18 +138,17 @@ namespace Bard {
             await CombatManager.Instance.ExecTurn();
         }
 
-        public async Task ExecMelodies() 
-        {
+        public async Task ExecMelodies() {
             CombatManager.Instance.combatPhase.Value = CombatPhase.ExecMelodies;
             
             foreach (var melody in selectedMelodies) {
                 //apply melodies based on their score (and reset their score)
-                if (melody.score.Value == melody.Data.Length) {
+                if (melody.score.Value >= melody.MaxScore() - errorMargin) {
                     await melody.Execute();
                     inspiration.current.Value += melody.inspirationValue;
                     inspiration.ResetTurnValues();
                 } else {
-                    Debug.Log("you failed melody [" + melody.name +"]");
+                    Debug.Log("you failed melody [" + melody.name +"] : " + melody.score.Value + "/" + melody.MaxScore());
                 }
             }
         }

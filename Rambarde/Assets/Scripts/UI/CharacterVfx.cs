@@ -73,12 +73,34 @@ namespace UI {
                         .Subscribe(_ =>
                         {
                             //update tooltip ui
-                            Debug.Log("enter tooltip");
                             
                             imageIcon.sprite = image.sprite;
-                            descText.text = StatusEffect.GetEffectDescription(added.type);
-                            propsText.text = StatusEffect.GetEffectName(added.type)
-                                             + "\n" + added.turnsLeft.Value + " tour" + (added.turnsLeft.Value > 1 ? "s" : "");
+                            if (added.type != EffectType.Buff) {
+                                descText.text = StatusEffect.GetEffectDescription(added.type);
+                                propsText.text = StatusEffect.GetEffectName(added.type)
+                                                 + "\n" + added.turnsLeft.Value + " tour" + (added.turnsLeft.Value > 1 ? "s" : "");
+                            } else {
+                                switch (((Buff) added)._buffType) {
+                                    case BuffType.Attack :
+                                        descText.text = "\nModifie l'Attaque";
+                                        propsText.text = "Buff d'Attaque"
+                                                         + "\nNiv. " + added.turnsLeft.Value;
+                                        break;
+                                    case BuffType.Protection :
+                                        descText.text = "\nModifie la Protection";
+                                        propsText.text = "Buff d'Protection"
+                                                         + "\nNiveau " + added.turnsLeft.Value;
+                                        break;
+                                    case BuffType.Critical :
+                                        descText.text = "\nModifie le Critique";
+                                        propsText.text = "Buff d'Critique"
+                                                         + "\nNiveau " + added.turnsLeft.Value;
+                                        break;
+                                    
+                                }
+                                
+                            }
+                            
 
                             effectTooltip.DOFade(1, .5f);
                         });

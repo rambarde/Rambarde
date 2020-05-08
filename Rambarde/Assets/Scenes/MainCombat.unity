@@ -5649,7 +5649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &482256639
 Transform:
   m_ObjectHideFlags: 0
@@ -21820,9 +21820,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a06766f10b68e4f9325333f99baab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumValue: 10
-  tier2MinValue: 5
-  tier3MinValue: 10
+  maximumValue: 130
+  tier2MinValue: 50
+  tier3MinValue: 100
 --- !u!114 &8296172668646349648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21844,3 +21844,4 @@ MonoBehaviour:
   selectedMelodies: []
   baseActionPoints: 40
   notesManager: {fileID: 45323497}
+  errorMargin: 1
