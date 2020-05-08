@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
   m_Name: Elementaliste
   m_EditorClassIdentifier: 
-  modelName: Mage
+  modelName: Characters/mage_homme
   animatorController: Mage
   baseStats:
     maxHp: 55
     atq: 25
-    prot: 0
+    baseProt: 0
     prec: 90
     crit: 10
   charType: 2
