@@ -30,8 +30,8 @@ public class CombatManager : MonoBehaviour {
     public ReactiveProperty<CombatPhase> combatPhase = new ReactiveProperty<CombatPhase>(CombatPhase.SelectMelodies);
     public DialogManager dialogManager;
     
-    private List<CharacterBase> clientsMenu;
-    private List<CharacterBase> currentMonsters;
+    private List<CharacterBase> clients;
+    private List<CharacterBase> monsters;
     
     [SerializeField] public float rythmGameSyncDelay = 0.5f;
 
@@ -170,22 +170,22 @@ public class CombatManager : MonoBehaviour {
         
         MusicManager.Instance.StartCombatMusic();
 
-        clientsMenu = new List<CharacterBase>();
-        currentMonsters = new List<CharacterBase>();
+        clients = new List<CharacterBase>();
+        monsters = new List<CharacterBase>();
         if (ignoreGameManager) {
             //init characters based on editor (without gameManager)
             foreach (var client in  forcedClients)
-                clientsMenu.Add(client);
+                clients.Add(client);
         
             foreach (var monster in forcedMonsters)
-                currentMonsters.Add(monster);
+                monsters.Add(monster);
         } else {
             //init characters based on gameManager (loaded from the Expedition)
             foreach (var client in  GameManager.clients)
-                clientsMenu.Add(client);
+                clients.Add(client);
         
             foreach (var monster in GameManager.quest.fightManager.fights[GameManager.CurrentFight].monsters)
-                currentMonsters.Add(monster);
+                monsters.Add(monster);
         }
 
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
@@ -193,13 +193,13 @@ public class CombatManager : MonoBehaviour {
         //Task[] setupTasks = new Task[6];
         int i = 0;
         foreach (Transform t in playerTeamGo.transform) {
-            /*setupTasks[i] = */await SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
+            /*setupTasks[i] = */await SetupCharacterControl(t, clients, i, Team.PlayerTeam);
             ++i;
         }
 
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
-            /*setupTasks[i+3] = */await SetupCharacterControl(t, currentMonsters, i, Team.EnemyTeam);
+            /*setupTasks[i+3] = */await SetupCharacterControl(t, monsters, i, Team.EnemyTeam);
             ++i;
         }
 
@@ -216,12 +216,12 @@ public class CombatManager : MonoBehaviour {
         await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Bard,
             CharacterType.None, bard.instruments[1].sprite, "Theodore");
         
-        var randClient = clientsMenu[Random.Range(0, 3)];
+        var randClient = clients[Random.Range(0, 3)];
         await dialogManager.ShowDialog(DialogFilter.CombatStart, CharacterType.Client,
             CharacterType.None,  randClient.Character.clientImage, randClient.Name);
 
         int r = Random.Range(0, 3);
-        var randEnemy = currentMonsters[r];
+        var randEnemy = monsters[r];
         var randEnemyControl = teams[1][r];
         await dialogManager.ShowDialog(DialogFilter.CombatStart,
             Dialog.GetCharacterTypeFromCharacterControl(randEnemyControl),

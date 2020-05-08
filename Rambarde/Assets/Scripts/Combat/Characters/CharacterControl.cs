@@ -141,7 +141,7 @@ namespace Characters {
             //characterData.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
             //characterData.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
 
-            Skill[] temp = new Skill[4];
+            Skill[] temp = new Skill[5];
 
             for (int j = 0; j < intSkillWheel.Length; j++)
                 temp[j] = characterData.skills[intSkillWheel[j]];
@@ -279,6 +279,11 @@ namespace Characters {
         }
 
         public bool HasEffect(EffectType effect) => effectTypes.Value.HasFlag(effect);
-        
+
+
+        public async void Shf()
+        {
+            await ShuffleSkillsSlot();
+        }
     }
 }

@@ -33,4 +33,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 39e4c866eb260734bb8a0bb62bb56a0f, type: 2}
   - {fileID: 11400000, guid: f271e0e6829d28c44bae05b80fc1dda2, type: 2}
   - {fileID: 11400000, guid: 9a50e5ba3045b0946957ca671147c04e, type: 2}
+  - {fileID: 11400000, guid: 7d3dce00d03a5507bae66598c6d3e08d, type: 2}
   clientImage: {fileID: 21300000, guid: 2632c54c660b9c949a58dc38e84079c2, type: 3}

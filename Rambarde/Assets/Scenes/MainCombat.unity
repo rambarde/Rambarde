@@ -6921,23 +6921,23 @@ MonoBehaviour:
   ignoreGameManager: 0
   forcedClients:
   - _character: {fileID: 11400000, guid: a4f81d4fe565ef540a98fc8a70dd3824, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000003000000
     _name: Bertrand
   - _character: {fileID: 11400000, guid: 219f6d9762df3e54d9573eb84121a519, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000003000000
     _name: clheuredudududuel
   - _character: {fileID: 11400000, guid: 219f6d9762df3e54d9573eb84121a519, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000003000000
     _name: duel2
   forcedMonsters:
   - _character: {fileID: 11400000, guid: 28cd9fa3e50328645aa73122bb6d6ea1, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000004000000
     _name: elgoblino
   - _character: {fileID: 11400000, guid: 0dedada56c039c04ca689502a5d9223d, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000004000000
     _name: sylvain
   - _character: {fileID: 11400000, guid: 45997c4a3e4ffed4f977a0bac0d8096b, type: 2}
-    _skillWheel: 00000000010000000200000003000000
+    _skillWheel: 0000000001000000020000000300000004000000
     _name: caillou
 --- !u!4 &543202384
 Transform:
@@ -16522,7 +16522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -9.999939}
+  m_AnchoredPosition: {x: 10, y: -10}
   m_SizeDelta: {x: 140, y: -40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &1653116896
