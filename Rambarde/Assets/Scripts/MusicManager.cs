@@ -67,10 +67,10 @@ public class MusicManager : MonoBehaviour
     #region Ost
 
     private int _currentOst = 0;
-    internal async Task PlayOST(string OstString)
+    internal async Task PlayOst(string ostString)
     {
         int nextAudioSource = (_currentOst + 1) % OSTSource.Length;
-        OSTSource[nextAudioSource].clip =  await Utils.LoadResource<AudioClip>("Sound/" + OstString);
+        OSTSource[nextAudioSource].clip =  await Utils.LoadResource<AudioClip>("Sound/" + ostString);
         OSTSource[nextAudioSource].volume = 0;
         OSTSource[nextAudioSource].Play();
         OSTSource[nextAudioSource].loop = true;

@@ -1805,7 +1805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fbcf5d6e28af3488ab123c8cfcd936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogAppearRate: 0.5
+  dialogAppearRate: 0.6
   textSpeed: 50
   dialogCanvas: {fileID: 1786486382}
   dialogText: {fileID: 183905443}
