@@ -21,11 +21,14 @@ namespace Bard {
         public ReactiveProperty<int> maxActionPoints;
         public List<Melody> selectedMelodies = new List<Melody>();
         public ReactiveCommand onDone = new ReactiveCommand();
-
+        public Animator animator;
+        
         [SerializeField] private int baseActionPoints;
         [SerializeField] private NotesManager notesManager;
         [SerializeField] private int errorMargin = 1;
         private int _selectedInstrumentIndex;
+        private static readonly int Right = Animator.StringToHash("Right");
+        private static readonly int Wrong = Animator.StringToHash("Wrong");
 
         private void Start() {
             inspiration = GetComponent<Inspiration>();
@@ -168,6 +171,16 @@ namespace Bard {
         public async Task StartRhythmGame()
         {
             await notesManager.Play();
+        }
+
+        public void RightNoteAnimation()
+        {
+            animator.SetTrigger(Right);
+        }
+        
+        public void WrongNoteAnimation()
+        {
+            animator.SetTrigger(Wrong);
         }
     }
 }

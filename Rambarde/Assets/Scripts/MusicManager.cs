@@ -67,8 +67,7 @@ public class MusicManager : MonoBehaviour
     public void PlayBuzz()
     {
         melodySource.volume = 0;
-
-        SFXSource.PlayOneShot(buzzClip, 1);
+        SFXSource.PlayOneShot(buzzClip, 2);
         melodySource.DOFade(1, buzzClip.length);
     }
 
