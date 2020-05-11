@@ -64,18 +64,66 @@ public class MusicManager : MonoBehaviour
     
 
 
-    public void PlayBuzz()
+    #region Ost
+
+    private int _currentOst = 0;
+    internal async Task PlayOst(string ostString)
     {
-        melodySource.volume = 0;
-
-        SFXSource.PlayOneShot(buzzClip, 1);
-        melodySource.DOFade(1, buzzClip.length);
+        int nextAudioSource = (_currentOst + 1) % OSTSource.Length;
+        OSTSource[nextAudioSource].clip =  await Utils.LoadResource<AudioClip>("Sound/" + ostString);
+        OSTSource[nextAudioSource].volume = 0;
+        OSTSource[nextAudioSource].Play();
+        OSTSource[nextAudioSource].loop = true;
+        if (OSTSource[_currentOst].isPlaying)
+        {
+            int fadeTime = 1;
+            OSTSource[nextAudioSource].DOFade(1, fadeTime);
+            OSTSource[_currentOst].DOFade(0, fadeTime);
+            await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(fadeTime)));
+            OSTSource[_currentOst].Stop();
+            _currentOst = (_currentOst + 1) % OSTSource.Length;
+        }
+        else
+        {
+            OSTSource[nextAudioSource].volume = 1;
+        }
     }
+    #endregion
 
-    public void PlaySfx(AudioClip clip, Vector3 position)
+    #region SFx
+    public async Task PlaySfxLoop(string clipStr)
+    {
+        AudioClip clip = await Utils.LoadResource<AudioClip>("Sound/" + clipStr);
+        SFXSource.clip = clip;
+        SFXSource.Play();
+        SFXSource.loop = true;
+    }
+    public void PlaySfxAtPoint(AudioClip clip, Vector3 position)
     {
         AudioSource.PlayClipAtPoint(clip, position);
     }
+
+    public async Task PlaySfxAtPoint(string clipStr, Vector3 position)
+    {
+        AudioClip clip = await Utils.LoadResource<AudioClip>("Sound/" + clipStr);
+        AudioSource.PlayClipAtPoint(clip, position);
+    }
+
+    public async Task PlaySFXOneShotTask(string clipStr)
+    {
+        AudioClip clip = await Utils.LoadResource<AudioClip>("Sound/" + clipStr);
+        if (clip)
+        {
+            SFXSource.PlayOneShot(clip, 1);
+        }
+    }
+    public void PlaySFXOneShot(string clipStr)
+    {
+        _ = PlaySFXOneShotTask(clipStr);
+    }
+    #endregion
+
+    #region UI
     public async Task PlayUIOneShotTask(string clipStr)
     {
         AudioClip clip = await Utils.LoadResource<AudioClip>("Sound/" + clipStr);
@@ -101,13 +149,13 @@ public class MusicManager : MonoBehaviour
             UISource.clip = clip;
             UISource.Play();
         }
-    }
+    } 
+    #endregion
 
-    internal async void PlayMelodies(List<Melody> selectedMelodies, double delay)
+    #region Melodies
+    internal async Task PlayMelodies(List<Melody> selectedMelodies, double delay)
     {
         Debug.Log("play melodies");
-        /*OSTSource[0].clip = combatPhase2;
-        OSTSource[0].Play();*/
         await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(delay)));
         foreach (var melody in selectedMelodies)
         {
@@ -118,4 +166,13 @@ public class MusicManager : MonoBehaviour
         }
 
     }
+    public void PlayBuzz()
+    {
+        melodySource.volume = 0;
+        Sequence sequence = DOTween.Sequence();
+        sequence.Insert(.5f, melodySource.DOFade(1, 0.3f));
+        SFXSource.PlayOneShot(buzzClip, 1);
+        sequence.Play();
+    } 
+    #endregion
 }

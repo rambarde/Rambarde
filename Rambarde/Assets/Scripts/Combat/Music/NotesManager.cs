@@ -27,7 +27,7 @@ namespace Music {
         private float screenNotesDistance;
         private float noteScrollDuration;
 
-        public float MusicStartDelay => (m1.rect.x - musicStartPosition.rect.x) / notesSpeed;
+        public float MusicStartDelay => (m1.anchoredPosition.x - musicStartPosition.anchoredPosition.x) / notesSpeed;
         
         public void Init(List<Melody> melodies)
         {
