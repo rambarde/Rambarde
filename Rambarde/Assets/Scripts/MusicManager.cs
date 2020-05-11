@@ -170,9 +170,9 @@ public class MusicManager : MonoBehaviour
     {
         melodySource.volume = 0;
         Sequence sequence = DOTween.Sequence();
-        sequence.Insert(.8f, melodySource.DOFade(1, 0.2f));
-        sequence.Play();
+        sequence.Insert(.5f, melodySource.DOFade(1, 0.3f));
         SFXSource.PlayOneShot(buzzClip, 1);
+        sequence.Play();
     } 
     #endregion
 }
