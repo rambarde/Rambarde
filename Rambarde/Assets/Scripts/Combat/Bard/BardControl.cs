@@ -22,9 +22,9 @@ namespace Bard {
         public List<Melody> selectedMelodies = new List<Melody>();
         public ReactiveCommand onDone = new ReactiveCommand();
         public Animator animator;
-        
+        public NotesManager notesManager;
+
         [SerializeField] private int baseActionPoints;
-        [SerializeField] private NotesManager notesManager;
         [SerializeField] private int errorMargin = 1;
         private int _selectedInstrumentIndex;
         private static readonly int Right = Animator.StringToHash("Right");

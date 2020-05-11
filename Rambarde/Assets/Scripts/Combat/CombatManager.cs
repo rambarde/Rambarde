@@ -36,7 +36,7 @@ public class CombatManager : MonoBehaviour {
     [SerializeField] public float rythmGameSyncDelay = 0.5f;
 
     [Header("Combat Testing Only")]
-    [SerializeField] public bool ignoreGameManager = false;
+    [SerializeField] public bool ignoreGameManager;
     [SerializeField] private CharacterBase[] forcedClients = new CharacterBase[3];
     [SerializeField] private CharacterBase[] forcedMonsters = new CharacterBase[3];
     
@@ -45,7 +45,8 @@ public class CombatManager : MonoBehaviour {
         
         await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(rythmGameSyncDelay)));
         bard.InitRhythmGame();
-        MusicManager.Instance.PlayMelodies(bard.selectedMelodies, 4.25f);
+        MusicManager.Instance.PlayMelodies(bard.selectedMelodies, /*4.25f*/
+            bard.notesManager.MusicStartDelay);
         await bard.StartRhythmGame();
         await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(2)));
         
@@ -206,7 +207,6 @@ public class CombatManager : MonoBehaviour {
         //Task.WaitAll(setupTasks);
 
         //dialogs
-        dialogManager = GetComponent<DialogManager>();
         List<CharacterType> characterTypes =
             teams[(int) Team.EnemyTeam].Select(Dialog.GetCharacterTypeFromCharacterControl).Distinct().ToList();
         characterTypes.Add(CharacterType.Client);
