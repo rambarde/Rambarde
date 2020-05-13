@@ -70,6 +70,7 @@ public class MusicManager : MonoBehaviour
     internal async Task PlayOst(string ostString)
     {
         int nextAudioSource = (_currentOst + 1) % OSTSource.Length;
+        Debug.Log(nextAudioSource + " mm");
         OSTSource[nextAudioSource].clip =  await Utils.LoadResource<AudioClip>("Sound/" + ostString);
         OSTSource[nextAudioSource].volume = 0;
         OSTSource[nextAudioSource].Play();
@@ -81,12 +82,13 @@ public class MusicManager : MonoBehaviour
             OSTSource[_currentOst].DOFade(0, fadeTime);
             await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(fadeTime)));
             OSTSource[_currentOst].Stop();
-            _currentOst = (_currentOst + 1) % OSTSource.Length;
+
         }
         else
         {
             OSTSource[nextAudioSource].volume = 1;
         }
+        _currentOst = nextAudioSource;
     }
     #endregion
 
@@ -117,6 +119,16 @@ public class MusicManager : MonoBehaviour
             SFXSource.PlayOneShot(clip, 1);
         }
     }
+
+    internal void PlaySceneOst(int buildIndex)
+    {
+        if(buildIndex == 2)
+            return;
+
+        PlayOst("Ost" + buildIndex);
+
+    }
+
     public void PlaySFXOneShot(string clipStr)
     {
         _ = PlaySFXOneShotTask(clipStr);
