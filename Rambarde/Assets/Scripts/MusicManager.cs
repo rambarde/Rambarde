@@ -78,7 +78,7 @@ public class MusicManager : MonoBehaviour
         if (OSTSource[_currentOst].isPlaying)
         {
             int fadeTime = 1;
-            OSTSource[nextAudioSource].DOFade(1, fadeTime);
+            OSTSource[nextAudioSource].DOFade(.6f, fadeTime);
             OSTSource[_currentOst].DOFade(0, fadeTime);
             await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(fadeTime)));
             OSTSource[_currentOst].Stop();
@@ -148,7 +148,7 @@ public class MusicManager : MonoBehaviour
         _ = PlayUIOneShotTask(clipStr);
     }
 
-    public async Task PlayUI(string clipStr)
+    public async Task PlayUITask(string clipStr)
     {
         AudioClip clip = await Utils.LoadResource<AudioClip>("Sound/" + clipStr);
         if (clip)
@@ -160,7 +160,12 @@ public class MusicManager : MonoBehaviour
             UISource.clip = clip;
             UISource.Play();
         }
-    } 
+    }
+
+    public void PlayUI(string clipStr)
+    {
+        _ = PlayUITask(clipStr);
+    }
     #endregion
 
     #region Melodies

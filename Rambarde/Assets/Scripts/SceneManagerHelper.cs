@@ -7,12 +7,17 @@ public class SceneManagerHelper : MonoBehaviour
 {
     public void LoadScene(int scene)
     {
-        SceneManager.Instance.LoadScene(scene);
+        SceneManager.Instance?.LoadScene(scene);
     }
 
     public void LoadScene(string scene)
     {
-        SceneManager.Instance.LoadScene(scene);
+        SceneManager.Instance?.LoadScene(scene);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 }

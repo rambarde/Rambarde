@@ -9,6 +9,8 @@ public class GuildeManagerBehaviour : MonoBehaviour
     public Bard.Instrument BaseInstrument;
 
     GameObject switchMenuPanel;
+    
+
 
     GameObject signQuest;
     GameObject signClient;
@@ -23,6 +25,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
 
     public bool[] menuValid;
 
+    public GameObject dimPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +52,8 @@ public class GuildeManagerBehaviour : MonoBehaviour
     {
         if (!menuAlreadyActive)
         {
+            MusicManager.Instance?.PlayUI("Menu" + menuID);
+            dimPanel.SetActive(true);
             subMenus[menuID].SetActive(true);
             menuAlreadyActive = true;
             switchMenuPanel.SetActive(true);
@@ -61,7 +66,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
         {
             menu.SetActive(false);
         }
-
+        dimPanel.SetActive(false);
         menuAlreadyActive = false;
         switchMenuPanel.SetActive(false);
     }

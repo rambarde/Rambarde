@@ -15,6 +15,7 @@ public class DisplayMenuOnClick : MonoBehaviour
 
     void OnMouseDown()
     {
+        
         GameObject.Find("GuildeMenu").GetComponent<GuildeManagerBehaviour>().DisplayMenu(MenuID);
     }
 }

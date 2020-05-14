@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Bard;
 using Characters;
 using Combat.Characters;
+using DG.Tweening;
 using Status;
 using UI;
 using TMPro;
@@ -39,6 +40,9 @@ public class CombatManager : MonoBehaviour {
     [SerializeField] public bool ignoreGameManager;
     [SerializeField] private CharacterBase[] forcedClients = new CharacterBase[3];
     [SerializeField] private CharacterBase[] forcedMonsters = new CharacterBase[3];
+    
+    
+    [SerializeField] private CanvasGroup hideUgliness;
     
     public async Task ExecTurn() {
         combatPhase.Value = CombatPhase.RhythmGame;
@@ -205,7 +209,7 @@ public class CombatManager : MonoBehaviour {
         }
 
         //Task.WaitAll(setupTasks);
-
+        hideUgliness.DOFade(0, 1).OnComplete(() => { hideUgliness.transform.GetChild(0).gameObject.SetActive(false);});
         //dialogs
         List<CharacterType> characterTypes =
             teams[(int) Team.EnemyTeam].Select(Dialog.GetCharacterTypeFromCharacterControl).Distinct().ToList();
@@ -223,9 +227,11 @@ public class CombatManager : MonoBehaviour {
         int r = Random.Range(0, 3);
         var randEnemy = monsters[r];
         var randEnemyControl = teams[1][r];
+        
         await dialogManager.ShowDialog(DialogFilter.CombatStart,
             Dialog.GetCharacterTypeFromCharacterControl(randEnemyControl),
             CharacterType.None, randEnemy.Character.clientImage, randEnemy.Name);
+
 
     }
 

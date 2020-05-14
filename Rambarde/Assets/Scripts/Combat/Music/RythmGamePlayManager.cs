@@ -224,7 +224,7 @@ namespace Music {
             else
             {
                 bardControl.WrongNoteAnimation();
-                musicManager.PlayBuzz();
+                MusicManager.Instance.PlayBuzz();
             }
         }
     }

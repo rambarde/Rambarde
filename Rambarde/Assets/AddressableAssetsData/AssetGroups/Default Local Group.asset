@@ -23,6 +23,14 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 2800000, guid: 0018872348af78f448cbb80991db4c2c, type: 3}
+    m_TargetAsset: {fileID: 2800000, guid: 0018872348af78f448cbb80991db4c2c, type: 3}
+  - m_GUID: 01bdd61119c6844498538d75a22c1bc2
+    m_Address: Sound/Accept
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AudioClip, UnityEngine.AudioModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 03d0c5c1ec93d5c4688eee850b31a6fd
@@ -39,14 +47,24 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 6789997390863644055, guid: 0a1e254a1f41d0747889f15a007512b6,
+      type: 3}
+    m_TargetAsset: {fileID: 6789997390863644055, guid: 0a1e254a1f41d0747889f15a007512b6,
+      type: 3}
   - m_GUID: 0ab1a97b25e867140941c8333df8cbb8
     m_Address: Animations/Goblin
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.AnimatorOverrideController, UnityEngine.AnimationModule,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 0b395b313c3c3a44ca19cc0ec110563d
+    m_Address: Sound/Menu3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AudioClip, UnityEngine.AudioModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 0c0e62c6938798d48bb01878675ed755
@@ -109,6 +127,14 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEditor.Animations.AnimatorController, UnityEditor, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 1eeb4c6db70f1c545b228f947477725f
+    m_Address: Sound/OpenMenu
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AudioClip, UnityEngine.AudioModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
@@ -291,6 +317,14 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 6a40e7057a46cfd43b965bcb2b48a792
+    m_Address: Sound/Menu0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AudioClip, UnityEngine.AudioModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 6b5830c8e8fcb3042bdcd2a0d63acc4a
     m_Address: Statut_PROT3
     m_ReadOnly: 0
@@ -315,6 +349,14 @@ MonoBehaviour:
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 6d9a15b8795d283499ad20e38ad812dc
+    m_Address: Sound/Menu1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AudioClip, UnityEngine.AudioModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 6e01092358f335840a733a0ca28a396b
     m_Address: Statut_Assourdi
     m_ReadOnly: 0
@@ -328,6 +370,14 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 71af1bd7caafb8e4ebe23508c1ddb54c
+    m_Address: Sound/Back
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AudioClip, UnityEngine.AudioModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
@@ -476,6 +526,14 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 9b048032db954674fa5522f5bba67138
+    m_Address: Sound/Menu2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AudioClip, UnityEngine.AudioModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
@@ -706,6 +764,14 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: f05f8c03b6a8ddc40b51a7153b1f04c1
+    m_Address: Sound/Hover
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.AudioClip, UnityEngine.AudioModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: fc4d8349d147a684da77e7d5c0c56152
     m_Address: "Statut_Disciplin\xE9"
     m_ReadOnly: 0
@@ -728,8 +794,8 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.AudioClip, UnityEngine.AudioModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 8300000, guid: fef51e1720291638ebbb6afdc51c1ba8, type: 3}
+    m_TargetAsset: {fileID: 8300000, guid: fef51e1720291638ebbb6afdc51c1ba8, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bce459c6cd4c5624abd220f9859e3ba8, type: 2}
   m_SchemaSet:
