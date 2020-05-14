@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Rambarde.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     // 2: Map/Between fights
     public void ChangeScene(int SceneToPlay)
     {
-        SceneManager.LoadScene(SceneToPlay);
+        SceneManager.Instance.LoadScene(SceneToPlay);
 
         if (SceneToPlay == 1 && QuestState == true)
         {

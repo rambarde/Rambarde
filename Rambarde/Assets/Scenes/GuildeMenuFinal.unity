@@ -21615,6 +21615,7 @@ GameObject:
   - component: {fileID: 674081877}
   - component: {fileID: 674081876}
   - component: {fileID: 674081875}
+  - component: {fileID: 674081878}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -21685,8 +21686,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1696893615}
-        m_MethodName: ChangeScene
+      - m_Target: {fileID: 674081878}
+        m_MethodName: LoadScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21732,6 +21733,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674081873}
   m_CullTransparentMesh: 0
+--- !u!114 &674081878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674081873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f858a1c4b189c341b7935041a6ab6e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &675258875
 GameObject:
   m_ObjectHideFlags: 0

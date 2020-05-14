@@ -82,7 +82,6 @@ public class MusicManager : MonoBehaviour
             OSTSource[_currentOst].DOFade(0, fadeTime);
             await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(fadeTime)));
             OSTSource[_currentOst].Stop();
-
         }
         else
         {
