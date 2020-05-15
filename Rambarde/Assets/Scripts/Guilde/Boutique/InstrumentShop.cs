@@ -84,4 +84,10 @@ public class InstrumentShop : MonoBehaviour
 
         purchaseButton.GetComponent<Button>().interactable = true;
     }
+
+    public void OnEnable()
+    {
+        DisplayInstrumentInfo(0);
+    }
 }
+

@@ -94,4 +94,9 @@ public class EquipmentShop : MonoBehaviour
             goldManager.GetComponent<GoldValue>().DisplayNoGoldMessage();
         }
     }
+
+    public void OnEnable()
+    {
+        DisplayEquipInfo(equipments[0]);
+    }
 }
