@@ -50,6 +50,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
 
     public void DisplayMenu(int menuID)
     {
+        
         if (!menuAlreadyActive)
         {
             MusicManager.Instance?.PlayUI("Menu" + menuID);
@@ -57,6 +58,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
             subMenus[menuID].SetActive(true);
             menuAlreadyActive = true;
             switchMenuPanel.SetActive(true);
+            MusicManager.Instance?.PlayUIOneShot("Hover");
         }
     }
 

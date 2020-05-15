@@ -1,14 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GuildReady : MonoBehaviour
 {
     private GuildeManagerBehaviour guildManager;
+    public Button pretButton;
 
     private void Start()
     {
         guildManager = GameObject.Find("GuildeMenu").GetComponent<GuildeManagerBehaviour>();
+    }
+
+    public void Update()
+    {
+        bool[] ready = guildManager.menuValid;
+        bool orReady = ready[0] || ready[1] || ready[2];
+        bool andReady = ready[0] && ready[1] && ready[2];
+        if (andReady & orReady)
+        {
+            pretButton.interactable = true;
+        }
+        else
+        {
+            pretButton.interactable = false;
+        }
     }
 
     public void checkReady()
@@ -38,6 +55,7 @@ public class GuildReady : MonoBehaviour
         }
         if (andReady & orReady)
         {
+            MusicManager.Instance?.PlayUIOneShot("Back");
             Debug.Log("C'est ok");
             //lance la scène combat ici
             GameManager.instruments = guildManager.instruments;
