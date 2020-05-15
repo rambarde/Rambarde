@@ -48,14 +48,16 @@ namespace Bard {
         public void SelectMelody(Melody melody, CharacterControl target = null) {
             if (! instruments.Any(instrument => instrument.melodies.Contains(melody))) {
                 Debug.Log("Warning : Melody [" + melody.name +"] is not equipped");
+                MusicManager.Instance?.PlayUIOneShot("Accept");
                 return;
             }
 
             if (!melody.isPlayable.Value) {
                 Debug.Log("Warning : Melody [" + melody.name + "] is not playable");
+                MusicManager.Instance?.PlayUIOneShot("Accept");
                 return;
             }
-
+            MusicManager.Instance?.PlayUIOneShot("Hover");
             SetActionPlayableMelodies();
             SetInspirationPlayableMelodies();
 
@@ -116,7 +118,7 @@ namespace Bard {
             foreach (var melody in selectedMelodies) {
                 inspiration.UnselectMelody(melody);
             }
-
+            MusicManager.Instance?.PlayUIOneShot("Hover");
             Reset();
         }
 
@@ -138,6 +140,7 @@ namespace Bard {
 
         public async void Done() 
         {
+            MusicManager.Instance?.PlayUIOneShot("Hover");
             await CombatManager.Instance.ExecTurn();
         }
 

@@ -93,6 +93,7 @@ public class Hud : MonoBehaviour {
                     image.sprite = melody.sprite;
                     button.OnClickAsObservable()
                         .Subscribe(_ => {
+                            MusicManager.Instance?.PlayUIOneShot("Hover");
                             List<IDisposable> subscriptions = new List<IDisposable>();
                             switch (melody.targetMode) {
                                 case MelodyTargetMode.EveryAlly :
