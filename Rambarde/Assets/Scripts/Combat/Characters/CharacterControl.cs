@@ -166,6 +166,7 @@ namespace Characters {
             _animator = GetComponentInChildren<Animator>();
             AnimatorOverrideController myOverrideController = await Utils.LoadResource<AnimatorOverrideController>(characterData.animatorController);
             _animator.runtimeAnimatorController = myOverrideController;
+            _animator.SetFloat("CycleOffset", UnityEngine.Random.Range(-5.0f, 5.0f));
         }
 
         //private void UpdateStats(int accessory) {
