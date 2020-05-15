@@ -173,6 +173,7 @@ public class InstrumentBehaviour :
             slottedSkill.GetComponent<Button>().interactable = true;
             warning.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => { IsClickable = true; });
             transform.parent.GetComponentInParent<TheodoreMenuManager>().SelectedSkill += 4;
+            MusicManager.Instance?.PlayUIOneShot("Hover");
         }
     }
 

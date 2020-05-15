@@ -55,7 +55,7 @@ public class GuildReady : MonoBehaviour
         }
         if (andReady & orReady)
         {
-            MusicManager.Instance?.PlayUIOneShot("Back");
+            MusicManager.Instance?.PlayUIOneShot("Play");
             Debug.Log("C'est ok");
             //lance la scène combat ici
             GameManager.instruments = guildManager.instruments;

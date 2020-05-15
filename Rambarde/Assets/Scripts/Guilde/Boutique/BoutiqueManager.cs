@@ -28,6 +28,7 @@ public class BoutiqueManager : MonoBehaviour
 
     public void SwitchBoutique(int numShop)
     {
+        MusicManager.Instance?.PlayUIOneShot("Hover");
         for (int i = 0; i < shops.Length; i++)
         {
             if (i == numShop)

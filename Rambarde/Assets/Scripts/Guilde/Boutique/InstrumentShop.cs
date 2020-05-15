@@ -51,12 +51,14 @@ public class InstrumentShop : MonoBehaviour
             GameObject goldManager = GameObject.FindGameObjectWithTag("GoldLabel");
             if (goldManager.GetComponent<GoldValue>().HasEnoughGold(instruments[selectedInstrumentID].price))
             {
+                MusicManager.Instance?.PlayUIOneShot("Buy");
                 goldManager.GetComponent<GoldValue>().Pay(instruments[selectedInstrumentID].price);
                 instruments[selectedInstrumentID].owned = true;
                 UpdateInstrumentShop();
             }
             else
             {
+                MusicManager.Instance?.PlayUIOneShot("Accept");
                 goldManager.GetComponent<GoldValue>().DisplayNoGoldMessage();
             }
         }

@@ -29,6 +29,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MusicManager.Instance?.PlayUIOneShot("GuildOpen");
         switchMenuPanel = GameObject.Find("SwitchMenuPanel");
         switchMenuPanel.SetActive(false);
         menuValid = new bool[3];

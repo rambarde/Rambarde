@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 public class ClientBehaviour : 
     MonoBehaviour,
@@ -102,6 +103,7 @@ public class ClientBehaviour :
             IsClickable = false;
             GameObject.Find("Reset Client").GetComponent<Button>().onClick.AddListener(ResetSelected);
             transform.parent.GetComponentInParent<ClientMenuManager>().SelectedClient += 1;
+            MusicManager.Instance.PlayUIOneShot("Yeah"+Random.Range(0,11));
         }
     }
 

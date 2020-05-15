@@ -41,7 +41,7 @@ public class SelectParcour : MonoBehaviour
                 menu.SetActive(false);
             }
         }
-
+        MusicManager.Instance?.PlayUIOneShot("Hover");
         // Prevent from selecting a quest
         GameObject.Find("ExpeditionMenu").GetComponent<ExpeditionMenuBehaviour>().DeactivateQuestSelect();
     }
@@ -52,7 +52,7 @@ public class SelectParcour : MonoBehaviour
         {
             menu.SetActive(false);
         }
-
+        MusicManager.Instance?.PlayUIOneShot("Hover");
         // Prevent from selecting a quest
         GameObject.Find("ExpeditionMenu").GetComponent<ExpeditionMenuBehaviour>().DeactivateQuestSelect();
     }

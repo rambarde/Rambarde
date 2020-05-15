@@ -75,6 +75,11 @@ public class EquipmentShop : MonoBehaviour
             if(selectedEquipment.numberOwned == 0)
             {
                 this.GetComponentInParent<BoutiqueManager>().equipmentOwned.Add(selectedEquipment);
+                MusicManager.Instance?.PlayUIOneShot("Buy");
+            }
+            else
+            {
+                MusicManager.Instance?.PlayUIOneShot("Hover");
             }
 
             // increment the number of owned equiment
@@ -92,6 +97,7 @@ public class EquipmentShop : MonoBehaviour
         else
         {
             goldManager.GetComponent<GoldValue>().DisplayNoGoldMessage();
+            MusicManager.Instance?.PlayUIOneShot("Accept");
         }
     }
 

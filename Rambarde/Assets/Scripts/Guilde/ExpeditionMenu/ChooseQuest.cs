@@ -62,7 +62,7 @@ public class ChooseQuest : MonoBehaviour
             //questMap.GetComponent<Image>().sprite = questPool[quest_id].upgradedMap;
             questLevel.GetComponent<Text>().text = "Expédition de niveau 2";
         }
-
+        MusicManager.Instance?.PlayUIOneShot("Hover");
         questReward.GetComponent<Text>().text = "Gain minimum: " + questPool[quest_id].Gold + " or.";
         // Display quest description
         questDescription.GetComponent<Text>().text = questPool[quest_id].Pitch;
@@ -98,10 +98,12 @@ public class ChooseQuest : MonoBehaviour
                 questLevel.GetComponent<Text>().text = "Expédition de niveau 2";
                 questReward.GetComponent<Text>().text = "Gain minimum: " + questPool[selectedQuestID].Gold + " or.";
             }
+            MusicManager.Instance?.PlayUIOneShot("UpgradeMap");
 
         }
         else
         {
+            MusicManager.Instance?.PlayUIOneShot("Hover");
             Debug.Log("not enough gold to upgrade");
             goldManager.GetComponent<GoldValue>().DisplayNoGoldMessage();
         }

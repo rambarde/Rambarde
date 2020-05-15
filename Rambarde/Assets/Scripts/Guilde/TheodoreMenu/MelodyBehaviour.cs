@@ -141,6 +141,7 @@ public class MelodyBehaviour:
             slottedSkill.GetComponent<Button>().interactable = true;
             warning.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => { IsClickable = true; currentSelected = 0; });
             transform.parent.GetComponentInParent<TheodoreMenuManager>().SelectedSkill += 1;
+            MusicManager.Instance?.PlayUIOneShot("Hover");
         }
     }
 
